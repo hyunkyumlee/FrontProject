@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Fast-Sub 결제 페이지</title>
+    <style>
+
+        /* header 스타일 */
+        header {
+            width: 100%;
+            min-width: 1200px;
+            height: 165px;
+            border-top: 5px solid #009223;
+            display: block;
+            position: relative;
+        }
+
+        .logo {
+            height: 40px;
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%)
+        }
+
+        .log_menu {
+            position: absolute;
+            top: 40px;
+            right: 15%;
+        }
+
+        .log_menu ul {
+            padding: 0px;
+            margin: 0px;
+            height: 30px;
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .log_menu a {
+            text-decoration: none;
+            color: #666;
+        }
+
+        .log_menu li {
+            margin: 5px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .log_menu li::marker {
+            color: #ddd;
+        }
+
+        .signup {
+            list-style: inside;
+        }
+
+        .main_nav {
+            width: 100%;
+            height: 60px;
+            /* 영역이 짧아서 히든영역이랑 간격이 있음 충분한 높이 주시면 잘 넘어가요*/
+            position: absolute;
+            top: 65%;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bg {
+            top: 100%;
+            transform: translateY(-4px);
+            position: absolute;
+            width: 100%;
+            height: 0;
+            background-color: white;
+            border-top: 0.5px solid #ddd;
+            z-index: 995;
+        }
+
+        .main_nav ul {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+
+        .main_nav ul:hover {
+            cursor: pointer
+        }
+
+        .nav_wrap {
+            width: 100%;
+            height: 230px;
+            position: absolute;
+            top: 65%;
+        }
+
+        .nav_item {
+            float: left;
+            width: 165px;
+            font-size: 18px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .nav_item:hover {
+            color: #009223;
+        }
+
+        .hidden_menu {
+            overflow: hidden;
+            /* 영역 넘어가면 안보이게 하기*/
+            width: 100%;
+            height: 0;
+            /* 평소에는 높이 0으로 둬서 안보이게 하기*/
+            position: absolute;
+            left: 0px;
+            top: -10px;
+            transform: translateY(50px);
+
+            z-index: 999;
+        }
+
+        .hidden_menu a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .hidden_menu li {
+            margin: 15px 0 15px 0;
+            font-size: 15px;
+            color: #666;
+            letter-spacing: -1px;
+        }
+
+        .hidden_menu li:nth-child(1) {
+            margin-top: 20px;
+        }
+
+        .hidden_menu li:hover {
+            color: #009223;
+            text-decoration: underline;
+        }
+
+        .main_nav:hover .hidden_menu,
+        .main_nav:hover .bg {
+            height: 260px;
+            /* 마우스를 갖다 대면 높이 생기게 하기 */
+            transition: 0.5s;
+            /* 천천히 나오게 하는 효과*/
+        }
+
+        .main_nav:hover .bg {
+            border-bottom: 0.5px solid #ddd;
+        }
+
+
+        /* 기본 리셋 및 공통 스타일 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            user-select: none;
+            min-width: 1280px;
+            background-color: #f9f9f9;
+        }
+
+        /* 전체 배경 + 타이틀 */
+        .wrap {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background: url("./image/orderBackground.jpg") no-repeat center top #89cd2f;
+            text-align: center;
+            align-items: center;
+            padding-bottom: 60px;
+            /* 하단 공간 */
+        }
+
+        /* 타이틀 영역 */
+        .title-area {
+            padding: 60px 0;
+        }
+
+        .title {
+            color: white;
+            font-size: 80px;
+            font-weight: bold;
+        }
+
+        .sub-title {
+            color: white;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        /* 단계 표시 영역 */
+        .step-section {
+            width: 100%;
+            height: 170px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* 주문 전체 영역(흰 박스) */
+        .order-wrap {
+            margin: 0 auto;
+            width: 70%;
+            min-width: 1170px;
+            background-color: #fff;
+            box-sizing: border-box;
+
+            /* 스크린샷 비슷하게: 얇은 테두리와 라운드 */
+            border: 1px solid #e7e7e7;
+            border-radius: 4px;
+
+            /* 내부 패딩 */
+            padding: 40px 60px;
+            margin-bottom: 80px;
+        }
+
+        /* 섹션 타이틀 (픽업매장, 결제 수단 선택 등) */
+        .order-wrap h2 {
+            color: #333;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: left;
+
+            /* 하단 가이드라인 */
+            border-bottom: 1px solid #d9d9d9;
+            padding-bottom: 10px;
+        }
+
+        /* 각각의 info box: 라벨 + 내용 */
+        .info-box {
+            display: flex;
+            flex-direction: row;
+            border-top: 1px solid #eaeaea;
+            /* 각 행 구분선 */
+            border-bottom: none;
+            min-height: 60px;
+        }
+
+        /* 왼쪽 라벨 */
+        .info-box>p {
+            flex: 0 0 180px;
+            background-color: #fafafa;
+            color: #555;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            padding-left: 16px;
+            border-right: 1px solid #eaeaea;
+        }
+
+        /* 오른쪽 내용 (텍스트 or input) */
+        .info-box>p+p,
+        .info-box input[type="text"] {
+            flex: 1 1 auto;
+            padding: 16px;
+            color: #444;
+            background-color: #fff;
+            border: none;
+            outline: none;
+        }
+
+        .input-box {
+            align-items: center;
+        }
+
+        .input-box>p {
+            background-color: #fafafa;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-box input[type="radio"] {
+            margin: 0 10px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .disposable-box {
+            display: flex;
+            height: 50px;
+            align-items: center;
+        }
+
+        /* 결제수단 라디오/버튼 영역 */
+        .payment-radio {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            padding: 10px 0;
+            margin-left: 20px;
+        }
+
+        .payment-btn {
+            flex: 1 1 auto;
+            width: 100px;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            background-color: #fff;
+            border: 1px solid #999;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            margin-right: 8px;
+        }
+
+        .payment-btn:last-child {
+            margin-right: 0;
+        }
+
+        .payment-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        .payment-btn.select-btn {
+            background-color: #009223;
+            border-color: #009223;
+            color: #fff;
+        }
+
+
+        /* ───────────────────────────────────────────────── */
+        /* 주문 정보 표시 영역 (#order-info) */
+        /* 여기서부터 CSS 변경 (주문내역 한 줄 + 아래 한 줄) */
+
+        #order-info {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        #order-info h2 {
+            color: #333;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 8px;
+        }
+
+        /* 주문 내역을 감싸는 박스 */
+        .order-list {
+            margin-bottom: 20px;
+            border-top: 4px solid #009223;
+            /* 상단 녹색 굵은선 */
+            padding-top: 20px;
+        }
+
+        /* 개별 주문 아이템(단일 샌드위치) */
+        .order-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0 20px;
+            /* 아래는 재료 목록 들어갈 공간 */
+            margin-bottom: 20px;
+        }
+
+        /* 첫 줄: 메뉴 이름 + 길이/수량/가격 */
+        .order-item-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        /* 메뉴 이름(왼쪽) */
+        .order-item-title {
+            font-weight: bold;
+        }
+
+        /* 수량 + 가격 (오른쪽) */
+        .order-item-right {
+            display: flex;
+            gap: 20px;
+            /* 수량 / 가격 분리 */
+        }
+
+        .order-item-qty {
+            color: #666;
+        }
+
+        .order-item-price {
+            font-weight: bold;
+        }
+
+        /* 둘째 줄: 재료 목록 (작은 폰트) */
+        .order-item-detail {
+            color: #666;
+            font-size: 14px;
+            margin-left: 2px;
+            /* 약간 좌측 */
+        }
+
+        /* 총 결제 금액 영역 */
+        .price {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .price>h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            border-bottom: 1px solid #d9d9d9;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        .price-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-top: 1px solid #eaeaea;
+        }
+
+        .price-box:first-child {
+            border-top: none;
+        }
+
+        .price-box p {
+            font-size: 16px;
+            color: #555;
+            margin: 0;
+        }
+
+        .price-box p:nth-last-child(1) {
+            color: #009223;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* 결제 동의 영역 */
+        .payment-agree {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .agree-area {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .agree-area>input {
+            margin-right: 8px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .agree-info {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        .agree-info>p:nth-last-child(1) {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* 결제하기 버튼 */
+        .pay-btn {
+            display: block;
+            width: 240px;
+            height: 50px;
+            line-height: 50px;
+            margin: 50px auto 0;
+            background-color: #009223;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .pay-btn:hover {
+            background-color: #00791f;
+        }
+
+        .pay-btn::after {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            width: 26px;
+            height: 30px;
+            background: url(./image/icon_check.png) 0 0 no-repeat;
+            background-size: contain;
+            margin-left: 7px;
+        }
+
+        /*푸터*/
+        footer {
+            background-color: rgb(41, 41, 41);
+            color: rgb(102, 102, 102);
+            position: relative;
+        }
+
+        /*상단*/
+        .footer_menu {
+            padding: 5px;
+            border-bottom: 1px solid #3b3b3b;
+        }
+
+        footer ul {
+            list-style: none;
+            display: flex;
+            font-size: 14px;
+        }
+
+        footer li {
+            margin-right: 29px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        footer strong {
+            font-weight: bold;
+            color: #bbbbbb;
+        }
+
+        /*하단*/
+        .footer_info {
+            font-size: 13px;
+            display: flex;
+            padding: 10px 0px 0px 45px;
+        }
+
+        footer p {
+            padding-right: 5px;
+        }
+
+        footer span {
+            font-weight: bold;
+        }
+
+        .copyright {
+            font-size: 13px;
+            margin-top: -10px;
+            padding: 5px 0px 25px 45px;
+        }
+
+        /*sns*/
+        .instagram {
+            width: 50px;
+            height: 50px;
+            background-image: url("../footer/imgs/instagram.png");
+            position: absolute;
+            right: 100px;
+            bottom: 20px;
+        }
+
+        .instagram:hover {
+            background-image: url("../footer/imgs/instagram_hover.png");
+        }
+
+        .facebook {
+            width: 50px;
+            height: 50px;
+            background-image: url("../footer/imgs/facebook.png");
+            position: absolute;
+            right: 35px;
+            bottom: 20px;
+        }
+
+        .facebook:hover {
+            background-image: url("../footer/imgs/facebook_hover.png");
+        }
+    </style>
+
+    <script>
+        function renderStepIndicator(stepNum) {
+            const stepTitles = ["매장선택", "메뉴선택", "주문하기", ""]; // 스텝 제목 배열
+            const stepArea = document.querySelector(".step-section");
+            stepArea.innerHTML = ""; // 기존 내용 초기화
+
+            for (let i = 0; i < 4; i++) {
+                const imgBox1 = document.createElement("div");
+                const imgBox2 = document.createElement("div");
+                const stepImg = document.createElement("img");
+                const pointImg = document.createElement("img");
+                const margin = 10;
+
+                // 이미지 간 마진 설정
+                stepImg.style.marginLeft = `${margin}px`;
+                stepImg.style.marginRight = `${margin}px`;
+                pointImg.style.marginLeft = `${margin}px`;
+                pointImg.style.marginRight = `${margin}px`;
+                pointImg.style.marginTop = "30px";
+
+                // 현재 스텝이면 활성화 이미지 사용
+                if (stepNum === i + 1) {
+                    stepImg.src = `./image/step${i + 1}_on.png`;
+                    stepImg.style.marginRight = "-45px";
+                    stepImg.style.marginTop = "-15px";
+                    stepImg.classList.add("onStep");
+                    pointImg.src = `./image/step_point_on.png`;
+                } else {
+                    stepImg.src = `./image/step${i + 1}.png`;
+                    if (i === 3) {
+                        pointImg.style.display = "none";
+                    } else {
+                        pointImg.src = `./image/step_point_off.png`;
+                    }
+                }
+                imgBox1.appendChild(stepImg);
+                imgBox2.appendChild(pointImg);
+                stepArea.appendChild(imgBox1);
+                stepArea.appendChild(imgBox2);
+            }
+
+            // 활성화된 스텝 이미지의 부모 요소에 스텝 번호와 제목 텍스트 추가
+            const onStepParent = document.querySelector(".onStep")?.parentElement;
+            if (!onStepParent) return;
+            const stepText1 = document.createElement("p");
+            stepText1.textContent = `STEP${stepNum}`;
+            const stepText2 = document.createElement("p");
+            stepText2.textContent = stepTitles[stepNum - 1];
+
+            onStepParent.appendChild(stepText1);
+            onStepParent.appendChild(stepText2);
+
+            // 텍스트의 위치와 스타일 설정
+            onStepParent.style.position = "relative";
+            stepText1.style.position = "absolute";
+            stepText1.style.top = "5px";
+            stepText1.style.left = "110px";
+            stepText1.style.fontSize = "16px";
+            stepText1.style.fontWeight = "bold";
+            stepText1.style.color = "#ffc300";
+            stepText2.style.position = "absolute";
+            stepText2.style.top = "25px";
+            stepText2.style.left = "110px";
+            stepText2.style.fontSize = "24px";
+            stepText2.style.fontWeight = "bold";
+            stepText2.style.color = "white";
+        }
+
+        window.addEventListener("DOMContentLoaded", function () {
+            renderStepIndicator(3);
+            loadOrderInfo();
+            setupPaymentButtons();
+        });
+
+        // 주문 정보 불러와서 화면에 표시
+        function loadOrderInfo() {
+            const orderInfo = JSON.parse(localStorage.getItem("orderInfo")) || {};
+
+            // #order-info 영역
+            const orderInfoDiv = document.getElementById("order-info");
+
+            if (!orderInfo.sandwich) {
+                orderInfoDiv.innerHTML = "<p>선택한 메뉴가 없습니다. </p>";
+                return;
+            }
+
+            // 주문내역 제목
+            orderInfoDiv.innerHTML = `<h2>주문내역</h2>`;
+
+            const orderList = document.createElement("div");
+            orderList.classList.add("order-list");
+            orderInfoDiv.appendChild(orderList);
+
+            const orderItem = document.createElement("div");
+            orderItem.classList.add("order-item");
+            orderList.appendChild(orderItem);
+
+            // 1) 상단 라인 (이름 + 길이) + (수량 + 가격)
+            const itemTop = document.createElement("div");
+            itemTop.classList.add("order-item-top");
+            orderItem.appendChild(itemTop);
+
+            // 왼쪽: 이름 + (빵 길이)
+            const itemTitle = document.createElement("div");
+            itemTitle.classList.add("order-item-title");
+            // 이름 + 길이(예: "콰트로 치즈 햄&오믈렛 15")
+            const sandwichName = orderInfo.sandwich;
+            const breadLen = ` ${orderInfo.breadLength}cm`;
+            itemTitle.textContent = sandwichName + breadLen;
+            itemTop.appendChild(itemTitle);
+
+            // 오른쪽: 수량 + 가격
+            const itemRight = document.createElement("div");
+            itemRight.classList.add("order-item-right");
+            itemTop.appendChild(itemRight);
+
+            const qtySpan = document.createElement("div");
+            qtySpan.classList.add("order-item-qty");
+            qtySpan.textContent = "1개"; // 1개라고 가정
+            itemRight.appendChild(qtySpan);
+
+            const priceSpan = document.createElement("div");
+            priceSpan.classList.add("order-item-price");
+            priceSpan.textContent = `${Number(orderInfo.price).toLocaleString()} 원`;
+            itemRight.appendChild(priceSpan);
+
+            // 2) 하단 라인 (빵/토스팅/치즈/야채/소스/추가 내역) - 작은 글씨
+            const itemDetail = document.createElement("div");
+            itemDetail.classList.add("order-item-detail");
+            orderItem.appendChild(itemDetail);
+
+            // 하나의 문자열로 합치기
+            // 예) "15cm, 허니오트(토스팅), 치즈 제외, 양상추, 토마토, 오이, 올리브, 후추"
+            const lengthText = orderInfo.breadLength ? orderInfo.breadLength + "cm" : "";
+            const breadText = orderInfo.bread ? orderInfo.bread : "";
+            const toastText = orderInfo.toasting === "토스팅" ? "(토스팅)" : "";
+            const cheeseText = orderInfo.cheese || "";
+            const veggiesText = Array.isArray(orderInfo.veggies) ? orderInfo.veggies.join(", ") : "";
+            const sauceText = Array.isArray(orderInfo.sauce) ? orderInfo.sauce.join(", ") : "";
+            const addonsText = Array.isArray(orderInfo.addons) ? orderInfo.addons.join(", ") : "";
+
+            // 배열 형태로 담고, 비어있지 않은 것만 join(", ")
+            const detailArr = [];
+            if (lengthText) detailArr.push(lengthText);
+            if (breadText) detailArr.push(breadText + (toastText ? toastText : ""));
+            if (cheeseText) detailArr.push(cheeseText);
+            if (veggiesText) detailArr.push(veggiesText);
+            if (sauceText) detailArr.push(sauceText);
+            if (addonsText) detailArr.push(addonsText);
+
+            itemDetail.textContent = detailArr.join(", ");
+
+            // 하단 '총 결제 금액'도 업데이트
+            const priceBox = document.querySelector(".price-box p:nth-child(2)");
+            if (priceBox) {
+                priceBox.textContent = `${Number(orderInfo.price).toLocaleString()} 원`;
+            }
+        }
+
+        // 결제수단 버튼(신용카드, 카카오페이, 토스 등) 클릭 시 선택상태
+        function setupPaymentButtons() {
+            const paymentButtons = document.querySelectorAll(".payment-btn");
+            paymentButtons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    paymentButtons.forEach(b => b.classList.remove("select-btn"));
+                    btn.classList.add("select-btn");
+                });
+            });
+        }
+
+        function done() {
+            alert("주문 성공!!")
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <!-- 로고를 클릭하면 메인 페이지로 이동 -->
+            <a href="../mainpage/html/index.html"><img src="../header/image/logo_w.png" alt="로고"></a>
+        </div>
+        <div class="log_menu">
+            <ul>
+                <li><a href="">로그인</a></li>
+                <li class="signup"><a href="">회원가입</a></li>
+                <li><a href="https://www.subway.com/en-us/"><img src="../header/image/icon_utill_global.png"
+                            alt="글로벌 메뉴"></a></li>
+            </ul>
+        </div>
+        <!-- 상단 네비게이션 바 -->
+        <nav class="main_nav">
+            <!-- 하위 메뉴가 표시될 때 사용할 배경 요소 -->
+            <div class="bg"></div>
+            <ul>
+                <li class="nav_item">메뉴소개
+                    <!-- 하위 메뉴 (드롭다운) -->
+                    <ul class="hidden_menu">
+                        <li><a href="../menuIntro/sandwich/sandwich.html">샌드위치</a></li>
+                        <li><a href="../menu_wrap.etc/menu_wrap(script).html">랩ㆍ기타</a></li>
+                        <li><a href="../menuIntro/salad/salad.html">샐러드</a></li>
+                        <li><a href="../menuIntro/morning/menu_wrap(script).html">아침메뉴</a></li>
+                        <li><a href="../menuIntro/smile/menu_wrap(script).html">스마일 썹</a></li>
+                        <li><a href="../menuIntro/catering/menu_wrap(script).html">단체메뉴</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">이용방법
+                    <ul class="hidden_menu">
+                        <li><a href="../howToPage/html/index.html">써브웨이 이용방법</a></li>
+                        <li><a href="">단체메뉴 이용방법</a></li>
+                        <li><a href="../ingridientIntro/html/index.html">신선한 재료 소개</a></li>
+                        <li><a href="../fastSubPage/fast-sub.html">App 이용방법</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">새소식
+                    <ul class="hidden_menu">
+                        <li><a href="">이벤트ㆍ프로모션</a></li>
+                        <li><a href="">뉴스ㆍ공지사항</a></li>
+                        <li><a href="">광고영상</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">써브웨이
+                    <ul class="hidden_menu">
+                        <li><a href="">써브웨이 역사</a></li>
+                        <li><a href="../promisePage/써브웨이약속.html">써브웨이 약속</a></li>
+                        <li><a href="">샌드위치 아티스트 지원</a></li>
+                        <li><a href="">매장찾기</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">가맹점
+                    <ul class="hidden_menu">
+                        <li><a href="">써브웨이 프랜차이즈</a></li>
+                        <li><a href="">가맹관련 FAQ</a></li>
+                        <li><a href="">가맹신청ㆍ문의</a></li>
+                        <li><a href="">지사안내</a></li>
+                        <li><a href="../사업설명회/사업설명회.html">사업설명회</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">온라인 주문
+                    <ul class="hidden_menu">
+                        <li><a href="../orderPage/order_step1.html">FAST-SUB</a></li>
+                        <li><a href="">HOME-SUB</a></li>
+                        <li><a href="">단체주문</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="wrap">
+        <!-- 상단 타이틀영역 -->
+        <div class="title-area">
+            <p class="title">Fast-Sub</p>
+            <p class="sub-title">온라인 주문 후 매장에서 픽업/시식하는 서비스 입니다.</p>
+        </div>
+
+        <!-- 단계 표시 영역 -->
+        <div class="step-section"></div>
+
+        <!-- 흰색 주문 컨테이너 (.order-wrap) -->
+        <div class="order-wrap">
+            <!-- 픽업매장 섹션 -->
+            <h2>픽업매장</h2>
+            <div class="info-box">
+                <p>매장</p>
+                <p>서울특별시 마포구 와우산로 117 102호</p>
+            </div>
+            <div class="info-box">
+                <p>방문포장/매장식사</p>
+                <p>매장식사</p>
+            </div>
+            <div class="info-box">
+                <p>전화번호</p>
+                <p>010-1234-5678</p>
+            </div>
+            <div class="info-box input-box">
+                <p>주문시, 요청사항</p>
+                <input type="text" placeholder="주문시 요청사항을 입력하세요" />
+            </div>
+            <div class="info-box input-box">
+                <p>일회용품</p>
+                <div class="disposable-box">
+                    <input type="radio" name="disposable" />
+                    <p class="radio-text">일회용품(스푼, 포크 등)을 사용하지 않겠습니다.</p>
+                </div>
+            </div>
+
+            <!-- 결제 수단 섹션 -->
+            <h2>결제 수단 선택</h2>
+            <div class="info-box">
+                <p>결제 수단</p>
+                <div class="payment-radio">
+                    <div class="payment-btn select-btn">신용카드</div>
+                    <div class="payment-btn">카카오페이</div>
+                    <div class="payment-btn">토스</div>
+                </div>
+            </div>
+
+            <!-- 주문 정보 표시 (localStorage에서 가져온 항목) -->
+            <div id="order-info"></div>
+
+            <!-- 총 결제 금액 -->
+            <div class="price">
+                <h2>총 결제 금액</h2>
+                <div class="price-box">
+                    <p>총 주문 금액</p>
+                    <p>0 원</p>
+                </div>
+            </div>
+
+            <!-- 결제 동의 -->
+            <div class="payment-agree">
+                <div class="agree-area">
+                    <input type="radio" name="agree" />
+                    <p>구매조건 및 결제진행 동의</p>
+                </div>
+                <div class="agree-info">
+                    <p>
+                        주문할 메뉴와 가격, 매장정보를 명확히 확인하였으며 결제 진행에 동의합니다.
+                        <br />
+                        제조시간은 매장상황에 따라 상이할 수 있습니다.
+                        <br />
+                        주문자 정보가 서비스 제공을 위해 주문 매장에 제공되며,
+                        홈썹 이용의 경우 라이더에게 제공됨에 동의합니다.
+                        <br />
+                    </p>
+                    <p>주문 후 제조가 시작되면 주문을 취소할 수 없습니다.</p>
+                </div>
+            </div>
+
+            <!-- 결제하기 버튼 -->
+            <div class="pay-btn" onclick="done()">결제하기</div>
+        </div>
+    </div>
+    <footer>
+        <!--상단-->
+        <div class="footer_menu">
+            <ul>
+                <li><a href="/agreement">이용약관</a></li>
+                <li><a href="/privacy"><strong>개인정보처리방침</strong></a></li>
+                <li><a href="/subcard">써브카드</a></li>
+                <li><a href="https://store.subway.co.kr/">점주관리자</a></li>
+            </ul>
+        </div>
+        <!--하단-->
+        <div class="footer_info">
+            <p>서울시 서초구 강남대로 535 프린스빌딩 15층</p>
+            <p><span>I</span></p>
+            <p>대표 : INSOO CHO(인수조)</p>
+            <p><span>I</span></p>
+            <p>전화 : 02-797-5036</p>
+            <p><span>I</span></p>
+            <p>사업자등록번호 : 101-84-04143</p>
+        </div>
+        <div class="copyright">SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights
+            Reserved.</div>
+        <!--sns-->
+        <a class="instagram" href="https://www.instagram.com/subwaykorea"></a>
+        <a class="facebook" href="https://www.facebook.com/Subwaykr"></a>
+    </footer>
+</body>
+
+</html>

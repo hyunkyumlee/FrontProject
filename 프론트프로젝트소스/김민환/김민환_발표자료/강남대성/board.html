@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>게시판</title>
+    <script>
+        function init() {
+            const loggedInUser = sessionStorage.getItem("loggedInUser");
+
+            if (loggedInUser) {
+                document.getElementById("welcomeMessage").innerText = `${loggedInUser}님, 환영합니다!`;
+            } else {
+                alert("로그인이 필요합니다!");
+                window.location.href = "/login.html";
+            }
+            displayPosts();
+        }
+
+        function submitPost() {
+            const loggedInUser = sessionStorage.getItem("loggedInUser");
+
+            if (!loggedInUser) {
+                alert("로그인이 필요합니다!");
+                window.location.href = "/login.html";
+                return;
+            }
+
+            const title = document.getElementById("postTitle").value;
+            const content = document.getElementById("postContent").value;
+
+            if (!title || !content) {
+                alert("제목과 내용을 입력하세요.");
+                return;
+            }
+
+            let posts = JSON.parse(localStorage.getItem("posts")) || [];
+
+            let newPost = { author: loggedInUser, title, content };
+            posts.push(newPost);
+
+            localStorage.setItem("posts", JSON.stringify(posts));
+
+            alert("게시글이 등록되었습니다!");
+            displayPosts();
+
+            window.location.href = "/mainscreen.html";
+        }
+
+        function displayPosts() {
+            let posts = JSON.parse(localStorage.getItem("posts")) || [];
+            let board = document.getElementById("postList");
+
+            board.innerHTML = "";
+
+            posts.forEach(post => {
+                let postItem = document.createElement("li");
+                postItem.innerHTML = `
+                    <strong>작성자:</strong> ${post.author}<br>
+                    <strong>제목:</strong> ${post.title}<br>
+                    <p>${post.content}</p>
+                    <hr>
+                `;
+                board.appendChild(postItem);
+            });
+        }
+        function checkLogin() {
+            if (!sessionStorage.getItem("loggedInUser")) {
+                alert("로그인이 필요합니다!");
+                sessionStorage.setItem("redirectAfterLogin", "board.html");
+                window.location.href = "login.html";
+                return false;
+            }
+            return true;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let closeBtn = document.querySelector(".close_icon");
+            let fullViewWrap = document.querySelector(".Fullview_wrap");
+            let openBtn = document.getElementById("open_fullview");
+
+            closeBtn.addEventListener("click", function () {
+                fullViewWrap.style.display = "none";
+            });
+
+            openBtn.addEventListener("click", function () {
+                fullViewWrap.style.display = "block";
+            });
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            let hiddenmenuBtn = document.querySelector(".menuicon");
+            let viewmenu = document.querySelector(".hidden_iconmenu");
+
+            hiddenmenuBtn.addEventListener("click", function () {
+                if (window.getComputedStyle(viewmenu).display === "none") {
+                    viewmenu.style.display = "block";
+                } else {
+                    viewmenu.style.display = "none"
+                }
+            })
+        });
+    </script>
+    <style>
+        .check {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        .check h2 {
+            text-align: center;
+
+        }
+
+        .submit {
+            width: 1000px;
+            height: 450px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #postTitle {
+            min-width: 600px;
+            height: 30px;
+            border-radius: 8px;
+            border: 0.5px solid #999999;
+        }
+
+        #postContent {
+            margin-top: 20px;
+            min-width: 600px;
+            height: 200px;
+            border-radius: 8px;
+            border: 0.5px solid #999999;
+        }
+
+        .submit button {
+            margin-top: 10px;
+            width: 100px;
+            height: 30px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 8px;
+            color: black;
+        }
+
+        .submit button:hover {
+            background-color: #999999;
+        }
+
+        li {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body onload="init()">
+    <header>
+        <div class="Fullview_wrap" style="display: none;">
+            <div class="view_bg">
+                <div class="view_wrap">
+                    <a class="close_icon">
+                        <div class="X1"></div>
+                        <div class="X2"></div>
+                    </a>
+                    <div class="Fullview_title">
+                        대성학원&nbsp전체보기
+                    </div>
+                    <div class="Fullview_academy">
+                        <span class="view_title">재수종합학원</span>
+                        <ul>
+                            <li>대성학원 본원</li>
+                            <li>강남대성</li>
+                            <li>강남대성SII(대치)</li>
+                            <li>강남대성별관</li>
+                            <li>강남대성WE`UP</li>
+                            <li>강남대성기숙 의대관</li>
+                            <li>강남대성 QUETTA</li>
+                            <li>대성학원 부산</li>
+                        </ul>
+                    </div>
+                    <div class="Fullview_pro">
+                        <span class="view_title">단과학원</span>
+                        <ul>
+                            <li>두각</li>
+                            <li>분당두각</li>
+                        </ul>
+
+                    </div>
+                    <div class="Fullview_repeat">
+                        <span class="view_title">독학재수원</span>
+                        <ul>
+                            <li>DLab분당</li>
+                            <li>DLab일산</li>
+                            <li>DLab동탄</li>
+                            <li>DLab김포</li>
+                        </ul>
+                    </div>
+                    <div class="Fullview_sup">
+                        <span class="view_title">협력학원</span>
+                        <ul>
+                            <li>부산대성기숙학원</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logo_wrap">
+            <a href=/mainscreen.html>
+                <img src="./images/logo.png">
+            </a>
+        </div>
+        <div class="dropdown_wrap">
+            <div class="dropdown">
+                <a href="board.html" onclick="return checkLogin()">게시글</a>
+            </div>
+            <div class="dropdown">
+                학원안내
+                <div class="dropdown-content">
+                    <a href="./대입결과.html">대입결과</a>
+                    <a href="">시설안내</a>
+                    <a href="">학습콘텐츠</a>
+                    <a href="">공지사항</a>
+                    <a href="">주간식단표</a>
+                    <a href="">자주하는 질문</a>
+                    <a href="">오시는길</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                선생님소개
+                <div class="dropdown-content">
+                    <a href="">국어</a>
+                    <a href="">수학</a>
+                    <a href="">영어</a>
+                    <a href="">사회탐구</a>
+                    <a href="">과학탐구</a>
+                    <a href="">논술</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                모집요강
+                <div class="dropdown-content">
+                    <a href="">정규시즌</a>
+                    <a href="">2월 야간반</a>
+                    <a href="">시즌Zero</a>
+                    <a href="">장학제도</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                온라인접수
+                <div class="dropdown-content">
+                    <a href="">온라인접수</a>
+                    <a href="">온라인 점수확인</a>
+                    <a href="">합격자 발표안내</a>
+                </div>
+            </div>
+            <div class="dropdown drop1">
+                학원방학계획
+                <div class="dropdown-content">
+                    <a href="스키장page.html">스키장</a>
+                    <a href="https://adventure.lotteworld.com/kor/enjoy/attrctn/list.do">롯데월드</a>
+                </div>
+            </div>
+            <div class="dropdown drop2">
+                <a class="dmb" href="./디멤버.html" onclick="jx_click(this)"
+                    attr_cid="MENU_DM"><span><em>디멤버</em> 재원생 전용</span></a>
+            </div>
+        </div>
+        <div class="menutab">
+            <img src="./images/phonenum.png" class="phonenum">
+            &nbsp|&nbsp
+            <p id="open_fullview">대성학원 전체보기</p>
+            &nbsp&nbsp&nbsp&nbsp
+            <img src="./images/menuicon.png" class="menuicon">
+        </div>
+    </header>
+    <div class="hidden_iconmenu" style="display: none;">
+        <ul class="iconmenu_wrap">
+            <li class="iconmenu_wrap_main">
+                <p>브랜드 소개</p>
+                <ul class="iconmenu_wrap_sub">
+                    <li>브랜드소개</li>
+                </ul>
+            </li>
+            <li class="iconmenu_wrap_main">
+                <p>All New 대성</p>
+                <ul class="iconmenu_wrap_sub">
+                    <li>All New 학습 콘텐츠</li>
+                    <li>All New 강사진</li>
+                    <li>All New 공간</li>
+                </ul>
+            </li>
+            <li class="iconmenu_wrap_main">
+                <p>설명회</p>
+                <ul class="iconmenu_wrap_sub">
+                    <li>설명회</li>
+                </ul>
+            </li>
+            <li class="iconmenu_wrap_main">
+                <p>모집프로그램</p>
+                <ul class="iconmenu_wrap_sub">
+                    <li>재학생 윈터스쿨</li>
+                    <li>N수 시즌Zero</li>
+                    <li>N수 정규시즌</li>
+                    <li>N수 반수시즌</li>
+                </ul>
+            </li>
+            <li class="iconmenu_wrap_main">
+                <p>로그인 / 회원가입</p>
+                <ul class="iconmenu_wrap_sub">
+                    <li><a href="login.html">로그인</a></li>
+                    <li><a href="signin.html">회원가입</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="submit">
+        <h2 id="welcomeMessage"></h2>
+        <h2>게시글 작성</h2>
+        <p>작성자: <span id="author"></span></p>
+        <input type="text" id="postTitle" placeholder="제목">
+        <textarea id="postContent" placeholder="내용"></textarea><br>
+        <button onclick="submitPost()">게시하기</button>
+    </div>
+    <hr>
+    <div class="check">
+        <h2>게시글 목록</h2>
+        <ul id="postList"></ul>
+    </div>
+    <script>
+        document.getElementById("author").innerText = sessionStorage.getItem("loggedInUser") || "로그인 필요";
+    </script>
+    <div class="footer_wrap">
+        <div class="find">
+            <a href="/findexaminer.html" class="find1">출제자 공개모집</a>
+            &nbsp|&nbsp
+            <a href="/findteacher.html">선생님 모집</a>
+            &nbsp|&nbsp
+            <a href="/copyright.html">저작권 신고</a>
+        </div>
+
+        <!-- 푸터 영역 -->
+        <div class="footer">
+            <!-- 푸터 왼쪽 -->
+            <div class="footer_item foot1">
+                <img
+                    src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDExMTNfMjE0%2FMDAxNjA1MjUyNTk2ODU0.j74xjPeHt-Arx9mXEfbUDi9WcV0c3zfvUauG3SFjOZ8g.imcF1Nf5Ep9nNi70sqx-EtV1O20iRe2QApV43vhxa7og.JPEG.ddmds1%2F%25B4%25E4%25BD%25CA%25B8%25AE%25BF%25B5%25BE%25EE%25C7%25D0%25BF%25F8_%25BF%25B9%25BA%25F1%25C1%25DF1_%25BC%25B3%25B8%25ED%25C8%25B8_%25B4%25EB%25BC%25BA%25C7%25D0%25BF%25F8.jpeg&type=l340_165">
+            </div>
+
+            <!-- 푸터 가운데 -->
+            <div class="footer_item foot2">
+                대성학원 본원 : 02)814-4500 / 강남대성 : 02)581-7888 / 강남대성SII(대치) : 02)556-2733 / 별관 : 02)585-9600<br>
+                강남대성 WE UP : 02)430-8900 / 강남기숙 의대관 : 031)8010-0010 / 강남대성 QUETTA : 031)638-6688<br>
+                대성학원 부산 : 051)553-1616 / 두각 : 02)556-2700<br>
+                [직영] 부산기숙 : 055)381-0700 [자매] 울산 : 052)224-6655
+            </div>
+
+            <!-- 푸터 오른쪽 -->
+            <div class="footer_item foot3">
+                <span>Copyrights Since 1965 대성학원 All Rights Reserved</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

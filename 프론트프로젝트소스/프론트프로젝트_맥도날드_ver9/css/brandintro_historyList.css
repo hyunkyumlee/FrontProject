@@ -1,0 +1,296 @@
+ #historyList_kr_2020 li>strong::after {
+            height: 430px !important;
+        }
+
+        #historyList_kr_2010 li>strong::after {
+            height: 50px;
+        }
+
+        #historyList_kr_2000 li>strong::after {
+            height: 50px;
+        }
+
+        #historyList_kr_1990 li>strong::after {
+            height: 50px;
+        }
+
+        #historyList_gl_2000 li>strong::after {
+            height: 50px;
+        }
+
+        #historyList_gl_1900 li>strong::after {
+            height: 50px;
+        }
+
+        .historyList li:last-child>strong:after {
+            height: 80px !important;
+        }
+
+
+        .thumbnail {
+            margin-top: 20px;
+        }
+
+        .year2022 .yearCont {
+            left: 160px;
+            top: 90px;
+            text-align: right;
+        }
+
+        .year2021 .yearCont {
+            right: 160px;
+            top: 35px;
+            text-align: left;
+        }
+
+        .year2020 .yearCont {
+            left: 130px;
+            top: 40px;
+            text-align: right;
+        }
+
+        .year2019 .yearCont {
+            right: 0px;
+            top: 90px;
+            text-align: left;
+        }
+
+        .year2018 .yearCont {
+            left: 150px;
+            top: 40px;
+            text-align: right;
+        }
+
+        .year2017 .yearCont {
+            right: 150px;
+            top: 40px;
+            text-align: left;
+        }
+
+        .year2016 .yearCont {
+            left: 200px;
+            top: 30px;
+            text-align: right;
+        }
+
+        .year2015 .yearCont {
+            right: 170px;
+            top: 40px;
+            text-align: left;
+        }
+
+        .year2014 .yearCont {
+            left: 330px;
+            top: 35px;
+            text-align: right;
+        }
+
+        .year2013 .yearCont {
+            right: -40px;
+            top: 20px;
+            text-align: left;
+        }
+
+        .year2012 .yearCont {
+            left: 130px;
+            top: 20px;
+            text-align: right;
+        }
+
+        .year2011 .yearCont {
+            right: 110px;
+            top: 30px;
+            text-align: left;
+        }
+
+        .year2010 .yearCont {
+            left: -40px;
+            top: 20px;
+            text-align: right;
+        }
+
+        .year2009 .yearCont {
+            right: 170px;
+            top: 85px;
+            text-align: left;
+        }
+
+        .year2008 .yearCont {
+            left: 340px;
+            top: 40px;
+            text-align: right;
+        }
+
+        .year2007 .yearCont {
+            right: -20px;
+            top: 25px;
+            text-align: left;
+        }
+
+        .year2006 .yearCont {
+            left: 180px;
+            top: 25px;
+            text-align: right;
+        }
+
+        .year2005 .yearCont {
+            right: 110px;
+            top: 25px;
+            text-align: left;
+        }
+
+        .year2003 .yearCont {
+            left: 60px;
+            top: 40px;
+            text-align: right;
+        }
+
+        .year1997 .yearCont {
+            right: 350px;
+            top: 85px;
+            text-align: left;
+        }
+
+        .year1995 .yearCont {
+            left: 320px;
+            top: 40px;
+            text-align: right;
+        }
+
+        .year1992 .yearCont {
+            right: 130px;
+            top: 40px;
+            text-align: right;
+        }
+
+        .year1988 .yearCont {
+            left: 160px;
+            top: -150px;
+            text-align: right;
+        }
+
+        .gl_year2017 .yearCont {
+            right: 40px;
+            top: 70px;
+            text-align: left;
+        }
+
+        .gl_year2015 .yearCont {
+            left: 80px;
+            top: 40px;
+            text-align: right;
+        }
+
+        .gl_year2003 .yearCont {
+            right: -40px;
+            top: 35px;
+            text-align: left;
+        }
+
+        .gl_year2002 .yearCont {
+            left: 190px;
+            top: 35px;
+            text-align: right;
+        }
+
+        .gl_year1993 .yearCont {
+            right: 200px;
+            top: 85px;
+            text-align: left;
+        }
+
+        .gl_year1990 .yearCont {
+            left: 100px;
+            top: 30px;
+            text-align: right;
+        }
+
+        .gl_year1984 .yearCont {
+            right: 170px;
+            top: 40px;
+            text-align: left;
+        }
+
+        .gl_year1983 .yearCont {
+            left: 110px;
+            top: 35px;
+            text-align: right;
+        }
+
+        .gl_year1975 .yearCont {
+            right: 300px;
+            top: 35px;
+            text-align: left;
+        }
+
+        .gl_year1974 .yearCont {
+            left: 150px;
+            top: 35px;
+            text-align: right;
+        }
+
+        .gl_year1973 .yearCont {
+            right: 170px;
+            top: 35px;
+            text-align: left;
+        }
+
+        .gl_year1968 .yearCont {
+            left: 340px;
+            top: 35px;
+            text-align: right;
+        }
+
+        .gl_year1965 .yearCont {
+            right: 140px;
+            top: 35px;
+            text-align: left;
+        }
+
+        .gl_year1961 .yearCont {
+            left: 90px;
+            top: 25px;
+            text-align: right;
+        }
+
+        .gl_year1961 .yearCont {
+            left: 80px;
+            top: 25px;
+            text-align: right;
+        }
+
+        .gl_year1956 .yearCont {
+            right: 40px;
+            top: 35px;
+            text-align: left;
+        }
+
+        .gl_year1955 .yearCont {
+            left: 200px;
+            top: 35px;
+            text-align: right;
+        }
+
+        .gl_year1954 .yearCont {
+            right: 150px;
+            top: -135px;
+            text-align: left;
+        }
+
+        .gl_year1949 .yearCont {
+            left: 120px;
+            top: 30px;
+            text-align: right;
+        }
+
+        .gl_year1948 .yearCont {
+            right: 210px;
+            top: 35px;
+            text-align: left;
+        }
+
+        .gl_year1940 .yearCont {
+            left: 100px;
+            top: 35px;
+            text-align: right;
+        }

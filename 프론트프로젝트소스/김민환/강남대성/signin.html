@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강남대성 signin</title>
+    <style>
+        * {
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            overflow-y: scroll;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 회원가입영역 */
+
+        .big_wrap {
+            width: 400px;
+            border: 1px solid #E1E1E1;
+            border-radius: 10px;
+            margin: 0 auto;
+
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .wrap {
+            width: 100%;
+            text-align: center;
+        }
+
+        .img_wrap {
+            width: 200px;
+            height: 50px;
+            background-position: center;
+            background-size: cover;
+            margin: 0 auto;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .wrap input[type="text"],
+        .wrap input[type="email"],
+        .wrap input[type="username"],
+        .wrap input[type="password"] {
+            width: 90%;
+            height: 40px;
+            margin-top: 10px;
+            border-radius: 10px;
+            border: 1px solid #E1E1E1;
+        }
+
+        .wrap button {
+            width: 90%;
+            height: 40px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 10px;
+            background-color: #00AFAD;
+            color: white;
+            font-weight: bolder;
+            transition: 1s;
+        }
+
+        .wrap button:hover {
+            background-color: #E1E1E1;
+            color: black;
+        }
+
+        .loginbtn {
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        function signin() {
+            let id = document.getElementById("userid").value;
+            let name = document.getElementById("username").value;
+            let email = document.getElementById("email").value;
+            let pw = document.getElementById("password").value;
+            let pwconfirm = document.getElementById("pwconfirm").value;
+
+            if (!id || !name || !email || !pw || !pwconfirm) {
+                alert("모든 필드를 입력하세요.");
+                return;
+            }
+            if (pw !== pwconfirm) {
+                alert("비밀번호가 일치하지 않습니다.");
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            if (users.some(user => user.userid === id)) {
+                alert("이미 존재하는 아이디입니다. 다른 아이디를 사용하세요.");
+                return;
+            }
+
+            users.push({ userid: id, username: name, email: email, password: pw });
+
+            localStorage.setItem("users", JSON.stringify(users));
+
+            alert("회원가입이 완료되었습니다!");
+
+            setTimeout(() => {
+                window.location.href = "/mainscreen.html";
+            }, 100);
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="big_wrap">
+        <div class="wrap">
+            <div class="img_wrap">
+                <a href=mainscreen.html>
+                    <img src="./images/loginlogo.png">
+                </a>
+            </div>
+            <input type="text" placeholder="  아이디" id="userid">
+            <input type="username" placeholder="  이름" id="username">
+            <input type="email" placeholder="  이메일" id="email">
+            <input type="password" placeholder="  비밀번호" id="password">
+            <input type="password" placeholder="  비밀번호 확인" id="pwconfirm">
+            <button onclick="signin()">회원가입</button>
+            <a href="/login.html">
+                <button class="loginbtn">로그인</button>
+            </a>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

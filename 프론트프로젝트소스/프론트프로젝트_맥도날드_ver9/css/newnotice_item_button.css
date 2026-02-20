@@ -1,0 +1,47 @@
+.btnArea {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .btnMC {
+            min-width: 172px;
+            margin: 0 12px;
+            padding: 0 38px;
+            font-size: 15px;
+            line-height: 70px;
+            border-radius: 70px;
+            display: inline-block;
+            color: #292929;
+            font-weight: 600;
+            background: #ffbc0d;
+        }
+
+        .next {
+            width: 70px;
+            height: 70px;
+            font-size: 1px;
+            background-image: url("../html/new/new_images/btn_bbs_prev.png");
+            background-position: center;
+            background-size: cover;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        .next {
+            transform: rotate(180deg);
+        }
+
+        .prev {
+            width: 70px;
+            height: 70px;
+            font-size: 1px;
+            background-image: url("../html/new/new_images/btn_bbs_prev.png");
+            background-position: center;
+            background-size: cover;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }

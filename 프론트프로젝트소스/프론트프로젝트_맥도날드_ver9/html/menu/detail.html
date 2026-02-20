@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상품 상세 페이지</title>
+  <link href="../../images/맥도날드_로고.png" rel="shortcut icon" type="image/x-icon">
+  <link rel="stylesheet" href="../../css/detail.css">
+  <link rel="stylesheet" href="../../css/header.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div id="header"></div>
+
+    <main>
+      <!-- 상단 배너 부분 -->
+      <div class="visual_area">
+        <div class="inner">
+          <h1 class="banner_title"></h1>
+          <p class="subCopy"></p>
+          <ul class="nav_path">
+            <li><a href="../메인페이지.html">Home</a></li>
+            <li><a href="./menu1.html"></a></li>
+            <li><a href="./menu1.html"></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 이미지 갤러리 -->
+      <div class="gallery_wrap">
+        <div class="title">
+          <h2 class="kor_title">이름</h2>
+          <p class="eng_title">영어 이름</p>
+        </div>
+
+        <div class="gallery">
+          <div class="gallery_img_wrap">
+            <img src="./detail_images/menu1_single/1.png" alt="메뉴 이미지">
+          </div>
+        </div>
+        
+        <div class="img_info">부드러운 고구마 크로켓 속 고소한 치즈와<br>
+매콤한 할라피뇨 마요 소스의 조화로운 만남</div>
+        <!-- <div class="img_date"></div> -->
+
+        <!-- 갤러리 버튼 -->
+        <div class="gallery_btn">
+          <a href="#" class="arrow prev" onclick="move(this)">
+            <span class="arr">이전 메뉴</span>
+            <div class="img_outer_wrap">
+              <div class="img_inner_wrap">
+                <img src="./detail_images/menu1_single/1.png" alt="이전 메뉴 이미지">
+              </div>
+            </div>
+            <p class="tit">더블 맥스파이시 상하이 버거</p>
+          </a>
+          <a href="#" class="arrow next" onclick="move(this)">
+            <span class="arr">다음 메뉴</span>
+            <p class="tit">더블 맥스파이시 상하이 버거</p>
+            <div class="img_outer_wrap">
+              <div class="img_inner_wrap">
+                <img src="./detail_images/menu1_single/1.png" alt="다음 메뉴 이미지">
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 영양, 알레르기, 원산지 -->
+      <div class="info">
+        <div class="info_btnWrap">
+          <button class="info_btn" onclick="toggleInfoDiv(this)">
+            <p>영양정보</p>
+            <span class="big_size">+</span>
+          </button>
+        </div>
+        <div class="nut_info_tableWrap">
+          <table class="nut_info_table">
+            <tr>
+              <th scope="row">영양소</th>
+              <th scope="col">중량(g)</th>
+              <th scope="col">중량(ml)</th>
+              <th scope="col">열량</th>
+              <th scope="col">당</th>
+              <th scope="col">단백질</th>
+              <th scope="col">포화지방</th>
+              <th scope="col">나트륨</th>
+              <th scope="col">카페인</th>
+            </tr>
+            <tr class="amount">
+              <th scope="row">함량</th>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr class="standard">
+              <th scope="row">영양소기준치</th>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+          </table>
+        </div>
+        <div class="info_btnWrap">
+          <button class="info_btn" onclick="toggleInfoDiv(this)">
+            <p>알레르기 정보</p>
+            <span class="big_size">+</span>
+          </button>
+        </div>
+        <div class="allergy_info">
+          <p>알레르기 유발 가능 식재료 <span class="allergy"></span></p>
+          <p>*일부 튀김류 제품은 새우 패티와 같은 조리기구를 사용하고 있습니다.</p>
+        </div>
+        <div class="info_btnWrap">
+          <button class="info_btn" onclick="toggleInfoDiv(this)">
+            <p>원산지 정보</p>
+            <span class="big_size">+</span>
+          </button>
+        </div>
+        <div class="origin_info">
+          <p class="origin"></p>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer"></div>
+  </div>
+
+  <script src="../../js/script.js"></script>
+  <script src="../../js/detail.js"></script>
+</body>
+</html>

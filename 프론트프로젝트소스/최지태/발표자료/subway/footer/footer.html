@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*글꼴*/
+        @import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+        *{
+            font-family: 'font_ns', sans-serif;
+        }
+        
+        /*푸터*/
+        footer{
+            background-color: rgb(41, 41, 41);
+            color: rgb(102, 102, 102);
+            position: relative;
+        }
+        /*상단*/
+        .footer_menu{
+            padding: 5px;
+            border-bottom: 1px solid #3b3b3b;
+        }
+        ul{
+            list-style: none;
+            display: flex;
+            font-size: 14px;
+        }
+        li{
+            margin-right: 29px;
+        }
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+        strong{
+            font-weight: bold;
+            color: #bbbbbb;
+        }
+        /*하단*/
+        .footer_info{
+            font-size: 13px;
+            display: flex;
+            padding: 10px 0px 0px 45px;
+        }
+        p{
+            padding-right: 5px;
+        }
+        span{
+            font-weight: bold;
+        }
+        .copyright{
+            font-size: 13px;
+            margin-top: -10px;
+            padding: 5px 0px 25px 45px;
+        }
+        /*sns*/
+        .instagram{
+            width: 50px;
+            height: 50px;
+            background-image: url("/footer/imgs/instagram.png");
+            position: absolute;
+            right: 100px;
+            bottom: 20px;
+        }
+        .instagram:hover{
+            background-image: url("/footer/imgs/instagram_hover.png");
+        }
+        .facebook{
+            width: 50px;
+            height: 50px;
+            background-image: url("/footer/imgs/facebook.png");
+            position: absolute;
+            right: 35px;
+            bottom: 20px;
+        }
+        .facebook:hover{
+            background-image: url("/footer/imgs/facebook_hover.png");
+        }
+    </style>
+</head>
+<body>
+    <!--푸터-->
+    <footer>
+        <!--상단-->
+        <div class="footer_menu">
+            <ul>
+                <li><a href="/agreement">이용약관</a></li>
+                <li><a href="/privacy"><strong>개인정보처리방침</strong></a></li>
+                <li><a href="/subcard">써브카드</a></li>
+                <li><a href="https://store.subway.co.kr/">점주관리자</a></li>
+            </ul>
+        </div>
+        <!--하단-->
+        <div class="footer_info">
+            <p>서울시 서초구 강남대로 535 프린스빌딩 15층</p>
+            <p><span>I</span></p>
+            <p>대표 : INSOO CHO(인수조)</p>
+            <p><span>I</span></p>
+            <p>전화 : 02-797-5036</p>
+            <p><span>I</span></p>
+            <p>사업자등록번호 : 101-84-04143</p>
+        </div>
+        <div class="copyright">SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights Reserved.</div>
+        <!--sns-->
+        <a class="instagram" href="https://www.instagram.com/subwaykorea"></a>
+        <a class="facebook" href="https://www.facebook.com/Subwaykr"></a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .total_wrap{
+            background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2Fdata6%2F2004%2F12%2F21%2F158%2F%25B4%25AB%25B0%25E1%25C1%25A48-redbee95.jpg&type=a340");
+            
+        }
+        .wrap{
+            width: 1000px;
+            
+            border: 1px solid black;
+            margin: 0 auto;
+        
+        }
+
+        h2{
+            margin: 0;
+            padding: 0;
+            font-size: 30px;
+            color: red;
+        }
+
+        h3{
+            margin: 0;
+            padding: 0;
+            font-size: 25px;
+            margin-top: 10px;
+        }
+        ul{
+            list-style: none;
+            margin:0;
+            padding:0;
+        }
+        
+        .box1{
+            width: 100%;
+            height: 100px;
+            border: 1px solid black;
+            display: flex;
+
+            background-color: rgb(149, 240, 240);
+
+            text-align: center;
+        }
+        .box1 > div{
+            width: 33.3%;
+            height: 100%;
+            border: 1px solid black;
+        
+            
+        }
+        .box1 > div:hover{
+            background-color: white
+        }
+
+        
+        .item{
+            width: 20%;
+            height: 100px;
+            border: 2px solid black;
+            
+            position: relative;
+        }
+        
+        .box2{
+            width: 100%;
+            height: 100px;
+            border: 1px solid black;
+            color: white;
+            display: flex;
+            font-size: 20px;
+            line-height: 100px;
+
+            background-color: rgb(186, 206, 206);
+
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .box2 > div:hover{
+            background-color: #e9d6d6;
+            color: darkcyan;
+        }
+
+        
+        .hidden_menu{
+            width: 80%;
+            border: 1px solid beige;
+            background-color: beige;
+            color: #574b4b;
+
+
+            /*부모를 기준으로 배치*/
+            position: absolute;  
+            top: 100px;
+            left: 0px;
+
+            display: none; 
+            font-weight: bold;
+            
+            z-index: 2;
+        }
+        .item:hover .hidden_menu{
+            display: block;
+            font-weight: bold;
+        }
+
+        .box3{
+            width: 100%;
+            height: 500px;
+            
+            border: 1px solid black;
+
+            background-image: url(https://search.pstatic.net/sunny/?src=https%3A%2F%2Fpng.pngtree.com%2Fthumb_back%2Ffw800%2Fbackground%2F20231202%2Fpngtree-aerial-skiing-man-mid-air-against-snowy-mountain-backdrop-image_15495500.jpg&type=a340);
+            background-size: cover;
+
+            background-position: center;
+            position: relative;
+            z-index: 1;
+        }   
+        .box4{
+            width: 100%;
+            height: 250px;
+            border: 1px solid black;
+
+            display: flex;
+        }
+        
+        .image_box1{
+            width: 25%;
+            height: 100%;
+            border: 1px solid black;
+
+            background-image: url(https://phoenixhnr.co.kr/api/attach/view/mainBanner/3835/image_p);
+            background-size: contain;
+            background-position: center;
+        }
+        .image_box1:hover{
+            width: 25%;
+            height: 100%;
+            border: 1px solid black;
+
+            background-image: url(https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_8863658%2F88636585273.jpg&type=f372_372);
+            background-size: contain;
+            background-position: center;
+        }
+        .image_box2{
+            width: 25%;
+            height: 100%;
+            border: 1px solid black;
+
+            background-image: url(https://phoenixhnr.co.kr/api/attach/view/mainBanner/3805/image_p);
+            background-size: contain;
+            background-position: center;
+        }
+        .image_box2:hover{
+            width: 25%;
+            height: 100%;
+            border: 1px solid black;
+            background-color: black;
+      
+            background-image: url(https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAyMTNfMTQz%2FMDAxNzA3ODA3Njg5OTA0.wCs2DFM7w6AnMTfCAWhLQjovKiU0YHyWdxtHonF6p_gg.xBq3QhzdgOFPp39Y5caagwiXTvVblqc0bp-001H10sAg.PNG.highlandsports%2F%25B4%25D9%25C0%25CC%25B3%25D7%25C1%25EE_%25BD%25BA%25B3%25EB%25BF%25EC%25BA%25B8%25B5%25E5%2528%25C0%25AF%25C6%25A9%25BA%25EA%2529_0000081579ms.png&type=l340_165);
+            background-size: contain;
+            background-position: center; 
+        }
+        .image_box3{
+            width: 25%;
+            height: 100%;
+            border: 1px solid black;
+
+            background-image: url(https://phoenixhnr.co.kr/api/attach/view/mainBanner/3818/image_p);
+            background-size: contain;
+            background-position: center;
+        }
+        .image_box3:hover{
+
+            width: 25%;
+            height: 100%;
+            border: 1px solid black;
+
+            
+
+        
+            background-image: url(https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAxMTFfODgg%2FMDAxNjQxOTExOTQ5MTM1.DdklmRCb0E5HRUDljvLlJw92KNYhM5N6HNkWRdPH3xcg.JtTlbJeSv-gPRJQT1GPDiJ2xosA13ufNH-FJR2w2Kdog.JPEG.thinkdna%2F%25B0%25DC%25BF%25EF%25B9%25E6%25C7%25D0_%25BC%25F7%25C1%25A6_%25B4%25AB%25BD%25E4%25B8%25C5_%25C5%25B8%25B1%25E2_%25BD%25E4%25B8%25C5_%25B1%25D7%25B8%25B2_%25289%2529.jpg&type=a340);
+            background-size: contain;
+            background-position: center;
+            
+
+        }
+        .image_box4{
+            width: 25%;
+            height: 100%;
+            border: 1px solid black;
+
+            background-image: url(https://phoenixhnr.co.kr/api/attach/view/mainBanner/3732/image_p);
+            background-size: contain;
+            background-position: center;
+        }
+        .image_box4:hover{
+            width: 25%;
+            height: 100%;
+            border: 1px solid black;
+
+            background-image: url(https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA5MDlfMjgx%2FMDAxNzI1ODU4NDcxMzIz.71WYG7Sl_28RRQVS8KTpAOadBAM1XqkqUxSa_6fcTDcg.gxiLCV-9iTaWymbHV2A8cPF29tE6seBJH_9-wWRSvGMg.JPEG%2FIMG_5843.jpg&type=a340);
+            background-size: contain;
+            background-position: center;
+        }
+       
+        .footer{
+            
+            display: flex;
+            font-size: 14px;
+            border: 1px solid black;
+            background-color: gray;
+            color: white;
+        }
+
+        .footer_item{
+            width: 33.3%;
+            height: 200px;
+            padding: 10px;
+            
+        }
+        
+        .footer_item a{
+            display: inline-block; 
+            margin-top: 50px;
+        }
+
+        .title{
+            color: red;
+            font-weight: bold;
+        }
+        button{
+            width:30%;
+            padding: none;
+            box-sizing: border-box;
+            border-radius: 50px;
+            font-size: 16px;
+        }
+        .box3 a{
+            font-size: 20px;
+            color: cyan;
+            position: absolute;
+
+            bottom: 120px;
+        }
+
+
+        .search_bar{
+            width: 300px;
+            height: 50px;
+            border:3px solid rgb(112, 166, 211);
+            background-color: white;
+            border-radius: 50px;
+
+            /**/
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .search_btn{
+            width: 40px;
+            height: 40px;
+            /*background-color: blue;*/
+            
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JO-CB3HSZIPWlJl_5K9T2kEUfyo0qtYE3Q&s");
+            background-size: cover;
+        }
+
+        .search_bar input{
+            border: none;
+            outline: none;
+
+            padding-left: 50px;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <div class="total_wrap">
+             <!-- 전체 박스 -->
+     <div class="wrap">
+        <!-- 설명 박스 -->
+         <div class="box1">
+            <div><h3>HOTEL & RESORT</h3></div>
+            <div><h2>VIVALDI PARK</h2><br>
+                Hotel, Resort, Park, Island, Camp
+
+            </div>
+            <div>
+                <ul>
+                    <li>
+                        <button><a href="https://www.sonohotelsresorts.com/member/login?targetPath=/skiboard" target="_blank">로그인</a>
+                        </button>  
+                    </li>
+                    <li>
+                        <button><a href="https://www.sonohotelsresorts.com/member/joinType" target="_blank">회원가입</a>
+                        </button></li>
+                    <li>예약확인</li>
+                    <li>고객센터</li>
+                </ul>
+            </div>
+         </div>
+        <!-- 메뉴 박스 -->
+        <div class="box2">
+            <div class="item">통합예약
+                <ul class="hidden_menu">
+                    <li><a href="#">파크</a></li>
+                    <li><a href="#">아일랜드</a></li>
+                    <li><a href="#">캠프</a></li>
+                </ul>  
+            </div>
+            <div class="item">객실 패키지
+                <ul class="hidden_menu">
+                    <li><a href="#">호텔</a></li>
+                    <li><a href="#">리조트</a></li>
+                    <li><a href="#">콘도</a></li>
+                </ul>
+            </div>
+            <div class="item">비발디 스토리
+                <ul class="hidden_menu">
+                    <li><a href="https://www.hongik.ac.kr/kr/newscenter/news.do?mode=view&articleNo=129215">홍대의 겨울</a></li>
+                    <li><a href="https://map.naver.com/p/search/%ED%99%8D%EB%8C%80%20%EB%A7%9B%EC%A7%91?c=14.00,0,0,0,dh">푸드 스토리</a></li>
+                </ul>
+            </div>
+            <div class="item">비발디 매거진
+                <ul class="hidden_menu">
+                    <li><a href="#">휴게실</a></li>
+                    <li><a href="#">스키장</a></li>
+                    <li><a href="#">푸드코트</a></li>
+                    <li><a href="#">셔틀운행</a></li>
+                    
+                </ul>
+            </div>
+            <div class="item">고객 서비스
+                <ul class="hidden_menu">
+                    <li><a href="#">만족도 조사</a></li>
+                    <li><a href="#">자주하는질문</a></li>
+                    <li><a href="#">1:1 상담</a></li>
+                    <li><a href="#">전화번호 안내</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- 사진 박스 -->
+        <div class="box3">
+            <a href="https://www.sonohotelsresorts.com/skiboard#utm_source=naver&utm_medium=bsa&utm_campaign=skihp" target="_blank">스키장 바로가기
+
+            </a>
+        </div>
+        <!-- 히든박스 -->
+        <div class="box4">
+            <div class="image_box1"></div>
+            <div class="image_box2"></div>
+            <div class="image_box3"></div>
+            <div class="image_box4"></div>
+        </div>
+        <!-- 아래 설명 박스 -->
+        <div class="footer">
+                <!--왼쪽-->
+                <div class="footer_item">
+                    <img src="https://www.sonohotelsresorts.com/api/hms/user/management/file/image/EVy1cxYgbfWqn5dlWecAww==/1">
+                </div>
+                <!--가운데-->
+                <div class="footer_item">
+                    <p>
+                        비발디중앙(주) 서울특별시 강남구 도산대로 156, 6층 대표이사 : 전영기 사업장등록번호 : 120-81-00400
+                        개인정보보호책임자 : 총무팀 권 현 준 vivaldiprivacyhelp@vivaldihnr.co.kr 객실예약문의 : 1577-0069(#1) 분양/회원문의 : 1577-0069(#2)
+                        
+                    </p>
+
+                    <p>COPYRIGHT VIVALDI HOTELS&RESORTS. ALL RIGHTS RESERVED.</p>
+                </div>
+                <!--오른쪽-->
+                <div class="footer_item">
+                    <p class="title">기업은행 채무지급보증안내</p>
+                    <p>전자상거래등에서의 소비자보호에 관한 법률에 따라 기업은행과 채무지급보증 계약을 체결하여 고객님의 결제금액에 대해 안전거래를 보장하고 있습니다.</p>
+                    <a href="https://www.nicepay.co.kr/apply/progress/escrow.do" target="_blank">서비스가입사실 확인</a>
+                </div>
+        </div>   
+        
+        <div class="search_bar">
+            <input type="text">
+            <div class="search_btn"></div>
+     </div>
+    </div>
+   
+</body>
+</html>

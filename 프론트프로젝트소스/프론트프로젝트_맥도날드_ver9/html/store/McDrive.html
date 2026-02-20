@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Store > 맥드라이브 | 맥도날드</title>
+    <link href="../../images/맥도날드_로고.png" rel="shortcut icon" type="image/x-icon">
+    <script src="https://use.fontawesome.com/releases/v7.0.0/js/all.js"></script>
+    <link rel="stylesheet" href="../../css/McDrive.css">
+    <link rel="stylesheet" href="../../css/basicStyle.css">
+    <link rel="stylesheet" href="../../css/header.css">
+</head>
+
+<body>
+    <div id="fixedTag"></div>
+    <div class="wrapper">
+        <div id="header"></div>
+        <section>
+            <div class="imgArea">
+                <div class="textBox">
+                    <h2>매장찾기</h2>
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="./FindStore.html">Store</a></li>
+                        <li><a href="./McDrive.html">맥드라이브</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contArea">
+                <div class="inner">
+                    <h2>맥드라이브는 어떻게 이용하나요?</h2>
+                    <p>운전 중에도 24시간 간편하고 빠르게!<br>
+                    차 안에서 주문하고, 차 안에서 바로 받아 맛있는 맥도날드를 즐겨보세요.</p>
+                    <div class="ytLink">
+                        <iframe width="100%" height="650px" src="https://www.youtube.com/embed/BiMkqfVNmnk?si=mBsQwFcpQJOYm-o_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="storeBtn">
+                        <button class="findStore" style="cursor: pointer;">맥드라이브 매장 검색하기</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div id="footer"></div>
+    </div>
+    <script src="../../js/script.js"></script>
+    <script>
+        //맥드라이브 매장 검색하기 버튼을 누르면 매장찾기 화면으로 전환
+        const btn = document.querySelector(".findStore")
+        btn.addEventListener("click", () => { window.location.href = "./FindStore.html" })
+    </script>
+</body>
+
+</html>

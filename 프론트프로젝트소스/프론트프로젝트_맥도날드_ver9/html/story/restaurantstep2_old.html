@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/header.css">
+<style>
+
+    /* =============== [기본 설정] =============== */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fbfbfb;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* =============== [메인 콘텐츠 영역 (카드 리스트 섹션)] =============== */
+.contArea {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  /* border: 1px solid #000; */
+}
+
+.inner {
+  width: 1200px;
+  margin-top: 20px;
+  margin: 0 auto;
+}
+
+#happyList {
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.happy-item {
+  width: 360px;
+  height: 430px;
+  list-style: none;
+  padding: 0;
+  float: left;
+  box-sizing: border-box;
+  margin: 0 20px 40px 0;
+}
+
+/* .item-img {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px 10px 0px 0px;
+} */
+
+.event-textArea {
+  padding: 24px 30px;
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  background: #fff;
+}
+
+/* =============== [배너 영역] =============== */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background-image: url("./story_images/sub-banner-img1.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* 배경 어둡게 처리하는 오버레이 */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* 배너 내부 컨텐츠 (타이틀 + 내비게이션) */
+.banner-inner {
+  position: relative;
+  z-index: 2;
+  width: 1200px;
+  height: 220px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* 배너 안의 메인 타이틀 */
+.title {
+  font-size: 50px;
+  color: #fff;
+  font-weight: 500;
+  margin: 0;
+  padding: 20px 0;
+}
+
+/* =============== [브레드크럼 내비게이션] =============== */
+#bannerNav {
+  display: flex;
+  list-style: none;
+  padding-bottom: 20px;
+  margin: 0;
+}
+
+.navPath {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+/* 브레드크럼 사이 구분 점 */
+.navPath li + li::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 10px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: #f5bd43;
+}
+
+/* 브레드크럼 링크 텍스트 */
+.navFont {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  margin: 0 10px;
+  z-index: 999;
+}
+
+
+/* =======================[본문]======================== */
+
+.competitive .topArea .farmTab li a {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: #fff;
+    width: 350px;
+    height: 60px;
+    border-radius: 50px;
+    background-color: #000;
+    font-size: 20px;
+}
+
+.competitive .topArea {
+    width: 100%;
+}
+
+.competitive .topArea .farmTab {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    padding: 0 40px;
+}
+
+ul.fatmTabtabMntotaltabMn {
+    width: 100%;
+    list-style: none outside;
+    display: flex;
+    margin: 0 auto;
+    justify-content: start;
+}
+
+ul.foodTabSubtabMn{
+    width: 100%;
+    list-style: none outside;
+    display: flex;
+    margin: 0 auto 50px ;
+    justify-content: start;
+}
+
+
+.competitive .topArea .farmTab li {
+    position: relative;
+}
+
+.competitive .topArea .farmTab li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    width: 350px;
+    height: 60px;
+    border-radius: 50px;
+    background-color: #000;
+    font-size: 20px;
+}
+
+    .foodTabSubtabM{
+            margin: 25px 0 45px 0;
+            list-style: none outside;
+}
+    .food{
+        width: 136px;
+        height: 136px;
+        background: no-repeat center;
+        margin-bottom: 50px;
+        
+}
+        
+    .foodCont{
+       display: flex;
+         width: 100%;
+        height: 500px;
+        box-sizing: border-box;
+        margin-bottom: 50px;
+        border-radius: 10px;
+        background-color: #f5f5f5;
+        overflow: hidden;
+        position: relative; 
+        border-radius: 20px;
+    }
+    .foodContImg{
+        width: 100%;
+        height: 100%;
+        background: no-repeat center;
+        background-size: cover;
+        border-radius: 10px;
+        align-content: center;
+        text-align: center;
+        margin-bottom: 100px;
+        
+    }
+    .foodContText{
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+/* =============== [폰트 & 텍스트 스타일] =============== */
+p {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-size: 18px;
+  color: #292929;
+  font-weight: 500;
+  line-height: 1.7;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+
+
+}
+.a1{
+    font-size: 20px;
+    color: #808080;
+    font-weight: 600;
+    margin-right: 50px;
+    padding-bottom: 5px;
+}
+.a1:active{
+    color: #db0007;
+    border-bottom: 1px solid #db0007;
+}
+
+.a2{
+    font-size: 20px;
+    color: #808080;
+    font-weight: 600;
+    margin-right: 50px;
+    padding-bottom: 5px;
+}
+.a2:active{
+    color: #db0007;
+    border-bottom: 1px solid #db0007;
+}
+
+h2{
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.9;
+}
+
+h3{
+    display: block;
+    color: #292929;
+    margin: 100px 0 30px;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 500;
+    text-align: center;
+}
+
+h4{
+    margin: 0 auto;
+    text-align: center;
+    color: #333;
+    width: 570px;
+    padding: 20px 40px;
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 25px;
+    line-height: 1.5em;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+p{
+    display: block;
+    color: #292929;
+    margin: 30px 0 30px;
+    font-size: 16px;
+    line-height: 1.9;
+    font-weight: 500;
+    text-align: center;
+}
+h1.title {
+  font-size: 50px;
+  color: #fff;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+
+.btnArea{
+    width: 1200px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    
+}
+
+.active {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    width: 350px;
+    height: 60px;
+    border-radius: 50px;
+    background-color: #000;
+    font-size: 20px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+
+}
+
+.active:active {
+    background-color: #db0007;
+    border-bottom: 1px solid #db0007;
+
+}
+.step{
+    color:#ffea94;
+
+}
+.chapterbody{ 
+display: flex;
+gap: 50px;
+}
+
+.chapter1, .chapter2{
+    font-size: 24px;
+    text-align: left;
+    font-weight:700;
+    margin: 35px 0 15px;
+    line-height: 1.5;
+}
+.title1,.title2{
+    margin-top: 0;
+    text-align: center;
+    padding-top: 40px;
+    text-align: center;
+    display: block;
+    color: #292929;
+    margin: 0 30px;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 800;
+}
+.script{
+    text-align: center;
+    color: #808080;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.9;
+}
+.chapter1Img,.chapter2Img{
+    width: 560px;
+    border-radius: 10px;
+}
+.content1, .content2{
+    box-sizing: border-box;
+    width: 100%;
+}
+.chapter1-1, .chapter2-1{
+    text-align: left;
+}
+
+.chapterWrap{
+    margin-bottom: 50px;
+}
+.chapter1tent{
+    margin-bottom: 70px;
+}
+</style>
+
+</head>
+<body>
+    <div id="fixedTag"></div>
+  <div class="wrapper">
+      <div id="header"></div>
+
+  <div class="banner">
+    <div class="overlay"></div> 
+    <div class="banner-inner">
+      <h1 class="title">맥도날드 품질이야기</h1>
+      <h2>우리가 엄격해질수록 버거는 더 맛있어지니까!<br>
+모두의 노력으로 엄격하고 꼼꼼하게 키워진 신선한 식재료가 모여, 마침내 맛있는 맥도날드 버거가 됩니다.</h2>
+      <ul id="bannerNav" class="navPath">
+        <li class="nav"><a href="#" class="navFont">HOME</a></li>
+        <li class="nav"><a href="./restaurantstep1.html" class="navFont">Story</a></li>
+        <li class="nav"><a href="./restaurantstep1.html" class="navFont">맥도날드 품질 이야기</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 버튼위치 -->
+   <div class="contentArea">
+        <div class="inner">
+            <div class="btnArea">
+                <a href="./restaurantstep1.html" class="a1" style="color: #d40014;">농장에서 레스토랑까지</a>
+                <a href="faq.html" class="a2">궁금한 모든것을 알려드립니다</a>
+            </div>
+            
+            <div class="topArea">
+                <ul class="fatmTabtabMntotaltabMn">
+                    <li>
+                        <a href="./restaurantstep1.html" class="active">
+                            <span class="step">STEP 01</span>
+                            "원재료 준비와 가공"
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./restaurantstep2.html"class="active" style="background-color: #d40014;">
+                            <span class="step">STEP 02</span>
+                            "재료 보관부터 배송까지"
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./restaurantstep3.html" class="active" >
+                            <span class="step">STEP 03</span>
+                            "레스토랑에서의 노력"
+                        </a>
+                    </li>
+                </ul>
+                <div class="chapterWrap">
+                    <div class="chapterInner">
+                       <!--달라지는 부분  -->
+                       
+
+                       <div class="chapter1tent">
+                        <h1 class="title1"> 깐깐한 원재료 준비 및 가공 과정만큼 보관과 배송도 중요하겠죠?</h1>
+                        <h2 class="script">GFSI (FSSC22000) 인증을 받은 배송 업체에서는 재료의 신선도와 안전성을 유지하기 위해<br>
+철저하게 품질을 검사하여 보관하고 배송합니다.</h2>
+                    </div>
+                    </div>
+                    <!-- 이미지, 텍스트부분 1번-->
+                     <div class="chapterbody">
+                     <div class="chapter2tent">
+                     <div class="content1">
+                        <img src="./story_images/chapter1.jpg" alt="" class="chapter1Img">
+                        <p class="chapter1">최적의 온도와 보안 상태를 확인하는<br>
+검수 및 하역 단계</p>
+                            <p class="chapter1-1">깐깐한 관리를 통해 선별되고 가공된 원재료는 최적화된 온도에서 보관된 상태로 원재료 컨테이너에 봉인되어 물류 창고에 도착합니다. 물류업체에서 보안 확인을 마친 후, 트럭과 공장 사이의 공간이 한치의 틈도 없이 맞물리도록 도킹 작업을 수행, 최적의 온도를 유지하도록 한 후 재료를 하역합니다. 하역과정에서 재료의 온도를 확인하고 검수하는 과정을 거친 후에, 품질 검사증을 붙여 최적의 상태로 보관될 수 있도록 합니다.</p>
+                     </div>
+                     </div>
+                     <!-- 이미지, 텍스트부분 -2번-->
+                     <div class="content2">
+                        <img src="./story_images/chapter2.jpg" alt="" class="chapter2Img">
+                        <p class="chapter2">안전과 청결은 기본, VeroFresh program 관리를 통한<br>배송단계
+                         <p class="chapter2-1">검수가 완료된 재료들은 레스토랑으로 이동되기 전까지 재료의 종류, 레스토랑 배송 날짜 등에 따라 분류하여 안전하고 깨끗하게 보관됩니다. 이 때, 재료들의 신선한 보관을 위해 최적의 온도 상태를 유지합니다. 재료의 유효기간과 상태를 다시 한 번 점검 후, 배송 차량이 보관 창고에 한 치의 틈도 없이 도킹되면, 재료들을 차량에 실어 목적지 레스토랑으로 출발하게 됩니다. VeroFresh program 으로 실시간 제품과 차량의 온도를 확인이 가능하여 배송 전까지 온도이탈을 최소화 합니다.</p>
+                     </div>
+                     </div>
+                </div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+  </div>
+  <script src="../../js/script.js"></script>
+
+    <script>
+        const backgroundImage=[
+            "./story_images/img1",
+            "./story_images/img2",
+            "./story_images/img3",
+            "./story_images/img4",
+            "./story_images/img5",
+            "./story_images/img6",
+            "./story_images/img7",
+            "./story_images/img8"
+        ];
+        const btnUnactive=[
+            "./story_images/btn-img1-1",
+            "./story_images/btn-img2-1",
+            "./story_images/btn-img3-1",
+            "./story_images/btn-img4-1",
+            "./story_images/btn-img5-1",
+            "./story_images/btn-img6-1",
+            "./story_images/btn-img7-1",
+            "./story_images/btn-img8-1"
+        ];
+       
+        const btnAtive=[
+            "./story_images/btn-img1",
+            "./story_images/btn-img2",
+            "./story_images/btn-img3",
+            "./story_images/btn-img4",
+            "./story_images/btn-img5",
+            "./story_images/btn-img6",
+            "./story_images/btn-img7",
+            "./story_images/btn-img8"
+        ];
+
+        const productText=[
+            
+        ];
+
+    </script>
+</body>
+</html>

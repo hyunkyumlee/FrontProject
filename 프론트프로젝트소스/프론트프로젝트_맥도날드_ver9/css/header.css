@@ -1,0 +1,285 @@
+@import url('./basicStyle.css');
+
+:root {
+  --hover-underline-width: 0;
+  --ico-search-url: "";
+  --btn-close-img: "";
+}
+
+#header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid #ffbc0d;
+}
+
+.header {
+  display: flex;
+  width: 1280px;
+  height: 140px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-sizing: border-box;
+  transition: top 1s;
+  z-index: 100;
+}
+
+.header .hd_mc_logo {
+  width: 220px;
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.header .hd_nav_menu1 {
+  display: flex;
+  /* height: 140px; */
+  height: 100%;
+  padding: 52px 0;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.header .hd_nav_menu1 .hd_depth1 {
+  display: flex;
+}
+
+.header .hd_nav_menu1 .hd_div_menu .hd_depth1 li {
+  height: 100%;
+  position: relative;
+}
+
+.header .hd_nav_menu1 .hd_div_menu .hd_depth1 li .hd_dth1 {
+  display: inline-block;
+  height: 100%;
+  margin-right: 80px;
+  padding: 0 10px;
+  font-family: sans-serif;
+  color: #292929;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 140px;
+  text-decoration: none;
+}
+
+.header .hd_nav_menu1 .hd_div_menu .hd_depth1 li .hd_dth1 .hd_selected {
+  text-decoration: underline;
+}
+
+.header .hd_nav_menu2 {
+  display: none;
+  /* display: flex; */
+  width: 100%;
+  height: 400px;
+  border-top: 1px solid #e2e2e2;
+  border-bottom: 1px solid #ffbc0d;
+  /* box-sizing: border-box; */
+  background-color: #fff;
+  font-family: SpeedeeK;
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  left: 0;
+  z-index: 11;
+}
+
+.header .hd_nav_menu2 .hd_depth2 {
+  padding: 35px 10px 45px;
+}
+
+.header .hd_nav_menu2 .hd_depth2 li {
+  margin-top: 15px;
+}
+
+.header .hd_nav_menu2 .hd_depth2 .hd_dth2 {
+  line-height: 1.9;
+  color: #808080;
+}
+
+.header.open .hd_nav_menu2 {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  z-index: 20;
+}
+
+.hd_active::before {
+  content: '';
+  width: var(--hover-underline-width);
+  position: absolute;
+  left: -1px;
+  bottom: -2px;
+  border-bottom: 3px solid #f5bd43;
+  z-index: 20;
+}
+
+.header.fixed {
+  display: flex;
+  width: 100%;
+  min-width: 1280px;
+  height: 80px;
+  position: fixed;
+  /* left: 50%; */
+  padding-left: calc((100% - 1280px)/2);
+  /* transform: translate(-50%, 0); */
+  border-bottom: 1px solid #ffbc0d;
+  box-sizing: border-box;
+  z-index: 100;
+  flex-wrap: wrap;
+
+  animation-name: headerSlide;
+  animation-duration: 0.3s;
+}
+
+.header.fixed .hd_mc_logo {
+  height: 80px;
+  padding: 0;
+}
+
+.header.fixed .hd_mc_logo img {
+  height: 80px;
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.header.fixed .hd_nav_menu1 {
+  padding: 22px 0;
+}
+
+.header.fixed .hd_nav_menu1 .hd_div_menu .hd_depth1 li {
+  height: 80px;
+}
+
+.header.fixed .hd_nav_menu1 .hd_div_menu .hd_depth1 li .hd_dth1 {
+  line-height: 80px;
+}
+
+@keyframes headerSlide {
+  from {
+    top: -80px;
+  }
+
+  to {
+    top: 0;
+  }
+}
+
+.hd_util {
+  display: flex;
+}
+
+.hd_util a {
+  display: inline-block;
+  width: 80px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 48px;
+  margin: 0 1px;
+}
+
+.hd_util .hd_renter {
+  background-color: #db0007;
+}
+
+.hd_util .hd_recruit {
+  background-color: #d87e00;
+}
+
+.hd_util .hd_lang {
+  background-color: #264a36;
+}
+
+.hd_util button {
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
+}
+
+.hd_btn_search_open {
+  width: 36px;
+  height: 36px;
+  margin-left: 26px;
+  background-image: var(--ico-search-url);
+  background-position: center;
+  background-size: cover;
+}
+
+.hd_topSearch .hd_srchField {
+  display: none;
+  width: 1150px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border: none;
+  z-index: 9999;
+}
+
+.hd_topSearch .hd_srchField legend {
+  display: none;
+}
+
+.hd_topSearch .hd_srchField .hd_form {
+  position: relative;
+  margin: 40px 0;
+  padding-right: 184px;
+}
+
+.hd_topSearch .hd_srchField .hd_form input {
+  width: 100%;
+  height: 70px;
+  padding: 0 38px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  border: 1px solid #d1d1d1;
+  border-radius: 70px;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.hd_topSearch .hd_srchField .hd_form .hd_btn_search {
+  width: 172px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #292929;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 70px;
+  border-radius: 70px;
+  background-color: #ffbc0d;
+}
+
+.hd_topSearch .hd_srchField .hd_close {
+  width: 90px;
+  height: 90px;
+  margin-top: 100px;
+  /* background-image: url("../images/btn_close.png"); */
+  background-image: var(--btn-close-img);
+  text-indent: -9999px;
+  border-radius: 50%;
+}
+
+.hd_topSearch.open {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgb(0, 0, 0, 0.8);
+  z-index: 8999;
+}
+
+.hd_topSearch.open .hd_srchField {
+  display: block;
+}

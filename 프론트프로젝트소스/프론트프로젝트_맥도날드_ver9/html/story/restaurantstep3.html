@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story > 맥도날드 품질 이야기 > 농장에서 레스토랑까지|맥도날드</title>
+    <link href="../../images/맥도날드_로고.png" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="../../css/header.css">
+<style>
+
+    /* =============== [기본 설정] =============== */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fbfbfb;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* =============== [메인 콘텐츠 영역 (카드 리스트 섹션)] =============== */
+.contArea {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  /* border: 1px solid #000; */
+}
+
+.inner {
+  width: 1200px;
+  margin-top: 20px;
+  margin: 0 auto;
+}
+
+#happyList {
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.happy-item {
+  width: 360px;
+  height: 430px;
+  list-style: none;
+  padding: 0;
+  float: left;
+  box-sizing: border-box;
+  margin: 0 20px 40px 0;
+}
+
+/* .item-img {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px 10px 0px 0px;
+} */
+
+.event-textArea {
+  padding: 24px 30px;
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  background: #fff;
+}
+
+/* =============== [배너 영역] =============== */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background-image: url("./story_images/sub-banner-img1.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* 배경 어둡게 처리하는 오버레이 */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* 배너 내부 컨텐츠 (타이틀 + 내비게이션) */
+.banner-inner {
+  position: relative;
+  z-index: 2;
+  width: 1200px;
+  height: 220px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* 배너 안의 메인 타이틀 */
+.title {
+  font-size: 50px;
+  color: #fff;
+  font-weight: 500;
+  margin: 0;
+  padding: 20px 0;
+}
+
+/* =============== [브레드크럼 내비게이션] =============== */
+#bannerNav {
+  display: flex;
+  list-style: none;
+  padding-bottom: 20px;
+  margin: 0;
+}
+
+.navPath {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+/* 브레드크럼 사이 구분 점 */
+.navPath li + li::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 10px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: #f5bd43;
+}
+
+/* 브레드크럼 링크 텍스트 */
+.navFont {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  margin: 0 10px;
+  z-index: 999;
+}
+
+
+/* =======================[본문]======================== */
+
+.competitive .topArea .farmTab li a {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: #fff;
+    width: 350px;
+    height: 60px;
+    border-radius: 50px;
+    background-color: #000;
+    font-size: 20px;
+}
+
+.competitive .topArea {
+    width: 100%;
+}
+
+.competitive .topArea .farmTab {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    padding: 0 40px;
+}
+
+ul.fatmTabtabMntotaltabMn {
+    width: 100%;
+    list-style: none outside;
+    display: flex;
+    margin: 0 auto;
+    justify-content: start;
+}
+
+ul.foodTabSubtabMn{
+    width: 100%;
+    list-style: none outside;
+    display: flex;
+    margin: 0 auto 50px ;
+    justify-content: start;
+}
+
+
+.competitive .topArea .farmTab li {
+    position: relative;
+}
+
+.competitive .topArea .farmTab li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    width: 350px;
+    height: 60px;
+    border-radius: 50px;
+    background-color: #000;
+    font-size: 20px;
+}
+
+    .foodTabSubtabM{
+            margin: 25px 0 45px 0;
+            list-style: none outside;
+}
+    .food{
+        width: 136px;
+        height: 136px;
+        background: no-repeat center;
+        margin-bottom: 50px;
+        
+}
+        
+    .foodCont{
+       display: flex;
+         width: 100%;
+        height: 500px;
+        box-sizing: border-box;
+        margin-bottom: 50px;
+        border-radius: 10px;
+        background-color: #f5f5f5;
+        overflow: hidden;
+        position: relative; 
+        border-radius: 20px;
+    }
+    .foodContImg{
+        width: 100%;
+        height: 100%;
+        background: no-repeat center;
+        background-size: cover;
+        border-radius: 10px;
+        align-content: center;
+        text-align: center;
+        margin-bottom: 100px;
+        
+    }
+    .foodContText{
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+/* =============== [폰트 & 텍스트 스타일] =============== */
+p {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-size: 18px;
+  color: #292929;
+  font-weight: 500;
+  line-height: 1.7;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+
+
+}
+.a1{
+    font-size: 20px;
+    color: #808080;
+    font-weight: 600;
+    margin-right: 50px;
+    padding-bottom: 5px;
+}
+.a1:active{
+    color: #db0007;
+    border-bottom: 1px solid #db0007;
+}
+
+.a2{
+    font-size: 20px;
+    color: #808080;
+    font-weight: 600;
+    margin-right: 50px;
+    padding-bottom: 5px;
+}
+.a2:active{
+    color: #db0007;
+    border-bottom: 1px solid #db0007;
+}
+
+h2{
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.9;
+}
+
+h3{
+    display: block;
+    color: #292929;
+    margin: 100px 0 30px;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 500;
+    text-align: center;
+}
+
+h4{
+    margin: 0 auto;
+    text-align: center;
+    color: #333;
+    width: 570px;
+    padding: 20px 40px;
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 25px;
+    line-height: 1.5em;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+p{
+    display: block;
+    color: #292929;
+    margin: 30px 0 30px;
+    font-size: 16px;
+    line-height: 1.9;
+    font-weight: 500;
+    text-align: center;
+}
+h1.title {
+  font-size: 50px;
+  color: #fff;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+
+.btnArea{
+    width: 1200px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    
+}
+
+.active {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    width: 350px;
+    height: 60px;
+    border-radius: 50px;
+    background-color: #000;
+    font-size: 20px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+
+}
+
+.active:active {
+    background-color: #db0007;
+    border-bottom: 1px solid #db0007;
+
+}
+.step{
+    color:#ffea94;
+
+}
+.chapterbody{ 
+display: flex;
+gap: 50px;
+}
+
+.chapterbody1{ 
+display: flex;
+gap: 50px;
+border-bottom: 0.1px solid #bbbbbb;
+}
+
+.chapter1, .chapter2{
+    font-size: 24px;
+    text-align: left;
+    font-weight:700;
+    margin: 35px 0 15px;
+    line-height: 1.5;
+}
+.title1,.title2{
+    margin-top: 0;
+    text-align: center;
+    padding-top: 40px;
+    text-align: center;
+    display: block;
+    color: #292929;
+    margin: 0 30px;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 800;
+}
+.script{
+    text-align: center;
+    color: #808080;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.9;
+}
+.chapter1Img,.chapter2Img{
+    width: 560px;
+    border-radius: 10px;
+}
+.chapter2tent, .chapter3tent{
+    box-sizing: border-box;
+    width: 50%;
+}
+.chapter3-1, .chapter4-1, .chapter5-1{
+    text-align: left;
+}
+
+.chapterWrap{
+    margin-bottom: 50px;
+}
+
+.border{
+    margin: 50px 0;
+}
+
+.smallTitle{
+    display: block;
+    margin: 50px 0 30px;
+    color: #292929;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+    font-size: 24px;
+    text-align: center;
+}
+
+.smallscript{
+    background: #ffbc0d;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 14px;
+    color: #292929;
+    text-align: center;
+}
+.btnMCBtnLActionArea{
+    width: 100%;
+    justify-items: center;
+}
+.btnMCBtnLAction{
+    color: #fff;
+    background: #da0000;
+    min-width: 200px;
+    padding: 0 50px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 90px;
+    border-radius: 90px;
+    text-align: center;
+    width: 500px;
+    margin: 50px 0;
+
+    }
+</style>
+
+</head>
+<body>
+    <div id="fixedTag"></div>
+  <div class="wrapper">
+      <div id="header"></div>
+
+  <div class="banner">
+    <div class="overlay"></div> 
+    <div class="banner-inner">
+      <h1 class="title">맥도날드 품질이야기</h1>
+      <h2>우리가 엄격해질수록 버거는 더 맛있어지니까!<br>
+모두의 노력으로 엄격하고 꼼꼼하게 키워진 신선한 식재료가 모여, 마침내 맛있는 맥도날드 버거가 됩니다.</h2>
+      <ul id="bannerNav" class="navPath">
+        <li class="nav"><a href="../메인페이지.html" class="navFont">HOME</a></li>
+        <li class="nav"><a href="./restaurantstep1.html" class="navFont">Story</a></li>
+        <li class="nav"><a href="./restaurantstep1.html" class="navFont">맥도날드 품질 이야기</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 버튼위치 -->
+   <div class="contentArea">
+        <div class="inner">
+            <div class="btnArea">
+                <a href="./restaurantstep1.html" class="a1" style="color: #d40014;">농장에서 레스토랑까지</a>
+                <a href="./faq.html" class="a2">궁금한 모든것을 알려드립니다</a>
+            </div>
+             <iframe width="1258" height="651" src="https://www.youtube.com/embed/u2hLpzjQgvc?si=PEX0alKq2TgmgTed" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="topArea">
+                <ul class="fatmTabtabMntotaltabMn">
+                    <li>
+                        <a href="./restaurantstep1.html" class="active">
+                            <span class="step">STEP 01</span>
+                            "원재료 준비와 가공"
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./restaurantstep2.html"class="active">
+                            <span class="step">STEP 02</span>
+                            "재료 보관부터 배송까지"
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./restaurantstep3.html" class="active" style="background-color: #d40014;">
+                            <span class="step">STEP 03</span>
+                            "레스토랑에서의 노력"
+                        </a>
+                    </li>
+                </ul>
+                <div class="chapterWrap">
+                    <div class="chapterInner">
+                       <!--달라지는 부분  -->
+                       
+
+                       <div class="chapter1tent">
+                        <h1 class="title1"> 레스토랑에 도착한 식재료는 어떻게 관리될까요?
+                        <h2 class="script">레스토랑으로 배송된 식재료가 음식으로 조리되어 고객에게 전달되는 순간까지<br>
+맥도날드의 노력은 멈추지 않습니다.
+                    </div>
+                    </div>
+                    <!-- 반복 부분 -->
+                    <!-- 반복되는 부분 첫번째-->
+
+                    <p class="smallTitle">철저한 재료관리</p>
+                    <p class="smallscript">철저한 식재료 관리는 농장에서부터 배송센터 뿐만 아니라 레스토랑에서도 계속 되어야겠죠?<br>
+재료가 레스토랑으로 배송되면 매뉴얼을 준수, 신선한 상태로 유지하도록 최선을 다합니다.</p>
+
+
+                     <div class="chapterbody">
+                     <div class="chapter2tent">
+                     <div class="content1">
+                        <img src="./story_images/chapter3.jpg" alt="" class="chapter1Img">
+                        <p class="chapter1">냉장/냉동고로 식재료를 입고할 때
+                              <br>
+적정 온도 유지는 필수
+                            <p class="chapter3-1">배송된 재료가 바로 냉장/냉동실로 이동될 수 있도록 사전에 필요한 공간을 확보해 둡니다. 그리고 항온 담요와 방수포를 덮어 식재료 온도를 유지하며, 바닥에 닿지 않도록 트레이를 사용하여 냉장/냉동고로 입고시킵니다.
+                     </div>
+                     </div>
+                     <!-- 반복되는 두번째-->
+                     <div class="content2">
+                        <img src="./story_images/chapter4.jpg" alt="" class="chapter2Img">
+                        <p class="chapter2">샘플 검수를 통해 식재료의 신선한 상태를 점검
+                         <p class="chapter4-1">식재료가 배송되면 기준에 미달하는 식재료는 없는지 냉동/냉장 각 재료 중 일부<br> 박스를 샘플로 뜯어 확인하고, 문제가 있을 경우 폐기를 위해 반품 처리 합니다.
+                     </div>
+                     </div>
+
+
+                     <!-- 반복되는 세번째-->
+                     <div class="chapterbody">
+                     <div class="chapter2tent">
+                     <div class="content1">
+                        <img src="./story_images/chapter5.jpg" alt="" class="chapter1Img">
+                        <p class="chapter1">먼저 들어온 제품을 먼저 사용하고<br>
+냉장/냉동고의 온도를 철저히 유지
+                            <p class="chapter3-1">선입선출이라는 말을 아시나요? 먼저 들어온 식재료부터 들어온 순서에 맞게 사용될<br> 수 있도록 보관·관리하며, 재료 박스간의 적정 간격을 유지하여 온도가 잘 유지될 수<br> 있도록 보관합니다.
+                     </div>
+                     </div>
+                     <!-- 반복되는 네번째-->
+                     
+                     </div>
+                     <!--여기까지 반복  -->
+
+                     <div class="border" style="border: 1px solid #cfcfcf7e;"></div>
+                     
+                     <!-- 반복 부분 -->
+                    <!-- 반복되는 부분 첫번째-->
+
+                     <p class="smallTitle">조리환경 관리</p>
+                    <p class="smallscript">본격적인 조리를 시작하기 전 조리를 준비하는 과정에서도 식품 안전을 위한 점검은 계속됩니다.</p>
+
+                     <div class="chapterbody">
+                     <div class="chapter2tent">
+                     <div class="content1">
+                        <img src="./story_images/chapter6.jpg" alt="" class="chapter1Img">
+                        <p class="chapter1">매일 첫 제품이 제공되기 전에<br>
+조리된 제품의 온도를 체크
+                            <p class="chapter3-1">매일 첫 제품이 제공되기 전 패티의 온도를 체크하여 식품 안전 온도를 유지하는지 <br>확인합니다.
+                     </div>
+                     </div>
+                     <!-- 반복되는 두번째-->
+                     <div class="content2">
+                        <img src="./story_images/chapter7.jpg" alt="" class="chapter2Img">
+                        <p class="chapter2">식약처 기준보다 더 엄격한 산가기준 적용
+                         <p class="chapter4-1">매일 레스토랑 기름의 산가를 측정하여 기준을 초과하는 경우 즉시 교체하고 있습니다.<br> 국내 식품 위생 법률에서 정한 3.0의 산가 기준보다 더 엄격한 2.5의 산가 기준을<br> 적용합니다.
+                     </div>
+                     </div>
+
+
+                     <!-- 반복되는 세번째-->
+                     <div class="chapterbody">
+                     <div class="chapter2tent">
+                     <div class="content1">
+                        <img src="./story_images/chapter8.jpg" alt="" class="chapter1Img">
+                        <p class="chapter1">매일 식품 안전사항을 체크하고 관리
+                            <p class="chapter3-1">모든 레스토랑에서는 매일 식품 안전사항을 체크하여 철저히 품질 관리를 하며,<br> 맥도날드 글로벌 공통의 레스토랑 식품안전 기준이 상시 유지 중인지 제 3자<br> 점검기관을 통해 전 매장을 점검합니다.
+                     </div>
+                     </div>
+                     <!-- 반복되는 네번째-->
+                     
+                     </div>
+                     <!--여기까지 반복  -->
+
+                     <div class="border" style="border: 1px solid #cfcfcf7e;"></div>
+                     
+                     <!-- 반복 부분 -->
+                    <!-- 반복되는 부분 첫번째-->
+
+                    <p class="smallTitle">조리과정 관리</p>
+                    <p class="smallscript">조리 과정에도 안전과 위생과 만전을 기하고 있습니다.</p>
+
+                     <div class="chapterbody">
+                     <div class="chapter2tent">
+                     <div class="content1">
+                        <img src="./story_images/chapter9.jpg" alt="" class="chapter1Img">
+                        <p class="chapter1">패티의 종류에 따라 적정 온도로<br>
+조리되는 오토 쿠킹 모드
+                            <p class="chapter3-1">패티는 그릴이라는 장비를 통해 자동으로 구워집니다. 오토 쿠킹 모드를 누르면 정해진<br> 조리 시간에 따라 자동으로 조리되며, 정해진 시간이 종료되면 자동으로 상판이<br> 올라가며 조리가 완료됩니다.
+                     </div>
+                     </div>
+                     <!-- 반복되는 두번째-->
+                     <div class="content2">
+                        <img src="./story_images/chapter10.jpg" alt="" class="chapter2Img">
+                        <p class="chapter2">교차 오염 방지를 위한 일회용 장갑 사용
+                         <p class="chapter4-1">교차 오염을 방지하기 위해 조리되지 않은 식품을 만질 때는 파란 장갑을, 조리된<br> 식품이나 조리 도구를 만질 때는 흰 장갑을 사용합니다. 한번 사용한 장갑은 바로<br> 폐기하고, 새 장갑으로 교체하여 사용합니다.
+                     </div>
+                     </div>
+
+
+                     <!-- 반복되는 세번째-->
+                     <div class="chapterbody">
+                     <div class="chapter2tent">
+                     <div class="content1">
+                        <img src="./story_images/chapter11.jpg" alt="" class="chapter1Img">
+                        <p class="chapter1">깨끗하고 안전한 제품을<br>
+제공하기 위해 준비하는 크루
+                            <p class="chapter3-1">레스토랑 주방에서는 30분마다 한번씩 손 씻기 타이머가 울립니다. 주방에서 근무하는<br> 모든 직원들은 30분마다 한 번씩 손부터 아래팔까지 손을 씻습니다. 청결한 유니폼<br> 착용 등 개인 위생에도 만전을 기합니다.
+                     </div>
+                     </div>
+                     <!-- 반복되는 네번째-->
+                     <div class="content2">
+                        <img src="./story_images/chapter12.jpg" alt="" class="chapter2Img">
+                        <p class="chapter2">4시간 경마다 세척하여 사용하는 조리 도구
+                         <p class="chapter4-1">깨끗한 조리 환경을 위해, 레스토랑 직원들은 4시간 경마다 한 번씩 조리 도구를<br> 세척하여 청결하게 사용하고 있습니다.
+                     </div>
+                     </div>
+                     <!--여기까지 반복  -->
+                     <div class="border" style="border: 1px solid #cfcfcf7e;"></div>
+                     
+                     <!-- 반복 부분 -->
+                    <!-- 반복되는 부분 첫번째-->
+
+                     <p class="smallTitle">고객만족을 위한 노력</p>
+                    <p class="smallscript">정성을 다해 만든 제품을 제공하기 위해 보이지 않는 곳까지 점검합니다.</p>
+
+                     <div class="chapterbody">
+                     <div class="chapter2tent">
+                     <div class="content1">
+                        <img src="./story_images/chapter13.jpg" alt="" class="chapter1Img">
+                        <p class="chapter1">주문이 들어옴과 동시에 음식을<br>
+만드는 ‘메이드 포 유’ 시스템
+                            <p class="chapter3-1">맥도날드는 음식을 미리 만들어 놓지 않고, 고객 주문 접수와 동시에 음식을 만들어 갓 <br>조리된 신선한 음식만을 제공하는 ‘메이드 포 유(Made for You)’ 시스템을 적용하고<br> 있습니다.
+                     </div>
+                     </div>
+                     <!-- 반복되는 두번째-->
+                     <div class="content2">
+                        <img src="./story_images/chapter14.jpg" alt="" class="chapter2Img">
+                        <p class="chapter2">고객의견을 반영한 제품 구성 및 함량 변경
+                         <p class="chapter4-1">위생을 위해 슈레더로 변경한 양상추의 함량이 적게 느껴진다는 고객 의견을 반영하여<br> 일부 메뉴의 슈레더 양상추 함량이 30g씩 늘어났습니다.
+                     </div>
+                     </div>
+
+
+                     <!-- 반복되는 세번째-->
+                     <div class="chapterbody">
+                     <div class="chapter2tent">
+                     <div class="content1">
+                        <img src="./story_images/chapter15.jpg" alt="" class="chapter1Img">
+                        <p class="chapter1">고객이 주문하는 공간도 언제나 깨끗하게 유지
+                            <p class="chapter3-1">고객이 주문을 하는 카운터와 디지털 키오스크 공간도 언제나 기분 좋게 사용하실 수<br> 있도록 깨끗이 유지합니다.
+                     </div>
+                     </div>
+                     <!-- 반복되는 네번째-->
+                     <div class="content2">
+                        <img src="./story_images/chapter16.jpg" alt="" class="chapter2Img">
+                        <p class="chapter2">고객이 레스토랑을 나가는 순간까지 깨끗하게
+                         <p class="chapter4-1">고객이 음식을 드시는 테이블은 물론, 휴지통과 화장실까지 청결하게 유지될 수 있도록 노력합니다.
+                     </div>
+                     </div>
+                     <!--여기까지 반복  -->
+                     <div class="btnMCBtnLActionArea">
+                      <div class="btnMCBtnLAction">맥도날드의 음식과 재료에 대해 더 궁금한 점이 있다면?</div>
+                      </div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+  </div>
+  <script src="../../js/script.js"></script>
+
+    <script>
+        const backgroundImage=[
+            "./story_images/img1",
+            "./story_images/img2",
+            "./story_images/img3",
+            "./story_images/img4",
+            "./story_images/img5",
+            "./story_images/img6",
+            "./story_images/img7",
+            "./story_images/img8"
+        ];
+        const btnUnactive=[
+            "./story_images/btn-img1-1",
+            "./story_images/btn-img2-1",
+            "./story_images/btn-img3-1",
+            "./story_images/btn-img4-1",
+            "./story_images/btn-img5-1",
+            "./story_images/btn-img6-1",
+            "./story_images/btn-img7-1",
+            "./story_images/btn-img8-1"
+        ];
+       
+        const btnAtive=[
+            "./story_images/btn-img1",
+            "./story_images/btn-img2",
+            "./story_images/btn-img3",
+            "./story_images/btn-img4",
+            "./story_images/btn-img5",
+            "./story_images/btn-img6",
+            "./story_images/btn-img7",
+            "./story_images/btn-img8"
+        ];
+
+        const productText=[
+            
+        ];
+
+    </script>
+</body>
+</html>

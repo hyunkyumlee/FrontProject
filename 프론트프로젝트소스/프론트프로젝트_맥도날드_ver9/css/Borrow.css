@@ -1,0 +1,156 @@
+.imgArea {
+    width: 100%;
+    height: 250px;
+    background-image: url("../html/store/store_images/맥도날드_매점.jpg");
+    position: relative;
+}
+
+.textBox {
+    position: absolute;
+    left: 180px;
+    bottom: 0px;
+    color: white;
+}
+
+.textBox ul {
+    display: flex;
+    list-style: none;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.textBox ul li {
+    margin-right: 30px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.textBox ul li:first-child:after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 58px;
+    border-radius: 50%;
+    height: 5px;
+    background-color: orange;
+    width: 5px;
+}
+
+.textBox ul li:nth-child(2):after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 52px;
+    border-radius: 50%;
+    height: 5px;
+    background-color: orange;
+    width: 5px;
+}
+
+.textBox h2 {
+    font-size: 50px;
+    font-weight: 500;
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+.textBox ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.contArea {
+    padding: 30px 0 60px;
+}
+
+.contArea ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.contArea ul a {
+    display: block;
+    height: 40px;
+    font-size: 20px;
+    line-height: 39px;
+    box-sizing: border-box;
+    text-decoration: none;
+    margin-right: 60px;
+    margin-left: 10px;
+}
+
+.inner {
+    width: 1168px;
+    margin: auto;   
+}
+.inner h2{
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+.inner p {
+    padding-top: 0px;
+    color: gray;
+    font-weight: 500;
+    line-height: 1.6;
+}
+.sendSell {
+    width: 100%;
+    border-collapse: collapse;
+}
+.sendSell caption {
+    text-align: left;
+    margin-bottom: 40px;
+    margin-top: 80px;
+    font-size: 30px;
+    font-weight: 700;
+}
+.sendSell tr:first-child td{
+    border-top: 2px solid #292929;
+    border-bottom: 1px solid gray;
+}
+.sendSell tr:nth-child(2) td {
+    border-bottom: 1px solid #292929;
+}
+.sendSell tr td:nth-child(2){
+    border-left: 0.5px solid gray;   
+}
+.sendSell tr td:first-child{
+    width: 160px;
+    font-size: 16px;
+    font-weight: 600;
+    vertical-align: top;
+    padding: 30px 10px;
+}
+.sendSell tr td:nth-child(2){
+    color: gray;
+    font-size: 16px;
+    font-weight: 500;
+}
+.sendSell tr td dl {
+    padding: 10px 0;
+}
+.sendSell tr td dl dd {
+    padding: 5px 0;
+}
+.downYang {
+    text-align: center;
+    margin-top: 100px
+}
+.downYang button {
+    background-color: #ffbc0d;
+    width: 260px;
+    padding: 40px;
+    border-radius: 100px;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+.downYang p {
+    font-weight: 600;
+}
+.downYang span {
+    color: #292929;
+}

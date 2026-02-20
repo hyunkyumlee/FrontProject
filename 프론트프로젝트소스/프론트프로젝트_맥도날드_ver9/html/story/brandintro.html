@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story > 브랜드 소개 > 맥도날드 소개 | 맥도날드</title>
+     <!--파비콘-->
+    <link href="../../images/맥도날드_로고.png" rel="shortcut icon" type="image/x-icon">
+    <!--외부css-->
+    <link rel="stylesheet" href="../../css/mcdonalds_common.css" />
+    <link rel="stylesheet" href="../../css/brandintro_historyList.css" />
+    <link rel="stylesheet" href="../../css/header.css">
+
+    <style>
+        .visualArea.bgStory p{
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+       .bgStory {
+            color: #fff;
+            background: url("./story_images/brandintro_bgstory.jpg")50% 50% no-repeat;
+        }
+
+        .content .contArea> .inner {
+            position: static !important;
+        }
+
+        .content .contArea>:first-child {
+            margin-top: 0 !important;
+        }
+
+        .brandintro_on {
+            color: #db0007;
+            font-weight: 600;
+            border-bottom: 1px solid #db0007 !important;
+        }
+
+        .tabType01 {
+            display: block;
+            height: 40px;
+            font-size: 20px;
+            line-height: 39px;
+            margin: 0 -40px 60px;
+            text-align: center;
+            padding: -10px;
+        }
+
+        .tabType01 li {
+            display: inline-block;
+            margin: 0 40px;
+            vertical-align: top;
+        }
+
+        .tabType01 li button {
+            display: block;
+            height: 40px;
+            font-size: 20px;
+            line-height: 39px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .brandCont01 {
+            padding-bottom: 100px;
+            border-bottom: 1px solid #d1d1d1;
+        }
+
+        .brandCont02 {
+            margin-top: 100px;
+        }
+
+        .brandCont02 ul {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .brandCont02 ul li {
+            margin-bottom: 30px;
+        }
+
+        .history {
+            background-color: #1a1a1a;
+            padding-bottom: 120px;
+            margin: 150px 0 -122px;
+            width: 100%;
+        }
+
+        /*맥도날드가 걸어온 길 한국/글로벌 전환 */
+        .toggle_style {
+            color: #db0007;
+            font-weight: 600;
+            border-bottom: 1px solid #db0007;
+        }
+
+        .history h4 {
+            font-size: 80px;
+            color: #fff;
+            font-weight: 600px;
+            text-align: center;
+            line-height: 0.9;
+            margin-bottom: 65px;
+        }
+
+        .tabCont {
+            position: relative;
+            display: none;
+        }
+
+        .historyTab {
+            position: absolute;
+            left: 0;
+            top: 323px;
+            z-index: 10;
+        }
+
+        .historyTab_button_on {
+            color: #292929 !important;
+            background: #ffbc0d !important;
+        }
+
+        .history li {
+            margin-bottom: 15px;
+        }
+
+        .historyTab li button {
+            display: block;
+            width: 100px;
+            height: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 50px;
+            background: #474747;
+            color: #fff;
+            text-align: center;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .historyList {
+            position: relative;
+            display: none;
+        }
+
+        .historyList li {
+            position: relative;
+        }
+
+        .yearCont {
+            position: absolute;
+        }
+
+
+        .historyList::before {
+            display: block;
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0px;
+            width: 7px;
+            height: 7px;
+            margin-left: -3.5px;
+            background-color: #767676;
+            border-radius: 4px;
+        }
+
+        .historyList li:first-child::before {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 50px;
+            background-color: #767676;
+            margin: 0 auto;
+        }
+
+        .historyList li>strong {
+            display: block;
+            margin: 0 auto;
+            width: 185px;
+            text-align: center;
+            font-size: 50px;
+            font-weight: 600px;
+            color: #fff;
+        }
+
+        .historyList li>strong::after {
+            content: '';
+            display: block;
+            margin: 0 auto;
+            width: 1px;
+            background-color: #767676;
+        }
+
+        .historyList li:first-child>strong {
+            color: #ffbc0d;
+        }
+
+        .historyList::after {
+            display: block;
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 7px;
+            height: 7px;
+            margin-left: -3.5px;
+            background-color: #767676;
+            border-radius: 4px;
+        }
+
+        .tabCont.on {
+            display: block !important;
+        }
+
+        .historyList.on {
+            display: block !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="fixedTag"></div>
+    <div class="wrapper">
+        <div id="header"></div>
+        <!--nav-->
+            <div class="visualArea bgStory">
+                <div class="inner">
+                    <h1 class="titleDep1" style="margin-top: 50px;">브랜드 소개</h1>
+                    <p>1955년 작은 레스토랑에서부터 지금에 이르기까지 고객이 가장 좋아하는 장소이자,<br>
+음식을 즐기는 최고의 방법이 되기 위해 맥도날드는 오늘도 노력합니다.</p>
+                    <ul class="navPatch">
+                        <li>
+                            <a href="../메인페이지.html">Home</a>
+                        </li>
+                        <li><a href="./Story.html">Story</a></li>
+                        <li><a href="./brandintro.html">브랜드 소개</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--nav종료-->
+    <!--brandintro-->
+    <div class="contArea">
+        <div class="inner">
+            <ul class="tabType01">
+                <li>
+                    <a href="./brandintro.html" class="brandintro_on">맥도날드 소개</a>
+                </li>
+                <li>
+                    <a href="./brandhistory.html">맥도날드 철학 및 역사</a>
+                </li>
+            </ul>
+            <div class="brandCont01">
+                <div class="img">
+                    <img src="./story_images/brandintro_con_1.jpg" alt="맥도날드 매장 사진">
+                </div>
+                <h2 class="titleH2">세계1위의 푸드서비스 기업, 맥도날드</h2>
+                <p>전세계 120개국 3만 7천여 개의 매장에서 매일 6,900만명의 고객들에게 제품과 서비스를 제공하고 있는 맥도날드는 전세계인들이 사랑하는
+                    <br>퀵 서비스 레스토랑(QSR, Quick Service Restaurant)이자 세계 1위의 푸드서비스 기업으로, 고객에게 더 나은 경험을 제공함으로써
+                    <br>'고객이 가장 좋아하는 장소이자 음식을 즐기는 최고의 방법(Our Customer’s Favorite Place and Way to Eat)'이 되기 위해 노력하고
+                    있습니다.
+                </p>
+            </div>
+
+            <div class="brandCont02">
+                <h2 class="titleH2">한국 맥도날드의 첫 걸음</h2>
+                <ul>
+                    <li>
+                        <img src="./story_images/brandintro_con_2_1.jpg" alt="88올림픽 사진">
+                        <h3 class="titleH3">1988 서울 올림픽을 개최하며 서울이 세계 속에<br>
+                            우뚝 섰던 그때의 감동을 기억하십니까?</h3>
+                        <p>
+                            159개국의 83,190명의 선수가 참가한 1988 서울 올림픽과 함께 맥도날드가<br>
+                            한국을 찾아왔습니다. 이후 맥도날드는 빅맥, 후렌치 후라이 그리고 해피밀과 같이<br>
+                            세계적으로 유명한 메뉴를 선보이며 한국 소비자들이 선호하는 즐거운 외식 공간으로<br>
+                            사랑을 받고 있습니다.
+                        </p>
+                    </li>
+                    <li>
+                        <img src="./story_images/brandintro_con_2_2.jpg" alt="한국맥도날드 첫개장 사진">
+                        <h3 class="titleH3">한국 첫 맥도날드 매장, 압구정점 그랜드 오프닝</h3>
+                        <p>
+                            맥도날드는 가장 트렌디한 장소로 떠오르는 압구정동에 첫 레스토랑을 열었습니다.<br>
+                            수백 명의 고객들이 레스토랑 앞에 길게 줄을 늘어서며 맥도날드의 성공적인 시작을<br>
+                            함께 축하했고 이를 통해 맥도날드가 한국 시장에서 지속적으로 성장할 수 있다는<br>
+                            잠재력을 보여 주었습니다.
+                        </p>
+                    </li>
+                    <li>
+                        <img src="./story_images/brandintro_con_2_3.jpg" alt="감튀마시쪄">
+                        <h3 class="titleH3">우리는 계속해서 나아갑니다.</h3>
+                        <p>
+                            맥도날드는 지난 31년 동안 국내 협력 업체와 긴밀하게 일하고, 현재 15,000여명의<br>
+                            직원이 근무하는 등 한국 사회의 고용 창출에 기여하고 있습니다. 또한, 30여개 이상의<br>
+                            국내외 비즈니스를 지원해 왔습니다. 맥도날드는 좋은 품질의 제품을 합리적인 가격과<br>
+                            최상의 서비스 제공을 통해 고객이 가장 선호하는 장소로 거듭나기 위해 지속적으로<br>
+                            노력할 것입니다.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="history">
+            <div class="inner">
+                <h4>맥도날드가 걸어온 길</h4>
+                <ul class="tabType01">
+                    <li>
+                        <button type="button" class="history_kr brandintro_on" onclick="history_kr_click()">한국</button>
+                    </li>
+                    <li>
+                        <button type="button" class="history_gl" onclick="history_gl_click()">글로벌</button>
+                    </li>
+                </ul>
+                <!--한국-->
+                <div class="tabCont on" id="tab_year_kr">
+                    <ul class="historyTab ">
+                        <li>
+                            <button class="subtabMn_2020 historyTab_button_on" onclick="tab_kr_2020()">2020</button>
+                        </li>
+                        <li>
+                            <button class="subtabMn_2010" onclick="tab_kr_2010()">2010</button>
+                        </li>
+                        <li>
+                            <button class="subtabMn_2000" onclick="tab_kr_2000()">2000</button>
+                        </li>
+                        <li>
+                            <button class="subtabMn_1990" onclick="tab_kr_1990()">1990</button>
+                        </li>
+                    </ul>
+                    <ul class="historyList on" id="historyList_kr_2020">
+                        <li class="year2022">
+                            <strong>2022</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>‘보성녹돈 버거 페스티벌’ 개최</span>
+                                </div>
+                                <div class="thumbnail">
+                                    <img src="./story_images/brandintro_his_kr_2020_1.png" alt="보성녹돈 페스티벌 전경">
+                                </div>
+                                <div class="text">
+                                    <span>김기원 대표이사 부임<br>
+                                        전국 직영 매장 전기바이크 100% 도입 완료<br>
+                                        ‘마이 맥도날드 리워드’ 프로그램 정식 출시</span>
+                                </div>
+                                <div class="thumbnail">
+                                    <img src="./story_images/brandintro_his_kr_2020_2.png" alt="맥도날드 리워드 출시">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year2021">
+                            <strong>2021</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>한국 최초 탠덤 드라이브스루 출시</span>
+                                </div>
+                                <div class="thumbnail">
+                                    <img src="./story_images/brandintro_his_kr_2020_3.png" alt="드라이브 스루 매장">
+                                </div>
+                                <div class="text">
+                                    <span>'Taste of Korea' 프로젝트 시작<br>
+                                        'The BTS 세트' 출시</span>
+                                </div>
+                                <div class="thumbnail">
+                                    <img src="./story_images/brandintro_his_kr_2020_2.png" alt="BTS세트 광고">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year2020">
+                            <strong>2000</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>미래형 친환경 매장 '고양삼송DT점' 오픈</span>
+                                </div>
+                                <div class="thumbnail">
+                                    <img src="./story_images/brandintro_his_kr_2020_5.png" alt="고양삼송 DT">
+                                </div>
+                                <div class="text">
+                                    <span>아시아 최초 ‘베스트 버거’ 도입으로 버거 맛과 품질<br>
+                                        업그레이드</span>
+                                </div>
+                                <div class="thumbnail">
+                                    <img src="./story_images/brandintro_his_kr_2020_6.png" alt="햄버거 세개">
+                                </div>
+                                <div class="text">
+                                    <span>앤토니 마티네즈 대표이사 부임</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="historyList" id="historyList_kr_2010">
+                        <li class="year2019">
+                            <strong>2019</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>제주, 광주 지역 맥딜리버리 바이크를 친환경 전기 바이크로 전면 교체<br>
+                                        서울시와 전기바이크 교체 업무협약(MOU) 체결</span>
+                                </div>
+                                <div class="thumbnail">
+                                    <img src="./story_images/brandintro_his_kr_2010_1.png" alt="보성녹돈 페스티벌 전경">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year2018">
+                            <strong>2018</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>2018 평창 동계올림픽 공식 후원</span>
+                                </div>
+                                <div class="thumbnail">
+                                    <img src="./story_images/brandintro_his_kr_2010_2.png" alt="드라이브 스루 매장">
+                                </div>
+                        </li>
+                        <li class="year2017">
+                            <strong>2017</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>프리미엄 수제 버거 '시그니처 버거' 전국 런칭</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year2016">
+                            <strong>2016</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>국내 첫 미래형 매장 상암 DMC점 오픈<br>
+                                        슈비버거 슈슈버거 출시<br>
+                                        조주연 대표이사 부임</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year2015">
+                            <strong>2015</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>프리미엄 수제 버거 '시그니처 버거' 첫 출시</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year2014">
+                            <strong>2014</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>1955 버거 출시</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year2013">
+                            <strong>2013</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>
+                                        한국 진출 25주년<br>
+                                        조 엘린저(Joe Erlinger) 대표이사 부임<br>
+                                        ‘행복의 버거’ 캠페인 시작<br>
+                                        ‘아빠와 함께하는 축구교실’ 및 ‘다문화 가정 어린이 축구교실’ 프로그램 시작</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year2012">
+                            <strong>2012</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>새로운 메뉴 플랫폼 행복의 나라 메뉴 출시<br>
+                                        새로운 서비스 플랫폼 맥카페(McCafé) 도입</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year2011">
+                            <strong>2011</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>온라인 축구 매뉴얼 사커 툴킷(Soccer Toolkit) 런칭</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year2010">
+                            <strong>2010</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>NCSI(국가 고객 만족도 지수) QSR(퀵 서비스 레스토랑) 분야 1위 수상<br>
+                                        쿼터 파운더 치즈 버거 국내 소개<br>
+                                        전국 매장에서 무료 와이파이(Wi-fi) 서비스 시작<br>
+                                        션 뉴튼(Sean Newton) 대표이사 부임</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="historyList" id="historyList_kr_2000">
+                        <li class="year2009">
+                            <strong>2009</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>프리미엄 커피 브랜드 맥카페(McCafé) 출시</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year2008">
+                            <strong>2008</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>한국 진출 20주년</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year2007">
+                            <strong>2007</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>맥딜리버리(McDelivery) 서비스 시작<br>
+                                        트랜스 지방(TFA)을 낮춘 후렌치 후라이로 전면 교체<br>
+                                        로날드 맥도날드 어린이 축구 교실 ‘방과후 프로그램’ 시작<br>
+                                        한국RMHC, 양산 부산대학교 어린이 병원에 어린이 병원 학교 설립<br>
+                                        한국RMHC, 소아암 아동의 ‘학교 복귀 및 적응을 위한 통합 프로그램’ 개발<br>
+                                        재단법인 로날드맥도날드하우스 출범</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year2006">
+                            <strong>2006</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>아침 메뉴 맥모닝(McMorning) 국내 소개<br>
+                                        ‘로날드 맥도날드 어린이 축구 교실’ 출범</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year2005">
+                            <strong>2005</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>
+                                        24시간 매장 오픈 서비스 시작<br>
+                                        연대 세브란스 어린이 병원에 ‘어린이 병원 학교’ 설립<br>
+                                        맥런치(McLunch) 메뉴 국내 소개</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year2003">
+                            <strong>2003</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>맥스파이시 상하이 버거(구 상하이 스파이스 치킨 버거) 출시</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="historyList" id="historyList_kr_1990">
+                        <li class="year1997">
+                            <strong>1997</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>
+                                        불고기 버거 출시</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year1995">
+                            <strong>1995</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>100호점, 영동점 오픈</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year1992">
+                            <strong>1992</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>업계 최초로 드라이브 스루(Drive-Thru) 국내 도입</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="year1988">
+                            <strong>1988</strong>
+                            <div class="yearCont">
+                                <div class="thumbnail">
+                                    <img src="./story_images/brandintro_his_kr_1990_1.png"
+                                        alt="맥도날드 1호점, 압구정점 오픈">
+                                </div>
+                                <div class="text">
+                                    <span>맥도날드 1호점, 압구정점 오픈</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!--글로벌-->
+                <div class="tabCont" id="tab_year_gl">
+                    <ul class="historyTab">
+                        <li>
+                            <button class="gl_subtabMn_2000 historyTab_button_on" onclick="tab_gl_2000()">2000</button>
+                        </li>
+                        <li>
+                            <button class="gl_subtabMn_1900" onclick="tab_gl_1900()">1900</button>
+                        </li>
+                    </ul>
+
+                    <ul class="historyList on" id="historyList_gl_2000">
+                        <li class="gl_year2017">
+                            <strong>2017</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>
+                                        우버이츠(UberEATS)와의 맥딜리버리의 글로벌 런칭을 기념하며<br>
+                                        7월 26일을 맥딜리버리 데이로 선정</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year2015">
+                            <strong>2015</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>미국 맥도날드 올데이 브랙퍼스트(All Day Breakfast) 론칭</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year2003">
+                            <strong>2003</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>9월 2일 맥도날드의 첫 글로벌 광고 캠페인 ‘I’m lovin’ it’독일 뮌헨에서 론칭</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year2002">
+                            <strong>2002</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>맥플러리가 캐나다 맥도날드 메뉴에 추가됨</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="historyList" id="historyList_gl_1900">
+                        <li class="gl_year1993">
+                            <strong>1993</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>
+                                        호주 빅토리아에 세계 최초로 맥카페 오픈</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year1990">
+                            <strong>1990</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>1월 31일 러시아 모스크바 최초 맥도날드 레스토랑 오픈<br>
+                                        오픈일 30,000명 이상 방문</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year1984">
+                            <strong>1984</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>1월 14일 창업자 레이 크록 (Ray Kroc) 사망</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year1983">
+                            <strong>1983</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>미국 맥도날드 전체 레스토랑 메뉴에 치킨 맥너겟 추가</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year1975">
+                            <strong>1975</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>에그 맥머핀 메뉴에 추가</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year1974">
+                            <strong>1974</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>필라델피아에 로널드맥도날드 하우스 최초 개원</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year1973">
+                            <strong>1973</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>쿼터 파운더 및 쿼터 파운더 치즈 메뉴에 추가</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year1968">
+                            <strong>1968</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>빅맥 메뉴에 추가</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year1965">
+                            <strong>1965</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>
+                                        피쉬버거 (Filet-O-Fish sandwich) 메뉴에 추가</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year1961">
+                            <strong>1961</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>주식회사 맥도날드 시스템(McDonald’s System, Inc.),<br>
+                                        270만 달러에 맥도날드 운영권 인수<br>
+                                        일리노이 주에 햄버거 대학 설립</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year1956">
+                            <strong>1956</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>프레드 터너(Fred Turner) 사장, 카운터 직으로 맥도날드에 입사</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year1955">
+                            <strong>1955</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>레이 크록, 최초의 맥도날드 매장 오픈</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year1954">
+                            <strong>1954</strong>
+                            <div class="yearCont">
+                                <div class="thumbnail">
+                                    <img src="./story_images/brandintro_his_gl_1900_1.png" alt="레이크룩과 맥도날드형제">
+                                </div>
+                                <div class="text">
+                                    <span>레이 크록, 맥도날드 형제 방문</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year1949">
+                            <strong>1949</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>프렌치 프라이로 포테이토 칩 대체<br>
+                                        밀크셰이크 (Triple Thick Milkshake) 메뉴 추가</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year1948">
+                            <strong>1948</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>메뉴를 9개로 줄이며 레스토랑 재오픈</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="gl_year1940">
+                            <strong>1940</strong>
+                            <div class="yearCont">
+                                <div class="text">
+                                    <span>맥도날드 형제, McDonald’s Bar-B-Q 레스토랑 오픈</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!--맥도날드 역사 탭 끝-->
+            </div>
+        </div>
+    </div>
+<!--brandintro end-->
+<div id="footer"></div>
+    </div>
+    <!--헤더_푸터 스크립트-->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/brandintro_button.js"></script>
+</body>
+
+</html>

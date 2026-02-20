@@ -1,0 +1,226 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  background: #f8f9fa
+    url("https://subtle-patterns.com/patterns/paper_fibers.png");
+  /*f12누르면 에러가 뜸*/
+  color: #2c3e50;
+  /*min-height: 100vh; */
+}
+
+nav > div {
+  width: 610px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav .category {
+  text-align: center;
+  padding: 15px 25px;
+  width: 200px;
+  box-sizing: border-box;
+  font-size: 20px;
+  font-weight: 500;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+nav .category:hover {
+  background-color: #f1f3f5;
+  color: #3498db;
+}
+
+section {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  margin: 20px auto;
+  max-width: 1200px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.books_wrap {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 70px;
+}
+
+section .books {
+  width: 1000px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.books li {
+  padding: 20px;
+  width: 250px;
+
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.books li:hover {
+  transform: translateY(-5px);
+}
+
+.books .bookImg {
+  width: 200px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+section li img {
+  width: 200px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.books .booktitle {
+  font-size: 15px;
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.books .bookauthor {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.books .bookprice {
+  font-size: 14px;
+  color: #3498db;
+  font-weight: 500;
+  display: block;
+}
+
+/*응원메세지 */
+
+.cheering_phrase {
+  width: 1000px;
+  height: 450px;
+
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.phraseList {
+  width: 100%;
+}
+
+.phraseList p {
+  padding: 0px 5px;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.phraseList_wrap {
+  width: 490px;
+
+  display: flex;
+  align-items: center;
+}
+
+#cheertable {
+  font-size: 13.5px;
+}
+#cheertable td {
+  padding: 10px 5px;
+}
+
+.phraseInput {
+  width: 100%;
+}
+
+.phraseInput_wrap {
+  width: 490px;
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.infoText {
+  font-size: 10px;
+  color: rgb(133, 133, 133);
+  margin: 10px;
+}
+
+#name {
+  margin-top: 30px;
+}
+
+.cheertextarea {
+  border-radius: 7px;
+  width: 100%;
+  padding: 7px;
+  box-sizing: border-box;
+
+  margin-top: 10px;
+}
+
+.phraseInput button {
+  width: 100%;
+  padding: 10px;
+  margin: 40px 0px;
+
+  border-radius: 35px;
+  background-color: #14b3ae;
+
+  color: white;
+  font-weight: bolder;
+  font-size: 15px;
+
+  border: none;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  nav > div {
+    width: 210px;
+    flex-direction: column; /* 수직(위 → 아래)으로 정렬 */
+  }
+
+  .category {
+    width: 100%;
+  }
+
+  section .books {
+    width: 100%;
+  }
+
+  .books li {
+    width: 100%;
+    max-width: 240px;
+  }
+}
+
+section .line {
+  height: 0.5px;
+  width: 1000px;
+  background-color: rgb(181, 181, 181);
+  margin: 0 auto;
+}

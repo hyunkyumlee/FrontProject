@@ -1,0 +1,134 @@
+.imgArea {
+    width: 100%;
+    height: 220px;
+    background-image: linear-gradient(rgba(0,0,0,0.5)), url("../html/story/story_images/people.jpg");
+    position: relative;
+    background-size: 100% 100%;
+}
+
+.textBox {
+    position: absolute;
+    left: 180px;
+    bottom: 0px;
+    color: white;
+}
+
+.textBox ul {
+    display: flex;
+    list-style: none;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.textBox ul li {
+    margin-right: 30px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.textBox ul li:first-child:after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 58px;
+    border-radius: 50%;
+    height: 5px;
+    background-color: #ffbc0d;
+    width: 5px;
+}
+
+.textBox ul li:nth-child(2):after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 52px;
+    border-radius: 50%;
+    height: 5px;
+    background-color: #ffbc0d;
+    width: 5px;
+}
+
+.textBox h2 {
+    font-size: 50px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.textBox p {
+    line-height: 1.9;
+    margin-bottom: 15px;
+}
+
+.textBox ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.contArea {
+    padding: 30px 0 60px;
+}
+
+.contArea ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.contArea ul a {
+    display: block;
+    height: 40px;
+    font-size: 20px;
+    line-height: 39px;
+    box-sizing: border-box;
+    text-decoration: none;
+    margin-right: 60px;
+    margin-left: 10px;
+}
+
+.inner {
+    width: 1168px;
+    margin: auto;
+    margin-top: 50px;
+}
+.employ {
+    width: 100%;
+    background-color: #f8f8f8;
+    height: 236px;
+    margin-top: 60px;
+    position: relative;
+}
+.employ::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 300px;
+    width: 160px;
+    height: 245px;
+    background-image: url("../html/story/story_images/worker.png");
+}
+.employ p {
+    padding-left: 500px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.9;
+    padding-top: 80px;
+}
+.promotion {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.promotion p {
+    color: gray;
+    font-weight: 500;
+    padding-bottom: 30px;
+}
+.promotion button {
+    padding: 25px 40px;
+    background-color: #ffbc0d;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}

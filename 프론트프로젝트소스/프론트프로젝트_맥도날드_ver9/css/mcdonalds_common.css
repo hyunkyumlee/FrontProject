@@ -1,0 +1,181 @@
+a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+* {
+    box-sizing: border-box;
+}
+
+body,
+        div,
+        dl,
+        dt,
+        dd,
+        ul,
+        ol,
+        li,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        pre,
+        form,
+        fieldset,
+        input,
+        select,
+        textarea,
+        p,
+        blockquote,
+        th,
+        td,
+        button {
+            margin: 0;
+            padding: 0;
+        }
+
+body,
+        input,
+        select,
+        textarea,
+        button,
+        pre {
+            color: #808080;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.9;
+        }
+
+.contArea {
+    padding: 30px 0 60px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+
+}
+
+ul,
+ol,
+li {
+    list-style: none outside;
+}
+
+a,
+        button {
+            cursor: pointer;
+        }
+
+ .titleDep1 {
+            display: block;
+            color: #292929;
+            font-size: 55px;
+            line-height: 1;
+        }
+
+        .titleDep2 {
+            display: block;
+            color: #292929;
+            margin: 0, 0, 30;
+            font-size: 30px;
+            line-height: 1;
+        }
+
+
+        .titleH2 {
+            font-size: 30px;
+            margin: 30px 0 30px;
+            color: #292929;
+        }
+
+        .titleH3 {
+            font-size: 25px;
+            margin: 0 0 -10px;
+            color: #292929;
+        }
+
+        .titleDep4 {
+            display: block;
+            margin: 50px 0 30px;
+            color: #292929;
+            font-size: 20px;
+            line-height: 1;
+        }
+
+.inner {
+            position: relative;
+            width: 1168px;
+            margin: 0 auto;
+        }
+
+        .visualArea {
+            display: flex;
+            position: relative;
+            min-height: 220px;
+            padding: 10px 0;
+            text-align: left;
+        }
+
+        .visualArea::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, .45);
+        }
+
+        .visualArea .subCapy {
+            min-height: 34px;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .visualArea .titleDep1 {
+            color: inherit;
+            font-size: 50px;
+        }
+
+        .visualArea .navPatch{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .visualArea .inner {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 200px;
+            margin: auto;
+            padding-bottom: 15px;
+            z-index: 2;
+            color: #fff;
+        }
+
+        .navPatch {
+            display: flex;
+            justify-content: left;
+        }
+
+        .navPatch li {
+            margin-right: 5px;
+        }
+
+        .navPatch li+li::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #f5bd43;
+            border-radius: 100%;
+            margin: 0 14px 0 10px;
+            vertical-align: middle;
+        }
+
+        .mcBoard {
+            width: 1168px;
+            height: 488px;
+            margin: 0 auto;
+        }

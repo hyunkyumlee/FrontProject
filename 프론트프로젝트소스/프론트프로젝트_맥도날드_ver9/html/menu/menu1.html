@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu > 버거 > 버거메뉴|맥도날드</title>
+  <link href="../../images/맥도날드_로고.png" rel="shortcut icon" type="image/x-icon">
+  <link rel="stylesheet" href="../../css/menu1.css">
+  <link rel="stylesheet" href="../../css/header.css">
+  <!-- <link rel="stylesheet" href="../../css/fixedTag.css"> -->
+</head>
+<body>
+  <div id="fixedTag"></div>
+  <div class="wrapper">
+    <div id="header"></div>
+
+    <main>
+      <!-- 상단 배너 부분 -->
+      <div class="visual_area">
+        <div class="inner">
+          <h1>버거</h1>
+          <p class="subCopy">빅맥<sub class="reg">®</sub>에서 맥스파이시<sub class="reg">®</sub> 상하이버거까지, <br>주문 즉시 바로 조리해 더욱 맛있는, 맥도날드의 다양한 버거를 소개합니다.</p>
+          <ul class="nav_path">
+            <li><a href="../메인페이지.html">Home</a></li>
+            <li><a href="./menu1.html">Menu</a></li>
+            <li><a href="./menu1.html">버거</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 메인 콘텐츠 영역 -->
+      <div class="content_area">
+        <!-- 단품 세트 선택 -->
+        <div class="set_toggle">
+          <input type="radio" id="btn_single" name="single_set" value="single" checked>
+          <label for="btn_single">단품메뉴</label>
+          <input type="radio" id="btn_set" name="single_set" value="set">
+          <label for="btn_set">세트메뉴</label>
+        </div>
+
+        <!-- 버거 메뉴 단품 -->
+        <div class="menu_single content">
+          <p class="cnt_single before_dot">0 Products</p>
+          <div class="ul_single newUl">
+            
+          </div>
+        </div>
+
+        <!-- 버거 메뉴 세트 -->
+        <div class="menu_set content">
+          <p class="cnt_set before_dot">0 Products</p>
+          <div class="ul_set newUl">
+
+          </div>
+        </div>
+
+        <!-- +버튼 -->
+        <div class="btnMore">
+          <button type="button" class="more" onclick="more()">버거 메뉴 더보기</button>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer"></div>
+  </div>
+
+  <script src="../../js/menu1.js"></script>
+  <script src="../../js/script.js"></script>
+</body>
+</html>

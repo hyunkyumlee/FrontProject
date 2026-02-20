@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Story > 맥도날드 경쟁력 > 궁금한 모든 것을 알려드립니다.|맥도날드</title>
+<link href="../../images/맥도날드_로고.png" rel="shortcut icon" type="image/x-icon">
+<link rel="stylesheet" href="../../css/header.css">
+<style>
+  /* ===== 리셋/기본 ===== */
+  *{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+  }
+  body{
+    background:#fbfbfb;
+    color:#292929;
+  }
+/* =============== [배너 영역] =============== */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background-image: url("./story_images/sub-banner-img1.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* 배경 어둡게 처리하는 오버레이 */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* 배너 내부 컨텐츠 (타이틀 + 내비게이션) */
+.banner-inner {
+  position: relative;
+  z-index: 2;
+  width: 1200px;
+  height: 220px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* 배너 안의 메인 타이틀 */
+.title {
+  font-size: 50px;
+  color: #fff;
+  font-weight: 500;
+  margin: 0;
+  padding: 20px 0;
+}
+
+
+
+/* =============== [브레드크럼 내비게이션] =============== */
+#bannerNav {
+  display: flex;
+  list-style: none;
+  padding-bottom: 20px;
+  margin: 0;
+}
+
+.navPath {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+/* 브레드크럼 사이 구분 점 */
+.navPath li + li::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 10px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: #f5bd43;
+}
+
+/* 브레드크럼 링크 텍스트 */
+.navFont {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  margin: 0 10px;
+  z-index: 999;
+}
+  /* ===== 상단 검색 바 영역 래핑 ===== */
+  .searchWrap{
+    width: 100%;
+    padding: 28px 20px;
+    background:#f5f5f5;
+  }
+  .inner{
+    max-width: 1168px;
+    margin: 0 auto;
+    display:flex;
+    gap: 16px;
+    align-items:center;
+  }
+
+  /* ===== 드롭다운 (레이아웃 고정: absolute 레이어) ===== */
+  .menuWrap{
+    position:relative; 
+    flex: 0 0 220px;
+  }
+  .menuBtn{
+    width: 100%;
+    height: 56px;
+    border:1px solid #d9d9d9;
+    border-radius:28px;
+    background:#fff;
+    display:flex; 
+    align-items:center; 
+    justify-content:space-between;
+    padding:0 18px; 
+    cursor:pointer; 
+    font-weight:700;
+  }
+  .menuBtn .arrow{
+    transition:transform .2s ease;
+  }
+  .menuWrap.open .menuBtn .arrow{
+    transform:rotate(180deg);
+  }
+
+  .dropdown{
+    position:absolute; 
+    top:64px; 
+    left:0; 
+    width: 260px;
+    background:#fff; 
+    border:1px solid #e7e7e7; 
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    overflow:hidden; 
+    display:none;
+  }
+  .menuWrap.open .dropdown{
+    display:block;
+    z-index: 99;
+  }
+
+  .dd-head{
+    padding:14px 18px; font-size:14px; color:#666;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .dd-list{
+    list-style:none; 
+    max-height: 320px; 
+    overflow:auto;
+  }
+  .dd-item button{
+    width:100%; 
+    text-align:left; 
+    padding:16px 18px; 
+    border:0; 
+    background:#fff; 
+    cursor:pointer;
+    font-size:16px; 
+    font-weight:600;
+  }
+  .dd-item + .dd-item button{
+    border-top:1px solid #f6f6f6;
+  }
+
+  .dd-item button:hover{
+    background:#0f5132; 
+    color:#fff;
+  } /* 짙은 초록 호버 */
+  .dd-item.is-active button{
+    background:#0f5132; 
+    color:#fff;
+  }
+
+  /* ===== 검색 입력 + 버튼 ===== */
+  .textArea{
+    flex:1; 
+    display:flex; 
+    align-items:center; 
+    gap:16px;
+  }
+  .textBox{
+    flex:1; 
+    height:56px; 
+    border:1px solid #dbdbdb; 
+    border-radius:28px;
+    padding:0 20px; 
+    font-size:16px; 
+    font-weight:600; 
+    outline:none;
+    background:#fff;
+  }
+  .textBox::placeholder{
+    color:#b6b6b6; 
+    font-weight:500;
+  }
+  .searchButton{
+    height:56px; 
+    min-width:172px; 
+    border:0; 
+    border-radius:28px;
+    background:#ffbc0d; 
+    font-weight:700; 
+    font-size:16px; 
+    cursor:pointer;
+  }
+
+  /* ===== 하단 라디오 필터 (동그라미 스타일) ===== */
+  .filterBar{
+    max-width:1200px;
+    margin:24px auto 0; 
+    padding:0 20px; 
+    display:flex; 
+    gap:36px; 
+    align-items:center;
+    justify-content: center;
+  }
+  .radio{
+    display:inline-flex; 
+    align-items:center; 
+    gap:10px; 
+    cursor:pointer; 
+    user-select:none;
+    font-weight:700;
+  }
+  .radio input{
+    appearance:none; 
+    width:24px; 
+    height:24px; 
+    border-radius:50%;
+    border:2px solid #d9d9d9; 
+    display:inline-block; 
+    position:relative; 
+    outline:none;
+  }
+  .radio input:checked{
+    border-color:#e0a800;
+  }
+  .radio input:checked::after{
+    content:""; 
+    position:absolute; 
+    inset:4px; 
+    border-radius:50%; 
+    background:#e0a800;
+  }
+
+  /* 데모용 여백 */
+  .divider{
+    max-width:1200px; 
+    margin:24px auto; 
+    height:2px; 
+    background:#000;
+    }
+
+    /* =============== [폰트 & 텍스트 스타일] =============== */
+p {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-size: 18px;
+  color: #292929;
+  font-weight: 500;
+  line-height: 1.7;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+
+
+}
+.a1{
+    font-size: 20px;
+    color: #808080;
+    font-weight: 600;
+    margin-right: 50px;
+    padding-bottom: 5px;
+}
+.a1:active{
+    color: #db0007;
+    border-bottom: 1px solid #db0007;
+}
+
+.a2{
+    font-size: 20px;
+    color: #808080;
+    font-weight: 600;
+    margin-right: 50px;
+    padding-bottom: 5px;
+}
+.a2:active{
+    color: #db0007;
+    border-bottom: 1px solid #db0007;
+}
+
+h2{
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.9;
+}
+
+h3{
+    display: block;
+    color: #292929;
+    margin: 100px 0 30px;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 500;
+    text-align: center;
+}
+
+h4{
+    margin: 0 auto;
+    text-align: center;
+    color: #333;
+    width: 570px;
+    padding: 20px 40px;
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 25px;
+    line-height: 1.5em;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+p{
+    display: block;
+    color: #292929;
+    margin: 30px 0 30px;
+    font-size: 16px;
+    line-height: 1.9;
+    font-weight: 500;
+    text-align: center;
+}
+h1.title {
+  font-size: 50px;
+  color: #fff;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+
+.btnArea{
+    width: 1200px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+/* ===== FAQ 아코디언 ===== */
+.faq{max-width:1168px;margin:0 auto;padding:0 20px}
+.faq-list{list-style:none;margin:0;padding:0;border-top:1px solid #e9e9e9}
+.faq-item{border-bottom:1px solid #e9e9e9}
+
+/* 질문 행 */
+.faq-head{
+  width:100%; display:flex; align-items:center; gap:18px;
+  background:#fff; border:0; cursor:pointer; text-align:left;
+  padding:18px 12px;
+}
+.faq-cat{flex:0 0 70px; font-size:14px; color:#666; font-weight:700}
+.faq-q{flex:1; font-size:16px; color:#222; font-weight:600}
+
+/* 오른쪽 + 아이콘 (열리면 - 로 변경) */
+.faq-toggle{flex:0 0 24px; width:24px; height:24px; position:relative}
+.faq-toggle::before,
+.faq-toggle::after{
+  content:""; position:absolute; top:50%; left:50%;
+  width:14px; height:2px; background:#222; transform:translate(-50%,-50%);
+  transition:.2s;
+}
+.faq-toggle::after{transform:translate(-50%,-50%) rotate(90deg)} /* 세로막대 -> + */
+
+/* 답변(처음에는 숨김) */
+.faq-body{
+
+  display:none;
+  background:#f7f7f7;
+  padding:18px;
+  border-radius:6px;
+  line-height:1.8;
+  color:#333;
+}
+
+/* 열림 상태 */
+.faq-item.open .faq-body{display:block}
+.faq-item.open .faq-toggle::after{opacity:0} /* + 아이콘을 - 로 */
+
+</style>
+</head>
+<body>
+  <div id="fixedTag"></div>
+  <div class="wrapper">
+      <div id="header"></div>
+
+  <div class="banner">
+    <div class="overlay"></div> 
+    <div class="banner-inner">
+      <h1 class="title">맥도날드 품질이야기</h1>
+      <h2>우리가 엄격해질수록 버거는 더 맛있어지니까!<br>
+모두의 노력으로 엄격하고 꼼꼼하게 키워진 신선한 식재료가 모여, 마침내 맛있는 맥도날드 버거가 됩니다.</h2>
+      <ul id="bannerNav" class="navPath">
+        <li class="nav"><a href="#" class="navFont">HOME</a></li>
+        <li class="nav"><a href="./faq.html" class="navFont">Story</a></li>
+        <li class="nav"><a href="./faq.html" class="navFont">맥도날드 품질 이야기</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 상단 검색 바 -->
+  <div class="searchWrap">
+    <div class="btnArea">
+        <a href="./restaurantstep1.html" class="a1">농장에서 레스토랑까지</a>
+        <a href="./faq.html" class="a2" style="color: #d40014;">궁금한 모든것을 알려드립니다</a>
+      </div>
+    <div class="inner">
+      
+      <!-- 드롭다운 -->
+      <div class="menuWrap" id="categoryDropdown">
+        <button class="menuBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <span class="label">전체</span>
+          <span class="arrow">▾</span>
+        </button>
+        <div class="dropdown" role="listbox" aria-label="카테고리 선택">
+          <div class="dd-head">전체</div>
+          <ul class="dd-list">
+            <li class="dd-item is-active"><button type="button" data-value="all">전체</button></li>
+            <li class="dd-item"><button type="button" data-value="ingredient">원재료</button></li>
+            <li class="dd-item"><button type="button" data-value="quality">품질관리</button></li>
+            <li class="dd-item"><button type="button" data-value="hygiene">매장위생</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 검색 입력/버튼 -->
+      <div class="textArea">
+        <input type="text" class="textBox" placeholder="검색어를 입력해주세요.">
+        <button class="searchButton" type="button">검색하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 하단 라디오 필터 -->
+  <div class="filterBar" id="filterBar">
+    <label class="radio"><input type="radio" name="cat" value="all" checked><span>전체보기</span></label>
+    <label class="radio"><input type="radio" name="cat" value="ingredient"><span>원재료</span></label>
+    <label class="radio"><input type="radio" name="cat" value="quality"><span>품질관리</span></label>
+    <label class="radio"><input type="radio" name="cat" value="hygiene"><span>매장위생</span></label>
+  </div>
+
+  <div class="divider"></div>
+  
+  <!-- ===== FAQ 시작 ===== -->
+<section class="faq" id="faq">
+  <ul class="faq-list">
+    <!-- 항목 1 -->
+    <li class="faq-item" data-cat="ingredient">
+      <button class="faq-head" type="button" aria-expanded="false" aria-controls="a1">
+        <span class="faq-cat">원재료</span>
+        <span class="faq-q">쇠고기 패티는 어떤 고기를 사용하나요?</span>
+        <span class="faq-toggle" aria-hidden="true"></span>
+      </button>
+      <div class="faq-body" id="a1" role="region" aria-label="답변">
+        호주 청정지역에서 기른 소의 원료육을 사용합니다. 최적의 식감을 내기 위해 지방을 적절히 사용하며,
+        내장 등의 부위는 전혀 사용하지 않습니다. 불가피한 상황 발생 시 일시적으로 원산지가 변동될 수 있습니다.
+      </div>
+    </li>
+
+    <!-- 항목 2 -->
+    <li class="faq-item" data-cat="ingredient">
+      <button class="faq-head" type="button" aria-expanded="false" aria-controls="a2">
+        <span class="faq-cat">원재료</span>
+        <span class="faq-q">햄버거 패티에 방부제나 보존료가 들어가나요?</span>
+        <span class="faq-toggle" aria-hidden="true"></span>
+      </button>
+      <div class="faq-body" id="a2" role="region" aria-label="답변">
+        들어가지 않습니다. 신선한 재료만 사용합니다.
+      </div>
+    </li>
+
+    <!-- 항목 3 -->
+    <li class="faq-item" data-cat="ingredient">
+      <button class="faq-head" type="button" aria-expanded="false" aria-controls="a3">
+        <span class="faq-cat">원재료</span>
+        <span class="faq-q">닭고기는 어느 부위를 사용하나요?</span>
+        <span class="faq-toggle" aria-hidden="true"></span>
+      </button>
+      <div class="faq-body" id="a3" role="region" aria-label="답변">
+        주로 닭가슴살 부위를 사용합니다.
+      </div>
+    </li>
+  </ul>
+</section>
+
+<div class="divider"></div>
+<!-- ===== FAQ 끝 ===== -->
+    <div id="footer"></div>
+  </div>
+  <script src="../../js/script.js"></script>
+
+<script>
+  // ===== 드롭다운 동작 (레이아웃 고정: absolute 레이어) =====
+  (function(){
+    const wrap = document.getElementById('categoryDropdown');
+    const btn  = wrap.querySelector('.menuBtn');
+    const label= btn.querySelector('.label');
+    const list = wrap.querySelector('.dd-list');
+    const items= Array.from(list.querySelectorAll('.dd-item'));
+
+    const open = () => {
+      wrap.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+    };
+    const close = () => {
+      wrap.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+    };
+    btn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      wrap.classList.toggle('open');
+      btn.setAttribute('aria-expanded', wrap.classList.contains('open') ? 'true' : 'false');
+    });
+    // 항목 선택
+    items.forEach(li=>{
+      li.querySelector('button').addEventListener('click', (e)=>{
+        const text = e.currentTarget.textContent.trim();
+        // active 표시
+        items.forEach(x=>x.classList.remove('is-active'));
+        li.classList.add('is-active');
+        // 라벨 변경
+        label.textContent = text;
+        // 닫기
+        close();
+        // 필요 시 여기서 실제 필터링 로직 호출
+        // applyFilter(e.currentTarget.dataset.value);
+      });
+    });
+    // 바깥 클릭 시 닫기
+    document.addEventListener('click', (e)=>{
+      if(!wrap.contains(e.target)) close();
+    });
+    // ESC 닫기
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape') close();
+    });
+  })();
+
+  // ===== FAQ 아코디언 (기본 display:none, 클릭 시 토글) =====
+  (function(){
+    const items = Array.from(document.querySelectorAll('.faq-item'));
+
+    // 한 번에 하나만 열고 싶으면 이 값을 true 로
+    const singleOpen = true;
+
+    function setOpen(item, open){
+      const head = item.querySelector('.faq-head');
+      item.classList.toggle('open', open);
+      head.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    items.forEach(item=>{
+      const head = item.querySelector('.faq-head');
+      head.addEventListener('click', ()=>{
+        const wantOpen = !item.classList.contains('open');
+
+        if(singleOpen){
+          items.forEach(i => setOpen(i, false));
+        }
+        setOpen(item, wantOpen);
+      });
+    });
+  })();
+
+
+</script>
+</body>
+</html>

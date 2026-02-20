@@ -1,0 +1,32 @@
+.fixedTag {
+    position: fixed; 
+    right: 35px;
+    bottom: 50px;
+    z-index: 9;
+}
+
+.fixedTag.end{
+    position: absolute;
+    right: 35px;
+    bottom: 300px;
+    z-index: 9;
+}
+
+.fixedTag a {
+    display: block;
+    background-repeat: no-repeat;
+}
+
+.fixedTag button {
+    width: 50px;
+    height: 50px;
+    margin-top: 40px;
+    margin-left: 15px;
+    background-color: transparent;
+    text-decoration: underline;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}

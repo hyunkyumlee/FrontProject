@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fast-Sub</title>
+
+    <style>
+        /* 
+          [전체 요소 기본 설정]
+          모든 HTML 요소에 대해 기본 마진과 패딩을 제거하고,
+          box-sizing을 border-box로 설정하여 요소의 크기를 계산할 때
+          패딩과 테두리(border)가 포함되도록 합니다.
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 
+          [메인 래퍼 컨테이너 스타일]
+          사이트 전체를 감싸는 영역으로, flexbox를 사용하여 수직 정렬합니다.
+          최소 너비를 1280px로 고정하며, 배경 이미지와 배경색을 함께 지정합니다.
+          텍스트는 가운데 정렬하고 내부 항목도 중앙에 정렬합니다.
+        */
+        .main-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-width: 1280px;
+            /* 최소 너비 고정 */
+            background: url(./image/orderBackground.jpg) no-repeat 50% 0 #89cd2f;
+            text-align: center;
+            align-items: center;
+        }
+
+        /* 
+          [헤더 영역 스타일]
+          페이지 상단의 로고, 메뉴 및 네비게이션 바가 포함된 헤더 영역을 구성합니다.
+          전체 너비를 사용하며 최소 너비와 높이를 지정하고, 상단 테두리 효과를 줍니다.
+        */
+        header {
+            width: 100%;
+            min-width: 1200px;
+            height: 165px;
+            border-top: 5px solid #009223;
+            /* 상단 녹색 테두리 */
+            display: block;
+            position: relative;
+        }
+
+        /* 
+          [로고 스타일]
+          헤더 중앙에 위치한 로고 영역으로, 위치를 absolute로 설정하여 중앙에 정렬합니다.
+        */
+        .logo {
+            height: 40px;
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 
+          [로그인/회원가입 메뉴 스타일]
+          헤더 우측에 위치한 메뉴 영역으로, 로그인, 회원가입 및 글로벌 메뉴 아이콘을 포함합니다.
+        */
+        .log_menu {
+            position: absolute;
+            top: 40px;
+            right: 15%;
+        }
+
+        .log_menu ul {
+            padding: 0px;
+            margin: 0px;
+            height: 30px;
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .log_menu a {
+            text-decoration: none;
+            color: #666;
+        }
+
+        .log_menu li {
+            margin: 5px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .log_menu li::marker {
+            color: #ddd;
+        }
+
+        .signup {
+            list-style: inside;
+        }
+
+        /* 
+          [메인 네비게이션 바 스타일]
+          헤더 아래쪽에 위치하며 메뉴 항목들이 수평으로 배치됩니다.
+          마우스 오버 시 하위 메뉴(드롭다운)가 나타나는 효과를 위해 관련 스타일을 설정합니다.
+        */
+        .main_nav {
+            width: 100%;
+            height: 60px;
+            /* 네비게이션 영역 높이 설정 (하위 메뉴와의 간격 확보를 위함) */
+            position: absolute;
+            top: 65%;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 배경 요소: 하위 메뉴가 나타날 때 배경 흰색 영역을 보여줍니다. */
+        .bg {
+            top: 100%;
+            transform: translateY(-4px);
+            position: absolute;
+            width: 100%;
+            height: 0;
+            background-color: white;
+            border-top: 0.5px solid #ddd;
+            z-index: 995;
+        }
+
+        .main_nav ul {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+
+        .main_nav ul:hover {
+            cursor: pointer;
+        }
+
+        /* 하위 메뉴를 감싸는 래퍼 */
+        .nav_wrap {
+            width: 100%;
+            height: 230px;
+            position: absolute;
+            top: 65%;
+        }
+
+        /* 개별 네비게이션 메뉴 항목 */
+        .nav_item {
+            float: left;
+            width: 165px;
+            font-size: 18px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .nav_item:hover {
+            color: #009223;
+        }
+
+        /* 
+          하위 메뉴(드롭다운) 스타일
+          기본적으로 높이를 0으로 설정하여 숨기고, 오버 시 height가 확장되어 보입니다.
+        */
+        .hidden_menu {
+            overflow: hidden;
+            /* 내용이 넘치면 보이지 않게 함 */
+            width: 100%;
+            height: 0;
+            /* 기본 상태에서는 숨김 */
+            position: absolute;
+            left: 0px;
+            top: -10px;
+            transform: translateY(50px);
+            z-index: 999;
+        }
+
+        .hidden_menu a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .hidden_menu li {
+            margin: 15px 0 15px 0;
+            font-size: 15px;
+            color: #666;
+            letter-spacing: -1px;
+        }
+
+        .hidden_menu li:nth-child(1) {
+            margin-top: 20px;
+        }
+
+        .hidden_menu li:hover {
+            color: #009223;
+            text-decoration: underline;
+        }
+
+        /* 네비게이션 바에 마우스 오버 시 하위 메뉴와 배경의 높이를 확장 */
+        .main_nav:hover .hidden_menu,
+        .main_nav:hover .bg {
+            height: 260px;
+            transition: 0.5s;
+            /* 부드러운 전환 효과 */
+        }
+
+        .main_nav:hover .bg {
+            border-bottom: 0.5px solid #ddd;
+        }
+
+        /* 
+          [타이틀 영역 스타일]
+          페이지 상단에 큰 제목과 부제목을 보여줍니다.
+        */
+        .header-area {
+            padding: 60px 0;
+        }
+
+        .title {
+            color: white;
+            font-size: 80px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            color: white;
+            margin-top: 30px;
+        }
+
+        /* 
+          [주문 진행 단계(스텝) 영역 스타일]
+          매장선택, 메뉴선택, 주문하기 등의 진행 단계 이미지를 표시하는 영역입니다.
+        */
+        .step-section {
+            width: 100%;
+            height: 170px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* 
+          [매장 및 지도 영역 컨테이너]
+          지도와 매장 검색 패널을 감싸는 영역으로, 상단과 하단에 여백을 둡니다.
+        */
+        .store-location-area {
+            margin-top: 80px;
+            margin-bottom: 160px;
+            width: 1180px;
+        }
+
+        /* 
+          [탭 버튼 영역 스타일]
+          '매장찾기', '배달' 등의 탭 버튼을 수평으로 배치합니다.
+        */
+        .tab-btn-area {
+            display: flex;
+        }
+
+        .tab-btn {
+            width: 100%;
+            height: 80px;
+            line-height: 80px;
+            font-size: 22px;
+            background-color: white;
+            box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 현재 활성화된 탭 버튼에 적용되는 스타일 */
+        .active {
+            background-color: rgb(0, 146, 35);
+            color: white;
+        }
+
+        /* 
+          [지도 영역 스타일]
+          매장 위치를 보여주는 지도 이미지가 배경으로 설정된 영역입니다.
+          지도 영역 위에 매장 검색 패널과 매장 상세 정보(마커)가 배치됩니다.
+        */
+        .store-map {
+            position: relative;
+            width: 100%;
+            height: 820px;
+            border: 1px solid black;
+            background: url(./image/map.JPG) center/cover no-repeat;
+        }
+
+        /* 
+          [매장 검색 패널 스타일]
+          지도 왼쪽에 위치하며, 검색 입력창, 검색 결과, 매장 목록, 페이지 네비게이션 등이 포함됩니다.
+        */
+        .store-search-panel {
+            width: 400px;
+            height: 760px;
+            padding: 20px;
+            background-color: white;
+        }
+
+        .store-search-title {
+            padding: 40px 0 20px;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        /* 
+          [검색어 입력 영역 스타일]
+          사용자가 지역이나 매장명을 입력할 수 있는 영역으로,
+          입력창과 검색 아이콘이 포함되어 있습니다.
+        */
+        .store-search-input-container {
+            display: flex;
+            width: 100%;
+            height: 40px;
+            border: 2px solid #ddd;
+            margin: 0 auto;
+        }
+
+        .store-search-input-container>input {
+            width: 100%;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            padding-left: 14px;
+            /* 입력 시 왼쪽 여백 */
+            font-family: sans-serif;
+        }
+
+        /* 검색 아이콘의 위치와 크기를 설정 */
+        .search-icon {
+            position: relative;
+            width: 10%;
+            cursor: pointer;
+        }
+
+        /* 검색 아이콘 좌측 구분선 효과 */
+        .search-icon::before {
+            content: "";
+            position: absolute;
+            left: -1px;
+            top: 10px;
+            width: 2px;
+            height: 17px;
+            background-color: #e5e5e5;
+        }
+
+        /* 아이콘 내부의 이미지(돋보기 아이콘) */
+        .search-icon>div {
+            width: 55%;
+            height: 50%;
+            margin: 9px;
+            background: url(./image/icon_search.png) center/cover no-repeat;
+        }
+
+        /* 
+          [검색 결과 정보 영역 스타일]
+          사용자가 입력한 검색어와 검색 결과 건수를 표시합니다.
+        */
+        .search-info {
+            text-align: left;
+            width: 100%;
+            margin: 0 auto;
+            padding: 10px 0 15px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .search-info p {
+            font-size: 16px;
+        }
+
+        /* 
+          [매장 목록 컨테이너 스타일]
+          검색 결과로 나온 매장 리스트를 담으며, 내부 내용이 많을 경우 스크롤바가 나타납니다.
+        */
+        .store-list-container {
+            width: 100%;
+            height: 68%;
+            border-bottom: 1px solid #e5e5e5;
+            overflow-y: auto;
+        }
+
+        /* 
+          [개별 매장 아이템 스타일]
+          각 매장 정보(이름, 즐겨찾기, 주문하기 버튼, 예상 소요시간, 주소, 연락처 등)를 표시합니다.
+        */
+        .store-item {
+            margin-top: 25px;
+            border-bottom: 1px dotted #ccc;
+            padding-bottom: 15px;
+            text-align: left;
+        }
+
+        /* 매장 아이템 상단 영역: 매장명과 즐겨찾기, 주문하기 버튼을 배치 */
+        .store-item-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .store-item-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .store-item-name>p {
+            font-weight: bold;
+            line-height: 25px;
+        }
+
+        /* 즐겨찾기(별) 아이콘 스타일 */
+        .favorite-icon {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+            background: url(./image/icon_star.png) center/15px no-repeat, #ddd;
+            border-radius: 50%;
+        }
+
+        /* 주문하기 버튼 스타일 */
+        .store-item-order-btn {
+            background-color: green;
+            color: white;
+            border-radius: 13px;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* 매장 아이템 중간 영역: 예상 소요시간을 표시 */
+        .store-item-middle {
+            display: flex;
+            margin-top: 5px;
+        }
+
+        .store-item-middle>p {
+            width: 50%;
+            font-weight: bold;
+        }
+
+        /* 매장 아이템 하단 영역: 주소와 연락처를 표시 */
+        .store-item-bottom {
+            margin-top: 5px;
+            color: rgb(180, 180, 180);
+        }
+
+        .store-item-bottom p {
+            font-weight: bold;
+        }
+
+        /* 
+          [페이지 네비게이션 스타일]
+          매장 목록이 여러 페이지로 나뉠 경우, 이전/다음 버튼(삼각형 아이콘)과 현재 페이지/총 페이지 수를 표시합니다.
+        */
+        .store-list-pagination {
+            margin-top: 15px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        .store-list-pagination button {
+            background-color: #ffffff;
+            border: none;
+            margin: 0 20px;
+            padding: 3px 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* 
+          [매장 상세 정보(마커) 스타일]
+          지도 위에 나타나는 매장 상세 정보(풍선 형태)로, 매장명, 주소, 연락처, 영업시간 등이 표시됩니다.
+          기본적으로 display:none으로 숨겨두며, 특정 이벤트 시 나타납니다.
+        */
+        .store-marker {
+            display: none;
+            position: absolute;
+            top: 113px;
+            left: 658px;
+            width: 300px;
+            height: 260px;
+            background-color: white;
+            border: 1px solid black;
+            flex-direction: column;
+        }
+
+        .store-marker-header {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 55px;
+            background-color: #ffce32;
+        }
+
+        .store-marker-header p {
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 55px;
+            margin: 0 25px;
+        }
+
+        .store-marker-body {
+            flex-direction: row;
+            width: 80%;
+            margin: 20px auto 0;
+        }
+
+        .store-marker-body ul {
+            flex-direction: column;
+        }
+
+        .store-marker-body li {
+            display: flex;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .store-marker-body div {
+            font-size: 15px;
+        }
+
+        .store-marker-body div:nth-child(1) {
+            width: 40%;
+            text-align: left;
+        }
+
+        .store-marker-body div:nth-child(2) {
+            width: 60%;
+            text-align: left;
+        }
+
+        /* 마커 내부 '주문하기' 버튼 스타일 */
+        .store-marker-order-btn {
+            margin: 10px auto 0;
+            background-color: green;
+            width: 50%;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        /* 체크 아이콘(버튼 내 부가 아이콘) */
+        .check-icon {
+            width: 25px;
+            height: 16px;
+            margin-left: 5px;
+            background: url(./image/icon_check.png) center/20px no-repeat;
+        }
+
+        /* 
+          [팝업(주문 방법 선택) 배경 및 박스 스타일]
+          주문하기 버튼 클릭 시 나타나는 팝업으로,
+          어둡게 처리된 오버레이와 팝업 창이 함께 표시됩니다.
+        */
+        .overlay-select-order {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 0%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 9;
+            transition: height 0.3s;
+        }
+
+        .popup-order-method {
+            display: none;
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 460px;
+            border: 1px solid black;
+            background-color: #ffc300;
+            border-radius: 40px;
+            padding: 30px;
+            z-index: 10;
+        }
+
+        .popup-content {
+            height: 100%;
+            background-color: white;
+            border-radius: 40px;
+            padding: 10px;
+        }
+
+        .popup-header {
+            border-bottom: 5px solid #008a12;
+            text-align: center;
+            padding: 30px;
+            margin: 0 30px;
+        }
+
+        .popup-header p,
+        .popup-header span {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .popup-header span {
+            color: #ff850d;
+        }
+
+        .popup-body {
+            display: flex;
+            width: 100%;
+            margin-top: 45px;
+        }
+
+        .order-method-btn {
+            width: 50%;
+            text-align: center;
+        }
+
+        .order-method-btn a {
+            display: block;
+            width: 178px;
+            height: 178px;
+            margin: 0 auto;
+            line-height: 178px;
+            color: white;
+            font-size: 26px;
+            font-weight: 500;
+            background-color: #008a12;
+            border-radius: 30px;
+            text-decoration: none;
+        }
+
+        /* 팝업 닫기(X) 버튼 스타일 */
+        .popup-close-btn {
+            position: absolute;
+            top: 5px;
+            right: -10px;
+            transform: translateX(100%);
+            font-size: 50px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* 호버 시 커서 모양 변경 (각종 버튼 및 메뉴) */
+        .tab-btn:hover,
+        .order-method-btn:hover,
+        .store-item-order-btn:hover,
+        .store-marker-order-btn:hover,
+        .store-marker-header p:nth-child(2):hover {
+            cursor: pointer;
+        }
+
+        /* 
+          [푸터 영역 스타일]
+          페이지 하단에 위치한 회사 정보, 이용약관, SNS 링크 등을 포함한 영역입니다.
+        */
+        footer {
+            background-color: rgb(41, 41, 41);
+            color: rgb(102, 102, 102);
+            position: relative;
+        }
+
+        /* 푸터 상단 메뉴 스타일 */
+        .footer_menu {
+            padding: 5px;
+            border-bottom: 1px solid #3b3b3b;
+        }
+
+        footer ul {
+            list-style: none;
+            display: flex;
+            font-size: 14px;
+        }
+
+        footer li {
+            margin-right: 29px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        footer strong {
+            font-weight: bold;
+            color: #bbbbbb;
+        }
+
+        /* 푸터 하단 정보 스타일 */
+        .footer_info {
+            font-size: 13px;
+            display: flex;
+            padding: 10px 0px 0px 45px;
+        }
+
+        footer p {
+            padding-right: 5px;
+        }
+
+        footer span {
+            font-weight: bold;
+        }
+
+        .copyright {
+            font-size: 13px;
+            margin-top: -10px;
+            padding: 5px 0px 25px 45px;
+        }
+
+        /* SNS 아이콘 스타일 (인스타그램, 페이스북) */
+        .instagram {
+            width: 50px;
+            height: 50px;
+            background-image: url("../footer/imgs/instagram.png");
+            position: absolute;
+            right: 100px;
+            bottom: 20px;
+        }
+
+        .instagram:hover {
+            background-image: url("../footer/imgs/instagram_hover.png");
+        }
+
+        .facebook {
+            width: 50px;
+            height: 50px;
+            background-image: url("../footer/imgs/facebook.png");
+            position: absolute;
+            right: 35px;
+            bottom: 20px;
+        }
+
+        .facebook:hover {
+            background-image: url("../footer/imgs/facebook_hover.png");
+        }
+    </style>
+
+    <!-- JavaScript 영역: 페이지 인터랙션 및 동적 콘텐츠 렌더링 -->
+    <script>
+        /* 
+          [매장 데이터]
+          storeList 배열에 각 매장의 이름, 주소, 연락처, 영업시간, 예상 소요시간 등의 정보를 저장합니다.
+        */
+        const storeList = [
+            {
+                name: "홍대아트",
+                address: "서울특별시 마포구 와우산로 117 102호",
+                phone: "02-336-0522",
+                time: "08:00 ~ 22:00",
+                estimate: "10분"
+            },
+            {
+                name: "강남역점",
+                address: "서울특별시 강남구 강남대로 123 2층",
+                phone: "02-543-1234",
+                time: "09:00 ~ 22:00",
+                estimate: "15분"
+            },
+            {
+                name: "신촌역점",
+                address: "서울시 서대문구 신촌로 77",
+                phone: "02-111-1234",
+                time: "08:00 ~ 21:30",
+                estimate: "12분"
+            },
+            {
+                name: "평양점",
+                address: "평양시 연수로 1",
+                phone: "02-111-1234",
+                time: "08:00 ~ 21:30",
+                estimate: "12분"
+            },
+            {
+                name: "영종도점",
+                address: "인천공항 옆",
+                phone: "02-000-0001",
+                time: "09:00 ~ 22:00",
+                estimate: "14분"
+            },
+            {
+                name: "홍익대",
+                address: "홍대 앞",
+                phone: "051-000-0002",
+                time: "10:00 ~ 21:00",
+                estimate: "18분"
+            }
+        ];
+
+        // 현재 검색 결과를 저장하는 배열 (초기에는 전체 매장 리스트)
+        let currentSearchResults = [...storeList];
+        // 현재 페이지 번호 (페이지네이션에 사용)
+        let currentPage = 1;
+        // 페이지당 표시할 매장 수
+        const itemsPerPage = 3;
+
+
+        // DOMContentLoaded 이벤트: HTML 문서가 모두 로드된 후 실행
+        window.addEventListener("load", () => {
+            // 주문 진행 단계 표시 (현재 단계 1: 매장선택)
+            renderStepIndicator(1);
+
+            // 초기 매장 목록 렌더링 (전체 매장 리스트 표시)
+            renderStoreList(currentSearchResults);
+
+            // 검색 아이콘 클릭 이벤트 등록
+            document.querySelector(".search-icon")
+                .addEventListener("click", onSearch);
+            // 검색 입력창에서 Enter 키 입력 시 검색 실행
+            document.getElementById("searchInput")
+                .addEventListener("keyup", (e) => {
+                    if (e.key === "Enter") onSearch();
+                });
+        });
+
+        /* 
+          [진행 단계(스텝) 표시 함수]
+          currentStep 파라미터에 따라 현재 진행 단계를 이미지와 텍스트로 표시합니다.
+        */
+        function renderStepIndicator(currentStep) {
+
+            // 진행 단계(스텝) 이름 배열
+            const stepNames = ["매장선택", "메뉴선택", "주문하기", ""];
+
+            const stepArea = document.querySelector(".step-section");
+
+            // 총 4단계(인덱스 0~3)를 반복 처리
+            for (let i = 0; i < 4; i++) {
+                // 두 개의 박스 요소 생성: 하나는 이미지용, 하나는 점(포인트)용
+                const box1 = document.createElement("div");
+                const box2 = document.createElement("div");
+                // 스텝 이미지와 포인트 이미지 요소 생성
+                const stepImg = document.createElement("img");
+                const pointImg = document.createElement("img");
+
+                // 이미지 요소 간 간격 설정 (마진)
+                const margin = 10;
+                stepImg.style.marginLeft = `${margin}px`;
+                stepImg.style.marginRight = `${margin}px`;
+                pointImg.style.marginLeft = `${margin}px`;
+                pointImg.style.marginRight = `${margin}px`;
+                pointImg.style.marginTop = "30px";
+
+                // 현재 스텝(현재 단계와 i+1이 일치하면) 활성화된 이미지를 사용
+                if (currentStep === i + 1) {
+                    stepImg.src = `./image/step${i + 1}_on.png`;
+                    stepImg.style.marginRight = "-45px";
+                    stepImg.style.marginTop = "-15px";
+                    // 현재 활성 스텝임을 표시하기 위해 클래스 추가
+                    stepImg.classList.add("onStep");
+                    pointImg.src = `./image/step_point_on.png`;
+                } else {
+                    // 비활성화된 스텝은 기본 이미지 사용
+                    stepImg.src = `./image/step${i + 1}.png`;
+                    // 마지막 스텝에는 점 이미지 표시하지 않음
+                    if (i === 3) {
+                        pointImg.style.display = "none";
+                    } else {
+                        pointImg.src = `./image/step_point_off.png`;
+                    }
+                }
+
+                // 생성한 이미지 요소들을 각 박스에 추가
+                box1.appendChild(stepImg);
+                box2.appendChild(pointImg);
+                // 박스들을 진행 단계 영역에 추가
+                stepArea.appendChild(box1);
+                stepArea.appendChild(box2);
+            }
+
+            // 현재 활성화된 스텝 이미지 요소의 부모 요소를 선택하여 텍스트(단계 및 스텝 이름)를 추가
+            const onStepEl = document.querySelector(".onStep")?.parentElement;
+
+            // 단계 번호와 이름을 표시할 p 태그 생성
+            const stepText1 = document.createElement("p");
+            const stepText2 = document.createElement("p");
+
+            // 현재 스텝 번호와 해당 스텝 이름 설정
+            stepText1.textContent = `STEP${currentStep}`;
+            stepText2.textContent = stepNames[currentStep - 1];
+
+            // 생성한 텍스트 요소들을 현재 스텝 요소에 추가
+            onStepEl.appendChild(stepText1);
+            onStepEl.appendChild(stepText2);
+
+            // 텍스트의 위치와 스타일 지정
+            onStepEl.style.position = "relative";
+            stepText1.style.position = "absolute";
+            stepText1.style.top = "5px";
+            stepText1.style.left = "110px";
+            stepText1.style.fontSize = "16px";
+            stepText1.style.fontWeight = "bold";
+            stepText1.style.color = "#ffc300";
+
+            stepText2.style.position = "absolute";
+            stepText2.style.top = "25px";
+            stepText2.style.left = "110px";
+            stepText2.style.fontSize = "24px";
+            stepText2.style.fontWeight = "bold";
+            stepText2.style.color = "white";
+        }
+
+        /* 
+          [매장 검색 함수 onSearch()]
+          검색 입력창에 입력한 키워드로 매장 이름 또는 주소에 포함되는 매장을 필터링하여 검색 결과를 업데이트합니다.
+          검색어가 없으면 전체 매장 리스트를 표시합니다.
+        */
+        function onSearch() {
+            const keyword = document.getElementById("searchInput").value.trim();
+
+            // 검색어가 없으면 전체 매장 리스트 사용
+            if (!keyword) {
+                document.getElementById("search-place").textContent = "";
+                currentSearchResults = [...storeList]; //storeList 복사본
+            } else {
+                // 매장 이름 또는 주소에 검색어가 포함된 항목만 필터링
+                currentSearchResults = storeList.filter(
+                    (store) =>
+                        store.name.includes(keyword) || store.address.includes(keyword)
+                );
+                // 검색한 키워드를 결과 표시 영역에 업데이트
+                document.getElementById("search-place").textContent = `'${keyword}'`;
+            }
+
+            // 페이지 번호를 1로 초기화 후 매장 목록 다시 렌더링
+            currentPage = 1;
+            renderStoreList(currentSearchResults);
+        }
+
+        /* 
+          [매장 목록 렌더링 함수 renderStoreList()]
+          현재 검색 결과 리스트를 기반으로 페이지네이션에 따라 해당 페이지의 매장 목록을 생성하여 DOM에 추가합니다.
+        */
+        function renderStoreList(list) {
+            const container = document.querySelector(".store-list-container");
+            container.innerHTML = ""; // 기존 매장 목록 초기화
+
+            // 검색 결과 개수를 상단에 표시 (두 번째 span 요소)
+            const resultCount = document.querySelector(".search-info span:nth-of-type(2)");
+            resultCount.textContent = list.length;
+
+            // 검색 결과가 없을 경우
+            if (list.length === 0) {
+                container.innerHTML = "<p>검색 결과가 없습니다.</p>";
+                updatePagination(0, 0); // 페이지 네비게이션 초기화
+                return;
+            }
+
+            // 총 페이지 수 계산 (목록 길이를 페이지당 항목 수로 나눔)
+            const totalPages = Math.ceil(list.length / itemsPerPage); // 반올림
+
+            // 현재 페이지가 총 페이지 수를 초과하면 보정
+            if (currentPage > totalPages) currentPage = totalPages;
+
+            // 현재 페이지에 해당하는 데이터(매장 항목)만 추출
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageData = list.slice(startIndex, endIndex);
+
+            // 각 매장 데이터를 순회하며 DOM 요소를 생성하고 추가
+            pageData.forEach((store) => {
+                // 매장 아이템 컨테이너 생성
+                const storeItem = document.createElement("div");
+                storeItem.className = "store-item";
+
+                // [상단 영역] - 매장명, 즐겨찾기 아이콘, 주문하기 버튼
+                const topArea = document.createElement("div");
+                topArea.className = "store-item-top";
+
+                // 매장명과 즐겨찾기 아이콘을 담을 영역
+                const nameDiv = document.createElement("div");
+                nameDiv.className = "store-item-name";
+
+                const nameP = document.createElement("p");
+                nameP.textContent = store.name;
+
+                const starIcon = document.createElement("div");
+                starIcon.className = "favorite-icon";
+
+                nameDiv.appendChild(nameP);
+                nameDiv.appendChild(starIcon);
+
+                // '주문하기' 버튼 생성 및 클릭 시 매장 상세 정보(마커) 열기 이벤트 연결
+                const orderBtn = document.createElement("div");
+                orderBtn.className = "store-item-order-btn";
+                orderBtn.textContent = "주문하기";
+                orderBtn.addEventListener("click", () => {
+                    openStoreMarker(store);
+                });
+
+                topArea.appendChild(nameDiv);
+                topArea.appendChild(orderBtn);
+
+                // [중간 영역] - 예상 소요시간 표시
+                const middleArea = document.createElement("div");
+                middleArea.className = "store-item-middle";
+                middleArea.innerHTML = `
+                    <p>예상 소요시간</p>
+                    <p>${store.estimate}</p>
+                `;
+
+                // [하단 영역] - 매장 주소와 연락처 표시
+                const bottomArea = document.createElement("div");
+                bottomArea.className = "store-item-bottom";
+                bottomArea.innerHTML = `
+                    <p>${store.address}</p>
+                    <p>${store.phone}</p>
+                `;
+
+                // 상단, 중간, 하단 영역을 매장 아이템 컨테이너에 추가
+                storeItem.appendChild(topArea);
+                storeItem.appendChild(middleArea);
+                storeItem.appendChild(bottomArea);
+
+                // 생성된 매장 아이템을 목록 컨테이너에 추가
+                container.appendChild(storeItem);
+            });
+
+            // 페이지 네비게이션 업데이트 (이전/다음 버튼과 현재 페이지 표시)
+            updatePagination(currentPage, totalPages);
+        }
+
+        /* 
+          [페이지 네비게이션 업데이트 함수 updatePagination()]
+          현재 페이지 번호와 총 페이지 수를 이용하여 페이지 이동 버튼(이전, 다음) 및 페이지 정보를 갱신합니다.
+        */
+        function updatePagination(page, totalPages) {
+            const paginationEl = document.querySelector(".store-list-pagination");
+            if (totalPages === 0) {
+                paginationEl.innerHTML = "";
+                return;
+            }
+
+            // 이전 버튼, 현재 페이지/총 페이지, 다음 버튼을 innerHTML로 구성
+            paginationEl.innerHTML = `
+                <button onclick="goToPage(${page - 1})" ${page === 1 ? "disabled" : ""}>◀</button>
+                <span>${page} / ${totalPages}</span>
+                <button onclick="goToPage(${page + 1})" ${page === totalPages ? "disabled" : ""}>▶</button>
+            `;
+        }
+
+        /* 
+          [페이지 이동 함수 goToPage()]
+          인자로 받은 페이지 번호가 유효한 경우 currentPage 값을 갱신하고 매장 목록을 다시 렌더링합니다.
+        */
+        function goToPage(page) {
+            if (page < 1) return;
+            const totalPages = Math.ceil(currentSearchResults.length / itemsPerPage);
+            if (page > totalPages) return;
+
+            currentPage = page;
+            renderStoreList(currentSearchResults);
+        }
+
+        /* 
+          [매장 상세 정보(마커) 열기 함수 openStoreMarker()]
+          사용자가 '주문하기' 버튼을 클릭하면, 해당 매장의 상세 정보를 지도 위의 마커(풍선) 형태로 표시합니다.
+        */
+        function openStoreMarker(store) {
+            const markerEl = document.querySelector(".store-marker");
+            // 마커 영역을 flex로 전환하여 보이게 함
+            markerEl.style.display = "flex";
+
+            // 매장명, 주소, 연락처, 영업시간 정보를 해당 요소에 업데이트
+            markerEl.querySelector(".store-marker-header p:nth-child(1)").textContent = store.name;
+            markerEl.querySelector(".store-marker-body li:nth-child(1) div:nth-child(2)").textContent = store.address;
+            markerEl.querySelector(".store-marker-body li:nth-child(2) div:nth-child(2)").textContent = store.phone;
+            markerEl.querySelector(".store-marker-body li:nth-child(3) div:nth-child(2)").textContent = store.time;
+        }
+
+        /* 
+          [매장 상세 정보(마커) 닫기 함수 closeStoreMarker()]
+          마커(풍선) 영역을 숨겨서 더 이상 화면에 나타나지 않게 합니다.
+        */
+        function closeStoreMarker() {
+            const markerEl = document.querySelector(".store-marker");
+            markerEl.style.display = "none";
+        }
+
+        /* 
+          [주문 방법 팝업 열기 함수 openOrderMethodPopup()]
+          매장 상세 정보 내 '주문하기' 버튼 클릭 시,
+          어두운 오버레이와 함께 주문 방법을 선택할 수 있는 팝업 창을 표시합니다.
+        */
+        function openOrderMethodPopup() {
+            const overlay = document.querySelector(".overlay-select-order");
+            overlay.style.height = "100%"; // 오버레이 전체 높이로 확장하여 화면 어둡게 처리
+
+            const popup = document.querySelector(".popup-order-method");
+            popup.style.display = "block"; // 팝업 창 표시
+        }
+        /* 
+          [주문 방법 팝업 닫기 함수 closeOrderMethodPopup()]
+          팝업 닫기 버튼 클릭 시 오버레이와 팝업 창을 숨깁니다.
+        */
+        function closeOrderMethodPopup() {
+            const overlay = document.querySelector(".overlay-select-order");
+            overlay.style.height = "0%"; // 오버레이 높이를 0으로 하여 숨김 처리
+
+            const popup = document.querySelector(".popup-order-method");
+            popup.style.display = "none"; // 팝업 창 숨김 처리
+        }
+    </script>
+</head>
+
+<body>
+    <!-- 
+      [헤더 영역]
+      로고, 로그인/회원가입 메뉴, 그리고 상단 네비게이션 바가 포함되어 있습니다.
+    -->
+    <header>
+        <div class="logo">
+            <!-- 로고를 클릭하면 메인 페이지로 이동 -->
+            <a href="../mainpage/html/index.html"><img src="../header/image/logo_w.png" alt="로고"></a>
+        </div>
+        <div class="log_menu">
+            <ul>
+                <li><a href="">로그인</a></li>
+                <li class="signup"><a href="">회원가입</a></li>
+                <li><a href="https://www.subway.com/en-us/"><img src="../header/image/icon_utill_global.png"
+                            alt="글로벌 메뉴"></a></li>
+            </ul>
+        </div>
+        <!-- 상단 네비게이션 바 -->
+        <nav class="main_nav">
+            <!-- 하위 메뉴가 표시될 때 사용할 배경 요소 -->
+            <div class="bg"></div>
+            <ul>
+                <li class="nav_item">메뉴소개
+                    <!-- 하위 메뉴 (드롭다운) -->
+                    <ul class="hidden_menu">
+                        <li><a href="../menuIntro/sandwich/sandwich.html">샌드위치</a></li>
+                        <li><a href="../menu_wrap.etc/menu_wrap(script).html">랩ㆍ기타</a></li>
+                        <li><a href="../menuIntro/salad/salad.html">샐러드</a></li>
+                        <li><a href="../menuIntro/morning/menu_wrap(script).html">아침메뉴</a></li>
+                        <li><a href="../menuIntro/smile/menu_wrap(script).html">스마일 썹</a></li>
+                        <li><a href="../menuIntro/catering/menu_wrap(script).html">단체메뉴</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">이용방법
+                    <ul class="hidden_menu">
+                        <li><a href="../howToPage/html/index.html">써브웨이 이용방법</a></li>
+                        <li><a href="../단체메뉴 이용방법/단체메뉴이용방법.html">단체메뉴 이용방법</a></li>
+                        <li><a href="../ingridientIntro/html/index.html">신선한 재료 소개</a></li>
+                        <li><a href="../groupOrderPage/group-order.html">App 이용방법</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">새소식
+                    <ul class="hidden_menu">
+                        <li><a href="">이벤트ㆍ프로모션</a></li>
+                        <li><a href="">뉴스ㆍ공지사항</a></li>
+                        <li><a href="">광고영상</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">써브웨이
+                    <ul class="hidden_menu">
+                        <li><a href="">써브웨이 역사</a></li>
+                        <li><a href="../써브웨이약속/써브웨이약속.html">써브웨이 약속</a></li>
+                        <li><a href="">샌드위치 아티스트 지원</a></li>
+                        <li><a href="">매장찾기</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">가맹점
+                    <ul class="hidden_menu">
+                        <li><a href="">써브웨이 프랜차이즈</a></li>
+                        <li><a href="">가맹관련 FAQ</a></li>
+                        <li><a href="">가맹신청ㆍ문의</a></li>
+                        <li><a href="../지사안내/지사안내.html">지사안내</a></li>
+                        <li><a href="../사업설명회/사업설명회.html">사업설명회</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">온라인 주문
+                    <ul class="hidden_menu">
+                        <li><a href="../orderPage/order_step1.html">FAST-SUB</a></li>
+                        <li><a href="">HOME-SUB</a></li>
+                        <li><a href="">단체주문</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 
+      [메인 컨테이너 영역]
+      타이틀, 주문 진행 단계, 지도와 매장 찾기 영역이 포함되어 있습니다.
+    -->
+    <div class="main-wrapper">
+        <!-- 타이틀 영역 (페이지 상단 큰 제목과 부제목) -->
+        <div class="header-area">
+            <p class="title">Fast-Sub</p>
+            <p class="subtitle">온라인 주문 후 매장에서 픽업/시식하는 서비스 입니다.</p>
+        </div>
+
+        <!-- 주문 진행 단계 표시 영역 (예: STEP1, 매장선택 등) -->
+        <div class="step-section"></div>
+
+        <!-- 지도와 매장 찾기 영역 -->
+        <div class="store-location-area">
+            <!-- 탭 버튼 영역: 현재 '매장찾기' 탭 활성화 -->
+            <div class="tab-btn-area">
+                <div class="tab-btn active">매장찾기</div>
+            </div>
+
+            <!-- 지도 영역: 배경으로 지도 이미지가 설정됨 -->
+            <div class="store-map">
+                <!-- 
+                  매장 검색 패널 영역
+                  좌측에 위치하며 검색 입력창, 검색 결과, 매장 목록, 페이지 네비게이션 등을 포함합니다.
+                -->
+                <div class="store-search-panel">
+                    <div class="store-search-title">매장찾기</div>
+                    <div class="store-search-input-container">
+                        <input type="text" id="searchInput" placeholder="지역 또는 매장명 입력" />
+                        <div class="search-icon">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="search-info">
+                        <p>
+                            <span id="search-place"></span> 검색 결과
+                            <span>0</span>건
+                        </p>
+                    </div>
+
+                    <!-- 매장 목록이 동적으로 생성되어 삽입될 영역 -->
+                    <div class="store-list-container"></div>
+
+                    <!-- 페이지 네비게이션 (◀ / ▶ 버튼 및 페이지 정보) -->
+                    <div class="store-list-pagination"></div>
+                </div>
+
+                <!-- 
+                  매장 상세 정보(마커) 영역
+                  지도 위에 특정 매장의 상세 정보를 풍선 형태로 표시합니다.
+                -->
+                <div class="store-marker">
+                    <div class="store-marker-header">
+                        <p>매장명</p>
+                        <!-- 닫기 버튼: 클릭 시 매장 마커를 닫음 -->
+                        <p onclick="closeStoreMarker()">⨉</p>
+                    </div>
+                    <div class="store-marker-body">
+                        <ul>
+                            <li>
+                                <div>주소</div>
+                                <div></div>
+                            </li>
+                            <li>
+                                <div>연락처</div>
+                                <div></div>
+                            </li>
+                            <li>
+                                <div>영업시간</div>
+                                <div></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- 마커 내부 '주문하기' 버튼: 클릭 시 주문 방법 팝업 열림 -->
+                    <div class="store-marker-order-btn" onclick="openOrderMethodPopup()">
+                        주문하기
+                        <div class="check-icon"></div>
+                    </div>
+                    <!-- 마커 하단 꼬리(화살표) 표시 -->
+                    <div style="
+                            margin: 0; 
+                            padding: 0; 
+                            width: 0; 
+                            height: 0; 
+                            position: absolute; 
+                            border-width: 24px 10px 0; 
+                            border-style: solid; 
+                            border-color: rgb(0, 128, 40) transparent transparent; 
+                            bottom: -22px; 
+                            left: 140px; 
+                            pointer-events: none;
+                            box-sizing: content-box;
+                        "></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+      [팝업 영역]
+      주문 방법을 선택할 수 있도록 어두운 오버레이와 팝업 창이 함께 표시됩니다.
+    -->
+    <div class="overlay-select-order"></div>
+    <div class="popup-order-method">
+        <div class="popup-content">
+            <div class="popup-header">
+                <p><span>주문 방법</span>을</p>
+                <p>선택해주세요.</p>
+            </div>
+            <div class="popup-body">
+                <!-- 주문 방법 버튼: 방문 포장 -->
+                <div class="order-method-btn">
+                    <a href="./order_step2.html">방문 포장</a>
+                </div>
+                <!-- 주문 방법 버튼: 매장 식사 -->
+                <div class="order-method-btn">
+                    <a href="./order_step2.html">매장 식사</a>
+                </div>
+            </div>
+        </div>
+        <!-- 팝업 닫기 버튼 (X 표시) -->
+        <div class="popup-close-btn" onclick="closeOrderMethodPopup()">⨉</div>
+    </div>
+
+    <!-- 
+      [푸터 영역]
+      회사 정보, 이용약관, 개인정보처리방침, SNS 링크 등을 포함한 페이지 하단 영역입니다.
+    -->
+    <footer>
+        <!-- 푸터 상단 메뉴 영역 -->
+        <div class="footer_menu">
+            <ul>
+                <li><a href="/agreement">이용약관</a></li>
+                <li><a href="/privacy"><strong>개인정보처리방침</strong></a></li>
+                <li><a href="/subcard">써브카드</a></li>
+                <li><a href="https://store.subway.co.kr/">점주관리자</a></li>
+            </ul>
+        </div>
+        <!-- 푸터 하단 정보 영역 -->
+        <div class="footer_info">
+            <p>서울시 서초구 강남대로 535 프린스빌딩 15층</p>
+            <p><span>I</span></p>
+            <p>대표 : INSOO CHO(인수조)</p>
+            <p><span>I</span></p>
+            <p>전화 : 02-797-5036</p>
+            <p><span>I</span></p>
+            <p>사업자등록번호 : 101-84-04143</p>
+        </div>
+        <div class="copyright">
+            SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights Reserved.
+        </div>
+        <!-- SNS 링크 (인스타그램, 페이스북) -->
+        <a class="instagram" href="https://www.instagram.com/subwaykorea"></a>
+        <a class="facebook" href="https://www.facebook.com/Subwaykr"></a>
+    </footer>
+</body>
+
+</html>

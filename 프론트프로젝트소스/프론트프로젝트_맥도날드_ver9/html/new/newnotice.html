@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What’s New > 새로운 소식 | 맥도날드</title>
+    <!--파비콘-->
+    <link href="../../images/맥도날드_로고.png" rel="shortcut icon" type="image/x-icon">
+    <!--외부css-->
+    <link rel="stylesheet" href="../../css/mcdonalds_common.css" />
+    <link rel="stylesheet" href="../../css/header.css">
+    <style>
+
+        .bgStory {
+            color: #fff;
+            background: url("./new_images/newnotice_bgstroy.jpg")50% 50% no-repeat;
+        }
+
+        .visualArea[class*="bgStory"] .inner {
+            height: 170px;
+            margin: 25px auto 0;
+        }
+
+        .count {
+            width: 1168px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .count {
+            display: inline;
+        }
+
+        .count_num {
+            display: inline;
+            color: red;
+        }
+
+        .srch {
+            float: right;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: right;
+            width: 360px;
+            height: 50px;
+            padding: 0px;
+        }
+
+        #searchWord {
+            width: 242px;
+            height: 50px;
+            border: 1px solid #d1d1d1;
+            border-radius: 30px;
+            padding-left: 28px;
+            padding-bottom: 0px;
+            padding-top: 0px;
+            padding-right: 28px;
+            margin: 0px;
+        }
+
+        #btn {
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            margin-left: 8px;
+            border-radius: 50%;
+            border: none;
+            background-image: url("./new_images/btn_search.png");
+            background-position: center;
+            background-size: cover;
+            padding: 0;
+        }
+
+        .bbList {
+            margin-top: 30px;
+            padding: 0px;
+            border-top: 2px solid black;
+            border-bottom: 1px solid black;
+            width: 1168px;
+            height: 405px;
+        }
+
+        .bbList>li.notice {
+            background: #f8f8f8;
+        }
+
+        .bbList>li.first-child {
+            border-top: 0px;
+        }
+
+        .bbList>li {
+            border-top: 1px solid #d1d1d1;
+        }
+
+        .bbList>li>a {
+            display: table;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .notice {
+            width: 1168px;
+            height: 80px;
+            background: #f8f8f8;
+        }
+
+        .bNum {
+            display: table-cell;
+            width: 11%;
+            text-align: center;
+        }
+
+        .ico {
+            display: inline-block;
+            width: 25px;
+            height: 19px;
+            overflow: hidden;
+            text-indent: -9999px;
+            vertical-align: middle;
+            background-image: url("./new_images/ico_notice.png");
+        }
+
+        .bSubject {
+            display: table-cell;
+            padding: 0 45px;
+        }
+
+        .tit {
+            display: inline-block;
+            color: #292929;
+        }
+
+        .bDate {
+            display: table-cell;
+            width: 19%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="fixedTag"></div>
+    <div class="wrapper">
+        <div id="header"></div>
+    <!--nav-->
+            <div class="visualArea bgStory">
+                <div class="inner">
+                    <h1 class="titleDep1" style="margin-top:50p;">새로운 소식</h1>
+                    <ul class="navPatch">
+                        <li>
+                            <a href="../메인페이지.html">Home</a>
+                        </li>
+                        <li><a href="./promotion.html">What's New</a></li>
+                        <li><a href="./newnotice.html">새로운 소식</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--nav종료-->
+    <div class="contArea">
+        <div class="mcBoard">
+            <p class="count">총
+                <b class="count_num">0건</b>의 게시글이 있습니다.
+            </p>
+
+            <div class="srch">
+                <input type="text" id="searchWord" placeholder="검색어를 입력하세요.">
+                <button type="button" id="btn" onclick="search()"></button>
+            </div>
+            <!--notice 리스트-->
+            <ul class="bbList">
+                <li class="notice">
+                    <a href="./newnotice_item_1.html">
+                        <span class="bNum">
+                            <b class="ico">공지</b>
+                        </span>
+                        <span class="bSubject">
+                            <strong class="tit">
+                                맥도날드 '행복의 버거' 캠페인 디지털 영상 공개
+                            </strong>
+                        </span>
+                        <span class="bDate">2024.05.24</span>
+                    </a>
+                </li>
+                <li class="notice">
+                    <a href="./newnotice_item_2.html">
+                        <span class="bNum">
+                            <b class="ico">공지</b>
+                        </span>
+                        <span class="bSubject">
+                            <strong class="tit">
+                                맥딜리버리 서비스를 제공하기 위한 맞춤형 광고 수신 동의 및 거부에 대한 고지
+                            </strong>
+                        </span>
+                        <span class="bDate">2022.10.07</span>
+                    </a>
+                </li>
+                <li class="notice">
+                    <a href="./newnotice_item_3.html">
+                        <span class="bNum">
+                            <b class="ico">공지</b>
+                        </span>
+                        <span class="bSubject">
+                            <strong class="tit">
+                                주방 공개 행사 잠정 중단 안내의 건
+                            </strong>
+                        </span>
+                        <span class="bDate">2020.02.27</span>
+                    </a>
+                </li>
+                <li class="notice">
+                    <a href="./newnotice_item_4.html">
+                        <span class="bNum">
+                            <b class="ico">공지</b>
+                        </span>
+                        <span class="bSubject">
+                            <strong class="tit">
+                                디카페인 커피 미판매 매장 안내
+                            </strong>
+                        </span>
+                        <span class="bDate">2020.01.20</span>
+                    </a>
+                </li>
+                <li class="notice">
+                    <a href="./newnotice_item_5.html">
+                        <span class="bNum">
+                            <b class="ico">공지</b>
+                        </span>
+                        <span class="bSubject">
+                            <strong class="tit">
+                                맥도날드 모바일 쿠폰 사용 제외 매장 안내
+                            </strong>
+                        </span>
+                        <span class="bDate">2019.10.07</span>
+                    </a>
+                </li>
+            </ul>
+            <!--notice 리스트-->
+            </div>
+        </div>
+        <div id="footer"></div>
+    </div>
+    <!--헤더_푸터 스크립트-->
+    <script src="../../js/script.js"></script>
+    <!--검색기능-->
+    <script>
+        function search() {
+            location.href = "newnotice.html"
+        }
+    </script>
+</body>
+
+</html>

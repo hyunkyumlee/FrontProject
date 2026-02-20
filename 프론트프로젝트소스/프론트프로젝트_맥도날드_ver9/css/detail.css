@@ -1,0 +1,372 @@
+:root {
+  --tit-value: 170px;
+  --img-banner-url: '';
+}
+
+/* 상단 배너 영역 */
+.visual_area {
+  display: flex;
+  min-height: 220px;
+  padding: 10px 0;
+  position: relative;
+  color: #292929;
+  text-align: left;
+  box-sizing: border-box;
+  /* background-image: url("../images/bg_visual_menu01.jpg"); */
+  background-image: var(--img-banner-url);
+  background-position: center;
+  background-size: cover;
+}
+
+.visual_area::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0, 0.45);
+}
+
+.visual_area .inner {
+  display: flex;
+  width: 1168px;
+  height: 200px;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  position: relative;
+  color: #fff;
+  z-index: 2;
+}
+
+.visual_area .inner h1 {
+  font-size: 50px;
+  line-height: 1;
+}
+
+.visual_area .inner .subCopy {
+  min-height: 34px;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.visual_area .inner .nav_path {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.visual_area .inner .nav_path li {
+  display: inline-block;
+}
+
+.visual_area .inner .nav_path li a {
+  color: #fff;
+  font-weight: bold;
+}
+
+.visual_area .inner .nav_path li+li::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 14px 0 10px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background-color: #f5bd43;
+}
+
+
+/* 갤러리 영역 */
+.gallery_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 30px 0 60px;
+  /* border: 2px solid black; */
+  border-radius: 5px;
+  position: relative;
+}
+
+.gallery_wrap .title {
+  text-align: center;
+  font-size: 20px;
+}
+
+.gallery_wrap .title .kor_title {
+  margin: 0 0 10px 0;
+  font-size: 35px;
+  font-weight: 500;
+  color: #292929;
+}
+
+.gallery_wrap .title .eng_title {
+  font-size: 20px;
+  color: #808080;
+}
+
+.gallery_wrap .gallery {
+  width: 50%;
+  text-align: center;
+  position: relative;
+}
+
+.gallery_wrap .gallery_img_wrap {
+  display: inline-block;
+  position: relative;
+}
+
+.gallery_wrap .gallery_img_wrap::before {
+  content: '';
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 20px;
+  left: 75px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+}
+
+.gallery_wrap .gallery img {
+  /* width: 100%; */
+  position: relative;
+}
+
+.gallery_wrap .img_info {
+  text-align: center;
+  color: #808080;
+  font-weight: 500;
+}
+
+/* 갤러리 화살표 영역 */
+.gallery_wrap .gallery_btn .arrow {
+  display: flex;
+  width: 110px;
+  height: 110px;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  text-decoration: none;
+  border-radius: 110px;
+  box-sizing: border-box;
+  background-color: #ffbc0d;
+  overflow: hidden;
+
+  transition: width 0.5s;
+}
+
+.gallery_wrap .gallery_btn .arrow:hover {
+  width: 280px;
+}
+
+.gallery_wrap .gallery_btn .arrow.next {
+  right: 50px;
+}
+.gallery_wrap .gallery_btn .arrow.prev {
+  left: 50px;
+}
+
+.gallery_wrap .gallery_btn .arrow.next::after {
+  content: '';
+  position: absolute;
+
+}
+.gallery_wrap .gallery_btn .arrow.prev {
+  left: 50px;
+}
+
+.gallery_wrap .gallery_btn .arrow .arr {
+  display: inline-block;
+  width: 17px;
+  height: 34px;
+  position: absolute;
+  top: 50%;
+  left: 53%;
+  transform: translate(-50%, -50%);
+  text-indent: -9999px;
+  background-image: url("../html/menu/detail_images/bg_arrow.png");
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.gallery_wrap .gallery_btn .arrow:hover .arr {
+  display: none;
+}
+
+.gallery_wrap .gallery_btn .arrow.next .arr {
+  background-position: 0 -34px;
+}
+.gallery_wrap .gallery_btn .arrow.prev .arr {
+  background-position: 0 0;
+}
+
+.gallery_wrap .gallery_btn .arrow .img_outer_wrap {
+  display: none;
+  float: right;
+  width: 110px;
+  height: 110px;
+  
+  background-color: #ffbc0d;
+  z-index: 10;
+}
+
+.gallery_wrap .gallery_btn .arrow.next .img_outer_wrap {
+  margin-left: auto;
+}
+.gallery_wrap .gallery_btn .arrow.prev .img_outer_wrap {
+  margin-right: auto;
+}
+
+.gallery_wrap .gallery_btn .arrow:hover .img_outer_wrap {
+  display: inline-block;
+}
+
+.gallery_wrap .gallery_btn .arrow .img_inner_wrap {
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.gallery_wrap .gallery_btn .arrow.next .img_inner_wrap {
+  right: 10px;
+}
+.gallery_wrap .gallery_btn .arrow.prev .img_inner_wrap {
+  left: 10px;
+}
+
+.gallery_wrap .gallery_btn .arrow .img_inner_wrap img {
+  height: 100px;
+}
+
+.gallery_wrap .gallery_btn .arrow .tit {
+  display: none;
+  width: var(--tit-value);
+  height: 90px;
+  padding: 6px;
+  color: #292929;
+  font-weight: bold;
+  line-height: 1.5;
+  box-sizing: border-box;
+
+  position: absolute;
+  top: 50%;
+  
+  transform: translateY(-50%);
+}
+
+.gallery_wrap .gallery_btn .arrow.next .tit {
+  text-align: right;
+  left: 6px;
+}
+.gallery_wrap .gallery_btn .arrow.prev .tit {
+  text-align: left;
+  right: 6px;
+}
+
+.gallery_wrap .gallery_btn .arrow:hover .tit {
+  display: flex;
+  align-items: center;
+}
+
+
+/* 정보 영역 */
+.info {
+  width: 1168px;
+  min-height: 300px;
+  padding: 0 50px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.big_size {
+  font-size: xx-large;
+  font-weight: normal;
+}
+
+/* 정보 펼치는 버튼 */
+.info .info_btnWrap::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #292929;
+}
+
+.info .info_btnWrap .info_btn {
+  display: flex;
+  width: 100%;
+  height: 90px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 90px;
+  color: #292929;
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
+  justify-content: space-between;
+}
+
+
+/* 영양 정보 테이블 */
+.info .nut_info_tableWrap {
+  display: none;
+}
+.info .nut_info_tableWrap .nut_info_table {
+  /* display: none; */
+  width: 100%;
+  border-bottom: 1px solid #292929;
+  border-collapse: collapse;
+}
+
+.info .nut_info_tableWrap .nut_info_table th {
+  padding: 25px 12px;
+  color: #292929;
+  font-weight: 500;
+}
+
+.info .nut_info_tableWrap .nut_info_table th[scope="row"] {
+  text-align: left;
+  border-right: 1px solid #292929;
+}
+
+.info .nut_info_tableWrap .nut_info_table tr {
+  border-bottom: 1px solid #d1d1d1;
+}
+
+.info .nut_info_tableWrap .nut_info_table tr:last-child {
+  border: none;
+}
+
+.info .nut_info_tableWrap .nut_info_table td {
+  padding: 25px;
+  text-align: center;
+  color: #808080;
+  font-weight: 500;
+  line-height: 1.9;
+}
+
+/* #808080 */
+.info .allergy_info {
+  display: none;
+  padding-top: 35px;
+}
+
+.info .allergy_info .allergy {
+  color: #808080;
+}
+
+.info .origin_info {
+  display: none;
+  padding-top: 35px;
+}
+

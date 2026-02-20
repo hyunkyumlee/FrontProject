@@ -1,0 +1,240 @@
+.menu_wrap {
+
+    background-color: #f2f2f2;
+    margin: 0px auto;
+    
+}
+
+.wrap_intro {
+    height: 380px;
+    background-color: #85c441;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+.menu_list{
+    text-align: center;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+    margin: 0px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.menu_list ul{
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+   
+}
+.menu_list li{
+    padding: 0px 24px;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+.action{
+    color: #ffce32;
+    padding-bottom: 17px;
+    border-bottom: 5px solid #ffce32
+}
+h2 {
+    font-size: 70px;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0 21px 0;
+    margin: auto;
+    /* font-weight: bold;  */
+    opacity: 0; 
+    transform: translateY(100px);
+}
+h2.slideUp {
+    transform: translateX(0px); 
+    opacity: 1; 
+    transition: 2s;
+}
+.wrap_intro p {
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    margin: auto;
+    line-height: 26px;
+    letter-spacing: -0.04em;
+    position: relative;
+    z-index: 9;
+}
+
+.tomato {
+    width: 416px;
+    height: 308px;
+    background-image: url("https://www.subway.co.kr/images/menu/img_visual_wrap01.jpg");
+    position: absolute;
+    left: 70%;
+
+}
+
+.avocado {
+    position: absolute;
+    left: 50%;
+    margin-left: -818px;
+    background: url("https://www.subway.co.kr/images/menu/img_visual_wrap02.jpg") 0 0 no-repeat;
+    width: 670px;
+    height: 303px;
+
+}
+
+.wrap_list {
+    width: 1170px;
+    height: 80px;
+    background-color: #fff;
+    margin: -40px auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+}
+
+
+.wrap_list ul {
+    list-style: none;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+}
+
+.wrap_list li {
+    padding: 0px 24px;
+    font-size: 16px;
+    color: #666666;
+    font-weight: bold;
+}
+
+.wrap_list li:hover {
+    cursor: pointer;
+}
+.menu_wrap .wrap_list li.active {
+    
+    color: #009223; 
+}
+.wrap_all {
+    width: 1170px;
+    margin: 0 auto;
+    padding-top: 60px;
+    padding-bottom: 130px;
+}
+
+.wrap_all ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -30px 0 0 -30px;
+    padding: 0px;
+}
+@keyframes scaleInOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.wrap_all li {
+    width: 370px;
+    height: 330px;
+    background-color: #fff;
+    margin: 30px 0 0 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+img {
+    width: 270px;
+    height: 189px;
+    margin: 20px auto 0;
+    display: block;
+    position: relative;
+    justify-content: center;
+}
+
+.kor {
+    color: #292929;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px 0 7px;
+    display: block;
+
+}
+
+.eng {
+    color: #666666;
+    font-size: 16px;
+    display: block;
+    margin: 0 0 10px;
+    letter-spacing: -0.06em;
+
+}
+
+.wrap_all p {
+    opacity: 0;
+    color: #c5e698;
+    font-size: 16px;
+    letter-spacing: -0.05em;
+    line-height: 24px;
+    word-break: keep-all;
+    margin: 0px auto;
+
+}
+
+.btn_view {
+    position: absolute;
+    top: 200px;
+    left: 165px;
+    background: url("/menuIntro/imgs/icon_view.png");
+    background-repeat: no-repeat;
+    width: 55px;
+    height: 55px;
+    background-size: contain;
+    opacity: 0;
+
+}
+
+.wrap_all li:hover {
+    background-color: #009223;
+}
+
+.wrap_all li:hover img {
+    visibility: hidden;
+}
+
+.wrap_all li:hover .kor,
+.wrap_all li:hover .eng {
+    color: #fff;
+    transform: translateY(-160px);
+    transition: 0.5s;
+}
+
+.wrap_all li:hover p {
+
+    opacity: 1;
+    transform: translateY(-160px);
+    transition: transform 0.5s 0.1s, opacity 0s;
+}
+
+.wrap_all li:hover .btn_view {
+    opacity: 1;
+    transform: translateY(60px) translateX(10px) scale(2);
+    transition: 0.3s;
+    transition-delay: 0.3s;
+}

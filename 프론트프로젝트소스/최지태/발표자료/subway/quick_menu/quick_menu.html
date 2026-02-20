@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*퀵 메뉴*/
+        .quick_menu{
+            background-color: #fff;
+            padding: 40px 0px 37px 0px;
+            font-weight: bold;
+        }
+        ul{
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        li{
+            padding: 0px 80px;
+        }
+        a{
+            text-decoration: none;
+            position: relative;
+        }
+        .qm_img{
+            background: url("/quick_menu/imgs/quickmenu.png");
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            left: -90px;
+            top: -10px;
+        }
+        .qm_name{
+            color: #292929;
+            font-size: 18px;
+            margin-right: 60px;
+            padding-bottom: 5px;
+        }
+        .qm_info{
+            color: #999999;
+            font-size: 13px;
+        }
+        .qm1 .qm_img{
+           background-position: 0px 0px;
+        }
+        .qm2 .qm_img{
+            background-position: -70px 0px;
+        }
+        .qm3 .qm_img{
+            background-position: -140px 0px;
+        }
+        .qm4 .qm_img{
+            background-position: -210px 0px;
+        }
+    </style>
+</head>
+<body>
+    <!--퀵 메뉴-->
+    <div class="quick_menu">
+        <ul>
+            <li class="qm1">
+                <a href="/franchise">
+                    <div class="qm_img"></div>
+                    <div class="qm_name">프랜차이즈</div>
+                    <div class="qm_info">개설절차/투자비용 정보</div>
+                </a>
+            </li>
+            <li class="qm2">
+                <a href="/지사안내/지사안내.html">
+                    <div class="qm_img"></div>
+                    <div class="qm_name">지사안내</div>
+                    <div class="qm_info">수도권/지방 지사정보</div>
+                </a>
+            </li>
+            <li class="qm3">
+                <a href="/tvCommercial">
+                    <div class="qm_img"></div>
+                    <div class="qm_name">광고영상</div>
+                    <div class="qm_info">TV광고/동영상</div>
+                </a>
+            </li>
+            <li class="qm4">
+                <a href="/faq">
+                    <div class="qm_img"></div>
+                    <div class="qm_name">고객문의</div>
+                    <div class="qm_info">자주하는 질문/1:1문의</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

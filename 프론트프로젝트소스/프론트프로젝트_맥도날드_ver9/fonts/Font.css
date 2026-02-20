@@ -1,0 +1,28 @@
+@font-face {
+            font-family: 'Speedee_Bold';
+            src: url('../Font/Speedee_Bold.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+@font-face {
+    font-family: 'malgun';
+    src: url('../Font/malgun.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'malgunbd';
+    src: url('../Font/malgunbd.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Dotum';
+    src: url('../Font/Dotum.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+

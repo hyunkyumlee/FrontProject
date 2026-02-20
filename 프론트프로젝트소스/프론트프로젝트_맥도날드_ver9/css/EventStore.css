@@ -1,0 +1,165 @@
+.imgArea {
+    width: 100%;
+    height: 250px;
+    background-image: url("../html/store/store_images/맥도날드_매점.jpg");
+    position: relative;
+}
+
+.textBox {
+    position: absolute;
+    left: 180px;
+    bottom: 0px;
+    color: white;
+}
+
+.textBox ul {
+    display: flex;
+    list-style: none;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.textBox ul li {
+    margin-right: 30px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.textBox ul li:first-child:after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 58px;
+    border-radius: 50%;
+    height: 5px;
+    background-color: #ffbc0d;
+    width: 5px;
+}
+
+.textBox ul li:nth-child(2):after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 52px;
+    border-radius: 50%;
+    height: 5px;
+    background-color: #ffbc0d;
+    width: 5px;
+}
+
+.textBox h2 {
+    font-size: 50px;
+    font-weight: 500;
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+.textBox ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.contArea {
+    padding: 30px 0 60px;
+}
+
+.contArea ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.contArea ul a {
+    display: block;
+    height: 40px;
+    font-size: 20px;
+    line-height: 39px;
+    box-sizing: border-box;
+    text-decoration: none;
+    margin-right: 60px;
+    margin-left: 10px;
+}
+
+.inner {
+    width: 1168px;
+    margin: auto;
+    margin-top: 50px;
+}
+.banner {
+    width: 780px;
+    height: 156px;
+    margin: auto;
+    background-color: #FEBAA5;
+    border-radius: 156px;
+    text-align: center;
+    position: relative;
+}
+.banner::before{
+    content: "";
+    position: absolute;
+    height: 145px;
+    width: 145px;
+    display: block;
+    background-image: url("../html/store/store_images/아이스크림2.png");
+    background-size: cover;
+    top: 20px;
+    left: -20px;
+    border-radius: 145px;
+}
+.banner h2{
+    padding-top: 40px;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.6;
+    margin-top: 0px;
+    margin-bottom: -10px;
+}
+.banner p{
+    font-size: 20px;
+}
+.storeList {
+    margin-top: 80px;
+}
+.storeList ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    border-top: 2px solid #292929;
+    justify-content: flex-start;
+}
+.storeList ul li {
+    width: 252px;
+    float: left;
+    padding: 50px 0 50px 40px;
+    border-bottom: 1px solid #d1d1d1;
+    font-size: 20px;
+    color: #292929;
+    position: relative;
+}
+.storeList ul li::before{
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-image: url("../images/맥도날드_로고.png");
+    background-position: center;
+    background-size: cover;
+    top: 40%;
+    left: 0;
+}
+.buttonBox {
+    text-align: center;
+}
+.plusList{
+    width: 90px;
+    height: 90px;
+    border-radius: 90px;
+    background-color: #ffbc0d;
+    border: none;
+    margin-top: 50px;
+    cursor: pointer;
+    
+}

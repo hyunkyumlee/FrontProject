@@ -1,0 +1,87 @@
+.imgArea {
+    width: 100%;
+    height: 200px;
+    background-image: linear-gradient(rgba(0,0,0,0.5)), url("../html/story/story_images/story.jpg");
+    background-color: black;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.textBox {
+    position: absolute;
+    left: 170px;
+    bottom: -10px;
+    color: white;
+}
+
+.textBox h1 {
+    font-size: 110px;
+    font-weight: 700;
+    margin: 0;
+}
+.inner {
+    width: 1168px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.mcStory {
+    margin-top: -30px;
+}
+.mcStory h2{
+    font-size: 30px;
+}
+.mcStory p{
+    line-height: 1.9;
+    color: gray;
+    font-weight: 600;
+}
+
+.intro, .respon, .com, .people {
+    display: flex;
+    margin-top: 150px;
+}
+.intro a, .respon a, .com a, .people a {
+    display: block;
+    width: 100px;
+    text-align: center;
+    height: 70px;
+    line-height: 70px;
+    font-size: 15px;
+    padding: 0px 38px;
+    border: none;
+    background-color: #ffbc0d;
+    font-weight: 700;
+    border-radius: 70px;
+    margin-top: 30px;
+    cursor: pointer;
+    color: black;
+}
+.intro a:hover, .respon a:hover, .com a:hover, .people a:hover {
+    text-decoration: none;
+}
+.intro {
+    margin-top: 100px;
+}
+.people {
+    padding-bottom: 50px;
+}
+.text {
+    width: 518px;
+    line-height: 1.9;
+}
+.text h2 {
+    font-size: 40px;
+    line-height: 1.3;
+    margin-top: 0;
+}
+.text h3 {
+    font-size: 20px;
+    line-height: 1.6;
+}
+.text p {
+    font-size: 16px;
+    color: gray;
+    font-weight: 500;
+}

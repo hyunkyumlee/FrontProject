@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story > 맥도날드 품질 이야기 > 농장에서 레스토랑까지|맥도날드</title>
+    <link href="../../images/맥도날드_로고.png" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="../../css/header.css">
+<style>
+
+    /* =============== [기본 설정] =============== */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fbfbfb;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* =============== [메인 콘텐츠 영역 (카드 리스트 섹션)] =============== */
+.contentArea{
+    padding-bottom: 50px;
+}
+.contArea {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  
+  /* border: 1px solid #000; */
+}
+
+.inner {
+  width: 1200px;
+  margin-top: 20px;
+  margin: 0 auto;
+}
+
+#happyList {
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.happy-item {
+  width: 360px;
+  height: 430px;
+  list-style: none;
+  padding: 0;
+  float: left;
+  box-sizing: border-box;
+  margin: 0 20px 40px 0;
+}
+
+/* .item-img {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px 10px 0px 0px;
+} */
+
+.event-textArea {
+  padding: 24px 30px;
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  background: #fff;
+}
+
+/* =============== [배너 영역] =============== */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background-image: url("./story_images/sub-banner-img1.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* 배경 어둡게 처리하는 오버레이 */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* 배너 내부 컨텐츠 (타이틀 + 내비게이션) */
+.banner-inner {
+  position: relative;
+  z-index: 2;
+  width: 1200px;
+  height: 220px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* 배너 안의 메인 타이틀 */
+.title {
+  font-size: 50px;
+  color: #fff;
+  font-weight: 500;
+  margin: 0;
+  padding: 20px 0;
+}
+
+/* =============== [브레드크럼 내비게이션] =============== */
+#bannerNav {
+  display: flex;
+  list-style: none;
+  padding-bottom: 20px;
+  margin: 0;
+}
+
+.navPath {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+/* 브레드크럼 사이 구분 점 */
+.navPath li + li::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 10px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: #f5bd43;
+}
+
+/* 브레드크럼 링크 텍스트 */
+.navFont {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  margin: 0 10px;
+  z-index: 999;
+}
+
+
+/* =======================[본문]======================== */
+
+.competitive .topArea .farmTab li a {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: #fff;
+    width: 350px;
+    height: 60px;
+    border-radius: 50px;
+    background-color: #000;
+    font-size: 20px;
+}
+
+.competitive .topArea {
+    width: 100%;
+}
+
+.competitive .topArea .farmTab {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    padding: 0 40px;
+}
+
+ul.fatmTabtabMntotaltabMn {
+    width: 100%;
+    list-style: none outside;
+    display: flex;
+    margin: 0 auto;
+    justify-content: start;
+}
+
+ul.foodTabSubtabMn{
+    width: 100%;
+    list-style: none outside;
+    display: flex;
+    margin: 0 auto 50px ;
+    justify-content: start;
+}
+
+
+.competitive .topArea .farmTab li {
+    position: relative;
+}
+
+.competitive .topArea .farmTab li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    width: 350px;
+    height: 60px;
+    border-radius: 50px;
+    background-color: #000;
+    font-size: 20px;
+}
+
+    .foodTabSubtabM{
+            margin: 25px 0 45px 0;
+            list-style: none outside;
+}
+    .food{
+        width: 136px;
+        height: 136px;
+        background: no-repeat center;
+        margin-bottom: 50px;
+        
+}
+        
+    .foodCont{
+       display: flex;
+         width: 100%;
+        height: 500px;
+        box-sizing: border-box;
+        margin-bottom: 50px;
+        border-radius: 10px;
+        background-color: #f5f5f5;
+        overflow: hidden;
+        position: relative; 
+        border-radius: 20px;
+    }
+    .foodContImg{
+        width: 100%;
+        height: 100%;
+        background: no-repeat center;
+        background-size: cover;
+        border-radius: 10px;
+        align-content: center;
+        text-align: center;
+        margin-bottom: 100px;
+        
+    }
+    .foodContText{
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    
+
+/* =============== [폰트 & 텍스트 스타일] =============== */
+p {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-size: 18px;
+  color: #292929;
+  font-weight: 500;
+  line-height: 1.7;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+
+
+}
+.a1{
+    font-size: 20px;
+    color: #808080;
+    font-weight: 600;
+    margin-right: 50px;
+    /* padding-bottom: 5px; */
+}
+
+
+.a2{
+    font-size: 20px;
+    color: #808080;
+    font-weight: 600;
+    margin-right: 50px;
+    padding-bottom: 5px;
+    
+}
+
+
+h2{
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.9;
+}
+
+h3{
+    display: block;
+    color: #292929;
+    margin: 100px 0 30px;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 500;
+    text-align: center;
+}
+
+h4{
+    margin: 0 auto;
+    text-align: center;
+    color: #333;
+    width: 570px;
+    padding: 20px 40px;
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 25px;
+    line-height: 1.5em;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+p{
+    display: block;
+    color: #292929;
+    margin: 30px 0 30px;
+    font-size: 16px;
+    line-height: 1.9;
+    font-weight: 500;
+    text-align: center;
+}
+
+h6.a1
+{
+  margin: none;
+}
+h1.title {
+  font-size: 50px;
+  color: #fff;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+
+.btnArea{
+    width: 1200px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    
+}
+
+.active {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    width: 350px;
+    height: 60px;
+    border-radius: 50px;
+    background-color: #000;
+    font-size: 20px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+
+}
+
+.active:active {
+    background-color: #db0007;
+    border-bottom: 1px solid #db0007;
+
+}
+.step{
+    color:#ffea94;
+
+}
+
+.contentArea {
+  background-size: cover;
+  background-position: center;
+}
+.productName{
+  font-weight: 600;
+      display: block;
+    
+    color: #292929;
+        line-height: 1.5;
+    margin-top: 0;
+    font-size: 20px;
+}
+
+</style>
+
+</head>
+<body>
+  <div id="fixedTag"></div>
+  <div class="wrapper">
+      <div id="header"></div>
+
+  <div class="banner">
+    <div class="overlay"></div> 
+    <div class="banner-inner">
+      <h1 class="title">맥도날드 품질이야기</h1>
+      <h2>우리가 엄격해질수록 버거는 더 맛있어지니까!<br>
+모두의 노력으로 엄격하고 꼼꼼하게 키워진 신선한 식재료가 모여, 마침내 맛있는 맥도날드 버거가 됩니다.</h2>
+      <ul id="bannerNav" class="navPath">
+        <li class="nav"><a href="../메인페이지.html" class="navFont">HOME</a></li>
+        <li class="nav"><a href="./restaurantstep1.html" class="navFont">Story</a></li>
+        <li class="nav"><a href="./restaurantstep1.html" class="navFont">맥도날드 품질 이야기</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 버튼위치 -->
+   <div class="contentArea">
+        <div class="inner">
+            <div class="btnArea">
+                <a href="./restaurantstep1.html" class="a1" style="color: #d40014;" >농장에서 레스토랑까지</a>
+                <a href="./faq.html" class="a2">궁금한 모든것을 알려드립니다</a>
+            </div>
+            <iframe width="1258" height="651" src="https://www.youtube.com/embed/u2hLpzjQgvc?si=PEX0alKq2TgmgTed" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="topArea">
+                <ul class="fatmTabtabMntotaltabMn">
+                    <li>
+                        <a href="./restaurantstep1.html" class="active" style="background-color: #d40014;">
+                            <span class="step">STEP 01</span>
+                            "원재료 준비와 가공"
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./restaurantstep2.html"class="active">
+                            <span class="step">STEP 02</span>
+                            "재료 보관부터 배송까지"
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./restaurantstep3.html" class="active" >
+                            <span class="step">STEP 03</span>
+                            "레스토랑에서의 노력"
+                        </a>
+                    </li>
+                </ul>
+                <div class="tabContent">
+                    <div class="contentbox">
+                        <h4>원재료 공급사에서는 좋은 재료를 준비하기 위해 엄격한 기준으로<br>
+원재료 수급 및 가공 과정을 관리하고 있습니다.</h4>
+                    </div>
+                <ul class="foodTabSubtabMn">
+                    <li class="food01" id="food">
+                        <img src="./story_images/btn-img1-1.png" alt=""
+                        class="item-img">
+                    </li>
+                    <li class="food02" id="food">
+                        <img src="./story_images/btn-img2-1.png" alt=""
+                        class="item-img">
+                    </li>
+                    <li class="food03" id="food">
+                        <img src="./story_images/btn-img3-1.png"alt=""class="item-img">
+                    </li>
+                    <li class="food04" id="food">
+                        <img src="./story_images/btn-img4-1.png" alt=""class="item-img">
+                    </li>
+                    <li class="food05" id="food">
+                        <img src="./story_images/btn-img5-1.png" alt=""Class="item-img">
+                    </li>
+                    <li class="food06" id="food">
+                        <img src="./story_images/btn-img6-1.png" alt=""class="item-img">
+                    </li>
+                    <li class="food07" id="food">
+                        <img src="./story_images/btn-img7-1.png" alt=""class="item-img">
+                    </li>
+                    <li class="food08" id="food">
+                        <img src="./story_images/btn-img8-1.png"alt=""class="item-img"> 
+                    </li>
+                </ul>
+
+                    <div class="foodCont">
+                        <div class="foodCont">
+                            <div class="foodContImg
+                            "><img src="./story_images/banner-img1.png" alt="" class="foodContImgs"></div>
+                        </div>
+                        <div class="foodContText">
+                            <h5 class="productName">호주 청정 지역에서 키운 무방부제 & 무첨가제
+100% 순 쇠고기 패티</h5>
+                                <h6 class="a1">맥도날드 쇠고기 패티는 청정한 호주 대자연에서 깨끗함을 먹고 자란 100% 순 쇠고기로만 제조되며, 어떠한 첨가물이나 보존료도 사용되지 않았습니다.
+
+‘쇠고기 이력번호’를 통해 생산부터 유통과정까지 철저하게 확인하고 있으며, 식품 안전 기준에 맞는 쇠고기만을 사용하기 위하여 만전을 기하고 있습니다.</h6>
+                                    <h6 class="a2">쇠고기 이력번호 : 수입쇠고기유통이력관리시스템 사이트에서 조회 시 쇠고기의 세부 정보<br> (수출국 도축장, 가공장, 수출업체 및 도축, 수입일자 등)를 확인할 수 있는 번호</h6>
+                                    <h6 class="a3" style=" color: #d40014;">불가피한 상황 발생시 일시적으로 원산지가 변동될 수 있습니다.</h6>
+                        </div>
+                    </div>
+
+                </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+  </div>
+  <script src="../../js/script.js"></script>
+
+    <script>
+  // ===== 확장자 설정 =====
+  const BG_EXT   = ".jpg";  // 배경 이미지 확장자
+  const BTN_EXT  = ".png";  // 버튼 이미지 확장자
+  const PROD_EXT = ".png";  // 상품 이미지 확장자
+
+  // ===== 요소 캐시 =====
+  const contentAreaEl  = document.querySelector(".contentArea");   // 배경 변경 대상
+  const productImgEl   = document.querySelector(".foodContImgs");  // 메인 상품 이미지
+  const titleEl        = document.querySelector(".foodContText h5");
+  const textEl         = document.querySelector(".foodContText .a1");
+  const scriptEl       = document.querySelector(".foodContText .a2");
+  const etcEl          = document.querySelector(".foodContText .a3");
+  const tabBtnImgs     = document.querySelectorAll(".foodTabSubtabMn .item-img");
+
+  // ===== 데이터 배열 =====
+  // 배경 이미지 파일명 img1~img8 (경로 포함)
+  const backgroundImage = [
+    "./story_images/img1",
+    "./story_images/img2",
+    "./story_images/img3",
+    "./story_images/img4",
+    "./story_images/img5",
+    "./story_images/img6",
+    "./story_images/img7",
+    "./story_images/img8"
+  ];
+
+  // 버튼 비활성/활성 이미지
+  const btnUnactive = [
+    "./story_images/btn-img1-1",
+    "./story_images/btn-img2-1",
+    "./story_images/btn-img3-1",
+    "./story_images/btn-img4-1",
+    "./story_images/btn-img5-1",
+    "./story_images/btn-img6-1",
+    "./story_images/btn-img7-1",
+    "./story_images/btn-img8-1"
+  ];
+
+  const btnAtive = [
+    "./story_images/btn-img1",
+    "./story_images/btn-img2",
+    "./story_images/btn-img3",
+    "./story_images/btn-img4",
+    "./story_images/btn-img5",
+    "./story_images/btn-img6",
+    "./story_images/btn-img7",
+    "./story_images/btn-img8"
+  ];
+
+  // 상품 이미지
+  const productImg = [
+    "./story_images/banner-img1",
+    "./story_images/banner-img2",
+    "./story_images/banner-img3",
+    "./story_images/banner-img4",
+    "./story_images/banner-img5",
+    "./story_images/banner-img6",
+    "./story_images/banner-img7",
+    "./story_images/banner-img8"
+  ];
+
+  // 상품 정보 (앞서 주신 내용)
+  const products = [
+    {
+      title: "호주 청정 지역에서 키운 무방부제 & 무첨가제100% 순 쇠고기 패티",
+      text: `맥도날드 쇠고기 패티는 청정한 호주 대자연에서 깨끗함을 먹고 자란 100% 순 쇠고기로만 제조되며, 어떠한 첨가물이나 보존료도 사용되지 않았습니다.`,
+      script: `‘쇠고기 이력번호’를 통해 생산부터 유통과정까지 철저하게 확인하고 있으며, 식품 안전 기준에 맞는 쇠고기만을 사용하기 위하여 만전을 기하고 있습니다.
+쇠고기 이력번호 : 수입쇠고기유통이력관리시스템 사이트에서 조회 시 쇠고기의 세부 정보(수출국 도축장, 가공장, 수출업체 및 도축, 수입일자 등)를 확인할 수 있는 번호`,
+      etc: `불가피한 상황 발생 시 일시적으로 원산지가 변동될 수 있습니다.`
+    },
+    {
+      title: "신선하고 안전한 재료로 엄선하여 만든 치킨 패티",
+      text: `맥도날드 치킨 패티는 세계보건기구(WHO)에서 공표한 ‘주요항생제리스트(HPCIA)’에 포함된 항생제 및 보존료를 사용하지 않은 안전한 원료육을 사용합니다.`,
+      script: `또한, 맥도날드의 동물 복지 기준(McDonald’s Animal Health & Welfare)을 준수하는 도축장, HACCP & FSSC22000 인증 시설에서 생산됩니다.`,
+      etc: `HPCIA(High Priority Critically Important Antimicrobials) : 사람에게 처방되는 항생제로 동물에게 사용될 경우, 이를 취식하는 사람에게도 영향을 줄 수 있는 항생제`
+    },
+    {
+      title: "매일 구워 배송 받는 햄버거 빵",
+      text: `맥도날드에서 사용하는 햄버거 빵은 국제식품안전협회(GFSI*)의 식품안전시스템 규격 인증을 받은 공장에서, 60년 이상의 햄버거 빵 제조 기술을 바탕으로 생산된 우수한 품질의 제품입니다.`,
+      script: `신선한 햄버거 빵을 고객들께 제공하기 위해, 하루 수요량에 맞춰 국내에서 직접 구운 햄버거 빵을 사용합니다. 레스토랑으로 배송을 받을 때는 외부 오염을 차단한 전용 탑차를 이용하여 신선도를 유지합니다.`,
+      etc: `GFSI(Global Food Safety Initiative) : 소비자에게 안전한 식품의 공급을 보장하기 위해, 식품 안전 관리 시스템의 지속적인 개선을 목표로 설립된 국제식품안전협회.
+맥도날드에서 사용하는 햄버거 빵은 GFSI가 공인하는 식품안전경영시스템(FSSC-22000)을 인증 받은 공장에서 생산되고 있습니다.`
+    },
+    {
+      title: "국제적인 우수 농산물 품질 관리 인증 제조사에서 공급하는 신선한 양상추",
+      text: `농지의 물은 깨끗한지, 토양의 영양분은 풍부한지, 농지 주위에 오염 요소는 없는지 등 양상추가 자라는 농장부터 꼼꼼히 확인합니다.`,
+      script: `수확된 양상추는 꼼꼼한 세척과 살균 과정을 거친 후, 신선함을 유지하기 위해 진공으로 포장하여 가공한 지 2일 이내에 배송센터로 배송됩니다.`,
+      etc: `국제적인 우수 농산물 품질 관리 시스템 인증 : 생산 단계부터 수확·포장 단계까지 물·토양·농약·비료·중금속·미생물 등 위해 요소를 관리하여 안전성을 확보하는 제도.
+자연재해 등 불가피한 경우 발생 시 수급 업체가 변동될 수 있습니다.`
+    },
+    {
+      title: "우리 땅에서 건강하게 키운 100% 국내산 토마토",
+      text: `맥도날드에서는 우리 땅, 좋은 흙에서 정성껏 재배하여 수확한 100% 국내산 토마토만을 사용합니다.`,
+      script: `모든 토마토는 수확 후 식품안전을 위해 꼼꼼하게 세척되며, 이후 살균 공정 과정까지 거쳐 신선하게 공급됩니다.`,
+      etc: ` `
+    },
+    {
+      title: "우수한 품질의 국내산 1+ 등급 계란",
+      text: `표면 세척과 UV 살균 등 꼼꼼한 위생 처리를 거친 뒤, 레스토랑에서 조리될 때까지 7°C 이하로 냉장 보관되어 최상의 신선함을 자랑합니다.`,
+      script: ` `,
+      etc: `자연재해 등 불가피한 경우 발생 시 수급 업체가 변동될 수 있습니다.`
+    },
+    {
+      title: "치즈 본연의 풍미가 가득한 뉴질랜드 방목 치즈",
+      text: `청정 뉴질랜드의 목초지에서 자연 방목으로 풀을 먹인 젖소의 원유로 제조하여 치즈 본연의 풍미가 가득하며, 고소하고 풍부한 맛을 자랑합니다.`,
+      script: ` `,
+      etc: ` `
+    },
+    {
+      title: "HACCP 인증 완료한 시설에서 공급하는 신선한 양파",
+      text: `맥도날드에서 사용되는 모든 양파는 최고의 위생 시설과 관리 하에 꼼꼼한 살균과 세척 과정을 거친 후, 진공 포장을 통해 더욱 안전하고 신선하게 공급됩니다.`,
+      script: ` `,
+      etc: ` `
+    }
+  ];
+
+  // ===== 탭 세팅 함수 =====
+  function setTab(i) {
+    // 1) contentArea 배경 변경
+    contentAreaEl.style.backgroundImage = "url('" + backgroundImage[i] + BG_EXT + "')";
+
+    // 2) 상품 이미지 변경
+    productImgEl.src = productImg[i] + PROD_EXT;
+
+    // 3) 텍스트 변경
+    const p = products[i] || {};
+    titleEl.textContent  = p.title  || "";
+    textEl.textContent   = p.text   || "";
+    scriptEl.textContent = p.script || "";
+    etcEl.textContent    = p.etc    || "";
+
+    // 4) 버튼 이미지 변경
+    tabBtnImgs.forEach((imgEl, idx) => {
+      imgEl.src = (idx === i) ? (btnAtive[idx] + BTN_EXT) : (btnUnactive[idx] + BTN_EXT);
+    });
+  }
+
+  // ===== 클릭 이벤트 바인딩 =====
+  tabBtnImgs.forEach((imgEl, idx) => {
+    imgEl.style.cursor = "pointer";
+    imgEl.addEventListener("click", function (e) {
+      e.preventDefault();
+      setTab(idx);
+    });
+  });
+
+  // ===== 초기 실행 =====
+  document.addEventListener("DOMContentLoaded", function() {
+    setTab(0);
+  });
+</script>
+
+</body>
+</html>

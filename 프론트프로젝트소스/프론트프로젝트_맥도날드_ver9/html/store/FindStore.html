@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Store > 매장찾기 > 지역별 | 맥도날드</title>
+    <link href="../../images/맥도날드_로고.png" rel="shortcut icon" type="image/x-icon">
+    <script src="https://use.fontawesome.com/releases/v7.0.0/js/all.js"></script>
+    <link rel="stylesheet" href="../../css/FindStore.css">
+    <link rel="stylesheet" href="../../css/basicStyle.css">
+    <link rel="stylesheet" href="../../css/header.css">
+</head>
+<body>
+    <div id="fixedTag"></div>
+    <div class="wrapper">
+        <div id="header"></div>
+        <main>
+            <div class="imgArea">
+                <div class="textBox">
+                    <h2>매장찾기</h2>
+                    <ul>
+                        <li><a href="../메인페이지.html">Home</a></li>
+                        <li><a href="./FindStore.html">Store</a></li>
+                        <li><a href="./FindStore.html">매장찾기</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contArea">
+                <ul>
+                    <li><a href="" style="color: red; font-weight: 700; border-bottom: 1px solid red;">지역별</a></li>
+                    <li><a href="./EventStore.html" style="color: gray; font-weight: 500;">이벤트매장</a></li>
+                </ul>
+                <div class="inner">
+                <div class="storeFind">
+                    <ul class="iconList">
+                        <li>
+                            <img src="./store_images/24h.png" alt="">
+                            <p>24시간</p>
+                        </li>
+                        <li>
+                            <img src="./store_images/mcdrive.png" alt="">
+                            <p>맥드라이브</p>
+                        </li>
+                        <li>
+                            <img src="./store_images/mcdilivery.png" alt="">
+                            <p>맥딜리버리</p>
+                        </li>
+                        <li>
+                            <img src="./store_images/mcmorning.png" alt="">
+                            <p>맥모닝</p>
+                        </li>
+                        <li>
+                            <img src="./store_images/park.png" alt="">
+                            <p>주차</p>
+                        </li>
+                        <li>
+                            <img src="./store_images/decafe.png" alt="">
+                            <p>디카페인커피</p>
+                        </li>
+                    </ul>
+                    <div class="search-bar" style="margin-top: 80px;">
+                        <input type="text" placeholder="매장명, 동명, 도로명을 검색해 주세요.">
+                        <button>검색하기</button>
+                    </div>
+                </div>
+                </div>
+                <div class="inner">
+
+                    <div id="map" style="width:100%;height:600px;margin: auto;"></div>
+                    <button style="width: 260px; margin-top: 30px; height: 50px; background-color: #ffbc0d; border-radius: 50px; display: inline-block;
+                    cursor: pointer; border: none; font-size: 16px; font-weight: 500; line-height: 1.9;" class="btnLoc"><i class="fa-solid fa-bullseye"></i>내 위치 중심으로
+                        지도보기</button>
+                </div>
+                <div class="address">
+                    <table>
+                        <thead>
+                            <colgroup>
+                                <col style="width: 16%;">
+                                <col style="width: 16%;">
+                                <col style="width: 34%;">
+                            </colgroup>
+                            <tr style="height: 82px;">
+                                <th scope="col">매장명 / 주소</th>
+                                <th scope="col">전화번호</th>
+                                <th scope="col">영업시간</th>
+                                <th scope="col">이용가능 서비스</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 16%;">
+                                    <dl>
+                                        <dd style="font-size: 20px; cursor: pointer;">한국맥도날드(유)</dd>
+                                        <dd style="font-size: 16px;">서울 종로구 공평동</dd>
+                                        <dd style="font-size: 16px;">서울특별시 종로구 종로51(종로타워)</dd>
+                                    </dl>
+                                </td>
+                                <td style="width: 16%;">1600-5252</td>
+                                <td style="width: 34%;"></td>
+                                <td style="width: 34%;"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="search-box">
+                    <p>검색어를 입력해주세요</p>
+                </div>
+            </div>
+        </main>
+        <div id="footer"></div>
+    </div>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4c35a77b75f72081786d75af62ac2283"></script>
+    <script src="../../js/FindStore.js"></script>
+    <script src="../../js/script.js"></script>
+</body>
+
+</html>

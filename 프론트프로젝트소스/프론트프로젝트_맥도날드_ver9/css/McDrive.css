@@ -1,0 +1,114 @@
+.imgArea {
+    width: 100%;
+    height: 250px;
+    background-image: url("../html/store/store_images/맥도날드_매점.jpg");
+    position: relative;
+}
+
+.textBox {
+    position: absolute;
+    left: 180px;
+    bottom: 0px;
+    color: white;
+}
+
+.textBox ul {
+    display: flex;
+    list-style: none;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.textBox ul li {
+    margin-right: 30px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.textBox ul li:first-child:after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 58px;
+    border-radius: 50%;
+    height: 5px;
+    background-color: #ffbc0d;
+    width: 5px;
+}
+
+.textBox ul li:nth-child(2):after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 52px;
+    border-radius: 50%;
+    height: 5px;
+    background-color: #ffbc0d;
+    width: 5px;
+}
+
+.textBox h2 {
+    font-size: 50px;
+    font-weight: 500;
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+.textBox ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.contArea {
+    padding: 30px 0 60px;
+}
+
+.contArea ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.contArea ul a {
+    display: block;
+    height: 40px;
+    font-size: 20px;
+    line-height: 39px;
+    box-sizing: border-box;
+    text-decoration: none;
+    margin-right: 60px;
+    margin-left: 10px;
+}
+
+.inner {
+    width: 1168px;
+    margin: auto;   
+}
+.inner h2{
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+.inner p {
+    padding-top: 0px;
+    color: gray;
+    font-weight: 500;
+    line-height: 1.6;
+}
+.ytLink {
+    width: 100%;
+    margin-top: 50px;
+}
+.storeBtn {
+    text-align: center;
+    margin-top: 80px;
+}
+.storeBtn button{
+    width: 300px;
+    height: 90px;
+    line-height: 90px;
+    background-color: #ffbc0d;
+    border: none;
+    border-radius: 90px;
+    font-size: 20px;
+    font-weight: 700;
+}

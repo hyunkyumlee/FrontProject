@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+.wrapper {
+  position: relative;
+  min-width: 1280px;
+  height: 100%;
+  padding: 140px 0 230px;
+  margin: 0 auto;
+}
+
+main {
+  /* height: 2000px; */
+  /* background-color: lightslategrey; */
+}

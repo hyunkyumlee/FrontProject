@@ -1,0 +1,204 @@
+.imgArea {
+    width: 100%;
+    height: 250px;
+    background-image: url("../html/store/store_images/맥도날드_매점.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.textBox {
+    position: absolute;
+    left: 180px;
+    bottom: 0px;
+    color: white;
+}
+
+.textBox ul {
+    display: flex;
+    list-style: none;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.textBox ul li {
+    margin-right: 30px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.textBox ul li:first-child:after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 58px;
+    border-radius: 50%;
+    height: 5px;
+    background-color: #ffbc0d;
+    width: 5px;
+}
+
+.textBox ul li:nth-child(2):after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 52px;
+    border-radius: 50%;
+    height: 5px;
+    background-color: #ffbc0d;
+    width: 5px;
+}
+
+.textBox h2 {
+    font-size: 50px;
+    font-weight: 500;
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+.textBox ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.contArea {
+    padding: 30px 0 60px;
+}
+
+.contArea ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-bottom: 40px;
+}
+
+.contArea ul a {
+    display: block;
+    height: 40px;
+    font-size: 20px;
+    line-height: 39px;
+    box-sizing: border-box;
+    text-decoration: none;
+    margin-right: 60px;
+    margin-left: 10px;
+}
+
+.storeFind {
+    text-align: left;
+    background-color: #f8f8f8;
+    padding: 35px 0;
+    /* width: 1280px;
+    margin: 0 auto; */
+}
+
+.storeFind ul {
+    display: flex;
+    list-style: none;
+    /* margin-left: 172px; */
+    justify-content: center;
+}
+
+.storeFind ul li {
+    width: 148px;
+    border: 1px solid #d1d1d1;
+    text-align: center;
+    margin-right: 20px;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.storeFind ul li img {
+    width: 100px;
+    height: 80px;
+    margin-top: 20px;
+}
+
+.storeFind ul li p {
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.storeFind input {
+    /* margin-left: 180px; */
+    width: 900px;
+    padding: 0 40px;
+    font-size: 15px;
+    font-weight: 500;
+    height: 70px;
+    border-radius: 70px;
+}
+
+.storeFind button {
+    width: 172px;
+    padding: 0 38px;
+    line-height: 70px;
+    border-radius: 70px;
+    background-color: #ffbc0d;
+    font-weight: 600;
+    color: #292929;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    display: block;
+    margin-left: 15px;
+}
+
+.search-bar {
+    display: flex;
+}
+
+.inner {
+    width: 1168px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.address table {
+    border-top: 2px solid #292929;
+    border-bottom: 1px solid #292929;
+    margin: auto;
+    width: 1168px;
+    margin-top: 80px;
+    border-collapse: collapse;
+}
+
+.address table thead tr th {
+    height: 82px;
+}
+
+.address table tbody tr td {
+    border-top: 1px solid #292929;
+    border-bottom: 1px solid #292929;
+    ;
+    line-height: 1.9;
+}
+
+.address table tbody tr td:first-child {
+    font-weight: 500;
+    text-align: left;
+}
+
+.address table tbody tr td dl {
+    margin-left: -40px;
+}
+
+.address table tbody tr td:nth-child(2) {
+    text-align: center;
+}
+
+.search-box {
+    width: 1168px;
+    margin: auto;
+    margin-top: 40px;
+    text-align: center;
+    border-top: 2px solid #292929;
+}
+
+.search-box p {
+    display: block;
+    padding: 40px;
+    font-size: 30px;
+    font-weight: 500;
+}

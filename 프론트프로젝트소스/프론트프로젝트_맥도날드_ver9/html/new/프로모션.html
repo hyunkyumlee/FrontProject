@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What's New > 맥도날드 프로모션|맥도날드</title>
+  <link href="../../images/맥도날드_로고.png" rel="shortcut icon" type="image/x-icon">
+  <link rel="stylesheet" href="../../css/header.css">
+  <style>
+/* =============== [기본 설정] =============== */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fbfbfb;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* =============== [메인 콘텐츠 영역 (카드 리스트 섹션)] =============== */
+.contArea {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  /* border: 1px solid #000; */
+}
+
+.inner {
+  width: 1200px;
+  margin-top: 20px;
+}
+
+#happyList {
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.happy-item {
+  width: 360px;
+  height: 430px;
+  list-style: none;
+  padding: 0;
+  float: left;
+  box-sizing: border-box;
+  margin: 0 20px 40px 0;
+}
+
+.happy-item a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.item_img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.event-textArea {
+  height: 130px;
+  padding: 24px 30px;
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  background: #fff;
+}
+
+/* =============== [배너 영역] =============== */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background-image: url("./new_images/newnotice_bgstroy.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* 배경 어둡게 처리하는 오버레이 */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* 배너 내부 컨텐츠 (타이틀 + 내비게이션) */
+.banner-inner {
+  position: relative;
+  z-index: 2;
+  width: 1200px;
+  height: 220px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* 배너 안의 메인 타이틀 */
+.title {
+  font-size: 50px;
+  color: #fff;
+  font-weight: 500;
+  margin: 0;
+  padding: 20px 0;
+}
+
+/* =============== [브레드크럼 내비게이션] =============== */
+#bannerNav {
+  display: flex;
+  list-style: none;
+  padding-bottom: 20px;
+  margin: 0;
+}
+
+.navPath {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+/* 브레드크럼 사이 구분 점 */
+.navPath li + li::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 10px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: #f5bd43;
+}
+
+/* 브레드크럼 링크 텍스트 */
+.navFont {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  margin: 0 10px;
+  z-index: 999;
+}
+
+/* =============== [폰트 & 텍스트 스타일] =============== */
+p {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-size: 18px;
+  color: #292929;
+  font-weight: 500;
+  line-height: 1.7;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #292929;
+  margin: 0;
+  padding: 0;
+
+  /* =============== [버튼] =============== */
+}
+#moreBtn{
+  display: inline-block;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+  overflow: hidden;
+  vertical-align: top;
+  background-image: url("./new_images/btn_more.png");
+  background-size: cover;
+  background-position: center;
+  background-color: #fbfbfb;
+  margin: 30px 0;
+  border: none;
+}
+.btnArea{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+  </style>
+</head>
+
+<body>
+  <div id="fixedTag"></div>
+  <div class="wrapper">
+    <div id="header"></div>
+
+  <div class="banner">
+    <div class="overlay"></div> 
+    <div class="banner-inner">
+      <h1 class="title">맥도날드 프로모션</h1>
+      <ul id="bannerNav" class="navPath">
+        <li class="nav"><a href="../메인페이지.html" class="navFont">HOME</a></li>
+        <li class="nav"><a href="./프로모션.html" class="navFont">What's New</a></li>
+        <li class="nav"><a href="./프로모션.html" class="navFont">맥도날드 프로모션</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="contArea">
+    <div class="inner">
+      <ul id="happyList">
+        <li class="happy-item">
+          <a href="./promotion_detail.html">
+            <img src="./new_images/promotion_item_1.jpg" alt="해피밀 이벤트" class="item_img"/>
+            <div class="event-textArea">
+            <p>
+              맥도날드 X 창녕군<br>창녕 갈릭 버거 마스코트 그리기 대회
+            </p>
+            </div>
+          </a>
+        </li>
+
+        <li class="happy-item">
+          <a href="./promotion_detail.html">
+            <img src="./new_images/promotion_item_2.jpg" alt="해피밀 이벤트" class="item_img"/>
+            <div class="event-textArea">
+            <p>
+              버거 맛도 살리고 우리 농가도 살리는 한국의 맛<br>창녕 갈릭 버거 재출시
+            </p>
+            </div>
+          </a>
+        </li>
+
+        <li class="happy-item">
+          <a href="./promotion_detail.html">
+            <img src="./new_images/promotion_item_3.jpg" alt="해피밀 이벤트" class="item_img"/>
+            <div class="event-textArea">
+            <p>
+              가성비 간식 맛집 해피스낵
+            </p>
+            </div>
+          </a>
+        </li>
+
+        <li class="happy-item">
+          <a href="./promotion_detail.html">
+            <img src="./new_images/promotion_item_4.jpg" alt="해피밀 이벤트" class="item_img"/>
+            <div class="event-textArea">
+            <p>
+              JUST MADE FOR YOU, 당신을 위해 방금 만든 맛있는 버거
+            </p>
+            </div>
+          </a>
+        </li>
+
+        <li class="happy-item">
+          <a href="./promotion_detail.html">
+            <img src="./new_images/promotion_item_5.jpg" alt="해피밀 이벤트" class="item_img"/>
+            <div class="event-textArea">
+            <p>
+              육즙 팡팡! NEW 클래식 핫도그 출시!
+            </p>
+            </div>
+          </a>
+        </li>
+
+        <li class="happy-item">
+          <a href="./promotion_detail.html">
+            <img src="./new_images/promotion_item_6.jpg" alt="해피밀 이벤트" class="item_img"/>
+            <div class="event-textArea">
+            <p>
+              맥드라이브에서 스페셜팩 구매하고 VIP 클럽이 되어보세요!
+            </p>
+            </div>
+          </a>
+        </li>
+
+        <li class="happy-item">
+          <a href="./promotion_detail.html">
+            <img src="./new_images/promotion_item_7.jpg" alt="해피밀 이벤트" class="item_img"/>
+            <div class="event-textArea">
+            <p>
+              겉은 바삭! 속은 쫄깃!<br>겉바속쫄 맥윙
+            </p>
+            </div>
+          </a>
+        </li>
+
+        <li class="happy-item">
+          <a href="./promotion_detail.html">
+            <img src="./new_images/promotion_item_8.jpg" alt="해피밀 이벤트" class="item_img"/>
+            <div class="event-textArea">
+            <p>
+              향긋 달콤 NEW 아이스티 출시!
+            </p>
+            </div>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <div class="btnArea">
+  <button type="button" id="moreBtn"></button>
+</div>
+
+  <div id="footer"></div>
+  </div>
+  <script src="../../js/script.js"></script>
+
+  <script>
+  const promotionUlWrap = document.querySelector('.inner');
+  const promotions = document.querySelectorAll('.inner ul li a');
+
+  promotions.forEach((item, idx) => {
+    const title = item.querySelector('p').innerHTML;
+    const titleJSON = makeQueryString(title);
+    
+    // "./promotion_detail.html?title=&no="
+    item.href = `./promotion_detail.html?title=${titleJSON}&no=${idx}`;
+  })
+
+  // 쿼리스트링 만드는 함수
+  function makeQueryString(items) {
+    // 객체 배열을 JSON 문자열로 변환
+    const jsonString = JSON.stringify(items);
+    // URL에 사용 가능하도록 인코딩
+    const encoded = encodeURIComponent(jsonString);
+    // 최종 URL
+    const url = encoded;
+    return url;
+  }
+
+
+  const happyList = document.getElementById('happyList');
+  const happyItem = happyList.querySelectorAll('.happy-item');
+  const morebtn = document.getElementById('moreBtn');
+
+  let visibleItems = 0;
+  const itemsToShow = 6;
+
+  // 1. 처음에 모든 항목 숨기기
+  for (let i = 0; i < happyItem.length; i++) {
+    happyItem[i].style.display = 'none';
+  }
+
+  // 2. 그 중에서 처음 3개만 보이기
+  for (let i = 0; i < itemsToShow && i < happyItem.length; i++) {
+    happyItem[i].style.display = 'block';
+    visibleItems++;
+  }
+
+  // 3. 더보기 버튼 클릭 시 3개씩 더 보여주기
+  morebtn.addEventListener('click', function () {
+    const totalItems = happyItem.length;
+
+    for (
+      let i = visibleItems;
+      i < visibleItems + itemsToShow && i < totalItems;
+      i++
+    ) {
+      happyItem[i].style.display = 'block';
+    }
+
+    visibleItems += itemsToShow;
+
+    if (visibleItems >= totalItems) {
+      morebtn.style.display = 'none'; // 전부 보이면 버튼 숨김
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+         .bgStory {
+            color: #fff;
+            background: url("../html/new/new_images/newnotice_bgstroy.jpg")50% 50% no-repeat;
+        }
+
+        .bbsTit h2 {
+            width: 75%;
+            font-size: 20px;
+            color: #292929;
+        }
+
+        .bbsTit>* {
+            display: table-cell;
+            vertical-align: bottom;
+        }
+
+        .bbsTit {
+            display: table;
+            width: 100%;
+            padding-bottom: 30px;
+            border-bottom: 5px solid #292929;
+        }
+
+        .date {
+            width: 25%;
+            padding-bottom: 7px;
+            text-align: right;
+        }
+
+        .date em {
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        em {
+            font-style: normal;
+        }
+
+        .date em+em::before {
+            display: inline-block;
+            content: '';
+            width: 1px;
+            height: 18px;
+            margin: -2px 13px 0 15px;
+            background: #d1d1d1;
+            vertical-align: middle;
+        }
+
+        .bbsCon {
+            color: rgb(102, 102, 102);
+            padding: 50px 0 60px;
+            border-bottom: 1px solid #292929;
+            line-height: 1.6;
+        }
+
+        .bbs_title {
+            font-size: 1.2em;
+            font-weight: bold;
+            padding-bottom: 20px;
+            text-align: center;
+        }

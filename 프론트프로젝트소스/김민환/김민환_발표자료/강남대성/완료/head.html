@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            font-size: 62.5%; /* 기본 10px로 설정 (1rem = 10px) */
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            font-size: 1.6rem; /* 16px */
+        }
+
+        /* 헤더 스타일 */
+        header {
+            border-bottom: 0.1rem solid rgba(131, 131, 131, 0.5);
+            height: 10rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2%;
+        }
+
+        /* 로고 */
+        .logo img {
+            width: 12rem;
+            height: auto;
+            max-width: 100%;
+        }
+
+        /* 상단 네비게이션 */
+        .top_ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 1.4rem;
+        }
+
+        .top_ul li {
+            padding: 1rem;
+        }
+
+        /* 디멤버 버튼 */
+        .Demember_wrap {
+            border: 0.3rem solid #00afad;
+            padding: 1rem 2rem;
+            border-radius: 1.6rem;
+        }
+
+        /* 히든메뉴 */
+        .hidden_on {
+            position: relative;
+            padding: 1rem;
+            line-height: 2rem;
+        }
+
+        .hidden {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            list-style: none;
+            border: 0.1rem solid rgba(0, 0, 0, 0.2);
+            border-top: 0.3rem solid #00afad;
+            background-color: white;
+            width: 15rem;
+            text-align: left;
+            padding: 1rem;
+            z-index: 5;
+        }
+
+        .hidden_on:hover .hidden {
+            display: block;
+        }
+
+        .open_fullview ul{
+            list-style: none;
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+            min-width: 15rem;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+
+        .open_fullview img {
+            width: 2rem;
+            max-width: 2.5rem;
+        }
+        /* 상단 우측 버튼 ui */
+        .under_bar:nth-child(1){
+            width: 25px;
+            border-bottom: 0.25rem solid black;
+            margin-bottom: 0.5rem;
+        }
+        .under_bar:nth-child(2){
+            width: 25px;
+            border-bottom: 0.3rem solid black;
+            margin-bottom: 0.5rem;
+        }
+        .under_bar:nth-child(3){
+            width: 25px;
+            border-bottom: 0.5rem solid black;
+        }
+
+        /* 화면이 작아지면 숨김 */
+        @media screen and (max-width: 1000px) {
+            .open_fullview {
+                display: none;
+            }
+        }
+        </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="./images/logo.png" alt="">
+        </div>
+        <div class="header_top">
+            <ul class="top_ul">
+                <li class="hidden_on">학원안내
+                    <ul class="hidden">
+                        <li>대입결과</li>
+                        <li>시설안내</li>
+                        <li>학습콘텐츠</li>
+                        <li>공지사항</li>
+                        <li>주간식단표</li>
+                        <li>학사안내</li>
+                        <li>자주하는 질문</li>
+                        <li>오시는 길</li>
+                    </ul>
+                </li>
+                <li class="hidden_on">선생님소개
+                    <ul class="hidden">
+                        <li>국어</li>
+                        <li>수학</li>
+                        <li>영어</li>
+                        <li>사회탐구</li>
+                        <li>과학탐구</li>
+                        <li>논술</li>
+                    </ul>
+                </li>
+                <li class="hidden_on">모집요강
+                    <ul class="hidden">
+                        <li>주말 의대반</li>
+                        <li>정규시즌</li>
+                        <li>시즌Zero</li>
+                        <li>윈터스쿨 고1,2</li>
+                        <li>윈터스쿨 고3</li>
+                        <li>장학제도</li>
+                    </ul>
+                </li>
+                <li class="hidden_on">온라인접수
+                    <ul class="hidden">
+                        <li>온라인 접수</li>
+                        <li>온라인 접수확인</li>
+                        <li>합격자 발표안내</li>
+                        <li>시간표 확인</li>
+                    </ul>
+                </li>
+                <li class="hidden_on">단과/논술
+                    <ul class="hidden">
+                        <li>단과 [2월]</li>
+                        <li>단과/논술 선생님</li>
+                        <li>수강 신청</li>
+                        <li>환불 신청</li>
+                    </ul>
+                </li>
+                <li class="Demember_wrap"><span class="Demember">디멤버</span> 재원생 전용</li>
+            </ul>
+        </div>
+        <div class="open_fullview">
+            <ul>
+                <li>
+                    <img src="./img/call.PNG" alt="call">
+                </li>
+                <li>02-581-7888</li>
+                <li>|</li>
+                <li>대성학원 전체보기</li>
+                <li class="right_cartegory">
+                    <div class="under_bar"></div>
+                    <div class="under_bar"></div>
+                    <div class="under_bar"></div>
+                </li>
+            </ul>
+        </div>
+
+    </header>
+
+</body>
+</html>

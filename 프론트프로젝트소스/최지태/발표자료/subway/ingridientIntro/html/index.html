@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+        <script>
+            window.addEventListener('scroll', function() {
+                const subHeader = document.querySelector('.sub_header');
+                const subHeaderOffset = subHeader.offsetTop;
+                
+                if (window.scrollY > subHeaderOffset) {
+                    subHeader.classList.add('fixed');
+                } else {
+                    subHeader.classList.remove('fixed');
+                }
+            });
+            
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+            </script>
+
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="../../mainPage/html/index.html"><img src="../image/logo_w.png"></a>
+        </div>
+        <div class="log_menu">
+            <ul>
+                <li><a href="">로그인</a></li>
+                <li class="signup"><a href="">회원가입</a></li>
+                <li><a href="https://www.subway.com/en-us/"><img src="../image/icon_utill_global.png"></a></li>
+            </ul>
+        </div>
+        <nav class="main_nav">
+            <div class="bg"></div>
+            <ul>
+                <li class="nav_item">메뉴소개
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li onclick="window.location.href='../../menuIntro/sandwich/sandwich.html'"><a href=""></a>샌드위치</li>
+                        <li onclick="window.location.href='../../menu_wrap.etc/menu_wrap(script).html'"><a href=""></a>랩ㆍ기타</li>
+                        <li onclick="window.location.href='../../menuIntro/salad/salad.html'"><a href=""></a>샐러드</li>
+                        <li onclick="window.location.href='../../menuIntro/morning/menu_wrap(script).html'"><a href=""></a>아침메뉴</li>
+                        <li onclick="window.location.href='../../menuIntro/smile/menu_wrap(script).html'"><a href=""></a>스마일 썹</li>
+                        <li onclick="window.location.href='../../menuIntro/catering/menu_wrap(script).html'"><a href=""></a>단체메뉴</li>
+                    </ul>
+                </li>
+                <li class="nav_item">이용방법
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li onclick="window.location.href='../../howToPage/html/index.html'"><a href=""></a>써브웨이 이용방법
+                        </li>
+                        <li onclick="window.location.href='../../단체메뉴 이용방법/단체메뉴이용방법.html'"><a href=""></a>단체메뉴 이용방법</li>
+                        <li onclick="window.location.href='../../ingridientIntro/html/index.html'"><a href=""></a>신선한 재료
+                            소개</li>
+                        <li><a href=""></a>App 이용방법</li>
+                    </ul>
+                </li>
+                <li class="nav_item">새소식
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href=""></a>이벤트ㆍ프로모션</li>
+                        <li><a href=""></a>뉴스ㆍ공지사항</li>
+                        <li><a href=""></a>광고영상</li>
+                    </ul>
+                </li>
+                <li class="nav_item">써브웨이
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href=""></a>써브웨이 역사</li>
+                        <li onclick="window.location.href='../../써브웨이약속/써브웨이약속.html'"><a href=""></a>써브웨이 약속</li>
+                        <li><a href=""></a>샌드위치 아티스트 지원</li>
+                        <li><a href=""></a>매장찾기</li>
+                    </ul>
+                </li>
+                <li class="nav_item">가맹점
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href=""></a>써브웨이 프랜차이즈</li>
+                        <li><a href=""></a>가맹관련 FAQ</li>
+                        <li><a href=""></a>가맹신청ㆍ문의</li>
+                        <li><a href=""></a>지사안내</li>
+                        <li onclick="window.location.href='../../사업설명회/사업설명회.html'"><a href=""></a>사업설명회</li>
+                    </ul>
+                </li>
+                <li class="nav_item">온라인 주문
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li onclick="window.location.href='../../orderPage/order_step1.html'"><a href=""></a>FAST-SUB</li>
+                        <li><a href=""></a>HOME-SUB</li>
+                        <li><a href=""></a>단체주문</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="ing_wrap">
+        <div class="sub_header">
+            
+            <ul>
+                <li>
+                    <a href="../../howToPage/html/index.html">써브웨이 이용방법</a>
+                    
+                </li>
+                <li><a href="../../단체메뉴 이용방법/단체메뉴이용방법.html">단체메뉴 이용방법</a></li>
+                <li>
+                    <a href="../../ingridientIntro/html/index.html" style="color:#009223">신선한 재료 소개</a>
+                    <div class="underline"></div>
+                </li>
+                <li><a href="../../fastSubPage/fast-sub.html">APP 이용방법</a></li>
+            </ul>
+            <div class="top" onclick="scrollToTop()"></div>
+        </div>
+        
+        <header class="ing_header">
+            
+            <div class="ing_main_theme">
+                <p class=ing_main_theme_title>Fresh Ingriedients</p>
+                <p class="ing_main_theme_des">매장에서 직접 굽는 빵, 엄격하게 세척하는 야채의 신선함, <br>써브웨이만의 다양한 소스를 맛보세요</p>
+            </div>
+            <div class="ing_main_theme_img_box">
+                <img src="../image/mainTheme/img_visual_fresh01.jpg" class="ing_main_theme_img1">
+                <img src="../image/mainTheme/img_visual_fresh02.jpg" class="ing_main_theme_img2">
+                <img src="../image/mainTheme/img_visual_fresh03.jpg" class="ing_main_theme_img3">
+            </div>
+            <div class="ing_body_nav">
+                <ul>
+                    <li>All</li>
+                    <li class="ing_body_nav_ybar" style="cursor: default;">ㅣ</li>
+                    <li>빵</li>
+                    <li class="ing_body_nav_ybar" style="cursor: default;">ㅣ</li>
+
+                    <li>야채</li>
+                    <li class="ing_body_nav_ybar" style="cursor: default;">ㅣ</li>
+
+                    <li>치즈</li>
+                    <li class="ing_body_nav_ybar" style="cursor: default;">ㅣ</li>
+
+                    <li>소스</li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="ing_body_list">
+            <ul class="ing_body_list_box">
+
+            </ul>
+            
+
+
+        </div>
+        <div class="ing_text_btn">영양 성분표 보기 <span style="color: yellow;">></span></div>
+    </div>
+    <!--퀵 메뉴-->
+    <div class="quick_menu">
+        <ul>
+            <li class="qm1">
+                <a href="/franchise">
+                    <div class="qm_img"></div>
+                    <div class="qm_name">프랜차이즈</div>
+                    <div class="qm_info">개설절차/투자비용 정보</div>
+                </a>
+            </li>
+            <li class="qm2">
+                <a href="/지사안내/지사안내.html">
+                    <div class="qm_img"></div>
+                    <div class="qm_name">지사안내</div>
+                    <div class="qm_info">수도권/지방 지사정보</div>
+                </a>
+            </li>
+            <li class="qm3">
+                <a href="/tvCommercial">
+                    <div class="qm_img"></div>
+                    <div class="qm_name">광고영상</div>
+                    <div class="qm_info">TV광고/동영상</div>
+                </a>
+            </li>
+            <li class="qm4">
+                <a href="/faq">
+                    <div class="qm_img"></div>
+                    <div class="qm_name">고객문의</div>
+                    <div class="qm_info">자주하는 질문/1:1문의</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--푸터-->
+    <footer>
+        <!--상단-->
+        <div class="footer_menu">
+            <ul>
+                <li><a href="/agreement">이용약관</a></li>
+                <li><a href="/privacy"><strong>개인정보처리방침</strong></a></li>
+                <li><a href="/subcard">써브카드</a></li>
+                <li><a href="https://store.subway.co.kr/">점주관리자</a></li>
+            </ul>
+        </div>
+        <!--하단-->
+        <div class="footer_info">
+            <p>서울시 서초구 강남대로 535 프린스빌딩 15층</p>
+            <p><span>I</span></p>
+            <p>대표 : INSOO CHO(인수조)</p>
+            <p><span>I</span></p>
+            <p>전화 : 02-797-5036</p>
+            <p><span>I</span></p>
+            <p>사업자등록번호 : 101-84-04143</p>
+        </div>
+        <div class="copyright">SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights Reserved.</div>
+        <!--sns-->
+        <a class="instagram" href="https://www.instagram.com/subwaykorea"></a>
+        <a class="facebook" href="https://www.facebook.com/Subwaykr"></a>
+    </footer>
+    <script>
+
+        // 데이터 배열 생성
+        const breadData = [
+            {
+                image: "../image/bread/img_recipe_b01.jpg",
+                title: "허니 오트",
+                engTitle: "Honey Oat",
+                calories: "235 kcal",
+                description: "고소한 위트빵에 오트밀 가루를 묻혀 고소함과 식감이 두배로 <br> (허니오트의 칼로리는 15cm 기준입니다)",
+                id: "bread"
+            },
+            {
+                image: "../image/bread/하티.jpg",
+                title: "하티",
+                engTitle: "Hearty Italian",
+                calories: "210 kcal",
+                description: "부드러운 화이트빵에 옥수수가루를 묻혀<br> 걷은 바삭하고 고소하면 속은 부드럽게 <br>(하티의 칼로리는 15cm 기준입니다.)",
+                id: "bread"
+            },
+            {
+                image: "../image/bread/위트.jpg",
+                title: "위트",
+                engTitle: "Wheat",
+                calories: "192 kcal",
+                description: "여러가지 곡물로 만들어 건강하고 고소한 맛의 곡물빵 <br> (위트의 칼로리는 15cm 기준입니다.)",
+                id: "bread"
+            },
+            {
+                image: "../image/bread/파마산오레가노.jpg",
+                title: "파마산 오레가노",
+                engTitle: "Parmesan Oregano",
+                calories: "213 kcal",
+                description: "부드러운 화이트빵에 <br> 파마산 오레가노 시즈닝을 묻혀 허브향 가득",
+                id: "bread"
+            },
+            {
+                image: "../image/bread/화이트.jpg",
+                title: "화이트",
+                engTitle: "White",
+                calories: "202 kcal",
+                description: "가장 클래식한 빵으로 부드러운 식감이 매력 포인트<br>(화이트의 칼로리는 15cm 기준입니다.)",
+                id: "bread"
+            },
+            {
+                image: "../image/bread/플랫브레드.jpg",
+                title: "플랫브레드",
+                engTitle: "Flat Bread",
+                calories: "232 kcal",
+                description: "이름처럼 납작 모양에 피자도우처럼 쫀득한 맛이 일품<br>(플랫브래드의 칼로리는 15cm 기준입니다.)",
+                id: "bread"
+            },
+            {
+                image: "../image/bread/양상추.jpg",
+                title: "양상추",
+                engTitle: "Lettuce",
+                calories: "2.9 kcal",
+                description: "",
+                id: "vegitable"
+            },
+            {
+                image: "../image/bread/토마토.jpg",
+                title: "토마토",
+                engTitle: "Tomatoes",
+                calories: "7.7 kcal",
+                description: "",
+                id: "vegitable"
+
+            },
+            {
+                image: "../image/bread/오이.jpg",
+                title: "오이",
+                engTitle: "Cucumbers",
+                calories: "1.5kcal",
+                description: "",
+                id: "vegitable"
+            },
+            {
+                image: "../image/bread/피망.jpg",
+                title: "피망",
+                engTitle: "peppers",
+                calories: "1.4 kcal",
+                description: "",
+                id: "vegitable"
+            },
+            {
+                image: "../image/bread/양파.jpg",
+                title: "양파",
+                engTitle: "Red Onions",
+                calories: "2.8 kcal",
+                description: "",
+                id: "vegitable"
+            },
+            {
+                image: "../image/bread/피클.jpg",
+                title: "피클",
+                engTitle: "Pickles",
+                calories: "0.4 kcal",
+                description: "",
+                id: "vegitable"
+            },
+            {
+                image: "../image/bread/올리브.jpg",
+                title: "올리브",
+                engTitle: "Olives",
+                calories: "3.9 kcal",
+                description: "",
+                id: "vegitable"
+            },
+            {
+                image: "../image/bread/할라피뇨.jpg",
+                title: "할라피뇨",
+                engTitle: "JalaPenos",
+                calories: "0.6 kcal",
+                description: "",
+                id: "vegitable"
+            },
+            {
+                image: "../image/bread/아보카도.jpg",
+                title: "아보카도",
+                engTitle: "Avocado",
+                calories: "56.5 kcal",
+                description: "",
+                id: "vegitable"
+            },
+            {
+                image: "../image/bread/아메리칸치즈.jpg",
+                title: "아메리칸 치즈",
+                engTitle: "American Cheese",
+                calories: "35.3 kcal",
+                description: "",
+                id: "cheese"
+            },
+            {
+                image: "../image/bread/슈레드치즈.jpg",
+                title: "슈레드 치즈",
+                engTitle: "Shredded Cheese",
+                calories: "53.6 kcal",
+                description: "",
+                id: "cheese"
+            },
+            {
+                image: "../image/bread/모짜렐라치즈.jpg",
+                title: "모짜렐라 치즈",
+                engTitle: "Mozzarella Cheese",
+                calories: "43.8 kcal",
+                description: "",
+                id: "cheese"
+            },
+            {
+                image: "../image/bread/랜치.jpg",
+                title: "랜치",
+                engTitle: "Ranch",
+                calories: "116 kcal",
+                description: "고소한 마요네즈와 레몬즙의 만남!<br> 고소함이 두배!",
+                id: "sauce"
+            },
+            {
+                image: "../image/bread/스위트어니언.jpg",
+                title: "스위트 어니언",
+                engTitle: "Sweet Onion",
+                calories: "40.1 kcal",
+                description: "써브웨이만의 특제 레시피로 만든 달콤한 양파소스",
+                id: "sauce"
+            },
+            {
+                image: "../image/bread/마요네즈.jpg",
+                title: "마요네즈",
+                engTitle: "Mayonnaise",
+                calories: "158 kcal",
+                description: "말이 필요없는 고소함의 대명사, 마요네즈 소스",
+                id: "sauce"
+            },
+            {
+                image: "../image/bread/스위트칠리.jpg",
+                title: "스위트 칠리",
+                engTitle: "Sweet Chilli",
+                calories: "40 kcal",
+                description: "매콤한 칠리에 더해진 기분 좋은 달콤함!",
+                id: "sauce"
+            },
+            {
+                image: "../image/bread/스모키바베큐.jpg",
+                title: "스모크 바비큐",
+                engTitle: "Smoke BBQ",
+                calories: "32.8 kcal",
+                description: "스모크 향과 달콤한 바비큐의 완벽한 조화",
+                id: "sauce"
+            },
+            {
+                image: "../image/bread/핫칠리.jpg",
+                title: "핫 칠리",
+                engTitle: "Hot Chilli",
+                calories: "41.8 kcal",
+                description: "진짜 매운맛을 보고 싶다면?<br> 써브웨이의 핫 칠리!",
+                id: "sauce"
+            },
+            {
+                image: "../image/bread/허니머스터드.jpg",
+                title: "허니 머스터드",
+                engTitle: "Honey Mustard",
+                calories: "38.4 kcal",
+                description: "겨자씨가 아낌없이 들어간 달콤한 머스터드 소스",
+                id: "sauce"
+            },
+            {
+                image: "../image/bread/치폴레.jpg",
+                title: "사우스웨스트 치폴레",
+                engTitle: "Southwest Chipotle",
+                calories: "96.5 kcal",
+                description: "핫 칠리와 고소한 마요네즈가 만난 이국적인<br>매콤한 맛!",
+                id: "sauce"
+            },
+            {
+                image: "../image/bread/홀스래디쉬.jpg",
+                title: "홀스래디쉬",
+                engTitle: "Horseradish",
+                calories: "106 kcal",
+                description: "고소한 마요네즈와 고추냉이의 이색적인 만남!<br>매니아층을 사로잡은 매력No.1 소스",
+                id: "sauce"
+            },
+            {
+                image: "../image/bread/머스터드.jpg",
+                title: "머스타드",
+                engTitle: "Yellow Mustard",
+                calories: "15.3 kcal",
+                description: "겨자씨로 만든 오리지날 머스터드 소스",
+                id: "sauce"
+            },
+            {
+                image: "../image/bread/올리브오일.jpg",
+                title: "올리브 오일",
+                engTitle: "Extra Virgin Olive Oil",
+                calories: "29 kcal",
+                description: "담백하고 깔끔하게 즐기고 싶다면<br>주저하지 말고 올리브오일",
+                id: "sauce"
+            },
+            {
+                image: "../image/bread/레드와인식초.jpg",
+                title: "레드 와인 식초",
+                engTitle: "Red Wine Vinaigrette",
+                calories: "0.7 kcal",
+                description: "레드와인을 발효시켜 풍미가 가득한 식초",
+                id: "sauce"
+            },
+            {
+                image: "../image/bread/소금.jpg",
+                title: "Salt",
+                engTitle: "",
+                calories: "",
+                id: "sauce"
+            },
+            {
+                image: "../image/bread/후추.jpg",
+                title: "후추",
+                engTitle: "Black Pepper",
+                calories: "",
+                id: "sauce"
+            },
+
+
+
+
+        ];
+
+        function renderBreadList() {
+            const listBox = document.querySelector('.ing_body_list_box');
+
+
+            breadData.forEach(bread => {
+                const li = document.createElement('li');
+
+                li.innerHTML = `
+            <img src="${bread.image}" class="bread_img">
+            <div class="bread_text">
+                <p class="bread_text_title">${bread.title}</p>
+                <p class="bread_text_eng">${bread.engTitle}</p>
+                <p class="bread_text_cal">${bread.calories}</p>
+            </div>
+            <div class="bread_overlay">
+                <p class = "bread_overlay_title">${bread.title}</p>
+                <p class = "bread_overlay_eng">${bread.engTitle}</p>
+                <p class = "bread_overlay_description">${bread.description}</p>
+                
+            </div>
+        `;
+                listBox.appendChild(li);
+            });
+        }
+
+        
+        document.addEventListener('DOMContentLoaded', renderBreadList);
+
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const navItems = document.querySelectorAll('.ing_body_nav ul li:not([style])');
+            const listBox = document.querySelector('.ing_body_list_box');
+
+
+            renderBreadList();
+
+
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+
+                    navItems.forEach(nav => nav.style.color = 'gray');
+
+                    item.style.color = '#008200';
+
+
+                    const category = item.textContent.trim();
+                    filterItems(category);
+                });
+            });
+
+            function filterItems(category) {
+
+                listBox.innerHTML = '';
+
+
+                let filteredData = breadData;
+                if (category !== 'All') {
+                    const categoryMap = {
+                        '빵': 'bread',
+                        '야채': 'vegitable',
+                        '치즈': 'cheese',
+                        '소스': 'sauce'
+                    };
+                    filteredData = breadData.filter(item => item.id === categoryMap[category]);
+                }
+
+
+                filteredData.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                <img src="${item.image}" class="bread_img">
+                <div class="bread_text">
+                    <p class="bread_text_title">${item.title}</p>
+                    <p class="bread_text_eng">${item.engTitle}</p>
+                    <p class="bread_text_cal">${item.calories}</p>
+                </div>
+                <div class="bread_overlay">
+                    <p class="bread_overlay_title">${item.title}</p>
+                    <p class="bread_overlay_eng">${item.engTitle}</p>
+                    <p class="bread_overlay_description">${item.description}</p>
+                </div>
+            `;
+                    
+                    listBox.appendChild(li);
+                });
+            }
+        });
+
+        
+
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>투두리스트</title>
+    <link href="../css/todoList.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- 컨테이너 스타일 -->
+      <div class="title-container">
+        <!-- 제목 컨테이너 스타일 -->
+        <input
+          type="text"
+          class="title-input"
+          placeholder="제목 없음"
+          value="Todo List"
+          spellcheck="false"
+        />
+      </div>
+      <div class="divider"></div>
+      <!-- 구분선 스타일 -->
+      <div class="selected-date-container">
+        <!-- 선택된 날짜 컨테이너 스타일 -->
+        <div class="selected-date-display">
+          <!-- 선택된 날짜 표시 스타일 -->
+          <span class="date-icon">📅</span>
+          <!-- 날짜 아이콘 스타일 -->
+          <span class="date-text"></span>
+          <!-- 날짜 텍스트 스타일 -->
+          <span class="weekday"></span>
+          <!-- 요일 스타일 -->
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <!-- 구분선 스타일 -->
+      <div class="input-container">
+        <!-- 입력 컨테이너 스타일 -->
+        <input type="text" id="todoInput" placeholder="할 일을 입력하세요" />
+        <!-- 할일 입력 필드 스타일 -->
+        <select id="categorySelect">
+          <!-- 카테고리 선택 필드 스타일 -->
+
+          <option value="💻 Frontend">💻 Frontend</option>
+          <!-- 카테고리 옵션 스타일 -->
+          <option value="🖥️ Backend">🖥️ Backend</option>
+          <!-- 카테고리 옵션 스타일 -->
+          <option value="𝍋 DB">𝍋 DB</option>
+          <!-- 카테고리 옵션 스타일 -->
+        </select>
+
+        <button id="addBtn">추가</button>
+        <!-- 추가 버튼 스타일 -->
+      </div>
+      <ul id="todoList" class="todo-list">
+        <!-- 할일 목록 스타일 -->
+      </ul>
+    </div>
+
+    <div class="wrapper">
+      <!-- 래퍼 스타일 -->
+      <header>
+        <!-- 헤더 스타일 -->
+        <div class="nav">
+          <!-- 네비게이션 스타일 -->
+          <button id="prev" class="material-icons">◀</button>
+          <!-- 이전 버튼 스타일 -->
+          <p class="current-date"></p>
+          <!-- 현재 날짜 스타일 -->
+          <button id="next" class="material-icons">▶</button>
+          <!-- 다음 버튼 스타일 -->
+        </div>
+      </header>
+
+      <div class="calendar">
+        <ul class="weeks">
+          <li>일</li>
+          <li>월</li>
+          <li>화</li>
+          <li>수</li>
+          <li>목</li>
+          <li>금</li>
+          <li>토</li>
+        </ul>
+        <ul class="days"></ul>
+      </div>
+    </div>
+
+    <script src="../js/todoList.js"></script>
+  </body>
+</html>

@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+        *{
+            font-family: "Noto Sans KR", serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        /* 
+          [헤더 영역 스타일]
+          페이지 상단의 로고, 메뉴 및 네비게이션 바가 포함된 헤더 영역을 구성합니다.
+          전체 너비를 사용하며 최소 너비와 높이를 지정하고, 상단 테두리 효과를 줍니다.
+        */
+        html, body{
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            width: 100%;
+            min-width: 1200px;
+            height: 165px;
+            border-top: 5px solid #009223;
+            /* 상단 녹색 테두리 */
+            display: block;
+            position: relative;
+        }
+
+        /* 
+          [로고 스타일]
+          헤더 중앙에 위치한 로고 영역으로, 위치를 absolute로 설정하여 중앙에 정렬합니다.
+        */
+        .logo {
+            height: 40px;
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 
+          [로그인/회원가입 메뉴 스타일]
+          헤더 우측에 위치한 메뉴 영역으로, 로그인, 회원가입 및 글로벌 메뉴 아이콘을 포함합니다.
+        */
+        .log_menu {
+            position: absolute;
+            top: 40px;
+            right: 15%;
+        }
+
+        .log_menu ul {
+            padding: 0px;
+            margin: 0px;
+            height: 30px;
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .log_menu a {
+            text-decoration: none;
+            color: #666;
+        }
+
+        .log_menu li {
+            margin: 5px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .log_menu li::marker {
+            color: #ddd;
+        }
+
+        .signup {
+            list-style: inside;
+        }
+
+        /* 
+          [메인 네비게이션 바 스타일]
+          헤더 아래쪽에 위치하며 메뉴 항목들이 수평으로 배치됩니다.
+          마우스 오버 시 하위 메뉴(드롭다운)가 나타나는 효과를 위해 관련 스타일을 설정합니다.
+        */
+        .main_nav {
+            width: 100%;
+            height: 60px;
+            /* 네비게이션 영역 높이 설정 (하위 메뉴와의 간격 확보를 위함) */
+            position: absolute;
+            top: 65%;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 배경 요소: 하위 메뉴가 나타날 때 배경 흰색 영역을 보여줍니다. */
+        .bg {
+            top: 100%;
+            transform: translateY(-4px);
+            position: absolute;
+            width: 100%;
+            height: 0;
+            background-color: white;
+            border-top: 0.5px solid #ddd;
+            z-index: 995;
+        }
+
+        .main_nav ul {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+
+        .main_nav ul:hover {
+            cursor: pointer;
+        }
+
+        /* 하위 메뉴를 감싸는 래퍼 */
+        .nav_wrap {
+            width: 100%;
+            height: 230px;
+            position: absolute;
+            top: 65%;
+        }
+
+        /* 개별 네비게이션 메뉴 항목 */
+        .nav_item {
+            float: left;
+            width: 165px;
+            font-size: 18px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .nav_item:hover {
+            color: #009223;
+        }
+
+        /* 
+          하위 메뉴(드롭다운) 스타일
+          기본적으로 높이를 0으로 설정하여 숨기고, 오버 시 height가 확장되어 보입니다.
+        */
+        .hidden_menu {
+            overflow: hidden;
+            /* 내용이 넘치면 보이지 않게 함 */
+            width: 100%;
+            height: 0;
+            /* 기본 상태에서는 숨김 */
+            position: absolute;
+            left: 0px;
+            top: -10px;
+            transform: translateY(50px);
+            z-index: 999;
+        }
+
+        .hidden_menu a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .hidden_menu li {
+            margin: 15px 0 15px 0;
+            font-size: 15px;
+            color: #666;
+            letter-spacing: -1px;
+        }
+
+        .hidden_menu li:nth-child(1) {
+            margin-top: 20px;
+        }
+
+        .hidden_menu li:hover {
+            color: #009223;
+            text-decoration: underline;
+        }
+
+        /* 네비게이션 바에 마우스 오버 시 하위 메뉴와 배경의 높이를 확장 */
+        .main_nav:hover .hidden_menu,
+        .main_nav:hover .bg {
+            height: 260px;
+            transition: 0.5s;
+            /* 부드러운 전환 효과 */
+        }
+
+        .main_nav:hover .bg {
+            border-bottom: 0.5px solid #ddd;
+        }
+      
+
+         /* sub header 스타일 */
+         .sub_header{
+            width: 100%;
+            min-width: 1200px;
+            height: 60px;
+            border-bottom: 0.5px solid #ddd;
+            background-color: white;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            z-index:888;
+
+            position: sticky;
+            top: 0px;
+        }
+        /*서브로고*/
+        .sub_logo{
+            width: 120px;
+            height: 60px;
+            align-content: center;
+            text-align: center;
+            transform: translate(-230px, 3px);
+        }
+        /*메뉴*/
+        .sub_header ul{
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0px;
+            margin: 0;
+            transform: translateX(-50px);
+        }
+        .sub_header li a{
+            text-decoration: none;
+            font-size: 16px;
+            color: #999;
+            letter-spacing: -1px;
+            font-weight: 500;
+            margin: 0 20px;
+        }
+        .sub_header li{
+            position: relative;
+            height: 60px;
+            align-content: center;
+        }
+        .sub_header li:nth-child(-n+3)::after {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background-color: #dddddd;
+            border-radius: 50%;
+
+            position: absolute;
+            top: 50%;
+        }
+        .underline{
+            width: 73%;
+            height: 4px;
+            background-color: #009223;
+            border-radius: 0;
+            position: absolute;
+            bottom: -1px;
+            left: 15%
+        }
+
+         /*맨위로이동*/
+         .top{
+            width: 35px;
+            height: 60px;;
+            padding: 0px;
+            background-image: url("./image/ToTop.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            background-color: white;
+            transform: translateX(220px);
+            border: none;
+        }
+
+        .top:hover{
+            cursor: pointer;
+        }
+        .sub_logo, .top {
+            opacity: 0; 
+            transition: opacity 0.3s ease;
+        }
+        .sub_header.sticky .sub_logo, .sub_header.sticky .top {
+            opacity: 1;
+        }
+        /* 내용 */
+
+        .branch_title{
+            color:#292929;
+            font-size:40px;
+            text-align: center;
+            letter-spacing: -3px;
+            padding: 60px 0 80px;
+            margin: 0;
+        }
+
+        .branch_tab{
+            position:relative;
+            top:-30px;
+            background-color: #FFFFFF;
+            width:1200px;
+            text-align: center;
+            margin: 0 auto;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .branch_tab ul{
+            list-style: none;
+            display: flex;
+            height:60px;
+            padding:0;
+        }
+
+        .branch_tab li{
+            width:50%;
+            height:100%;
+            border:1px solid #e5e5e5;
+        }
+
+        .branch_tab a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            height:100%;
+            width:100%;
+            font-size: 16px;
+            color:#999999;
+        }
+
+        .branchtab_gr {
+            background-color: green;
+        }
+        .branchtab_gr a{
+            color:#FFFFFF;
+        }
+
+        .branch_mapwrap{
+            background-color: #f6f6f6;
+            margin-top: 30px;
+            padding-bottom: 130px;
+        }
+
+        .map_img{
+            padding: 15px 0 0 35px;
+            opacity: 1;
+            transform: scale(0.8);
+            transition: 0.5s;
+        }
+
+        .mapimg1{
+            transform:scale(1);
+        }
+
+        .mapimg2{
+            padding: 12px 0 0 0;
+        }
+
+        .mapimg3{
+            padding: 26px 0 0 103px;
+        }
+
+        .branch_map{
+            margin: 0 auto;
+            position: relative;
+            width: 1170px;
+            font-size:16px;
+            color:#666666;
+            letter-spacing: -2px;
+        }
+
+        .map1{
+            display: block;
+        }
+
+        .map2{
+            display: none;
+        }
+
+        .map3{
+            display: none;
+        }
+        
+        .branch_label{
+            position:absolute;
+            left:0px;
+            top:11px;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .branch_label ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .branch_label li:nth-child(2), .branch_label li:nth-child(3), .branch_label li:nth-child(4),
+        .branch_label li:nth-child(5), .branch_label li:nth-child(6){
+            margin-top:11px;
+        }
+
+        .branch_info{
+            position:absolute; 
+            right:3px;
+            top:14px;
+        }
+
+        .branch_info ul{
+            list-style: none;
+            border: 1px solid #dddddd;
+            background-color: #fff;
+            width: 390px;
+            margin: 0 0 18px;
+            padding: 14px 0;
+        }
+
+        .branch_info li{
+            padding: 24px 0 20px 0;
+            margin: 0 29px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .branch_info li:nth-child(1){
+            border-top: 0;
+        }
+
+        .branch_info h3{
+            color:#292929;
+            font-size:18px;
+            font-weight: bold;
+            letter-spacing: -2px;
+            margin: 0;
+        }
+
+        .info_ct{
+            color:#999;
+            font-size:13px;
+            line-height: 23px;
+            letter-spacing: -1px;
+            margin-top:14px;
+            font-weight: bold;
+        }
+
+        .manager{
+            color:#000000;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: -1px;
+            margin: 7px 0 0;
+        }
+
+        .info_btn{
+            position:absolute;
+            right:0;
+            bottom:0;
+            font-weight: 300;
+            letter-spacing: -1px;
+            padding-right: 34px;
+        }
+
+        .info_btn:hover{
+            cursor: pointer;
+        }
+
+        .info_btn p{
+            margin: 0;
+            color: #333333;
+            font-weight: bold;
+            letter-spacing: -1.5px;
+        }
+        .info_btn img{
+            position: absolute;
+            right:0;
+            top:-3px;
+            width:25px;
+            height:25px;
+        }
+
+        /* 
+          [푸터 영역 스타일]
+          페이지 하단에 위치한 회사 정보, 이용약관, SNS 링크 등을 포함한 영역입니다.
+        */
+        footer {
+            background-color: rgb(41, 41, 41);
+            color: rgb(102, 102, 102);
+            position: relative;
+        }
+
+        /* 푸터 상단 메뉴 스타일 */
+        .footer_menu {
+            padding: 5px;
+            border-bottom: 1px solid #3b3b3b;
+        }
+
+        footer ul {
+            list-style: none;
+            display: flex;
+            font-size: 14px;
+        }
+
+        footer li {
+            margin-right: 29px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        footer strong {
+            font-weight: bold;
+            color: #bbbbbb;
+        }
+
+        /* 푸터 하단 정보 스타일 */
+        .footer_info {
+            font-size: 13px;
+            display: flex;
+            padding: 10px 0px 0px 45px;
+        }
+
+        footer p {
+            padding-right: 5px;
+        }
+
+        footer span {
+            font-weight: bold;
+        }
+
+        .copyright {
+            font-size: 13px;
+            margin-top: -10px;
+            padding: 5px 0px 25px 45px;
+        }
+
+        /* SNS 아이콘 스타일 (인스타그램, 페이스북) */
+        .instagram {
+            width: 50px;
+            height: 50px;
+            background-image: url("../footer/imgs/instagram.png");
+            position: absolute;
+            right: 100px;
+            bottom: 20px;
+        }
+
+        .instagram:hover {
+            background-image: url("../footer/imgs/instagram_hover.png");
+        }
+
+        .facebook {
+            width: 50px;
+            height: 50px;
+            background-image: url("../footer/imgs/facebook.png");
+            position: absolute;
+            right: 35px;
+            bottom: 20px;
+        }
+
+        .facebook:hover {
+            background-image: url("../footer/imgs/facebook_hover.png");
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <!-- 로고를 클릭하면 메인 페이지로 이동 -->
+            <a href="../mainpage/html/index.html"><img src="../header/image/logo_w.png" alt="로고"></a>
+        </div>
+        <div class="log_menu">
+            <ul>
+                <li><a href="">로그인</a></li>
+                <li class="signup"><a href="">회원가입</a></li>
+                <li><a href="https://www.subway.com/en-us/"><img src="../header/image/icon_utill_global.png"
+                            alt="글로벌 메뉴"></a></li>
+            </ul>
+        </div>
+        <!-- 상단 네비게이션 바 -->
+        <nav class="main_nav">
+            <!-- 하위 메뉴가 표시될 때 사용할 배경 요소 -->
+            <div class="bg"></div>
+            <ul>
+                <li class="nav_item">메뉴소개
+                    <!-- 하위 메뉴 (드롭다운) -->
+                    <ul class="hidden_menu">
+                        <li><a href="../menuIntro/sandwich/sandwich.html">샌드위치</a></li>
+                        <li><a href="../menu_wrap.etc/menu_wrap(script).html">랩ㆍ기타</a></li>
+                        <li><a href="../menuIntro/salad/salad.html">샐러드</a></li>
+                        <li><a href="../menuIntro/morning/menu_wrap(script).html">아침메뉴</a></li>
+                        <li><a href="../menuIntro/smile/menu_wrap(script).html">스마일 썹</a></li>
+                        <li><a href="../menuIntro/catering/menu_wrap(script).html">단체메뉴</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">이용방법
+                    <ul class="hidden_menu">
+                        <li><a href="../howToPage/html/index.html">써브웨이 이용방법</a></li>
+                        <li><a href="../단체메뉴 이용방법/단체메뉴이용방법.html">단체메뉴 이용방법</a></li>
+                        <li><a href="../ingridientIntro/html/index.html">신선한 재료 소개</a></li>
+                        <li><a href="../fastSubPage/fast-sub.html">App 이용방법</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">새소식
+                    <ul class="hidden_menu">
+                        <li><a href="">이벤트ㆍ프로모션</a></li>
+                        <li><a href="">뉴스ㆍ공지사항</a></li>
+                        <li><a href="">광고영상</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">써브웨이
+                    <ul class="hidden_menu">
+                        <li><a href="">써브웨이 역사</a></li>
+                        <li><a href="../써브웨이약속/써브웨이약속.html">써브웨이 약속</a></li>
+                        <li><a href="">샌드위치 아티스트 지원</a></li>
+                        <li><a href="">매장찾기</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">가맹점
+                    <ul class="hidden_menu">
+                        <li><a href="">써브웨이 프랜차이즈</a></li>
+                        <li><a href="">가맹관련 FAQ</a></li>
+                        <li><a href="">가맹신청ㆍ문의</a></li>
+                        <li><a href="../지사안내/지사안내.html">지사안내</a></li>
+                        <li><a href="../사업설명회/사업설명회.html">사업설명회</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">온라인 주문
+                    <ul class="hidden_menu">
+                        <li><a href="../orderPage/order_step1.html">FAST-SUB</a></li>
+                        <li><a href="">HOME-SUB</a></li>
+                        <li><a href="">단체주문</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+        <div class="sub_header">
+            <a href=#>
+                <div class="sub_logo">
+                    <img src="./image/logo_sub_header.png" alt="서브로고">
+                </div>
+            </a>
+            <ul>
+                <li><a href="">써브웨이 프랜차이즈</a></li>
+                <li><a href="">가맹관련FAQ</a></li>
+                <li><a href="">가맹신청ㆍ문의</a></li>
+                <li><a href="../지사안내/지사안내.html" style="color:#009223";>지사안내</a>
+                    <div class="underline"></div></li>
+                <li><a href="../사업설명회/사업설명회.html">사업설명회</a></li>
+            </ul>
+            <div class="top" onclick="scrollToTop()"></div>
+            </div>
+        <!-- 지사안내 wrap -->
+        <div class="branch_content">
+            <h2 class="branch_title">지사안내</h2>
+            <div class="branch_mapwrap">
+                <div class="branch_tab">
+                    <ul>
+                        <li class="branchtab_gr"><a href="#">서울</a></li>
+                        <li><a href="#">수도권</a></li>
+                        <li><a href="#">지방</a></li>
+                    </ul>
+                </div>
+                <!-- 서울 -->
+                <div class="branch_map map1">
+                    <div class="map_img mapimg1">
+                        <img src="https://www.subway.co.kr/images/franchise/branch_map01.png">
+                    </div>
+                    <div class="branch_label">
+                        <ul>
+                            <li><span style="color:#9631a8; margin-right: 10px;">●</span>서울강북지사</li>
+                            <li><span style="color:#ffc300; margin-right: 10px;">●</span>서울강남지사</li>
+                        </ul>
+                    </div>
+                    <div class="branch_info">
+                        <ul>
+                            <li>
+                                <h3>서울강북지사</h3>
+                                <div class="info_ct">
+                                    서울특별시 서초구 강남대로 535 13층<br>
+                                    연락처 : 010-4920-1965
+                                </div>
+                            </li>
+                            <li>
+                                <h3>서울강남지사</h3>
+                                <p class="manager">이현주 지사장</p>
+                                <div class="info_ct">
+                                    서울특별시 서초구 사평대로 55길 112-7 2층<br>
+                                    연락처 : 02-6356-7907<br>
+                                    팩스번호 : 02-6356-7908
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="info_btn">
+                            <p>가맹요건 알아보기</p>
+                            <img src="https://www.subway.co.kr/images/common/icon_more.png">
+                        </div>
+                    </div>
+                </div>
+                <!-- 수도권 -->
+                <div class="branch_map map2">
+                    <div class="map_img mapimg2">
+                        <img src="https://www.subway.co.kr/images/franchise/branch_map02.png">
+                    </div>
+                    <div class="branch_label">
+                        <ul>
+                            <li><span style="color:#9631a8; margin-right: 10px;">●</span>경기서부인천지사</li>
+                            <li><span style="color:#ffc300; margin-right: 10px;">●</span>경기남부지사</li>
+                            <li><span style="color:#01a5e2; margin-right: 10px;">●</span>경기북강원지사</li>
+                        </ul>
+                    </div>
+                    <div class="branch_info">
+                        <ul>
+                            <li>
+                                <h3>경기서부인천지사</h3>
+                                <div class="info_ct">
+                                    서울특별시 서초구 강남대로 535 13층<br>
+                                    연락처 : 010-4920-1965
+                                </div>
+                            </li>
+                            <li>
+                                <h3>경기남부지사</h3>
+                                <div class="info_ct">
+                                    서울특별시 서초구 강남대로 535 13층<br>
+                                    연락처 : 010-4920-1965
+                                </div>
+                            </li>
+                            <li>
+                                <h3>경기북강원지사</h3>
+                                <p class="manager">김주홍 지사장</p>
+                                <div class="info_ct">
+                                    경기도 하남시 미사대로 510 한강미사아이에스비즈타워 4층 423호<br>
+                                    연락처 : 031-877-1146<br>
+                                    팩스번호 : 0504-384-1146
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="info_btn">
+                            <p>가맹요건 알아보기</p>
+                            <img src="https://www.subway.co.kr/images/common/icon_more.png">
+                        </div>
+                    </div>
+                </div>
+                <!-- 지방 -->
+                <div class="branch_map map3">
+                    <div class="map_img mapimg3">
+                        <img src="https://www.subway.co.kr/images/franchise/branch_map03.png">
+                    </div>
+                    <div class="branch_label">
+                        <ul>
+                            <li><span style="color:#9631a8; margin-right: 10px;">●</span>대전충청지사</li>
+                            <li><span style="color:#ffc300; margin-right: 10px;">●</span>대구경북지사</li>
+                            <li><span style="color:#006228; margin-right: 10px;">●</span>울산경남지사</li>
+                            <li><span style="color:#62ce08; margin-right: 10px;">●</span>부산김해지사</li>
+                            <li><span style="color:#ff8201; margin-right: 10px;">●</span>광주전라지사</li>
+                            <li><span style="color:#01a5e2; margin-right: 10px;">●</span>경기북강원지사</li>
+                        </ul>
+                    </div>
+                    <div class="branch_info">
+                        <ul>
+                            <li>
+                                <h3>대전충청지사</h3>
+                                <p class="manager">변정원 지사장</p>
+                                <div class="info_ct">
+                                    대전광역시 서구 둔산대로 117번길 95, 리더스타운 C동 501호<br>
+                                    연락처 : 042-321-1151<br>
+                                    팩스번호 : 042-321-0118
+                                </div>
+                            </li>
+                            <li>
+                                <h3>대구경북지사</h3>
+                                <p class="manager">김성필 지사장</p>
+                                <div class="info_ct">
+                                    대구광역시 북구 대학로87 써브웨이 3층<br>
+                                    연락처 : 053-951-7803<br>
+                                    팩스번호 : 053-715-1401
+                                </div>
+                            </li>
+                            <li>
+                                <h3>울산경남지사</h3>
+                                <div class="info_ct">
+                                    서울특별시 서초구 강남대로 535 13층<br>
+                                    연락처 : 010-8278-1962
+                                </div>
+                            </li>
+                            <li>
+                                <h3>부산김해지사</h3>
+                                <div class="info_ct">
+                                    서울특별시 서초구 강남대로 535 13층<br>
+                                    연락처 : 010-8278-1962
+                                </div>
+                            </li>
+                            <li>
+                                <h3>광주전라지사</h3>
+                                <p class="manager">한경민 지사장</p>
+                                <div class="info_ct">
+                                    광주광역시 서구 시청로 92,(유탑 유블레스 트윈시티),202호<br>
+                                    연락처 : 010-6462-3900<br>
+                                    팩스번호 : 062-385-1121
+                                </div>
+                            </li>
+                            <li>
+                                <h3>경기북강원지사</h3>
+                                <p class="manager">김주홍 지사장</p>
+                                <div class="info_ct">
+                                    경기도 하남시 미사대로 510 한강미사아이에스비즈타워 4층 423호<br>
+                                    연락처 : 031-877-1146<br>
+                                    팩스번호 : 0504-384-1146
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="info_btn">
+                            <p>가맹요건 알아보기</p>
+                            <img src="https://www.subway.co.kr/images/common/icon_more.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+      [푸터 영역]
+      회사 정보, 이용약관, 개인정보처리방침, SNS 링크 등을 포함한 페이지 하단 영역입니다.
+    -->
+    <footer>
+        <!-- 푸터 상단 메뉴 영역 -->
+        <div class="footer_menu">
+            <ul>
+                <li><a href="/agreement">이용약관</a></li>
+                <li><a href="/privacy"><strong>개인정보처리방침</strong></a></li>
+                <li><a href="/subcard">써브카드</a></li>
+                <li><a href="https://store.subway.co.kr/">점주관리자</a></li>
+            </ul>
+        </div>
+        <!-- 푸터 하단 정보 영역 -->
+        <div class="footer_info">
+            <p>서울시 서초구 강남대로 535 프린스빌딩 15층</p>
+            <p><span>I</span></p>
+            <p>대표 : INSOO CHO(인수조)</p>
+            <p><span>I</span></p>
+            <p>전화 : 02-797-5036</p>
+            <p><span>I</span></p>
+            <p>사업자등록번호 : 101-84-04143</p>
+        </div>
+        <div class="copyright">
+            SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights Reserved.
+        </div>
+        <!-- SNS 링크 (인스타그램, 페이스북) -->
+        <a class="instagram" href="https://www.instagram.com/subwaykorea"></a>
+        <a class="facebook" href="https://www.facebook.com/Subwaykr"></a>
+    </footer>
+    <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const tabs = document.querySelectorAll(".branch_tab a");
+                const maps = document.querySelectorAll(".branch_map");
+
+            tabs.forEach((tab, index) => {
+                tab.addEventListener("click", function (event) {
+                event.preventDefault();
+
+                tabs.forEach((t) => t.parentElement.classList.remove("branchtab_gr"));
+                this.parentElement.classList.add("branchtab_gr");
+
+                maps.forEach((map) => {
+                    map.style.display = "none";
+                    map.querySelector(".map_img").style.opacity = "0";
+                    map.querySelector(".map_img").style.transform = "scale(0.8)";
+                });
+
+                maps[index].style.display = "block";
+
+                setTimeout(() => {
+                    maps[index].querySelector(".map_img").style.opacity = "1";
+                    maps[index].querySelector(".map_img").style.transform = "scale(1)";
+                }, 50);
+            });
+        });
+    });
+            //서브헤더
+            window.addEventListener('scroll', function() {
+                    const sub_header = document.querySelector('.sub_header');
+                    if (window.scrollY > 150) {
+                        sub_header.classList.add('sticky');
+                    } else {
+                        sub_header.classList.remove('sticky');
+                    }
+                });
+                function scrollToTop(){
+                    window.scrollTo({top:0, behavior:'smooth'});
+                }
+    </script>
+</body>
+</html>

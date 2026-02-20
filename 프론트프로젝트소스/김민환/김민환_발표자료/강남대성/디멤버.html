@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            overflow-y: scroll;
+        }
+
+        html,
+        body {
+
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* 로그인영역 */
+        .big_wrap {
+            width: 500px;
+            height: 450px;
+            border: 1px solid #E1E1E1;
+            border-radius: 10px;
+            margin: 0 auto;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 290px;
+            text-align: center;
+        }
+
+        .wrap input {
+            width: 90%;
+            height: 40px;
+            margin-top: 10px;
+            border-radius: 10px;
+            border: 1px solid #E1E1E1;
+        }
+
+        .img_wrap {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            /* 여백 추가 */
+        }
+
+        .img_wrap img {
+            max-width: 200px;
+            height: auto;
+        }
+
+        .login_button {
+            width: 90%;
+            height: 50px;
+            margin-top: 15px;
+            border-radius: 20px;
+            /* 둥근 모서리 */
+            font-size: 18px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .login_button:hover {
+            background-color: #333;
+        }
+
+        .checkbox_wrap {
+            display: flex;
+            align-items: center;
+            width: 90%;
+            margin: 10px auto;
+            font-size: 14px;
+        }
+
+        .checkbox_wrap input {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+        }
+
+        .extra_buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .extra_buttons button {
+            width: 45%;
+            height: 45px;
+            margin: 0 5px;
+            font-size: 16px;
+            border-radius: 20px;
+            border: 1px solid #E1E1E1;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .extra_buttons button:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+
+    <script>
+        function login() {
+            const id = document.getElementById("userid");
+            const pw = document.getElementById("password");
+            if (!id.value) {
+                alert("아이디를 입력하세요");
+                id.focus();
+            }
+            else if (!pw.value) {
+                alert("비밀번호를 입력하세요");
+                pw.focus();
+            }
+            else {
+                alert("로그인 성공");
+                window.location.href = "/mainscreen.html";
+                id.value = "";
+                pw.value = "";
+            }
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="big_wrap">
+        <div class="wrap">
+            대성학원 재원생서비스
+            <div class="img_wrap">
+                <img src="./images/logo_dm.png">
+            </div>
+            <input type="text" placeholder="아이디" id="userid">
+            <input type="password" placeholder="비밀번호" id="password">
+            <button class="login_button" onclick="login()">로그인</button>
+
+            <div class="checkbox_wrap">
+                <input type="checkbox" id="remember">
+                <label for="remember">아이디 저장</label>
+            </div>
+
+            <div class="extra_buttons">
+                <button>아이디/비밀번호 찾기</button>
+                <button>디멤버 등록하기</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

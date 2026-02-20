@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+        *{
+            font-family: "Noto Sans KR", serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+        html, body{
+            margin: 0px;
+            padding: 0px;
+        }
+        /* header 스타일 */
+        .header{
+            width: 100%;
+            min-width: 1200px;
+            height: 165px;
+            border-top: 5px solid #009223;
+            display: block;
+            position: relative;
+        }
+        .logo{
+            height: 40px;
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%)
+        }
+        
+        .log_menu{
+            position: absolute;
+            top: 40px;
+            right: 13%;
+        }
+        .log_menu ul{
+            padding: 0px;
+            margin: 0px;
+            height: 30px;
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        .log_menu a{
+            text-decoration: none;
+            color: #666;
+        }
+        .log_menu li{
+            margin: 5px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .log_menu li::marker {
+            color: #ddd;
+        }
+        .signup{
+            list-style: inside;
+        }
+        .global{
+            width: 30px;
+            height: 30px;
+            padding-left: 6px;
+        }
+
+        /*헤더메인메뉴*/
+        .main_nav{
+            width: 100%;
+            height: 60px; /* 영역이 짧아서 히든영역이랑 간격이 있음 충분한 높이 주시면 잘 넘어가요*/
+            position: absolute;
+            top: 65%;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;  
+        }
+        .bg {
+            top: 100%;
+            transform: translateY(-4px);
+            position: absolute;
+            width: 100%;
+            height: 0;
+            background-color: white;
+            border-top: 0.5px solid #ddd;
+            z-index: 995;
+        }
+
+        .main_nav ul{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        .main_nav ul:hover{
+            cursor: pointer
+        }
+        .nav_wrap{
+            width: 100%;
+            height: 230px;
+            position: absolute;
+            top: 65%;
+        }
+        .nav_item{
+            float: left;
+            width: 165px;
+            font-size: 18px;
+            font-weight: bold;
+            position: relative;
+        }
+        .nav_item:hover{
+            color: #009223;
+        }
+        .hidden_menu{
+            overflow: hidden;  /* 영역 넘어가면 안보이게 하기*/
+            width: 100%;
+            height: 0; /* 평소에는 높이 0으로 둬서 안보이게 하기*/
+            position: absolute;
+            left: 0px;
+            top: -10px;
+            transform: translateY(50px);
+
+            z-index: 999;
+        }
+        .hidden_menu li{
+            margin: 15px 0 15px 0;
+            font-size: 15px;
+            letter-spacing: -1px;
+        }
+        .hidden_menu li:nth-child(1){
+            margin-top: 20px;
+        }
+        .hidden_menu a {
+            color: #666;
+            text-decoration: none;
+        }
+        .hidden_menu a:hover{
+            color:#009223;
+            text-decoration: underline;
+        }
+        .main_nav:hover .hidden_menu, .main_nav:hover .bg {
+            height: 260px;
+            /* 마우스를 갖다 대면 높이 생기게 하기 */
+            transition: 0.5s;
+            /* 천천히 나오게 하는 효과*/
+        }
+        .main_nav:hover .bg{
+            border-bottom: 0.5px solid #ddd;
+        }
+
+
+        /* sub header 스타일 */
+        .sub_header{
+            width: 100%;
+            min-width: 1200px;
+            height: 60px;
+            border-bottom: 0.5px solid #ddd;
+            background-color: white;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            z-index:888;
+
+            position: sticky;
+            top: 0px;
+        }
+        /*서브로고*/
+        .sub_logo{
+            width: 120px;
+            height: 60px;
+            align-content: center;
+            text-align: center;
+            transform: translate(-230px, 3px);
+        }
+        /*메뉴*/
+        .sub_header ul{
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0px;
+            margin: 0;
+            transform: translateX(-50px);
+        }
+        .sub_header li a{
+            text-decoration: none;
+            font-size: 16px;
+            color: #999;
+            letter-spacing: -1px;
+            font-weight: 500;
+            margin: 0 20px;
+        }
+        .sub_header li{
+            position: relative;
+            height: 60px;
+            align-content: center;
+        }
+        .sub_header li:nth-child(-n+3)::after {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background-color: #dddddd;
+            border-radius: 50%;
+
+            position: absolute;
+            top: 50%;
+        }
+        .underline{
+            width: 73%;
+            height: 4px;
+            background-color: #009223;
+            border-radius: 0;
+            position: absolute;
+            bottom: -1px;
+            left: 15%
+        }
+        /*맨위로이동*/
+        .top{
+            width: 35px;
+            height: 60px;;
+            padding: 0px;
+            background-image: url("./image/ToTop.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            background-color: white;
+            transform: translateX(220px);
+            border: none;
+        }
+        .top:hover{
+            cursor: pointer;
+        }
+        .sub_logo, .top {
+            opacity: 0; 
+            transition: opacity 0.3s ease;
+        }
+        .sub_header.sticky .sub_logo, .sub_header.sticky .top {
+            opacity: 1;
+        }
+
+
+        /* 본문 orderTip 스타일 */
+        .orderTip_title{
+            width: 100%;
+            min-width: 1200px;
+            margin: 0px;
+            line-height: 200px; /*height랑 같은 값이어야 가운데 정렬*/
+            height: 200px;
+            font-size: 40px;
+            font-weight: 500;
+            text-align: center;
+            letter-spacing: -2px;
+        }
+        .orderTip_wrap{
+            width: 100%;
+            min-width: 1200px;
+            text-align: center;
+        }
+
+        /*이용방법 탭메뉴? 스타일*/
+        .orderTip_tab{
+            width: 1170px;
+            height: 68px;
+            border: 0.5px solid #e5e5e5;
+            border-bottom: none;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            margin: 0 auto;
+            box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.1);
+        }
+        .orderTip_tab > div{
+            width: 50%;
+            line-height: 68px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .orderTip_tab > div:hover{
+            cursor: pointer;
+        }
+        .orderTab{
+            background-color: white;
+            color: #666;
+        }
+        .tipTab{
+            background-color: #009223;
+            color: white;
+        }
+
+
+        /*주문tip 페이지*/
+        .orderTip_menu{
+            position: relative;
+            z-index: 1px;
+            top:-34px;
+        }
+
+        .orderTip_img1{
+            width: 100%;
+            height: 520px;
+            background-image: url("./image/bg_order_tip01.jpg");
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            display: flex;
+        }
+        .item1_img{
+            width: 615px;
+            height: 330px;
+            background-image: url("./image/img_sandwich01.png");
+            background-position: center;
+            background-size: cover;
+        }
+        .item_order{
+            width: 600px;
+            position: absolute;
+            left: 11%;
+            top: 15%;
+        }
+        .txt{
+            margin: 30px 0px;
+            font-size: 22px;
+            color: white;
+            width: 290px;
+            height: 50px;
+            line-height: 50px;
+            background-color: #ff8201;
+            border-radius: 30px;
+            letter-spacing: -1px;
+
+        }
+        .bold_text{
+            font-weight: bold;
+        }
+        .item_text{
+            width: 500px;
+            text-align: left;
+            margin: 30px 0px;
+        }
+        .item_text h1{
+            font-size: 54px;
+            font-weight: 700;
+            margin: 20px 0px;
+            letter-spacing: -2px;
+            color: #292929;
+        }
+        .item_text p{
+            font-size: 16px;
+            font-weight: 500;
+            color: #292929;
+            margin: 0px;
+            line-height: 25px;
+            letter-spacing: -0.7px;
+        }
+
+        .item_bg{
+            width: 100%;
+            height: 400px;
+            background-color: #f6f6f6;
+        }
+        .topping_tip{
+            width: 1170px;
+            height: 460px;
+            background-color: white;
+            margin: 0 auto;
+            transform: translateY(-60px);
+        }
+        .topping_tip h3{
+            margin:0px;
+            padding: 30px 0px;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .topping_tip ul{
+            list-style: none;
+            display: flex;
+            padding: 0px;
+            margin: 0px;
+            justify-content: space-around;
+        }
+        .topping_tip li:nth-child(-n+3){
+            width: 320px;
+        }
+        .topping_tip li:nth-child(-n+2)::after{
+            background: url("./image/bul02.png") no-repeat center center;
+            content: '';
+            width: 65px;
+            height: 5px;
+
+            position: absolute;
+            top: 40%;
+            transform: translateX(163px);
+        }
+
+        .topping_tip li h4{
+            font-size: 18px;
+            font-weight: 900;
+            margin: 15px 0px;
+        }
+        .topping_tip li h4 img{
+            margin: 0 8px 0 0;
+            width: 13px;
+            height: 13px;
+            object-fit: contain;
+        }
+        .topping_tip p{
+            font-size: 16px;
+            letter-spacing: -0.5px;
+            line-height: 23px;
+            margin: 10px 0 0 0px;
+            font-weight: 500px;
+        }
+        .orderTip_img2{
+            width: 100%;
+            height: 520px;
+            background-image: url("./image/bg_order_tip02.jpg");
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            display: flex;
+        }
+        .item2_img{
+            width: 615px;
+            height: 330px;
+            background-image: url("./image/img_sandwich02.png");
+            background-position: center;
+            background-size: cover;
+        }
+        .orderTip_img3{
+            width: 100%;
+            height: 520px;
+            background-image: url("./image/bg_order_tip03.jpg");
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            display: flex;
+        }
+        .item3_img{
+            width: 615px;
+            height: 330px;
+            background-image: url("./image/img_sandwich03.png");
+            background-position: center;
+            background-size: cover;
+        }
+        .scroll.item1_img, .scroll.item2_img, .scroll.item3_img{
+            transform: translateX(0);
+            opacity: 1;
+        }
+        /*샌드위치 위치스타일*/
+        .item1_img, .item2_img, .item3_img{
+            position: absolute;
+            right: 8%;
+            top: 15%;
+            transform: translateX(20%);
+            opacity: 0;
+            transition-delay: 0.3s;
+            transition: 0.6s;
+        }
+        
+        
+
+        /*푸터*/
+        footer{
+            background-color: rgb(41, 41, 41);
+            color: rgb(102, 102, 102);
+            position: relative;
+        }
+        /*상단*/
+        .footer_menu{
+            padding: 5px;
+            border-bottom: 1px solid #3b3b3b;
+        }
+        .footer_menu ul{
+            list-style: none;
+            display: flex;
+            font-size: 14px;
+        }
+        .footer_menu li{
+            margin-right: 29px;
+        }
+        .footer_menu a{
+            text-decoration: none;
+            color: inherit;
+        }
+        .footer_menu strong{
+            font-weight: bold;
+            color: #bbbbbb;
+        }
+        /*하단*/
+        .footer_info{
+            font-size: 13px;
+            display: flex;
+            padding: 10px 0px 0px 45px;
+        }
+        .footer_info p{
+            padding-right: 5px;
+        }
+        .footer_info span{
+            font-weight: bold;
+        }
+        .copyright{
+            font-size: 13px;
+            margin-top: -10px;
+            padding: 5px 0px 25px 45px;
+        }
+        /*sns*/
+        .instagram{
+            width: 50px;
+            height: 50px;
+            background-image: url("/footer/imgs/instagram.png");
+            position: absolute;
+            right: 100px;
+            bottom: 20px;
+        }
+        .instagram:hover{
+            background-image: url("/footer/imgs/instagram_hover.png");
+        }
+        .facebook{
+            width: 50px;
+            height: 50px;
+            background-image: url("/footer/imgs/facebook.png");
+            position: absolute;
+            right: 35px;
+            bottom: 20px;
+        }
+        .facebook:hover{
+            background-image: url("/footer/imgs/facebook_hover.png");
+        }
+
+    </style>
+    <script>
+        //서브헤더
+        window.addEventListener('scroll', function() {
+            const sub_header = document.querySelector('.sub_header');
+            if (window.scrollY > 150) {
+                sub_header.classList.add('sticky');
+            } else {
+                sub_header.classList.remove('sticky');
+            }
+        });
+        //맨위로
+        function scrollToTop(){
+            window.scrollTo({top:0, behavior:'smooth'});
+        }
+
+
+        //샌드위치
+        window.addEventListener('scroll', function(){
+            const sandwich1 = document.querySelector('.item1_img');
+            if(window.scrollY > 0 ){
+                sandwich1.classList.add('scroll');
+            }
+            const sandwich2 = document.querySelector('.item2_img');
+            if(window.scrollY > 650 ){
+                sandwich2.classList.add('scroll');
+            }
+            const sandwich3 = document.querySelector('.item3_img');
+            if(window.scrollY > 1400 ){
+                sandwich3.classList.add('scroll');
+            }
+        })
+        //샌드위치1 DOMContentLoaded이벤트적용
+        window.addEventListener('DOMContentLoaded', function() {
+            sandwich1 = document.querySelector('.item1_img');
+            sandwich1.classList.add('scroll');
+        });
+
+        
+
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="../mainPage/html/index.html"><img src="./image/logo_w.png"></a>
+        </div>
+        <div class="log_menu">
+            <ul>
+                <li><a href="https://www.subway.co.kr/member/login">로그인</a></li>
+                <li class="signup"><a href="https://www.subway.co.kr/member/join/step1">회원가입</a></li>
+                <li class="global"><a href="https://www.subway.com/en-us/"><img src="./image/icon_utill_global.png"></a></li>
+            </ul>
+        </div>
+        <div class="main_nav">
+            <div class="bg"></div>
+            <ul>
+                <li class="nav_item">메뉴소개
+                        <!--하위메뉴-->
+                        <ul class="hidden_menu">
+                            <li><a href="../menuIntro/sandwich/sandwich.html">샌드위치</a></li>
+                            <li><a href="../menuIntro/wrap.etc/menu_wrap(script).html">랩ㆍ기타</a></li>
+                            <li><a href="../menuIntro/salad/salad.html">샐러드</a></li>
+                            <li><a href="../menuIntro/morning/menu_wrap(script).html">아침메뉴</a></li>
+                            <li><a href="../menuIntro/smile/menu_wrap(script).html">스마일 썹</a></li>
+                            <li><a href="../menuIntro/catering/menu_wrap(script).html">단체메뉴</a></li>
+                        </ul>
+                </li>
+                <li class="nav_item" style="color:#009223;">이용방법
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a style="color:#009223; text-decoration:underline;" href="../howToPage/html/index.html">써브웨이 이용방법</a></li>
+                        <li><a href="../단체메뉴 이용방법/단체메뉴이용방법.html">단체메뉴 이용방법</a></li>
+                        <li><a href="../ingridientIntro/html/index.html">신선한 재료 소개</a></li>
+                        <li><a href="../fastSubPage/fast-sub.html">App 이용방법</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">새소식
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href="">이벤트ㆍ프로모션</a></li>
+                        <li><a href="">뉴스ㆍ공지사항</a></li>
+                        <li><a href="">광고영상</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">써브웨이
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href="">써브웨이 역사</a></li>
+                        <li><a href="../써브웨이약속/써브웨이약속.html">써브웨이 약속</a></li>
+                        <li><a href="">샌드위치 아티스트 지원</a></li>
+                        <li><a href="">매장찾기</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">가맹점
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href="">써브웨이 프랜차이즈</a></li>
+                        <li><a href="">가맹관련 FAQ</a></li>
+                        <li><a href="">가맹신청ㆍ문의</a></li>
+                        <li><a href="../지사안내/지사안내.html">지사안내</a></li>
+                        <li><a href="../사업설명회/사업설명회.html">사업설명회</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">온라인 주문
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href="../orderPage/order_step1.html">FAST-SUB</a></li>
+                        <li><a href="">HOME-SUB</a></li>
+                        <li><a href="">단체주문</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="sub_header">
+        <a href="../mainPage/html/index.html">
+            <div class="sub_logo">
+                <img src="./image/logo_sub_header.png" alt="서브로고">
+            </div>
+        </a>
+        <ul>
+            <li><a href="../howToPage/html/index.html" style="color:#009223";>써브웨이 이용방법</a>
+            <div class="underline"></div></li>
+            <li><a href="../단체메뉴 이용방법/단체메뉴이용방법.html">단체메뉴 이용방법</a></li>
+            <li><a href="../ingridientIntro/html/index.html">신선한 재료 소개</a></li>
+            <li><a href="../fastSubPage/fast-sub.html">APP 이용방법</a></li>
+        </ul>
+        <div class="top" onclick="scrollToTop()"></div>
+        </div>
+    </div>
+
+
+    <!-- 본문 -->
+    <h2 class="orderTip_title">써브웨이 이용방법</h2>
+
+    <div class="orderTip_wrap">
+        
+        <!--이용방법 탭메뉴-->
+        <div class="orderTip_tab">
+            <div class="orderTab" onclick="window.location.href='../howToPage/html/index.html';">매장에서 주문하기</div>
+            <div class="tipTab">주문 TIP</div>
+        </div>
+
+
+        <!--주문tip페이지-->
+        <div class="orderTip_menu">
+            <!--스테이크&치즈-->
+            <div class="orderTip_img1">
+                <div class="item_order">
+                    <p class="txt"><span class="bold_text">완벽한 한끼</span>를 원하신다면?</p>
+                    <div class="item_text">
+                        <h1>스테이크 & 치즈</h1>
+                        <p>고급스러운 스테이크와 고소하고 진한 치즈의 콜라보<br>
+                            신선한 야채와 함께 푸짐하고 완벽한 한끼가 완성됩니다!<br>
+                            다양한 토핑을 추가해 나만의 한끼 메뉴를 즐겨보세요.
+                        </p>
+                    </div>
+                </div>
+                <div class="item1_img"></div>
+            </div>
+                <!--토핑-->
+            <div class="item_bg">
+                <div class="topping_tip">
+                    <h3>더 맛있게 즐기는 <span style="color:#ff8201; font-weight:900; letter-spacing:-1px;">TIP</span></h3>
+                    <ul>
+                        <li><img src="./image/img_cheese.jpg">
+                            <h4><img src="./image/bul01.png">CHEESE</h4>
+                            <p>더블치즈로 치즈와 쇠고기의<br>완벽한 조화!</p></li>
+                        <li><img src="./image/img_sauce01.jpg">
+                            <h4><img src="./image/bul01.png">SAUCE</h4>
+                            <p>달콤하게 즐기고 싶다면 스윗어니언+마요네즈!<br>
+                                스테이크의 맛을 즐기고 싶다면 후추만 톡톡!</p></li>
+                        <li><img src="./image/img_vegetable.jpg">
+                            <h4><img src="./image/bul03.png">VEGETABLE</h4>
+                            <p>토마토, 오이를 빼면<br>고기의 풍미를 즐길 수 있습니다.</p></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!--로스트치킨-->
+            <div class="orderTip_img2">
+                <div class="item_order">
+                    <p class="txt" style="width: 225px;"><span class="bold_text">다이어트</span>중이라면?</p>
+                    <div class="item_text">
+                        <h1 style="color:white;">로스트치킨</h1>
+                        <p style="color: white">퍽퍽한 닭가슴살은 이제 그만!<br>
+                            로스트 치킨 샐러드는 가볍고 든든하게 즐길 수 있습니다.<br>
+                            샌드위치와 샐러드로 맛있고 든든하게 즐기세요.
+                        </p>
+                    </div>
+                </div>
+                <div class="item2_img"></div>
+            </div>
+                <!--토핑-->
+            <div class="item_bg">
+                <div class="topping_tip">
+                    <h3>더 맛있게 즐기는 <span style="color:#ff8201; font-weight:900; letter-spacing:-1px;">TIP</span></h3>
+                    <ul>
+                        <li><img src="./image/img_salad.jpg">
+                            <h4><img src="./image/bul01.png">SALAD</h4>
+                            <p>로스트치킨은 샐러드로 드셔도 좋습니다.<br>
+                                관리의 시작은 써브웨이로부터!</p></li>
+                        <li><img src="./image/img_sauce02.jpg">
+                            <h4><img src="./image/bul01.png">SAUCE</h4>
+                            <p>랜치로 고소하게 즐겨보세요!</p></li>
+                        <li><img src="./image/img_topping.jpg">
+                            <h4><img src="./image/bul03.png">TOPPING</h4>
+                            <p>올리브, 피클, 할라피뇨를 빼고 드시면,<br>
+                                담백하고 부드러운 로스트 치킨을<br>
+                                제대로 즐길 수 있습니다.</p></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!--써브웨이클럽-->
+            <div class="orderTip_img3">
+                <div class="item_order">
+                    <p class="txt" style="width: 230px;"><span class="bold_text">건강</span>을 생각한다면?</p>
+                    <div class="item_text">
+                        <h1 style="color:white;">써브웨이 클럽</h1>
+                        <p style="color: white">고기의 단백질과 야채의 비타민으로 영양UP!<br>
+                                절임류 야채를 제외해서 더 담백하게, 올리브오일을 넣어 부담은 DOWN!<br>
+                                써브웨이 클럽으로 건강한 하루를 보내세요.
+                        </p>
+                    </div>
+                </div>
+                <div class="item3_img"></div>
+            </div>
+                <!--토핑-->
+            <div class="item_bg">
+                <div class="topping_tip">
+                    <h3 >더 맛있게 즐기는 <span style="color:#ff8201; font-weight:900; letter-spacing:-1px;">TIP</span></h3>
+                    <ul>
+                        <li><img src="./image/img_sauce03.jpg">
+                            <h4><img src="./image/bul01.png">SAUCE</h4>
+                            <p>올리브오일과 후추를 살짝 뿌리면,<br>
+                                짜지않고 담백한 행복의 맛을 느낄 수 있습니다.</p></li>
+                        <li><img src="./image/img_cheese.jpg">
+                            <h4><img src="./image/bul03.png">CHEESE</h4>
+                            <p>치즈를 빼고 터키, 베이컨<br>
+                                햄의 완벽한 조화를 느껴보세요!</p></li>
+                        <li><img src="./image/img_topping.jpg">
+                            <h4><img src="./image/bul03.png">TOPPING</h4>
+                            <p>올리브, 피클, 할라피뇨를 빼고 드시면,<br>
+                                담백하고 부드러운 로스트 치킨을<br>
+                                제대로 즐길 수 있습니다.<p></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--푸터-->
+    <footer>
+        <!--상단-->
+        <div class="footer_menu">
+            <ul>
+                <li><a href="/agreement">이용약관</a></li>
+                <li><a href="/privacy"><strong>개인정보처리방침</strong></a></li>
+                <li><a href="/subcard">써브카드</a></li>
+                <li><a href="https://store.subway.co.kr/">점주관리자</a></li>
+            </ul>
+        </div>
+        <!--하단-->
+        <div class="footer_info">
+            <p>서울시 서초구 강남대로 535 프린스빌딩 15층</p>
+            <p><span>I</span></p>
+            <p>대표 : INSOO CHO(인수조)</p>
+            <p><span>I</span></p>
+            <p>전화 : 02-797-5036</p>
+            <p><span>I</span></p>
+            <p>사업자등록번호 : 101-84-04143</p>
+        </div>
+        <div class="copyright">SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights Reserved.</div>
+        <!--sns-->
+        <a class="instagram" href="https://www.instagram.com/subwaykorea"></a>
+        <a class="facebook" href="https://www.facebook.com/Subwaykr"></a>
+    </footer>
+</body>
+</html>

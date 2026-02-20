@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  HTML5 문서임을 선언하며, lang 속성은 기본 언어(영어)를 지정합니다.
+-->
+
+<head>
+    <!-- 기본 메타 태그: 문자 인코딩, 반응형 웹 설정, 문서 제목을 지정 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast-Sub</title>
+
+    <!-- CSS 영역: 페이지 전반의 스타일과 레이아웃을 설정 -->
+    <style>
+        /* 
+          [초기화]
+          모든 요소에 대해 기본 마진과 패딩을 제거하고,
+          box-sizing을 border-box로 설정하여 요소의 크기를 계산할 때 패딩과 테두리 포함
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===================== 헤더 영역 스타일 ===================== */
+        /* 헤더: 상단 전체 영역으로 로고, 로그인/회원가입 메뉴, 네비게이션 바 등을 포함 */
+        header {
+            width: 100%;
+            min-width: 1200px;
+            height: 165px;
+            border-top: 5px solid #009223;
+            /* 상단 녹색 테두리 */
+            display: block;
+            position: relative;
+        }
+
+        /* 로고: 헤더 중앙에 위치, transform으로 정확히 중앙 정렬 */
+        .logo {
+            height: 40px;
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 로그인/회원가입 메뉴: 헤더 우측에 배치 */
+        .log_menu {
+            position: absolute;
+            top: 40px;
+            right: 15%;
+        }
+
+        .log_menu ul {
+            padding: 0;
+            margin: 0;
+            height: 30px;
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .log_menu a {
+            text-decoration: none;
+            color: #666;
+        }
+
+        .log_menu li {
+            margin: 5px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .log_menu li::marker {
+            color: #ddd;
+        }
+
+        .signup {
+            list-style: inside;
+        }
+
+        /* 메인 네비게이션 바: 메뉴 항목들을 가로로 배치하며 마우스 오버 시 하위 메뉴를 표시 */
+        .main_nav {
+            width: 100%;
+            height: 60px;
+            /* 네비게이션 영역 높이 */
+            position: absolute;
+            top: 65%;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 네비게이션 하위 배경: 마우스 오버 시 나타나는 흰색 배경 */
+        .bg {
+            top: 100%;
+            transform: translateY(-4px);
+            position: absolute;
+            width: 100%;
+            height: 0;
+            /* 기본 상태에서는 숨김 */
+            background-color: white;
+            border-top: 0.5px solid #ddd;
+            z-index: 995;
+        }
+
+        .main_nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        /* 네비게이션 메뉴에 마우스 오버 시 커서 포인터 표시 */
+        .main_nav ul:hover {
+            cursor: pointer;
+        }
+
+        /* 하위 메뉴를 감싸는 래퍼 (드롭다운 메뉴) */
+        .nav_wrap {
+            width: 100%;
+            height: 230px;
+            position: absolute;
+            top: 65%;
+        }
+
+        /* 개별 네비게이션 메뉴 항목 */
+        .nav_item {
+            float: left;
+            width: 165px;
+            font-size: 18px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .nav_item:hover {
+            color: #009223;
+        }
+
+        /* 하위 메뉴(드롭다운) 스타일: 기본 높이 0으로 숨기고 마우스 오버 시 확장 */
+        .hidden_menu {
+            overflow: hidden;
+            /* 영역 넘어가면 안 보이게 처리 */
+            width: 100%;
+            height: 0;
+            /* 기본 상태에서는 숨김 */
+            position: absolute;
+            left: 0;
+            top: -10px;
+            transform: translateY(50px);
+            z-index: 999;
+        }
+        .hidden_menu a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .hidden_menu li {
+            margin: 15px 0;
+            font-size: 15px;
+            color: #666;
+            letter-spacing: -1px;
+        }
+
+        .hidden_menu li:nth-child(1) {
+            margin-top: 20px;
+        }
+
+        .hidden_menu li:hover {
+            color: #009223;
+            text-decoration: underline;
+        }
+
+        /* 네비게이션 바에 마우스 오버 시 하위 메뉴와 배경 영역의 높이를 확장, 전환 효과 적용 */
+        .main_nav:hover .hidden_menu,
+        .main_nav:hover .bg {
+            height: 260px;
+            transition: 0.5s;
+            /* 부드러운 전환 효과 */
+        }
+
+        .main_nav:hover .bg {
+            border-bottom: 0.5px solid #ddd;
+        }
+
+        /* ===================== 메인 컨테이너 및 페이지 전반 스타일 ===================== */
+        /* 컨테이너: 전체 화면을 감싸며, 배경 이미지와 색상을 지정 */
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-width: 1280px;
+            /* 최소 너비 1280px */
+            background: url("./image/orderBackground.jpg") no-repeat 50% 0 #89cd2f;
+            text-align: center;
+            align-items: center;
+        }
+
+        /* 헤더 섹션: 큰 타이틀과 부제목을 포함 */
+        .header-section {
+            padding: 60px 0;
+        }
+
+        .main-title {
+            color: white;
+            font-size: 80px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            color: white;
+            margin-top: 30px;
+        }
+
+        /* 스텝(진행 단계) 섹션: 예를 들어 "STEP2" 등을 이미지와 함께 표시 */
+        .step-section {
+            width: 100%;
+            height: 170px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* 메뉴 컨텐츠 영역을 감싸는 래퍼 */
+        .menu-wrapper {
+            width: 1150px;
+            background-color: white;
+            margin: 0 auto;
+            margin-top: -40px;
+            margin-bottom: 100px;
+            box-sizing: border-box;
+        }
+
+        /* 메뉴 카테고리 탭: 즐겨찾는 메뉴, 프로모션, 샌드위치, 샐러드, 랩 기타, 사이드 음료 */
+        .menu-category {
+            width: 100%;
+            box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-category:hover {
+            cursor: pointer;
+        }
+
+        .menu-category ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .menu-category li {
+            width: calc(100% / 6);
+            height: 75px;
+            line-height: 75px;
+            border: 1px solid #e5e5e5;
+            box-sizing: border-box;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        /* 탭의 선택/비선택 상태 */
+        .tab-unselected {
+            color: #666666;
+            background-color: #ffffff;
+        }
+
+        .tab-selected {
+            color: white;
+            background-color: #009223;
+        }
+
+        /* 메뉴 목록 영역: 실제 메뉴 아이템들이 배치될 영역 */
+        .menu-list {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        /* 개별 메뉴 아이템 박스 */
+        .menu-item {
+            width: 370px;
+            height: 330px;
+            margin: 10px 0;
+            /* 1150px에서 3개 가로 배치 시 좌우 여백 계산 */
+            margin-left: calc((1150px - (370px * 3)) / 6);
+            position: relative;
+        }
+
+        .menu-item:hover {
+            cursor: pointer;
+        }
+
+        /* 메뉴가 없을 경우 표시하는 메시지 박스 */
+        .no-menu-msg {
+            width: 100%;
+            height: 480px;
+            align-items: center;
+            line-height: 480px;
+            font-size: 32px;
+            position: relative;
+        }
+
+        .no-menu-msg::before {
+            content: '';
+            position: absolute;
+            top: 160px;
+            left: 50%;
+            background: url("./image/icon_exc_sm.png") no-repeat center;
+            width: 40px;
+            height: 40px;
+        }
+
+        /* NEW(신메뉴) 뱃지: 메뉴 아이템 왼쪽 상단에 표시 */
+        .new-badge {
+            position: absolute;
+            top: 0;
+            left: -8px;
+            transform: translateY(-50%);
+            z-index: 0;
+            width: 70px;
+            height: 30px;
+            color: white;
+            font-weight: bold;
+            background-color: #ffc300;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        /* 메뉴 이미지 컨테이너: 이미지 크기 조정 및 넘침 방지 */
+        .menu-img-container {
+            width: 100%;
+            height: 190px;
+            overflow: hidden;
+        }
+
+        .menu-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: 0.3s;
+            display: block;
+        }
+
+        /* 메뉴 아이템에 마우스 오버 시 이미지 확대 효과 */
+        .menu-item:hover .menu-img-container img {
+            transform: scale(1.2);
+        }
+
+        /* 메뉴 텍스트 영역 */
+        .menu-text {
+            width: 100%;
+            height: 140px;
+        }
+
+        .menu-text p:nth-child(1) {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .menu-text p:nth-child(2) {
+            font-size: 16px;
+        }
+
+        .menu-text p:nth-child(3) {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffc300;
+            margin-top: 10px;
+        }
+
+        /* 메뉴 상세 정보 영역 (초기에는 숨김 처리) */
+        .menu-detail {
+            display: none;
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        /* 메뉴 상세 상단: 왼쪽에는 이미지, 오른쪽에는 텍스트 정보 */
+        .menu-detail-top {
+            display: flex;
+            margin-bottom: 35px;
+        }
+
+        .menu-detail-top>div {
+            width: 50%;
+        }
+
+        /* 메뉴 상세 이미지 영역 */
+        .detail-img img {
+            width: 100%;
+            height: 440px;
+            object-fit: contain;
+        }
+
+        /* 메뉴 상세 텍스트 영역 */
+        .detail-text {
+            width: 100%;
+            height: 440px;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            align-items: baseline;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .detail-type {
+            color: #009223;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .detail-name {
+            display: block;
+            color: #292929;
+            font-size: 50px;
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+
+        .detail-eng {
+            color: #999;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .detail-info {
+            color: #999;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        /* 주문 시작 버튼 (메뉴 상세 내) */
+        .detail-order-btn {
+            color: white;
+            background-color: #009223;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            width: 160px;
+            height: 50px;
+            line-height: 50px;
+            padding-right: 25px;
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        /* 주문 시작 버튼 내부 오른쪽 체크 아이콘 */
+        .detail-order-btn::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 25px;
+            height: 20px;
+            background: url("./image/icon_check.png") no-repeat center/cover;
+        }
+
+        /* 메뉴 상세 중간 영역: 영양성분표 및 안내문구 */
+        .menu-detail-middle {
+            margin-bottom: 30px;
+        }
+
+        .menu-detail-middle>p:nth-child(1) {
+            text-align: justify;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        /* 영양성분표 헤더 */
+        .Nutrition-Facts-head {
+            border-top: 4px solid #009223;
+            border-bottom: 1px solid #009223;
+            margin-top: 30px;
+            display: flex;
+        }
+
+        .Nutrition-Facts-head p {
+            width: calc(100% / 6);
+            box-sizing: border-box;
+            padding: 20px;
+            font-size: 16px;
+            color: #005a15;
+            text-align: center;
+        }
+
+        /* 영양성분표 바디 */
+        .Nutrition-Facts-body {
+            border-bottom: 1px solid #dddddd;
+            display: flex;
+        }
+
+        .Nutrition-Facts-body p {
+            width: calc(100% / 6);
+            box-sizing: border-box;
+            padding: 20px;
+            font-size: 16px;
+            color: #292929;
+            text-align: center;
+        }
+
+        /* 안내문구 스타일 */
+        .menu-detail-middle>p:nth-child(4) {
+            margin-top: 20px;
+            text-align: justify;
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* 원산지, 알레르기 정보 버튼 영역 */
+        .info-button-area {
+            display: flex;
+            justify-content: end;
+        }
+
+        .info-button {
+            background-color: #292929;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin: 0 10px;
+        }
+
+        /* ===================== 주문 설정 팝업 ===================== */
+        /* 팝업 오버레이: 주문 설정 팝업 배경, 기본적으로 숨김 */
+        .order-popup-overlay {
+            display: none;
+            /* 초기에는 안 보임 */
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            /* 반투명 검정 배경 */
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 팝업 박스: 주문 설정 내용이 들어가는 창 */
+        .popup-box {
+            z-index: 99;
+            width: 510px;
+            height: 700px;
+            background-color: white;
+            padding: 40px 50px;
+            border-radius: 30px;
+            box-sizing: border-box;
+            position: relative;
+            /* 닫기 버튼 위치 조절을 위해 */
+        }
+
+        .popup-box>h1 {
+            color: #ff8300;
+            font-size: 30px;
+            border-bottom: 6px solid #009223;
+            padding-bottom: 20px;
+        }
+
+        .popup-content {
+            width: 100%;
+        }
+
+        /* 팝업 닫기 버튼 (X) */
+        .popup-close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #333;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* ===================== 썹픽(추천 조합) 영역 ===================== */
+        .subpick-section {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .subpick-title {
+            background-color: #ff8200;
+            color: white;
+            font-size: 16px;
+            height: 32px;
+            padding: 0 16px;
+            border-radius: 100px;
+            line-height: 32px;
+            margin-left: 20px;
+        }
+
+        .subpick-info {
+            font-size: 12px;
+            text-align: justify;
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            padding: 4px 8px;
+            line-height: 120%;
+            margin-left: 25px;
+        }
+
+        /* 썹픽 재료 목록 */
+        .subpick-menu {
+            display: flex;
+            width: 100%;
+            align-items: baseline;
+        }
+
+        .subpick-menu>p {
+            box-sizing: border-box;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .subpick-menu>p:nth-child(1) {
+            padding-left: 30px;
+            width: 35%;
+            color: #009223;
+            text-align: justify;
+        }
+
+        .subpick-menu>p:nth-child(2) {
+            padding-left: 10px;
+            width: 65%;
+            color: #666666;
+            line-height: 120%;
+            text-align: justify;
+        }
+
+        .subpick-menu:last-child {
+            border-bottom: 2px solid #009223;
+            padding-bottom: 30px;
+        }
+
+        /* 빵 길이 선택 영역 */
+        .bread-choice-label {
+            width: 33%;
+            margin: 0 auto;
+            transform: translateY(-50%);
+            background-color: white;
+            color: #009223;
+            font-size: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .bread-radio-group {
+            display: flex;
+            justify-content: center;
+            margin-top: 5px;
+        }
+
+        .bread-radio-group label {
+            display: flex;
+            align-items: center;
+            width: 50%;
+            padding-left: 40px;
+        }
+
+        .bread-radio-group input {
+            width: 26px;
+            height: 26px;
+            margin-right: 5px;
+        }
+
+        .bread-radio-group p {
+            font-size: 20px;
+        }
+
+        /* 주문 방법 버튼 영역 (썹픽 / 직접 선택) */
+        .order-method-box {
+            margin-top: 30px;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            box-sizing: border-box;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .order-method-btn {
+            width: 40%;
+            height: 100%;
+            line-height: 120%;
+            text-align: center;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 18px;
+            background-color: #005a15;
+            border-radius: 30px;
+            text-decoration: none;
+        }
+
+        /* ===================== 푸터 영역 ===================== */
+        footer {
+            background-color: rgb(41, 41, 41);
+            color: rgb(102, 102, 102);
+            position: relative;
+        }
+
+        /* 푸터 상단 메뉴 */
+        .footer_menu {
+            padding: 5px;
+            border-bottom: 1px solid #3b3b3b;
+        }
+
+        footer ul {
+            list-style: none;
+            display: flex;
+            font-size: 14px;
+        }
+
+        footer li {
+            margin-right: 29px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        footer strong {
+            font-weight: bold;
+            color: #bbbbbb;
+        }
+
+        /* 푸터 하단 정보 */
+        .footer_info {
+            font-size: 13px;
+            display: flex;
+            padding: 10px 0 0 45px;
+        }
+
+        footer p {
+            padding-right: 5px;
+        }
+
+        footer span {
+            font-weight: bold;
+        }
+
+        .copyright {
+            font-size: 13px;
+            margin-top: -10px;
+            padding: 5px 0 25px 45px;
+        }
+
+        /* SNS 아이콘: 인스타그램, 페이스북 */
+        .instagram {
+            width: 50px;
+            height: 50px;
+            background-image: url("../footer/imgs/instagram.png");
+            position: absolute;
+            right: 100px;
+            bottom: 20px;
+        }
+
+        .instagram:hover {
+            background-image: url("../footer/imgs/instagram_hover.png");
+        }
+
+        .facebook {
+            width: 50px;
+            height: 50px;
+            background-image: url("../footer/imgs/facebook.png");
+            position: absolute;
+            right: 35px;
+            bottom: 20px;
+        }
+
+        .facebook:hover {
+            background-image: url("../footer/imgs/facebook_hover.png");
+        }
+    </style>
+
+    <script>
+        /* 
+          [진행 단계(스텝) 표시 함수]
+          currentStep 파라미터에 따라 현재 진행 단계를 이미지와 텍스트로 표시합니다.
+        */
+        function renderStepIndicator(currentStep) {
+
+            // 진행 단계(스텝) 이름 배열 (매장선택, 메뉴선택, 주문하기 등)
+            const stepNames = ["매장선택", "메뉴선택", "주문하기", ""];
+
+            const stepArea = document.querySelector(".step-section");
+            // 기존 단계 표시 내용 제거
+            stepArea.innerHTML = "";
+
+            // 총 4단계(인덱스 0~3)를 반복 처리
+            for (let i = 0; i < 4; i++) {
+                // 두 개의 박스 요소 생성: 하나는 이미지용, 하나는 점(포인트)용
+                const box1 = document.createElement("div");
+                const box2 = document.createElement("div");
+                // 스텝 이미지와 포인트 이미지 요소 생성
+                const stepImg = document.createElement("img");
+                const pointImg = document.createElement("img");
+
+                // 이미지 요소 간 간격 설정 (마진)
+                const margin = 10;
+                stepImg.style.marginLeft = `${margin}px`;
+                stepImg.style.marginRight = `${margin}px`;
+                pointImg.style.marginLeft = `${margin}px`;
+                pointImg.style.marginRight = `${margin}px`;
+                pointImg.style.marginTop = "30px";
+
+                // 현재 스텝(현재 단계와 i+1이 일치하면) 활성화된 이미지를 사용
+                if (currentStep === i + 1) {
+                    stepImg.src = `./image/step${i + 1}_on.png`;
+                    stepImg.style.marginRight = "-45px";
+                    stepImg.style.marginTop = "-15px";
+                    // 현재 활성 스텝임을 표시하기 위해 클래스 추가
+                    stepImg.classList.add("onStep");
+                    pointImg.src = `./image/step_point_on.png`;
+                } else {
+                    // 비활성화된 스텝은 기본 이미지 사용
+                    stepImg.src = `./image/step${i + 1}.png`;
+                    // 마지막 스텝에는 점 이미지 표시하지 않음
+                    if (i === 3) {
+                        pointImg.style.display = "none";
+                    } else {
+                        pointImg.src = `./image/step_point_off.png`;
+                    }
+                }
+
+                // 생성한 이미지 요소들을 각 박스에 추가
+                box1.appendChild(stepImg);
+                box2.appendChild(pointImg);
+                // 박스들을 진행 단계 영역에 추가
+                stepArea.appendChild(box1);
+                stepArea.appendChild(box2);
+            }
+
+            // 현재 활성화된 스텝 이미지 요소의 부모 요소를 선택하여 텍스트(단계 및 스텝 이름)를 추가
+            const onStepEl = document.querySelector(".onStep")?.parentElement;
+            
+            // 단계 번호와 이름을 표시할 p 태그 생성
+            const stepText1 = document.createElement("p");
+            const stepText2 = document.createElement("p");
+
+            // 현재 스텝 번호와 해당 스텝 이름 설정
+            stepText1.textContent = `STEP${currentStep}`;
+            stepText2.textContent = stepNames[currentStep - 1];
+
+            // 생성한 텍스트 요소들을 현재 스텝 요소에 추가
+            onStepEl.appendChild(stepText1);
+            onStepEl.appendChild(stepText2);
+
+            // 텍스트의 위치와 스타일 지정
+            onStepEl.style.position = "relative";
+            stepText1.style.position = "absolute";
+            stepText1.style.top = "5px";
+            stepText1.style.left = "110px";
+            stepText1.style.fontSize = "16px";
+            stepText1.style.fontWeight = "bold";
+            stepText1.style.color = "#ffc300";
+
+            stepText2.style.position = "absolute";
+            stepText2.style.top = "25px";
+            stepText2.style.left = "110px";
+            stepText2.style.fontSize = "24px";
+            stepText2.style.fontWeight = "bold";
+            stepText2.style.color = "white";
+        }
+        
+        /*
+         * 메뉴 데이터 (2차원 배열)
+         * 각 인덱스별로 메뉴 카테고리 데이터를 저장
+         * [0] 샌드위치, [1] 샐러드, [2] 랩 기타, [3] 사이드 음료
+         */
+        const data = [
+            // [0] 샌드위치 카테고리 데이터
+            [
+                {
+                    name: "콰트로 치즈 스테이크&머쉬룸",
+                    engName: "Quattro Cheese Steak&Mushroom",
+                    kcal: 446,
+                    new: 1,
+                    info: "든든한 스테이크와 담백한 머쉬룸에 풍성한 치즈 4가지를 더해 맛도 가득, 풍미도 가득"
+                },
+                {
+                    name: "콰트로 치즈 햄&오믈렛",
+                    engName: "Quattro Cheese Ham&Omelet",
+                    kcal: 465,
+                    new: 1,
+                    info: "클래식한 햄과 부드러운 오믈렛, 풍성한 4가지 치즈의 조화를 입안 가득 느껴보세요."
+                },
+                {
+                    name: "모닝 콰트로 치즈 스테이크&머쉬룸",
+                    engName: "Morning Quattro Cheese Steak&Mushroom",
+                    kcal: 429,
+                    new: 1,
+                    info: "든든한 스테이크와 담백한 머쉬룸에 풍성한 치즈 4가지를 야채없이도 풍미있게"
+                },
+                {
+                    name: "모닝 콰트로 치즈 햄&오믈렛",
+                    engName: "Morning Quattro Cheese Ham&Omelet",
+                    kcal: 448,
+                    new: 1,
+                    info: "클래식한 햄과 부드러운 오믈렛, 풍성한 4가지 치즈의 조화를 야채없이도 풍미있게"
+                },
+                {
+                    name: "안창 비프&머쉬룸",
+                    engName: "Beef & Mushroom",
+                    kcal: 292,
+                    new: 0,
+                    info: "부드럽고 풍미 넘치는 안창살과 담백하고 건강한 머쉬룸이 함께 어우러져 이루는 맛있는 조합"
+                },
+                {
+                    name: "스테이크 & 치즈",
+                    engName: "Steak & Cheese",
+                    kcal: 355,
+                    new: 0,
+                    info: "육즙이 쫙~풍부한 비프 스테이크의 풍미가 입안 한가득"
+                },
+                {
+                    name: "이탈리안 비엠티",
+                    engName: "Italian B.M.T.™",
+                    kcal: 388,
+                    new: 0,
+                    info: "Biggest Meatiest Tastiest, its’ B.M.T."
+                },
+                {
+                    name: "로티세리 바비큐 치킨",
+                    engName: "Rotisserie Barbecue Chicken",
+                    kcal: 327,
+                    new: 0,
+                    info: "닭 가슴살과 다리살을 써브웨이 만의 비율로 배합한 치킨을 손으로 찢어 더욱 부드럽게 즐기는 메뉴!"
+                },
+                {
+                    name: "에그마요",
+                    engName: "Egg Mayo",
+                    kcal: 416,
+                    new: 0,
+                    info: "부드럽고 담백한 에그마요 본연의 맛을 즐겨보세요!"
+                },
+                {
+                    name: "안창 비프",
+                    engName: "Beef",
+                    kcal: 342,
+                    new: 0
+                },
+                {
+                    name: "터키 베이컨 아보카도",
+                    engName: "Turkey Bacon Avocado",
+                    kcal: 355,
+                    new: 0
+                },
+                {
+                    name: "스파이시 쉬림프",
+                    engName: "Spicy Shrimp",
+                    kcal: 245,
+                    new: 0
+                },
+                {
+                    name: "쉬림프",
+                    engName: "Shrimp",
+                    kcal: 241,
+                    new: 0
+                },
+                {
+                    name: "로스트 치킨",
+                    engName: "Roasted Chicken",
+                    kcal: 300,
+                    new: 0
+                },
+                {
+                    name: "풀드 포크 바비큐",
+                    engName: "Pulled Pork Barbecue",
+                    kcal: 327,
+                    new: 0
+                },
+                {
+                    name: "써브웨이 클럽",
+                    engName: "Subway Club",
+                    kcal: 299,
+                    new: 0
+                },
+                {
+                    name: "치킨 데리야끼",
+                    engName: "Chicken Teriyaki",
+                    kcal: 314,
+                    new: 0
+                },
+                {
+                    name: "스파이시 이탈리안",
+                    engName: "Spicy Italian",
+                    kcal: 464,
+                    new: 0
+                },
+                {
+                    name: "비엘티",
+                    engName: "B.L.T.",
+                    kcal: 300,
+                    new: 0
+                },
+                {
+                    name: "터키",
+                    engName: "Turkey",
+                    kcal: 265,
+                    new: 0
+                },
+                {
+                    name: "머쉬룸",
+                    engName: "Mushroom",
+                    kcal: 245,
+                    new: 0
+                },
+                {
+                    name: "참치",
+                    engName: "Tuna",
+                    kcal: 316,
+                    new: 0
+                },
+                {
+                    name: "햄",
+                    engName: "Ham",
+                    kcal: 262,
+                    new: 0
+                },
+                {
+                    name: "에그 슬라이스",
+                    engName: "Egg Slice",
+                    kcal: 279,
+                    new: 0
+                },
+                {
+                    name: "베지",
+                    engName: "Veggie Delite",
+                    kcal: 209,
+                    new: 0
+                }
+            ],
+            // [1] 샐러드 카테고리 데이터
+            [
+                {
+                    name: "안창 비프",
+                    engName: "Beef",
+                    kcal: 180,
+                    new: 0
+                },
+                {
+                    name: "안창 비프&머쉬룸",
+                    engName: "Beef & Mushroom",
+                    kcal: 130,
+                    new: 0
+                },
+                {
+                    name: "터키 베이컨 아보카도",
+                    engName: "Turkey Bacon Avocado",
+                    kcal: 200,
+                    new: 0
+                },
+                {
+                    name: "스테이크 & 치즈",
+                    engName: "Steak & Cheese",
+                    kcal: 193,
+                    new: 0
+                },
+                {
+                    name: "스파이시 쉬림프",
+                    engName: "Spicy Shrimp",
+                    kcal: 83,
+                    new: 0
+                },
+                {
+                    name: "쉬림프",
+                    engName: "Shrimp",
+                    kcal: 79,
+                    new: 0
+                },
+                {
+                    name: "로스트 치킨",
+                    engName: "Roasted Chicken",
+                    kcal: 138,
+                    new: 0
+                },
+                {
+                    name: "로티세리 바비큐 치킨",
+                    engName: "Rotisserie Barbecue Chicken",
+                    kcal: 165,
+                    new: 0
+                },
+                {
+                    name: "풀드 포크 바비큐",
+                    engName: "Pulled Pork Barbecue",
+                    kcal: 165,
+                    new: 0
+                },
+                {
+                    name: "써브웨이 클럽",
+                    engName: "Subway Club",
+                    kcal: 144,
+                    new: 0
+                },
+                {
+                    name: "치킨 데리야끼",
+                    engName: "Chicken Teriyaki",
+                    kcal: 152,
+                    new: 0
+                },
+                {
+                    name: "이탈리안 비엠티",
+                    engName: "Italian B.M.T™",
+                    kcal: 226,
+                    new: 0
+                },
+                {
+                    name: "스파이시 이탈리안",
+                    engName: "Spicy Italian",
+                    kcal: 302,
+                    new: 0
+                },
+                {
+                    name: "비엘티",
+                    engName: "B.L.T.",
+                    kcal: 153,
+                    new: 0
+                },
+                {
+                    name: "터키",
+                    engName: "Turkey",
+                    kcal: 103,
+                    new: 0
+                },
+                {
+                    name: "머쉬룸",
+                    engName: "Mushroom",
+                    kcal: 83,
+                    new: 0
+                },
+                {
+                    name: "참치",
+                    engName: "Tuna",
+                    kcal: 153,
+                    new: 0
+                },
+                {
+                    name: "햄",
+                    engName: "Ham",
+                    kcal: 99.5,
+                    new: 0
+                },
+                {
+                    name: "에그마요",
+                    engName: "Egg Mayo",
+                    kcal: 254,
+                    new: 0
+                },
+                {
+                    name: "에그 슬라이스",
+                    engName: "Egg Slice",
+                    kcal: 117,
+                    new: 0
+                },
+                {
+                    name: "베지",
+                    engName: "Veggie Delite™",
+                    kcal: 46.7,
+                    new: 0
+                },
+                {
+                    name: "미니 로티세리 치킨 샐러드",
+                    engName: "Mini Rotisserie Chicken Salad",
+                    kcal: 42,
+                    new: 0
+                }
+            ],
+            // [2] 랩 기타 카테고리 데이터
+            [
+                {
+                    name: "쉬림프 에그마요 랩",
+                    engName: "Shrimp Egg Mayo Wrap",
+                    kcal: 516,
+                    new: 1
+                },
+                {
+                    name: "스테이크 & 치즈 아보카도 랩",
+                    engName: "Steak Cheese Avocado Wrap",
+                    kcal: 478,
+                    new: 1
+                },
+                {
+                    name: "치킨 베이컨 미니 랩",
+                    engName: "Chicken Bacon Mini Wrap",
+                    kcal: 391,
+                    new: 1
+                }
+            ],
+            // [3] 사이드 음료 카테고리 데이터
+            [
+                {
+                    name: "민트 초코 쿠키",
+                    engName: "Mint Choco",
+                    kcal: 199,
+                    new: 0
+                },
+                {
+                    name: "초코칩 쿠키",
+                    engName: "Chocolate Chip",
+                    kcal: 228,
+                    new: 0
+                },
+                {
+                    name: "더블 초코칩 쿠키",
+                    engName: "Double Chocolate Chip",
+                    kcal: 212,
+                    new: 0
+                },
+                {
+                    name: "오트밀 레이즌 쿠키",
+                    engName: "Oatmeal Raisin",
+                    kcal: 200,
+                    new: 0
+                },
+                {
+                    name: "라즈베리 치즈케익 쿠키",
+                    engName: "Raspberry Cheese Cake",
+                    kcal: 204,
+                    new: 0
+                },
+                {
+                    name: "화이트 초코 마카다미아 쿠키",
+                    engName: "White Choco Macadamia",
+                    kcal: 245,
+                    new: 0
+                },
+                {
+                    name: "쿠키 3개",
+                    engName: "3 Cookies",
+                    new: 0
+                },
+                {
+                    name: "쿠키박스",
+                    engName: "Cookie Box",
+                    new: 0
+                },
+                {
+                    name: "쿠키 6개",
+                    engName: "6 Cookies",
+                    new: 0
+                },
+                {
+                    name: "칩 (랜덤발송)",
+                    engName: "Chip",
+                    new: 0
+                },
+                {
+                    name: "Cheesy 웨지 포테이토",
+                    engName: "Cheesy Ovenbaked Wedge Potatoes",
+                    kcal: 223,
+                    new: 0
+                },
+                {
+                    name: "웨지 포테이토",
+                    engName: "Ovenbaked Wedge Potatoes",
+                    kcal: 179,
+                    new: 0
+                },
+                {
+                    name: "Bacon Cheesy 웨지 포테이토",
+                    engName: "Bacon Cheesy Ovenbaked Wedge Potatoes",
+                    kcal: 276,
+                    new: 0
+                },
+                {
+                    name: "탄산음료 16oz",
+                    engName: "Soda",
+                    new: 0
+                },
+                {
+                    name: "아메리카노",
+                    engName: "Coffee",
+                    new: 0
+                },
+                {
+                    name: "아이스 아메리카노",
+                    engName: "Ice Coffee",
+                    new: 0
+                },
+                {
+                    name: "코카콜라(355ml)",
+                    engName: "CocaCola",
+                    new: 0
+                },
+                {
+                    name: "스프라이트(355ml)",
+                    engName: "Sprite",
+                    new: 0
+                },
+                {
+                    name: "코카콜라 제로(355ml)",
+                    engName: "CocaCola Zero",
+                    new: 0
+                },
+                {
+                    name: "스프라이트 제로(355ml)",
+                    engName: "Sprite Zero",
+                    new: 1
+                },
+                {
+                    name: "닥터페퍼(350ml)",
+                    engName: "Doctor Pepper",
+                    new: 0
+                },
+                {
+                    name: "씨그램",
+                    engName: "Seagram",
+                    new: 0
+                },
+                {
+                    name: "미닛메이드",
+                    engName: "Minute Maid",
+                    new: 0
+                },
+                {
+                    name: "생수",
+                    engName: "Water",
+                    new: 0
+                }
+            ]
+        ];
+
+        // 페이지 로드 시, 스텝 인디케이터와 기본 메뉴(샌드위치) 목록 렌더링
+        window.addEventListener("load", () => {
+            renderStepIndicator(2);              // 현재 스텝: 2 (예: 메뉴선택)
+            renderMenuList(data[0], "샌드위치"); // 기본 카테고리: 샌드위치 (data[0])
+        });
+
+        /*
+         * renderMenuList(dataArray, category)
+         * - 선택한 카테고리 데이터(dataArray)를 이용하여 메뉴 목록(.menu-list)을 동적으로 생성
+         * - 메뉴 상세 영역(.menu-detail)은 숨김 처리
+         * - 각 메뉴 아이템 클릭 시 showMenuDetail() 함수를 호출하여 상세 정보 표시
+         */
+        function renderMenuList(dataArray, category) {
+            const menuListEl = document.querySelector(".menu-list");
+            const menuDetailEl = document.querySelector(".menu-detail");
+
+            // 메뉴 목록 영역은 보이고, 상세 영역은 숨김
+            menuListEl.style.display = "flex";
+            menuDetailEl.style.display = "none";
+
+            // 기존 메뉴 아이템 제거
+            menuListEl.replaceChildren();
+
+            // 각 메뉴 항목에 대해 DOM 요소 생성
+            dataArray.forEach((item) => {
+                const itemEl = document.createElement("div");
+                itemEl.classList.add("menu-item");
+                menuListEl.appendChild(itemEl);
+
+                // 메뉴 아이템 클릭 시 상세 정보 표시
+                itemEl.addEventListener("click", () => {
+                    showMenuDetail(item);
+                });
+
+                // 신메뉴(new)가 있다면 NEW 뱃지 추가
+                if (item.new === 1) {
+                    const newBadgeEl = document.createElement("div");
+                    newBadgeEl.classList.add("new-badge");
+                    newBadgeEl.textContent = "new";
+                    itemEl.appendChild(newBadgeEl);
+                }
+
+                // 메뉴 이미지 컨테이너 및 이미지 요소 생성
+                const imgContainer = document.createElement("div");
+                imgContainer.classList.add("menu-img-container");
+                itemEl.appendChild(imgContainer);
+
+                const imgEl = document.createElement("img");
+                imgEl.src = `./image/${category}/${item.name}.png`;
+                imgEl.alt = item.name;
+                imgContainer.appendChild(imgEl);
+
+                // 메뉴 텍스트 영역 생성 (메뉴명, 영문명, 칼로리 정보)
+                const textEl = document.createElement("div");
+                textEl.classList.add("menu-text");
+                itemEl.appendChild(textEl);
+
+                const nameP = document.createElement("p");
+                nameP.textContent = item.name;
+                textEl.appendChild(nameP);
+
+                const engP = document.createElement("p");
+                engP.textContent = item.engName || "";
+                textEl.appendChild(engP);
+
+                if (item.kcal) {
+                    const kcalP = document.createElement("p");
+                    kcalP.textContent = `${item.kcal}kcal`;
+                    textEl.appendChild(kcalP);
+                }
+            });
+        }
+
+        /*
+         * renderNoMenu(category)
+         * - 선택한 카테고리에 해당하는 메뉴 데이터가 없을 경우,
+         *   "~~(이/가) 없습니다." 메시지를 표시하는 함수
+         */
+        function renderNoMenu(category) {
+            const menuListEl = document.querySelector(".menu-list");
+            menuListEl.replaceChildren();
+
+            const noMenuEl = document.createElement("div");
+            noMenuEl.classList.add("no-menu-msg");
+            noMenuEl.textContent = `${category} (이/가) 없습니다.`;
+            menuListEl.appendChild(noMenuEl);
+        }
+
+        /*
+         * handleCategoryClick(tabEl)
+         * - 메뉴 카테고리 탭 클릭 시 실행되는 함수로,
+         *   모든 탭의 스타일을 초기화한 후, 선택된 탭에 따라 해당 카테고리의 데이터를 렌더링
+         */
+        function handleCategoryClick(tabEl) {
+            resetCategoryTabs();
+            tabEl.className = "tab-selected";
+
+            const categoryName = tabEl.textContent.trim();
+            let dataIndex = null;
+
+            // 카테고리 이름에 따라 데이터 인덱스 결정
+            switch (categoryName) {
+                case "샌드위치": dataIndex = 0; break;
+                case "샐러드": dataIndex = 1; break;
+                case "랩 기타": dataIndex = 2; break;
+                case "사이드 음료": dataIndex = 3; break;
+                case "즐겨찾는 메뉴":
+                case "프로모션":
+                    dataIndex = null;
+                    break;
+            }
+
+            if (dataIndex !== null) {
+                renderMenuList(data[dataIndex], categoryName);
+            } else {
+                renderNoMenu(categoryName);
+            }
+        }
+
+        /*
+         * resetCategoryTabs()
+         * - 모든 메뉴 카테고리 탭의 스타일을 "비선택" 상태로 초기화
+         */
+        function resetCategoryTabs() {
+            const allTabs = document.querySelectorAll(".menu-category li");
+            allTabs.forEach((li) => {
+                li.className = "tab-unselected";
+            });
+        }
+
+        /*
+         * showMenuDetail(menuItem)
+         * - 선택한 메뉴 아이템의 상세 정보를 화면에 표시하는 함수
+         * - 메뉴 목록은 숨기고, 상세 정보 영역을 보이도록 처리
+         */
+        function showMenuDetail(menuItem) {
+            console.log("선택된 메뉴:", menuItem);
+
+            // 메뉴 목록 영역 숨김 처리
+            document.querySelector(".menu-list").style.display = "none";
+            // 메뉴 상세 영역 보이기
+            const detailEl = document.querySelector(".menu-detail");
+            detailEl.style.display = "block";
+
+            // 상세 텍스트 데이터 업데이트 (타입, 메뉴명, 영문명, 추가 정보)
+            const detailData = document.querySelectorAll(".detail-text p");
+            detailData[0].textContent = "샌드위치";
+            detailData[1].textContent = menuItem.name || "";
+            detailData[2].textContent = menuItem.engName || "";
+            detailData[3].textContent = menuItem.info || "";
+
+            // 상세 이미지 업데이트
+            const imgEl = document.querySelector(".detail-img img");
+            imgEl.src = `./image/샌드위치/${menuItem.name}.png`;
+        }
+
+        /*
+         * closePopup()
+         * - 주문 설정 팝업을 닫기 위한 함수로, 오버레이의 display 속성을 "none"으로 설정
+         */
+        function closePopup() {
+            const popupOverlay = document.querySelector(".order-popup-overlay");
+            popupOverlay.style.display = "none";
+        }
+
+        /*
+         * openPopup()
+         * - 주문 설정 팝업을 열기 위한 함수로, 오버레이의 display 속성을 "flex"로 설정하여 보이게 함
+         */
+        function openPopup(obj) {
+            const popupOverlay = document.querySelector(".order-popup-overlay");
+            popupOverlay.style.display = "flex";
+            document.querySelector(".popup-sandwitch-name").innerHTML = obj.parentElement.childNodes[3].innerHTML
+        }
+
+        /*
+         * saveBreadLength()
+         * - 선택한 빵 길이(라디오 버튼 값)를 localStorage에 저장하는 함수
+         * - 빵 길이가 선택되지 않았으면 콘솔에 메시지 출력
+         */
+        function saveBreadLength() {
+            const selectedRadio = document.querySelector('input[name="bread"]:checked');
+            if (!selectedRadio) {
+                console.log("빵 길이가 선택되지 않았습니다.");
+                return;
+            }
+            const lengthValue = selectedRadio.value;
+
+            // 기존 주문 정보(localStorage "orderInfo")를 불러오거나 빈 객체로 초기화
+            let orderInfo = JSON.parse(localStorage.getItem("orderInfo")) || {};
+
+            orderInfo.breadLength = lengthValue;
+
+            localStorage.setItem("orderInfo", JSON.stringify(orderInfo));
+
+            console.log("빵 길이 저장:", lengthValue);
+        }
+    </script>
+</head>
+
+<body>
+    <!-- ===================== 헤더 영역 ===================== -->
+    <header>
+        <div class="logo">
+            <!-- 로고를 클릭하면 메인 페이지로 이동 -->
+            <a href="../mainpage/html/index.html"><img src="../header/image/logo_w.png" alt="로고"></a>
+        </div>
+        <div class="log_menu">
+            <ul>
+                <li><a href="">로그인</a></li>
+                <li class="signup"><a href="">회원가입</a></li>
+                <li><a href="https://www.subway.com/en-us/"><img src="../header/image/icon_utill_global.png"
+                            alt="글로벌 메뉴"></a></li>
+            </ul>
+        </div>
+        <!-- 상단 네비게이션 바 -->
+        <nav class="main_nav">
+            <!-- 하위 메뉴가 표시될 때 사용할 배경 요소 -->
+            <div class="bg"></div>
+            <ul>
+                <li class="nav_item">메뉴소개
+                    <!-- 하위 메뉴 (드롭다운) -->
+                    <ul class="hidden_menu">
+                        <li><a href="../menuIntro/sandwich/sandwich.html">샌드위치</a></li>
+                        <li><a href="../menu_wrap.etc/menu_wrap(script).html">랩ㆍ기타</a></li>
+                        <li><a href="../menuIntro/salad/salad.html">샐러드</a></li>
+                        <li><a href="../menuIntro/morning/menu_wrap(script).html">아침메뉴</a></li>
+                        <li><a href="../menuIntro/smile/menu_wrap(script).html">스마일 썹</a></li>
+                        <li><a href="../menuIntro/catering/menu_wrap(script).html">단체메뉴</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">이용방법
+                    <ul class="hidden_menu">
+                        <li><a href="../howToPage/html/index.html">써브웨이 이용방법</a></li>
+                        <li><a href="">단체메뉴 이용방법</a></li>
+                        <li><a href="../ingridientIntro/html/index.html">신선한 재료 소개</a></li>
+                        <li><a href="../fastSubPage/fast-sub.html">App 이용방법</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">새소식
+                    <ul class="hidden_menu">
+                        <li><a href="">이벤트ㆍ프로모션</a></li>
+                        <li><a href="">뉴스ㆍ공지사항</a></li>
+                        <li><a href="">광고영상</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">써브웨이
+                    <ul class="hidden_menu">
+                        <li><a href="">써브웨이 역사</a></li>
+                        <li><a href="../promisePage/써브웨이약속.html">써브웨이 약속</a></li>
+                        <li><a href="">샌드위치 아티스트 지원</a></li>
+                        <li><a href="">매장찾기</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">가맹점
+                    <ul class="hidden_menu">
+                        <li><a href="">써브웨이 프랜차이즈</a></li>
+                        <li><a href="">가맹관련 FAQ</a></li>
+                        <li><a href="">가맹신청ㆍ문의</a></li>
+                        <li><a href="">지사안내</a></li>
+                        <li><a href="../사업설명회/사업설명회.html">사업설명회</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">온라인 주문
+                    <ul class="hidden_menu">
+                        <li><a href="../orderPage/order_step1.html">FAST-SUB</a></li>
+                        <li><a href="">HOME-SUB</a></li>
+                        <li><a href="">단체주문</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===================== 메인 컨테이너 영역 ===================== -->
+    <div class="container">
+        <!-- 상단 타이틀 섹션 -->
+        <div class="header-section">
+            <p class="main-title">Fast-Sub</p>
+            <p class="subtitle">온라인 주문 후 매장에서 픽업/시식하는 서비스 입니다.</p>
+        </div>
+
+        <!-- 스텝(진행 단계) 표시 영역 (showStepIndicator 함수에서 동적으로 채워짐) -->
+        <div class="step-section"></div>
+
+        <!-- 메뉴 컨텐츠 영역 -->
+        <div class="menu-wrapper">
+            <!-- 메뉴 카테고리 탭 -->
+            <div class="menu-category">
+                <ul>
+                    <li class="tab-unselected" onclick="handleCategoryClick(this)">즐겨찾는 메뉴</li>
+                    <li class="tab-unselected" onclick="handleCategoryClick(this)">프로모션</li>
+                    <li class="tab-selected" onclick="handleCategoryClick(this)">샌드위치</li>
+                    <li class="tab-unselected" onclick="handleCategoryClick(this)">샐러드</li>
+                    <li class="tab-unselected" onclick="handleCategoryClick(this)">랩 기타</li>
+                    <li class="tab-unselected" onclick="handleCategoryClick(this)">사이드 음료</li>
+                </ul>
+            </div>
+
+            <!-- 메뉴 목록 영역 (기본: 샌드위치 데이터가 표시됨) -->
+            <div class="menu-list"></div>
+
+            <!-- 메뉴 상세 정보 영역 (기본적으로 숨김 처리됨) -->
+            <div class="menu-detail">
+                <div class="menu-detail-top">
+                    <!-- 왼쪽: 메뉴 상세 이미지 -->
+                    <div class="detail-img">
+                        <img src="" alt="메뉴 이미지">
+                    </div>
+                    <!-- 오른쪽: 메뉴 상세 텍스트 정보 -->
+                    <div class="detail-text">
+                        <p class="detail-type">샌드위치</p>
+                        <p class="detail-name"></p>
+                        <p class="detail-eng"></p>
+                        <p class="detail-info"></p>
+                        <!-- 주문 시작 버튼: 클릭 시 주문 설정 팝업 열림 -->
+                        <p class="detail-order-btn" onclick="openPopup(this)">주문시작하기</p>
+                    </div>
+                </div>
+
+                <!-- 중간 영역: 영양성분표 및 안내문구, 추가 정보 버튼들 -->
+                <div class="menu-detail-middle">
+                    <p>영양성분표</p>
+                    <!-- 영양성분표 헤더 -->
+                    <div class="Nutrition-Facts-head">
+                        <p>중량(g)</p>
+                        <p>열량(kcal)</p>
+                        <p>단백질(g)</p>
+                        <p>포화지방(g)</p>
+                        <p>당류(g)</p>
+                        <p>나트륨(mg)</p>
+                    </div>
+                    <!-- 영양성분표 바디 (예시 데이터) -->
+                    <div class="Nutrition-Facts-body">
+                        <p>302</p>
+                        <p>465</p>
+                        <p>30.9(56%)</p>
+                        <p>9.9(66%)</p>
+                        <p>8.7</p>
+                        <p>929(46%)</p>
+                    </div>
+                    <!-- 영양 및 안내 문구 -->
+                    <p>
+                        ※ 15cm 샌드위치의 영양 정보는 기본 야채 5종(양상추, 토마토, 오이, 피망(파프리카), 양파), 15cm 위트 브레드 및 제품에 따른 미트류가 포함되어 있으며,
+                        치즈와 소스는 제외됩니다.
+                        <br><br>
+                        ※ (이하 동일 안내문)
+                    </p>
+                    <!-- 원산지, 알레르기 정보 버튼 -->
+                    <div class="info-button-area">
+                        <div class="info-button">원산지 정보</div>
+                        <div class="info-button">알레르기 정보</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 주문 설정 팝업 영역 (초기에는 숨김 처리) -->
+        <div class="order-popup-overlay">
+            <div class="popup-box">
+                <!-- 팝업 닫기 버튼 (X) -->
+                <div class="popup-close-button" onclick="closePopup()">⨉</div>
+
+                <!-- 팝업 제목 (예: 메뉴명 표시) -->
+                <h1 class="popup-sandwitch-name"></h1>
+                <div class="popup-content">
+                    <!-- 썹픽(추천 조합) 안내 섹션 -->
+                    <div class="subpick-section">
+                        <div class="subpick-title">썹픽이란?</div>
+                        <div class="subpick-info">
+                            재료를 고르지 않고,<br>
+                            써브웨이 추천 조합을 한 번에 주문하는 방식
+                        </div>
+                    </div>
+
+                    <!-- 썹픽 추천 재료 목록 -->
+                    <div class="subpick-menu">
+                        <p>빵</p>
+                        <p>파마산 오레가노</p>
+                    </div>
+                    <div class="subpick-menu">
+                        <p>치즈</p>
+                        <p>콰트로 치즈</p>
+                    </div>
+                    <div class="subpick-menu">
+                        <p>토스팅</p>
+                        <p>토스팅</p>
+                    </div>
+                    <div class="subpick-menu">
+                        <p>야채</p>
+                        <p>양상추 토마토 오이 피망(파프리카) 양파</p>
+                    </div>
+                    <div class="subpick-menu">
+                        <p>소스/시즈닝</p>
+                        <p>스위트 어니언 마요네즈</p>
+                    </div>
+                </div>
+
+                <!-- 빵 길이 선택 영역 -->
+                <div class="bread-choice-label">빵 길이 선택</div>
+                <div class="bread-radio-group">
+                    <label>
+                        <input type="radio" name="bread" value="15">
+                        <p>15cm</p>
+                    </label>
+                    <label>
+                        <input type="radio" name="bread" value="30">
+                        <p>30cm</p>
+                    </label>
+                </div>
+
+                <!-- 주문 방법 버튼 영역 (썹픽 주문 또는 직접 선택) -->
+                <div class="order-method-box">
+                    <a href="./order_step3.html" class="order-method-btn" onclick="saveBreadLength()">
+                        썹픽으로<br>한 번에 주문하기
+                    </a>
+                    <a href="./order_step3.html" class="order-method-btn" onclick="saveBreadLength()">
+                        모든 재료<br>직접 선택하기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 푸터 영역 ===================== -->
+    <footer>
+        <!-- 푸터 상단 메뉴 -->
+        <div class="footer_menu">
+            <ul>
+                <li><a href="/agreement">이용약관</a></li>
+                <li><a href="/privacy"><strong>개인정보처리방침</strong></a></li>
+                <li><a href="/subcard">써브카드</a></li>
+                <li><a href="https://store.subway.co.kr/">점주관리자</a></li>
+            </ul>
+        </div>
+        <!-- 푸터 하단 정보 -->
+        <div class="footer_info">
+            <p>서울시 서초구 강남대로 535 프린스빌딩 15층</p>
+            <p><span>I</span></p>
+            <p>대표 : INSOO CHO(인수조)</p>
+            <p><span>I</span></p>
+            <p>전화 : 02-797-5036</p>
+            <p><span>I</span></p>
+            <p>사업자등록번호 : 101-84-04143</p>
+        </div>
+        <div class="copyright">
+            SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights Reserved.
+        </div>
+        <!-- SNS 링크: 인스타그램 및 페이스북 -->
+        <a class="instagram" href="https://www.instagram.com/subwaykorea"></a>
+        <a class="facebook" href="https://www.facebook.com/Subwaykr"></a>
+    </footer>
+</body>
+
+</html>
