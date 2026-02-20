@@ -12,3 +12,5 @@
  - index.html, main.css, main.js는 초기 스타일, 메인 화면만 작성하며, 본인 페이지를 작성할 때에는 css, js 모두 본인의 html 파일 내에 style, script 태그 내에 작성합니다.
 - 같은 header, footer 스타일을 위해 본인 파일에 index.html과 같이 main.css, main.js를 링크합니다.
 - index.html 내에 수정해야 할 사항(a 태그 링크 연결 등)은 모든 페이지 완성 후 수정하며, 이외 사항들은 팀장에게 직접 알립니다.
+
+-현겸수정
