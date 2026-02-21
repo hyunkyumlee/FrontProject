@@ -1,0 +1,4 @@
+홈 화면(index.html)
+신상품 페이지(product.html)
+상품 상세 페이지(detail.html)
+장바구니 페이지(cart.html)
