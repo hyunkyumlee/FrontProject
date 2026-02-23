@@ -1,0 +1,328 @@
+/* 기본 초기화 */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; color: #111; }
+
+/* 전체 영역 폭 */
+.new-product{
+  width: 1080px;
+  margin: 0 auto;
+  padding: 40px 0 80px;
+}
+
+/* ===== 신상품 카테고리 ===== */
+.newProThree{
+  text-align: center;
+  border-top: 1px solid #eee;
+  padding-top: 18px;
+  margin-bottom: 30px;
+}
+
+.category-title{
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.category-tabs{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tab{
+  width: 120px;
+  height: 32px;
+  border: 1px solid black;
+  background: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.tab.active{
+  background: #111;
+  color: white;
+}
+
+/* ===== 페이지 타이틀 ===== */
+.page-title{
+  font-size: 28px;
+  font-weight: bold;
+  margin: 18px 0 18px;
+}
+
+/* ===== 정렬/필터 바 ===== */
+/* 필터 와 ..순 같은 열 */
+.product-sorting{
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 14px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-btn{
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid #cfcfcf;
+  background: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* 오른쪽 묶음 */
+.right-btn{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pro-order{
+  height: 30px;
+  width: 140px;
+  border: 1px solid #cfcfcf;
+  background: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+/* ..개 상품 과 2개 4개 정럴 아이콘 같은 열 */
+
+.countN2_4{
+  display: flex;
+  justify-content: space-between;  /* 양쪽 끝으로 */
+  align-items: center;             /* 세로 가운데 정렬 */
+  margin: 20px 0;
+}
+
+.product-count{
+  font-size: 14px;
+}
+
+.view-icons{
+  display: flex;
+  gap: 8px;
+}
+
+.view-icons button{
+  width: 28px;
+  height: 28px;
+  border: 1px solid #cfcfcf;
+  background: #fff;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* ===== 상품 개수 ===== */
+.product-count{
+  margin: 14px 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ===== 상품 리스트 ===== 기본은 4개 */
+.product-list{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+/* 2개 보기 */
+.product-list.two{
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* 버튼에 가져다 대면 표시 */
+.tab{
+  background: white;
+  color: black;
+  border: 1px solid #111;
+  padding: 8px 18px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s ease;
+}
+
+.tab:hover{
+  background: #111;   /* 검정 */
+  color: white;       /* 흰색 글씨 */
+}
+
+
+/* 카드 */
+.card{
+  font-size: 12px;
+}
+
+/* 이미지 박스 */
+.img-box{
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* 정사각형 유지 */ 
+  position: relative;
+  overflow: hidden;
+}
+
+/* 기존 이미지(현재 보이는 이미지) */
+.product-img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: translateX(0);
+  transition: transform 0.25s ease;
+}
+
+/* JS가 추가로 만드는 다음 이미지(슬라이드 들어오는 이미지) */
+.product-img.next{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.img-box img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 화살표 버튼 스타일 추가 */
+.arrow{
+  display: none;               /* 원래 숨김 */
+  position: absolute;          /* 이미지 위에 올리기 */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.85);
+  cursor: pointer;
+  z-index: 10;                 /* 이미지보다 위 */
+}
+
+/* 왼쪽/오른쪽 위치 */
+.arrow.left{ left: 10px; }
+.arrow.right{ right: 10px; }
+
+/* 마우스 올리면 보이게 */
+.img-box:hover .arrow{
+  display: block;
+}
+
+/* 맨처음 또는 맨마지막 이미지 달성시 버튼 비활성화  */
+.arrow.disabled{
+  opacity: 0.3;
+  cursor: default;
+}
+
+
+.wish{
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.wish.active{
+  color: red;
+  font-size: 20px;
+}
+
+/* 카드 정보 */
+.card-info{
+  padding-top: 10px;
+}
+
+.color{
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.row{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.name{
+  font-weight: 700;
+  line-height: 1.3;
+  max-height: 32px;
+  overflow: hidden;
+}
+
+.price{
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.rating{
+  margin-top: 6px;
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+.quick{
+  margin-top: 16px;
+  font-size: 11px;
+  border-bottom: 1px solid #111;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+/* 마지막 버튼 2개 더보기 및 모두보기 */
+.more-btn{
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 40px 0 60px;
+}
+
+.more-btn button{
+  width: 250px;
+  height: 37px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* 흰색 버튼 */
+.more-pro-white{
+  background: #fff;
+  border: 1px solid #cfcfcf;
+  color: #000;
+}
+
+/* 골드 버튼 */
+.more-pro-gold{
+  background: #b79a6c;   /* 푸마 느낌 골드톤 */
+  border: 1px solid #b79a6c;
+  color: #fff;
+}
+
+/* ===== 반응형 (선택) ===== */
+@media (max-width: 1200px){
+  .new-product{ width: 92%; }
+  .product-list{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px){
+  .product-list{ grid-template-columns: 1fr; }
+}
