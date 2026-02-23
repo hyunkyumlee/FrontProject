@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/cart.css">
+    <script src="https://kit.fontawesome.com/4ec79785b5.js" crossorigin="anonymous"></script>
+    <script src="./localstorage.js"></script>
+
+    <script>
+        /*화면 슬라이드*/
+        let index = 0;
+        
+        function updateslider(){
+            const track = document.querySelector(".track");
+            const itemtoshow = 5;
+            const movepercent = index * (100 / itemtoshow);
+            track.style.transform = `translateX(-${movepercent}%)`
+        }
+        function prev(){
+            if (index > 0){
+                index--;
+                updateslider();
+            }
+
+        }
+
+        function next(){
+            const list = document.querySelectorAll(".list").length;
+
+            if(index < list){
+                index++;
+                updateslider();
+            }
+        }
+        
+        /*장바구니 연습용 코드*/
+
+        window.addEventListener("DOMContentLoaded", function(){
+
+        
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        console.log(cart);
+
+        const cartContainer = document.querySelector(".cart-items");
+
+        //장바구니 상품 나열
+        cart.forEach((item, index) => {
+            const div = document.createElement("div");
+            const div_img = document.createElement("div");
+            const div_item = document.createElement("div");
+
+            div.classList.add("cart-item");
+            div_img.classList.add("div-imgbox");
+            div_item.classList.add("div-itembox");
+
+            div_img.innerHTML = `
+                <img src = "${item.img}" alt="" class="cart-img">
+                
+                
+            `;
+            div_item.innerHTML = `
+                <p>상품명 : ${item.name}</p>
+                <p>가격 : ${item.cost}</p>
+            `;
+
+            const select = document.createElement("select");
+
+                for(let i = 1; i <= 10; i++){
+                    const option = document.createElement("option");
+                    option.value = i;
+                    option.textContent = i;
+
+                    if(i == item.quantity){
+                        option.selected = true;
+                    }
+                    select.appendChild(option);
+                }
+
+            div_item.appendChild(select);
+            div.appendChild(div_img);
+            div.appendChild(div_item);
+            
+
+            cartContainer.appendChild(div);
+            div.style.border="1px solid lightgray";
+            div.style.margin="20px"; 
+
+
+            select.addEventListener("change", function(){
+                cart[index].quantity = Number(select.value);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                calc(); 
+            });
+        });
+       
+        
+        function calc(){
+            let total_price = 0;
+            let sale_price = 0;
+            let total_calc = 0;
+            for(let i = 0; i < cart.length; i++){
+                
+                total_price += cart[i].quantity * cart[i].cost;
+             
+            }
+            
+        
+        let deliver = 0;
+        const pricespan = document.querySelector(".price");
+        const pricespan1 = document.querySelector(".price1");
+        const pricespan2 = document.querySelector(".price2");
+        const price_deliver = document.querySelector(".price_deliver");
+
+        pricespan.textContent = `${total_price}원`;    //총 상품금액
+
+        pricespan1.textContent = `-${sale_price}원`;    //총 할인금액
+        
+        
+        if(total_price > 50000){
+            deliver = 0;
+            price_deliver.textContent = "무료";
+        }else{
+            deliver = 2000;
+            price_deliver.textContent = "2000원";
+        }
+
+        total_calc = total_price - sale_price + deliver;
+
+        pricespan2.textContent = `${total_calc}원`;    //총 결제금액
+        
+        
+        total_price.appendChild(pricespan);
+        sale_price.appendChild(pricespan1);
+        total_calc.appendChild(pricespan2);
+        }
+        
+        calc();
+});
+        
+    
+    
+    </script>
+</head>
+<body>
+    <header>
+
+    </header>
+
+    <section>
+        <div class="cart-container">
+            <!-- 왼쪽 -->
+            <div class="cart-items">
+                <div class="cart-item">
+                    <!-- 장바구니에 담겨있는 아이템 -->
+                    <h1>장바구니</h1>
+                </div>
+            </div>
+
+            <!-- 오른쪽 -->
+            <div class="cart-summary">
+                <div class="coupon">
+                    <h5>쿠폰 적용하기</h5>
+                    <p>쿠폰 코드 입력하기</p>
+                    <div class="enter_coupon">
+                        <input type="text" class="coupon-price">
+                        <button class="coupon_btn">적용하기</button>    <!-- 적은 금액만큼 총 결제금액에서 마이너스 적용-->
+                    </div>
+                    <p>반품 후 재사용 불가</p>
+                    <p>주문 실패 및 취소 후 1시간 뒤 재사용 가능</p>
+                    <p>1회만 사용가능</p>
+                </div>
+                <div class="total_price">
+                    총 상품금액
+                    <span class="price"></span>
+                </div>
+                <div class="deliver">
+                    배송비
+                    <span class="price_deliver"></span>
+                </div><hr>
+                
+                <div class="sale-price">
+                    총 할인금액
+                    <span class="price1"></span>
+                </div>
+                <div class="total_calc">
+                    총 결제금액
+                    <span class="price2"></span>
+                </div>
+                <button class="buy_btn"><i class="fa-solid fa-lock">모든 상품 구매하기</i></button>
+                <button class="choice_buy_btn"><i class="fa-solid fa-lock">선택 상품 구매하기</i></button>
+            </div>
+        </div>
+    </section>
+    <div class="another-item">
+        <h3>다른 고객이 함께 구매한 상품</h3>
+        <div class="slide-container">
+            <button onclick="prev()" class="prev_btn"><i class="fa-solid fa-angle-left"></i></button>
+
+            <div class="another-items">
+                <div class="track">
+
+                    <div class="list">
+                        <img src="/images/ESS-러닝-5패널-캡-brESS-RUNNING-5-Panel-Cap.avif" alt="">
+                        <p>에브리데이 러닝 BB캡</p>
+                        <p>20,300원</p>
+                        <button><a href="https://kr.puma.com/kr/ko/pd/%EC%97%90%EB%B8%8C%EB%A6%AC%EB%8D%B0%EC%9D%B4-%EB%9F%AC%EB%8B%9D-bb-%EC%BA%A1-%3Cbr%3Eeveryday-running-bb-cap/026998.html?dwvar_026998_color=03">상품 보러가기</a></button>
+                    </div>
+                    <div class="list">
+                        <img src="/images/레이스-데이-웨이스트밴드-brRACE-DAY-Waistband.avif" alt="">
+                        <p>레이스 데이 웨이스트밴드</p>
+                        <p>49,000원</p>
+                        <button><a href="https://kr.puma.com/kr/ko/pd/%EB%A0%88%EC%9D%B4%EC%8A%A4-%EB%8D%B0%EC%9D%B4-%EC%9B%A8%EC%9D%B4%EC%8A%A4%ED%8A%B8%EB%B0%B4%EB%93%9C-%3Cbr%3Erace-day-waistband/092405.html?dwvar_092405_color=01">상품 보러가기</a></button>
+                    </div>
+                    <div class="list">
+                        <img src="/images/디비에이트-나이트로-4-와이드-brDeviate-NITRO-4-WIDE.avif" alt="">
+                        <p>디비에이트 나이트로 4 와이드 우먼스</p>
+                        <p>219,000원</p>
+                        <button><a href="https://kr.puma.com/kr/ko/pd/%EB%94%94%EB%B9%84%EC%97%90%EC%9D%B4%ED%8A%B8-%EB%82%98%EC%9D%B4%ED%8A%B8%EB%A1%9C-4-%EC%99%80%EC%9D%B4%EB%93%9C-%EC%9A%B0%EB%A8%BC%EC%8A%A4-%3Cbr%3Edeviate-nitro-4-wide-wns/312902.html?dwvar_312902_color=03">상품 보러가기</a></button>
+                    </div>
+                    <div class="list">
+                        <img src="/images/매그맥스-나이트로-2-brMagMax-NITRO-2.avif" alt="">
+                        <p>매그맥스 나이트로2</p>
+                        <p>239,000원</p>
+                        <button><a href="https://kr.puma.com/kr/ko/pd/%EB%A7%A4%EA%B7%B8%EB%A7%A5%EC%8A%A4-%EB%82%98%EC%9D%B4%ED%8A%B8%EB%A1%9C-2-%3Cbr%3Emagmax-nitro-2/312125.html?dwvar_312125_color=01">상품 보러가기</a></button>
+                    </div>
+
+                    <div class="list">
+                        <img src="/images/벨로시티-나이트로-4-AP-brVelocity-NITRO-4-AP.avif" alt="">
+                        <p>벨로시티 나이트로 4AP</p>
+                        <p>143,200원</p>
+                        <button><a href="https://kr.puma.com/kr/ko/pd/%EB%B2%A8%EB%A1%9C%EC%8B%9C%ED%8B%B0-%EB%82%98%EC%9D%B4%ED%8A%B8%EB%A1%9C-4-ap-%3Cbr%3Evelocity-nitro-4-ap/312635.html?dwvar_312635_color=07">상품 보러가기</a></button>
+                    </div>
+                    <div class="list">
+                        <img src="/images/헤리티지-풋볼-우븐-칼라블럭-팬츠-brHERITAGE-FOOTBALL-COLORBLOCK-PANTS-WV.avif" alt="">
+                        <p>헤리티지 풋볼 우븐 칼라블럭 팬츠</p>
+                        <p>109,000원</p>
+                        <button>상품 보러가기</button>
+                    </div>
+                    <div class="list">
+                        <img src="/images/남성-러닝-경량-우븐-자켓-brM-Running-Light-Woven-Jacket.avif" alt="">
+                        <p>남성 러닝 경량 우븐 자켓</p>
+                        <p>189,000원</p>
+                        <button><a href="https://kr.puma.com/kr/ko/pd/%ED%97%A4%EB%A6%AC%ED%8B%B0%EC%A7%80-%ED%92%8B%EB%B3%BC-%EC%9A%B0%EB%B8%90-%EC%B9%BC%EB%9D%BC%EB%B8%94%EB%9F%AD-%ED%8C%AC%EC%B8%A0-%3Cbr%3Eheritage-football-colorblock-pants-wv/636282.html?dwvar_636282_color=14">상품 보러가기</a></button>
+                    </div>
+                    <div class="list">
+                        <img src="/images/유니-라벨팩-우븐-자켓.avif" alt="">
+                        <p>유니 라벨팩 우븐 자켓</p>
+                        <p>79,500원</p>
+                        <button><a href="https://kr.puma.com/kr/ko/pd/%EC%9C%A0%EB%8B%88-%EB%9D%BC%EB%B2%A8%ED%8C%A9-%EC%9A%B0%EB%B8%90-%EC%9E%90%EC%BC%93/950324.html?dwvar_950324_color=01">상품 보러가기</a></button>
+                    </div>
+                </div>
+                
+            </div>
+            <button onclick="next()" class="next_btn"><i class="fa-solid fa-angle-right"></i></button>
+        </div>
+    </div>
+
+    <div class="puma-purchase">
+        <h4>PUMA PURCHASE를 통해 안전하게 결제하세요</h4>
+        <ul>
+            <li>
+                <i class="fa-solid fa-angle-down"></i>
+                <p>무료배송</p>
+            </li>
+            <li>
+                <i class="fa-solid fa-angle-down"></i>
+                <p>무료반품</p>
+            </li>
+            <li>
+                <i class="fa-solid fa-angle-down"></i>
+                <p>SSL인증 적용 사이트</p>
+            </li>
+        </ul>
+    </div>
+    <footer>
+
+    </footer>
+</body>
+</html>
