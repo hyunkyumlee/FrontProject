@@ -1,0 +1,368 @@
+/* -------- 헤더 --------- */
+header{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    background-color: #181818;
+    width: 100%;
+    height: clamp(60px, 6vw, 90px);
+    z-index: 1000;
+}
+.logo img{
+    height: clamp(50px, 2vw, 60px);
+    margin-right: 10px;
+    margin-left: 30px;
+}
+
+
+.nav a{
+    text-decoration: none;
+    color: white;
+    padding: 0 10px;
+    font-weight: 600;
+    gap: clamp(20px, 1vw, 50px);
+    font-size: clamp(15px, 1vw, 20px);
+}
+.right-menu{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-left: auto;
+    margin-right: 30px;
+}
+.search{
+    width: 190px;
+    height: 25px;
+    padding: 10px 5px 10px 15px;
+    display: flex;
+    align-items: center;
+    border: 1px solid gray;
+}
+.search i{
+    color: white;
+    margin-right: 15px;
+}
+.search input{
+    width: 150px;
+    height: 23px;
+    background-color: #181818;
+    border: none;
+    outline: none;
+    caret-color: white;
+}
+.search input::placeholder{
+    color: #717171;
+    font-weight: 700;
+    font-size: 14px;
+}
+.icons{
+    display: flex;
+    gap: 20px;
+}
+.icons a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}
+.icons a:hover {
+  color: #ccc;
+}
+
+/* ---------메인--------- */
+main{
+    padding-top: clamp(60px, 6vw, 90px);
+}
+/* ----wrap---- */
+.wrap{
+    width: 100%;
+    position: relative;
+}
+.wrap img{
+    width: 100%;
+    display: block;
+}
+.wrap-text{
+    bottom: 15%;
+    left: 15%;
+    text-align: center;
+}
+.wrap-text h1{
+    font-size: 2.5rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+.wrap-text strong{
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding: 1rem 0 0.5rem 0;
+}
+.wrap-text p{
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 1.8rem 0 1.8rem 0;
+}
+.wrap-text button{
+    width: 165px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+/* ----products---- */
+.product-list{
+    display: flex;
+    gap: 20px;         /* 상품 사이 간격 */
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.product{
+    width: 288px;
+}
+.product img{
+    width: 100%;
+    display: block;
+}
+.product-info{
+    display: flex;
+    justify-content: space-between;
+}
+.name{
+    margin-top: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+.price{
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+
+
+/*-----category-----*/
+.category-list{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+.card-img{
+  position: relative;
+  margin-bottom: 15px;
+}
+.card-img img{
+    width: 100%;
+    display: block;
+}
+.card-img a{
+    width: 452px;
+}
+.bar-link{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; 
+  cursor: pointer;
+}
+.card h3{
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+    letter-spacing: -1px;
+    margin-bottom: 9px;
+}
+.card p{
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+
+/* -----------푸터----------- */
+footer{
+    background-color: #181818;
+    padding: 70px 40px;
+}
+.footer-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+.footer-logo img{
+    width: 70px;
+}
+.footer-news{
+    width: 360px;
+}
+.footer-news h4{
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 15px;
+}
+.footer-news input{
+    width: 230px;
+    background-color: #181818;
+    padding: 15px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    caret-color: white;
+    outline: none;
+    margin-bottom: 20px;
+}
+.footer-news input::placeholder{
+  color: rgba(255,255,255,0.5);
+}
+
+.footer-news p{
+  font-size: 14px;
+  color: white;
+  line-height: 20px;
+  margin-bottom: 30px;
+}
+
+.footer-links{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 60px;
+
+}
+.footer-col1,
+.footer-col2{
+    border-top: 2px solid white;
+    padding-top: 25px;
+    width: 600px;
+}
+.footer-col1 h4,
+.footer-col2 h4{
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 15px;
+}
+.footer-col1 ul,
+.footer-col2 ul{
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    column-gap: 40px; 
+
+}
+.footer-col1 li,
+.footer-col2 li{
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+.footer-col1 a,
+.footer-col2 a{
+  color: #aaa;
+  font-size: 14px;
+  text-decoration: none;
+}
+.footer-col1 a:hover,
+.footer-col2 a:hover{
+    color: white;
+}
+.footer-col3{
+    border-top: 2px solid white;
+    padding-top: 30px;
+    width: 350px;
+    margin-left: auto;
+    margin-right: 15px;
+}
+.footer-col3 h4{
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 20px;
+}
+.sns-icons{
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+.sns-icons a{
+    width: 40px;
+    color: white;
+    font-size: 18px;
+    transition: 0.3s;
+}
+.sns-icons:hover a{
+    color: #5e5e5e;
+}
+.sns-icons a:hover{
+    color: white;
+}
+.footer-trac{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 100px;
+    border-top: 1px solid gray;
+}
+.footer-trac img{
+    margin-top: 30px;
+}
+.footer-text{
+   border-bottom: 2px solid #ae946d;
+    padding-bottom: 5px;
+}
+.footer-text p{
+    margin-top: 30px;
+    color: white;
+    font-weight: 500;
+}
+
+.footer-bottom{
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding: 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #aaa;
+}
+.footer-lang{
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 20px 20px;
+    width: 230px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.footer-lang img{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+}
+.footer-lang i{
+    margin-left: 130px;
+}
+.footer-copy{
+    color: #fff;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.footer-imprint{
+    color: #aaa;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+.footer-pay{
+    display: flex;
+    gap: 100px;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 50px;
+}
+.footer-pay img{
+    height: 22px;
+}
