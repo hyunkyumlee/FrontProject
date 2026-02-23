@@ -125,6 +125,9 @@ main{
 .product{
     width: 288px;
 }
+.product :hover{
+    cursor: pointer;
+}
 .product img{
     width: 100%;
     display: block;
