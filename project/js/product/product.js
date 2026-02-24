@@ -46,48 +46,24 @@
 });
 
 /* 신상품 카테고리 신발.의류.용품 선택시 해당 제품만 표시 (해당 안되는 걸 가려버림) */
-    document.addEventListener("DOMContentLoaded", function(){
+ document.addEventListener("DOMContentLoaded", function () {
   const tabs = document.querySelectorAll(".tab");
-  const items = document.querySelectorAll(".card-link"); // ✅ a 기준
+  const cards = document.querySelectorAll(".product-list .card"); //  카드 기준
+  const showAllBtn = document.querySelector(".more-pro-gold");    // 모두 표시(202)
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", function(){
-      const filter = this.dataset.filter;
+  function setVisible(filter) {
+    cards.forEach(card => {
+      const cat = card.dataset.cat;
 
-      // 탭 active 표시(원하면)
-      tabs.forEach(t => t.classList.remove("active"));
-      this.classList.add("active");
-
-      // a(그리드 아이템) 자체를 숨긴다
-      items.forEach(aTag => {
-        const card = aTag.querySelector(".card");   // a 안의 카드 찾기
-        const cat = card.dataset.cat;
-
-        if(cat === filter){
-          aTag.classList.remove("is-hidden");
-        }else{
-          aTag.classList.add("is-hidden");
-        }
-      });
+      if (!filter || cat === filter) {
+        card.classList.remove("is-hidden");
+      } else {
+        card.classList.add("is-hidden");
+      }
     });
-  });
-});
-
-/* 카테고리 별 보기 했다가 다시 12개 보이게 하기 - 모두 표시 버튼 이용 */
-     document.addEventListener("DOMContentLoaded", function () {
-  const tabs = document.querySelectorAll(".tab");
-  const items = document.querySelectorAll(".card-link"); // a 기준
-  const showAllBtn = document.querySelector(".more-pro-gold"); // 모두표시 버튼
-
-  function showAll(){
-    // 카드 전부 보이기
-    items.forEach(aTag => aTag.classList.remove("is-hidden"));
-
-    // 탭 active 해제(원하면)
-    tabs.forEach(t => t.classList.remove("active"));
   }
 
-  // 탭 클릭 시 필터
+  // 탭 클릭 -> 해당 카테고리만
   tabs.forEach(tab => {
     tab.addEventListener("click", function () {
       const filter = this.dataset.filter;
@@ -95,20 +71,17 @@
       tabs.forEach(t => t.classList.remove("active"));
       this.classList.add("active");
 
-      items.forEach(aTag => {
-        const card = aTag.querySelector(".card");
-        const cat = card.dataset.cat;
-
-        if (cat === filter) aTag.classList.remove("is-hidden");
-        else aTag.classList.add("is-hidden");
-      });
+      setVisible(filter);
     });
   });
 
-  // 모두 표시(202) 누르면 전체 보기로
-  showAllBtn.addEventListener("click", function(){
-    showAll();
-  });
+  // 모두 표시(202) -> 전체 보기
+  if (showAllBtn) {
+    showAllBtn.addEventListener("click", function () {
+      tabs.forEach(t => t.classList.remove("active"));
+      setVisible(null); // 전체
+    });
+  }
 });
 
 /* 정렬 아이콘 누르면 2개보기 / 4개보기 */
@@ -158,15 +131,16 @@
             rightBtn.style.display = "none";
             return; // 이벤트도 안 붙이게
             }
-
-
+            
         let currentIndex = 0;
+
         // 슬라이드용 next 이미지(한 번만 생성)
         const nextImg = document.createElement("img");
         nextImg.className = "product-img next";
         nextImg.alt = "";
         nextImg.style.transform = "translateX(100%)"; // 기본은 오른쪽 밖
-        img.parentElement.appendChild(nextImg);
+        const imgBox = card.querySelector(".img-box");
+        imgBox.appendChild(nextImg);
 
         let isAnimating = false;
 

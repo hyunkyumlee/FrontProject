@@ -247,7 +247,6 @@ body.no-scroll{
 }
 
 
-
 /* ===== 신상품 카테고리 ===== */
 .newProThree{
   text-align: center;
@@ -286,6 +285,10 @@ body.no-scroll{
 .is-hidden{ 
   display: none !important; 
 }
+.card.is-hidden{
+  display: none;
+}
+
 
 /* ===== 페이지 타이틀 ===== */
 .page-title{
@@ -407,11 +410,20 @@ body.no-scroll{
 .card{
   font-size: 12px;
 }
-.card-link{
+
+.info-link{
   text-decoration: none;  /* 밑줄 제거 */
   color: inherit;         /* 글씨 색 부모 색 유지 */
   display: block;         /* 카드처럼 전체 영역 클릭 가능 */
 }
+
+/* 카드링크는 버튼 분리하고 지워줄거임 클래스 다름 */
+/* .card-link{ */
+  /* text-decoration: none;  밑줄 제거 */
+  /* color: inherit;         글씨 색 부모 색 유지 */
+  /* display: block;         카드처럼 전체 영역 클릭 가능 */
+/* } */
+
 /* 9~12 카드는 a태그 링크 연결 x, but 똑같이 가져다대면 손가락 */
 
 
