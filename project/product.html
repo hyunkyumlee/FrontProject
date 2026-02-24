@@ -1,398 +1,436 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/product/product.css">
-</head>
-
-<body>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>신상품</title>
+    <link rel="stylesheet" href="css/product/product.css" />
+    <link rel="icon" href="./images/puma_favicon.png" />
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <header class="header">
+    <div class="logo">
+      <a href="index.html">
+        <img src="./images/index/pumalogo.jpg" alt="" />
+      </a>
+    </div>
+    <div class="nav">
+      <div class="nav-item">
+        <a href="./product.html">신상품</a>
+        <div class="mega-menu">
+          <div class="mega-inner">
+            <div class="inner-box"><a href="#">신발</a></div>
+            <div class="inner-box"><a href="#">의류</a></div>
+            <div class="inner-box"><a href="#">용품</a></div>
+          </div>
+        </div>
+      </div>
+      <a href="">여성</a>
+      <a href="">남성</a>
+      <a href="">아동</a>
+      <a href="">스포츠</a>
+      <a href="">컬렉션</a>
+      <a href="">🧨 라스트 피스</a>
+      <a href="">시즌오프</a>
+    </div>
+    <div class="right-menu">
+      <div class="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="PUMA.COM 검색하기" />
+      </div>
+      <div class="icons">
+        <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+        <a href="#"><i class="fa-regular fa-user"></i></a>
+      </div>
+    </div>
+  </header>
+  <body>
+    <main>
     <!-- 필터버튼 창 나오면서 배경 어둡게 될때 -->
-    <div class="overlay"> </div>
+    <div class="overlay"></div>
 
     <!-- 왼쪽 필터 패널 -->
     <aside class="filter-panel">
-        <div class="filter-header">
-            <h3>필터</h3>
-            <button type="button" class="filter-close">×</button>
+      <div class="filter-header">
+        <h3>필터</h3>
+        <button type="button" class="filter-close">×</button>
+      </div>
+
+      <div class="filter-list">
+        <div class="filter-group">
+          <button type="button" class="filter-item">
+            성별 <span class="filter-arrow">▾</span>
+          </button>
+          <div class="filter-content">
+            <label><input type="checkbox" /> 남성 (92)</label>
+            <label><input type="checkbox" /> 공용 (61)</label>
+            <label><input type="checkbox" /> 여성 (49)</label>
+          </div>
         </div>
 
-        <div class="filter-list">
-            
-            <div class="filter-group">
-                <button type="button" class="filter-item">
-                    성별 <span class="filter-arrow">▾</span>
-                </button>
-                 <div class="filter-content">
-                <label><input type="checkbox"> 남성 (92)</label>
-                <label><input type="checkbox"> 공용 (61)</label>
-                <label><input type="checkbox"> 여성 (49)</label>
-                </div>
-            </div>
-
-            <div class="filter-group">
-                <button type="button" class="filter-item">
-                    카테고리 <span class="filter-arrow">▾</span>
-                </button>
-                 <div class="filter-content">
-                <label><input type="checkbox"> 의류 (122)</label>
-                <label><input type="checkbox"> 신발 (47)</label>
-                <label><input type="checkbox"> 악세사리 (33)</label>
-                </div>
-            </div>
-
-            <div class="filter-group">
-                <button type="button" class="filter-item">
-                    스포츠 <span class="filter-arrow">▾</span>
-                </button>
-                 <div class="filter-content">
-                    <!-- 신상품 페이지라서 신상품은 이미 항상 체크되어야 함 -->
-                <label class="main-option">
-                    <input type="checkbox" checked disabled> 신상품 (202)
-                </label>
-
-                <label class="sub-option">
-                    <input type="checkbox"> 신발 (47)
-                </label>
-
-                <label class="sub-option">
-                    <input type="checkbox"> 의류 (113)
-                </label>
-
-                <label class="sub-option">
-                    <input type="checkbox"> 용품 (42)
-                </label>
-                </div>
-            </div>
-            
-            <div class="filter-group price-group">
-                <!-- 가격 체크박스 둥글게 -->
-                <button type="button" class="filter-item">
-                    가격 <span class="filter-arrow">▾</span>
-                </button>
-                 <div class="filter-content">     
-                <label><input type="checkbox"> 5만원 미만</label>
-                <label><input type="checkbox"> 5만원 - 10만원 미만</label>
-                <label><input type="checkbox"> 10만원 - 15만원 미만</label>
-                <label><input type="checkbox"> 15만원 - 20만원 미만</label>
-                </div>
-            </div>
-
-            <!-- 사이즈 사이트와 같이 -->
-             <div class="filter-group">
-                <button type="button" class="filter-item">
-                    사이즈 <span class="filter-arrow">▾</span>
-                </button>
-                <div class="filter-content">
-                    <div class="size-grid">
-                    <button type="button" class="size-btn">5</button>
-                    <button type="button" class="size-btn">32</button>
-                    <button type="button" class="size-btn">34</button>
-                    <button type="button" class="size-btn">36</button>
-                    <button type="button" class="size-btn">220</button>
-                    <button type="button" class="size-btn">225</button>
-                    <button type="button" class="size-btn">230</button>
-                    <button type="button" class="size-btn">235</button>
-
-                    <button type="button" class="size-btn">240</button>
-                    <button type="button" class="size-btn">245</button>
-                    <button type="button" class="size-btn">250</button>
-                    <button type="button" class="size-btn">255</button>
-                    <button type="button" class="size-btn">260</button>
-                    <button type="button" class="size-btn">265</button>
-                    <button type="button" class="size-btn">270</button>
-                    <button type="button" class="size-btn">275</button>
-
-                    <button type="button" class="size-btn">280</button>
-                    <button type="button" class="size-btn">285</button>
-                    <button type="button" class="size-btn">290</button>
-                    <button type="button" class="size-btn">295</button>
-                    <button type="button" class="size-btn">300</button>
-                    <button type="button" class="size-btn">310</button>
-                    <button type="button" class="size-btn">315</button>
-                    <button type="button" class="size-btn">320</button>
-
-                    <button type="button" class="size-btn">330</button>
-                    <button type="button" class="size-btn">340</button>
-                    <button type="button" class="size-btn">350</button>
-                    <button type="button" class="size-btn">360</button>
-                    <button type="button" class="size-btn">23/25</button>
-                    <button type="button" class="size-btn">25/27</button>
-                    <button type="button" class="size-btn">L</button>
-                    <button type="button" class="size-btn">L/XL</button>
-
-                    <button type="button" class="size-btn">M</button>
-                    <button type="button" class="size-btn">MINI</button>
-                    <button type="button" class="size-btn">OSFA</button>
-                    <button type="button" class="size-btn">S</button>
-                    <button type="button" class="size-btn">S/M</button>
-                    <button type="button" class="size-btn">XL</button>
-                    <button type="button" class="size-btn">XS</button>
-                    <button type="button" class="size-btn">XXL</button>
-                    
-                    </div>
-                </div>
-            </div>
-
-            <!-- 컬러 사이트와 같이-->
-             <div class="filter-group">
-            <button type="button" class="filter-item">
-                컬러 <span class="filter-arrow">▾</span>
-            </button>
-
-            <div class="filter-content">
-                <div class="color-grid">
-
-                <button type="button" class="color-item">
-                    <span class="color-swatch" style="background:#111;"></span>
-                    <span class="color-name">블랙 (82)</span>
-                </button>
-
-                <button type="button" class="color-item">
-                    <span class="color-swatch" style="background:#9e9e9e;"></span>
-                    <span class="color-name">그레이 (25)</span>
-                </button>
-
-                <button type="button" class="color-item">
-                    <span class="color-swatch" style="background:#f2d27a;"></span>
-                    <span class="color-name">메탈릭 (2)</span>
-                </button>
-
-                <button type="button" class="color-item">
-                    <span class="color-swatch" style="background:#7a3b2e;"></span>
-                    <span class="color-name">브라운 (6)</span>
-                </button>
-
-                <button type="button" class="color-item">
-                    <span class="color-swatch" style="background:#0a33ff;"></span>
-                    <span class="color-name">블루 (14)</span>
-                </button>
-
-                <button type="button" class="color-item">
-                    <span class="color-swatch" style="background:#1b7b2a;"></span>
-                    <span class="color-name">그린 (15)</span>
-                </button>
-
-                <button type="button" class="color-item">
-                    <span class="color-swatch" style="background:#f39a12;"></span>
-                    <span class="color-name">오렌지 (1)</span>
-                </button>
-
-                <button type="button" class="color-item">
-                    <span class="color-swatch" style="background:#d7be86;"></span>
-                    <span class="color-name">베이지 (3)</span>
-                </button>
-
-                <button type="button" class="color-item">
-                    <span class="color-swatch" style="background:#f2e10a;"></span>
-                    <span class="color-name">옐로우 (6)</span>
-                </button>
-
-                <button type="button" class="color-item">
-                    <span class="color-swatch" style="background:#ff2a2a;"></span>
-                    <span class="color-name">레드 (8)</span>
-                </button>
-
-                <button type="button" class="color-item">
-                    <span class="color-swatch" style="background:#6b2cff;"></span>
-                    <span class="color-name">퍼플 (4)</span>
-                </button>
-
-                <button type="button" class="color-item">
-                    <span class="color-swatch" style="background:#ff4fb3;"></span>
-                    <span class="color-name">핑크 (9)</span>
-                </button>
-
-                <button type="button" class="color-item">
-                    <span class="color-swatch" style="background:whitesmoke;"></span>
-                    <span class="color-name">화이트 (27)</span>
-                </button>
-
-                </div>
-            </div>
+        <div class="filter-group">
+          <button type="button" class="filter-item">
+            카테고리 <span class="filter-arrow">▾</span>
+          </button>
+          <div class="filter-content">
+            <label><input type="checkbox" /> 의류 (122)</label>
+            <label><input type="checkbox" /> 신발 (47)</label>
+            <label><input type="checkbox" /> 악세사리 (33)</label>
+          </div>
         </div>
 
+        <div class="filter-group">
+          <button type="button" class="filter-item">
+            스포츠 <span class="filter-arrow">▾</span>
+          </button>
+          <div class="filter-content">
+            <!-- 신상품 페이지라서 신상품은 이미 항상 체크되어야 함 -->
+            <label class="main-option">
+              <input type="checkbox" checked disabled /> 신상품 (202)
+            </label>
 
+            <label class="sub-option">
+              <input type="checkbox" /> 신발 (47)
+            </label>
 
-            <div class="filter-group">
-                <button type="button" class="filter-item">
-                    핏 <span class="filter-arrow">▾</span>
-                </button>
-                 <div class="filter-content">
-                <label><input type="checkbox"> 슬림 (4)</label>
-                <label><input type="checkbox"> 레귤러 (112)</label>
-                <label><input type="checkbox"> 퍼포먼스 핏 (7)</label>
-                <label><input type="checkbox"> 루즈핏 (19)</label>
-                <label><input type="checkbox"> 타이트 핏 (10)</label>
-                <label><input type="checkbox"> Oversized (10)</label>
-                <label><input type="checkbox"> Standard (5)</label>
-                <label><input type="checkbox"> Tailored Fit (2)</label>
-                </div>
-            </div>
+            <label class="sub-option">
+              <input type="checkbox" /> 의류 (113)
+            </label>
 
-            
+            <label class="sub-option">
+              <input type="checkbox" /> 용품 (42)
+            </label>
+          </div>
         </div>
+
+        <div class="filter-group price-group">
+          <!-- 가격 체크박스 둥글게 -->
+          <button type="button" class="filter-item">
+            가격 <span class="filter-arrow">▾</span>
+          </button>
+          <div class="filter-content">
+            <label><input type="checkbox" /> 5만원 미만</label>
+            <label><input type="checkbox" /> 5만원 - 10만원 미만</label>
+            <label><input type="checkbox" /> 10만원 - 15만원 미만</label>
+            <label><input type="checkbox" /> 15만원 - 20만원 미만</label>
+          </div>
+        </div>
+
+        <!-- 사이즈 사이트와 같이 -->
+        <div class="filter-group">
+          <button type="button" class="filter-item">
+            사이즈 <span class="filter-arrow">▾</span>
+          </button>
+          <div class="filter-content">
+            <div class="size-grid">
+              <button type="button" class="size-btn">5</button>
+              <button type="button" class="size-btn">32</button>
+              <button type="button" class="size-btn">34</button>
+              <button type="button" class="size-btn">36</button>
+              <button type="button" class="size-btn">220</button>
+              <button type="button" class="size-btn">225</button>
+              <button type="button" class="size-btn">230</button>
+              <button type="button" class="size-btn">235</button>
+
+              <button type="button" class="size-btn">240</button>
+              <button type="button" class="size-btn">245</button>
+              <button type="button" class="size-btn">250</button>
+              <button type="button" class="size-btn">255</button>
+              <button type="button" class="size-btn">260</button>
+              <button type="button" class="size-btn">265</button>
+              <button type="button" class="size-btn">270</button>
+              <button type="button" class="size-btn">275</button>
+
+              <button type="button" class="size-btn">280</button>
+              <button type="button" class="size-btn">285</button>
+              <button type="button" class="size-btn">290</button>
+              <button type="button" class="size-btn">295</button>
+              <button type="button" class="size-btn">300</button>
+              <button type="button" class="size-btn">310</button>
+              <button type="button" class="size-btn">315</button>
+              <button type="button" class="size-btn">320</button>
+
+              <button type="button" class="size-btn">330</button>
+              <button type="button" class="size-btn">340</button>
+              <button type="button" class="size-btn">350</button>
+              <button type="button" class="size-btn">360</button>
+              <button type="button" class="size-btn">23/25</button>
+              <button type="button" class="size-btn">25/27</button>
+              <button type="button" class="size-btn">L</button>
+              <button type="button" class="size-btn">L/XL</button>
+
+              <button type="button" class="size-btn">M</button>
+              <button type="button" class="size-btn">MINI</button>
+              <button type="button" class="size-btn">OSFA</button>
+              <button type="button" class="size-btn">S</button>
+              <button type="button" class="size-btn">S/M</button>
+              <button type="button" class="size-btn">XL</button>
+              <button type="button" class="size-btn">XS</button>
+              <button type="button" class="size-btn">XXL</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 컬러 사이트와 같이-->
+        <div class="filter-group">
+          <button type="button" class="filter-item">
+            컬러 <span class="filter-arrow">▾</span>
+          </button>
+
+          <div class="filter-content">
+            <div class="color-grid">
+              <button type="button" class="color-item">
+                <span class="color-swatch" style="background: #111"></span>
+                <span class="color-name">블랙 (82)</span>
+              </button>
+
+              <button type="button" class="color-item">
+                <span class="color-swatch" style="background: #9e9e9e"></span>
+                <span class="color-name">그레이 (25)</span>
+              </button>
+
+              <button type="button" class="color-item">
+                <span class="color-swatch" style="background: #f2d27a"></span>
+                <span class="color-name">메탈릭 (2)</span>
+              </button>
+
+              <button type="button" class="color-item">
+                <span class="color-swatch" style="background: #7a3b2e"></span>
+                <span class="color-name">브라운 (6)</span>
+              </button>
+
+              <button type="button" class="color-item">
+                <span class="color-swatch" style="background: #0a33ff"></span>
+                <span class="color-name">블루 (14)</span>
+              </button>
+
+              <button type="button" class="color-item">
+                <span class="color-swatch" style="background: #1b7b2a"></span>
+                <span class="color-name">그린 (15)</span>
+              </button>
+
+              <button type="button" class="color-item">
+                <span class="color-swatch" style="background: #f39a12"></span>
+                <span class="color-name">오렌지 (1)</span>
+              </button>
+
+              <button type="button" class="color-item">
+                <span class="color-swatch" style="background: #d7be86"></span>
+                <span class="color-name">베이지 (3)</span>
+              </button>
+
+              <button type="button" class="color-item">
+                <span class="color-swatch" style="background: #f2e10a"></span>
+                <span class="color-name">옐로우 (6)</span>
+              </button>
+
+              <button type="button" class="color-item">
+                <span class="color-swatch" style="background: #ff2a2a"></span>
+                <span class="color-name">레드 (8)</span>
+              </button>
+
+              <button type="button" class="color-item">
+                <span class="color-swatch" style="background: #6b2cff"></span>
+                <span class="color-name">퍼플 (4)</span>
+              </button>
+
+              <button type="button" class="color-item">
+                <span class="color-swatch" style="background: #ff4fb3"></span>
+                <span class="color-name">핑크 (9)</span>
+              </button>
+
+              <button type="button" class="color-item">
+                <span
+                  class="color-swatch"
+                  style="background: whitesmoke"
+                ></span>
+                <span class="color-name">화이트 (27)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <button type="button" class="filter-item">
+            핏 <span class="filter-arrow">▾</span>
+          </button>
+          <div class="filter-content">
+            <label><input type="checkbox" /> 슬림 (4)</label>
+            <label><input type="checkbox" /> 레귤러 (112)</label>
+            <label><input type="checkbox" /> 퍼포먼스 핏 (7)</label>
+            <label><input type="checkbox" /> 루즈핏 (19)</label>
+            <label><input type="checkbox" /> 타이트 핏 (10)</label>
+            <label><input type="checkbox" /> Oversized (10)</label>
+            <label><input type="checkbox" /> Standard (5)</label>
+            <label><input type="checkbox" /> Tailored Fit (2)</label>
+          </div>
+        </div>
+      </div>
     </aside>
-    
+
     <!-- 섹션 시작 -->
     <section class="new-product">
-
-        <!-- 신상품 카테고리 3가지 -->
-         <div class="newProThree">
-
-            <p  class="category-title"> 신상품 카테고리 </p>
-            <div class="category-tabs">
-                <button class="tab" data-filter="shoes">신발</button>
-                <button class="tab" data-filter="clothes">의류</button>
-                <button class="tab" data-filter="goods">용품</button>
-            </div>
-         </div>
-
-        <!-- 제목 -->
-         <h2 class="page-title"> 신상품 </h2>
-
-        <!-- 상품 정렬 -->
-         <!-- 필터 / ..순 같은 라인 -->
-            <div class="product-sorting">
-                <button class="left-btn-filter-open"> 필터 ☰ </button> 
-
-                <div class="right-btn">
-                    <select class="pro-order">
-                        <option>신상품순</option>
-                        <option>판매순</option>
-                        <option>낮은 가격순</option>
-                        <option>높은 가격순</option>
-                        <option>판매순</option>
-                    </select>
-                </div> 
-            </div>
-
-        
-        <!-- ..개 상품 / 정렬 아이콘 같은 라인 -->
-        <div class="countN2_4"> 
-         <!-- 상품 개수 -->
-          <div class="product-count">202 개 상품</div>
-
-          <!-- 정렬 아이콘 2* / 4* -->
-            <div class="view-icons">
-                <button class="view-btn-2"> ≡ </button>
-                <button class="view-btn-4 active"> ▦ </button>
-            </div>
+      <!-- 신상품 카테고리 3가지 -->
+      <div class="newProThree">
+        <p class="category-title">신상품 카테고리</p>
+        <div class="category-tabs">
+          <button class="tab" data-filter="shoes">신발</button>
+          <button class="tab" data-filter="clothes">의류</button>
+          <button class="tab" data-filter="goods">용품</button>
         </div>
+      </div>
 
-        <!-- 상품 리스트 -->
-          <div class="product-list">
+      <!-- 제목 -->
+      <h2 class="page-title">신상품</h2>
 
-            <!-- 카드 1 -->
-             <a href ="./detail.html?id=3" class="card-link" >
+      <!-- 상품 정렬 -->
+      <!-- 필터 / ..순 같은 라인 -->
+      <div class="product-sorting">
+        <button class="left-btn-filter-open">필터 ☰</button>
 
-            <div class="card" data-cat="clothes">
+        <div class="right-btn">
+          <select class="pro-order">
+            <option>신상품순</option>
+            <option>판매순</option>
+            <option>낮은 가격순</option>
+            <option>높은 가격순</option>
+            <option>판매순</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ..개 상품 / 정렬 아이콘 같은 라인 -->
+      <div class="countN2_4">
+        <!-- 상품 개수 -->
+        <div class="product-count">202 개 상품</div>
+
+        <!-- 정렬 아이콘 2* / 4* -->
+        <div class="view-icons">
+          <button class="view-btn-2">≡</button>
+          <button class="view-btn-4 active">▦</button>
+        </div>
+      </div>
+
+      <!-- 상품 리스트 -->
+      <div class="product-list">
+        <!-- 카드 1 -->
+        <a href="./detail.html?id=3" class="card-link">
+          <div class="card" data-cat="clothes">
             <div class="img-box">
-                <img class="product-img" 
-                 src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1000,h_1000/global/528960/01/mod01/fnd/KOR/fmt/png/%EC%97%AC%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%83%9C%EB%93%9C-ESS-%EC%88%8F-%ED%83%80%EC%9D%B4%EC%A6%88-brW-PUMA-x-HYROX-TAD-ESS-SHORT-TIGHT" 
-                 data-img1="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528960/01/mod02/fnd/KOR/fmt/png/%EC%97%AC%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%83%9C%EB%93%9C-ESS-%EC%88%8F-%ED%83%80%EC%9D%B4%EC%A6%88-brW-PUMA-x-HYROX-TAD-ESS-SHORT-TIGHT"
-                 data-img2="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528960/01/mod03/fnd/KOR/fmt/png/%EC%97%AC%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%83%9C%EB%93%9C-ESS-%EC%88%8F-%ED%83%80%EC%9D%B4%EC%A6%88-brW-PUMA-x-HYROX-TAD-ESS-SHORT-TIGHT"
-                 data-img3="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528960/01/fnd/KOR/fmt/png/%EC%97%AC%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%83%9C%EB%93%9C-ESS-%EC%88%8F-%ED%83%80%EC%9D%B4%EC%A6%88-brW-PUMA-x-HYROX-TAD-ESS-SHORT-TIGHT"
-                 data-img4="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528960/01/bv/fnd/KOR/fmt/png/%EC%97%AC%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%83%9C%EB%93%9C-ESS-%EC%88%8F-%ED%83%80%EC%9D%B4%EC%A6%88-brW-PUMA-x-HYROX-TAD-ESS-SHORT-TIGHT"
-                 alt="">
+              <img
+                class="product-img"
+                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1000,h_1000/global/528960/01/mod01/fnd/KOR/fmt/png/%EC%97%AC%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%83%9C%EB%93%9C-ESS-%EC%88%8F-%ED%83%80%EC%9D%B4%EC%A6%88-brW-PUMA-x-HYROX-TAD-ESS-SHORT-TIGHT"
+                data-img1="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528960/01/mod02/fnd/KOR/fmt/png/%EC%97%AC%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%83%9C%EB%93%9C-ESS-%EC%88%8F-%ED%83%80%EC%9D%B4%EC%A6%88-brW-PUMA-x-HYROX-TAD-ESS-SHORT-TIGHT"
+                data-img2="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528960/01/mod03/fnd/KOR/fmt/png/%EC%97%AC%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%83%9C%EB%93%9C-ESS-%EC%88%8F-%ED%83%80%EC%9D%B4%EC%A6%88-brW-PUMA-x-HYROX-TAD-ESS-SHORT-TIGHT"
+                data-img3="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528960/01/fnd/KOR/fmt/png/%EC%97%AC%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%83%9C%EB%93%9C-ESS-%EC%88%8F-%ED%83%80%EC%9D%B4%EC%A6%88-brW-PUMA-x-HYROX-TAD-ESS-SHORT-TIGHT"
+                data-img4="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528960/01/bv/fnd/KOR/fmt/png/%EC%97%AC%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%83%9C%EB%93%9C-ESS-%EC%88%8F-%ED%83%80%EC%9D%B4%EC%A6%88-brW-PUMA-x-HYROX-TAD-ESS-SHORT-TIGHT"
+                alt=""
+              />
 
-                    <!-- 좌우 버튼 -->
-                        <button class="arrow left"> ‹ </button>
-                        <button class="arrow right"> › </button>
-                    <button class="wish">♡</button>
+              <!-- 좌우 버튼 -->
+              <button class="arrow left">‹</button>
+              <button class="arrow right">›</button>
+              <button class="wish">♡</button>
             </div>
 
             <div class="card-info">
-                <div class="color">1 색상</div>
+              <div class="color">1 색상</div>
 
-                <div class="row">
-                <div class="name">여성 푸마 X 하이록스 ESS 숏 타이츠 ··· </div>
+              <div class="row">
+                <div class="name">여성 푸마 X 하이록스 ESS 숏 타이츠 ···</div>
                 <div class="price">69,000 원</div>
-                </div>
+              </div>
 
-                <div class="rating">☆☆☆☆☆ (0)</div>
-                <div class="quick">간략히 보기</div>
+              <div class="rating">☆☆☆☆☆ (0)</div>
+              <div class="quick">간략히 보기</div>
             </div>
-            </div>
-            </a>
+          </div>
+        </a>
 
-            <!-- 카드 2 -->
-             <a href ="./detail.html?id=1" class="card-link" >
-            <div class="card" data-cat="clothes">
+        <!-- 카드 2 -->
+        <a href="./detail.html?id=1" class="card-link">
+          <div class="card" data-cat="clothes">
             <div class="img-box">
-                <img class="product-img" 
-                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1000,h_1000/global/528578/04/mod01/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%8A%A4%ED%8E%80-%ED%9B%84%EB%94%94-brM-PUMA-X-HYROX-CLOUDSPUN-HOODIE" 
+              <img
+                class="product-img"
+                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1000,h_1000/global/528578/04/mod01/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%8A%A4%ED%8E%80-%ED%9B%84%EB%94%94-brM-PUMA-X-HYROX-CLOUDSPUN-HOODIE"
                 data-img1="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528578/04/mod02/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%8A%A4%ED%8E%80-%ED%9B%84%EB%94%94-brM-PUMA-X-HYROX-CLOUDSPUN-HOODIE"
                 data-img2="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528578/04/mod03/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%8A%A4%ED%8E%80-%ED%9B%84%EB%94%94-brM-PUMA-X-HYROX-CLOUDSPUN-HOODIE"
                 data-img3="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528578/04/mod04/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%8A%A4%ED%8E%80-%ED%9B%84%EB%94%94-brM-PUMA-X-HYROX-CLOUDSPUN-HOODIE"
                 data-img4="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528578/04/mod05/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%8A%A4%ED%8E%80-%ED%9B%84%EB%94%94-brM-PUMA-X-HYROX-CLOUDSPUN-HOODIE"
                 data-img5="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528578/04/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%8A%A4%ED%8E%80-%ED%9B%84%EB%94%94-brM-PUMA-X-HYROX-CLOUDSPUN-HOODIE"
                 data-img6="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528578/04/bv/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%8A%A4%ED%8E%80-%ED%9B%84%EB%94%94-brM-PUMA-X-HYROX-CLOUDSPUN-HOODIE"
-                alt="">
+                alt=""
+              />
 
-                <!-- 좌우 버튼 -->
-                    <button class="arrow left"> ‹ </button>
-                    <button class="arrow right"> › </button>
+              <!-- 좌우 버튼 -->
+              <button class="arrow left">‹</button>
+              <button class="arrow right">›</button>
 
-                <button class="wish">♡</button>
+              <button class="wish">♡</button>
             </div>
 
             <div class="card-info">
-                <div class="color">2 색상</div>
+              <div class="color">2 색상</div>
 
-                <div class="row">
-                <div class="name"> 남성 푸마 X 하이록스 클라우드스펀 후디 ··· </div>
-                <div class="price">129,000 원</div>
+              <div class="row">
+                <div class="name">
+                  남성 푸마 X 하이록스 클라우드스펀 후디 ···
                 </div>
+                <div class="price">129,000 원</div>
+              </div>
 
-                <div class="rating">☆☆☆☆☆ (0)</div>
-                <div class="quick">간략히 보기</div>
+              <div class="rating">☆☆☆☆☆ (0)</div>
+              <div class="quick">간략히 보기</div>
             </div>
-            </div>
-            </a>
+          </div>
+        </a>
 
-            <!-- 카드 3 -->
-             <a href ="./detail.html?id=2" class="card-link">
-            <div class="card" data-cat="clothes">
+        <!-- 카드 3 -->
+        <a href="./detail.html?id=2" class="card-link">
+          <div class="card" data-cat="clothes">
             <div class="img-box">
-                <img class="product-img" 
-                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1000,h_1000/global/528578/01/mod01/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%8A%A4%ED%8E%80-%ED%9B%84%EB%94%94-brM-PUMA-X-HYROX-CLOUDSPUN-HOODIE" 
+              <img
+                class="product-img"
+                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1000,h_1000/global/528578/01/mod01/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%8A%A4%ED%8E%80-%ED%9B%84%EB%94%94-brM-PUMA-X-HYROX-CLOUDSPUN-HOODIE"
                 data-img1="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528578/01/mod02/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%8A%A4%ED%8E%80-%ED%9B%84%EB%94%94-brM-PUMA-X-HYROX-CLOUDSPUN-HOODIE"
                 data-img2="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528578/01/mod03/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%8A%A4%ED%8E%80-%ED%9B%84%EB%94%94-brM-PUMA-X-HYROX-CLOUDSPUN-HOODIE"
                 data-img3="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528578/01/mod04/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%8A%A4%ED%8E%80-%ED%9B%84%EB%94%94-brM-PUMA-X-HYROX-CLOUDSPUN-HOODIE"
                 data-img4="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528578/01/mod05/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%8A%A4%ED%8E%80-%ED%9B%84%EB%94%94-brM-PUMA-X-HYROX-CLOUDSPUN-HOODIE"
                 data-img5="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528578/01/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%8A%A4%ED%8E%80-%ED%9B%84%EB%94%94-brM-PUMA-X-HYROX-CLOUDSPUN-HOODIE"
                 data-img6="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528578/01/bv/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%8A%A4%ED%8E%80-%ED%9B%84%EB%94%94-brM-PUMA-X-HYROX-CLOUDSPUN-HOODIE"
-                alt="">
+                alt=""
+              />
 
-                <!-- 좌우 버튼 -->
-                    <button class="arrow left"> ‹ </button>
-                    <button class="arrow right"> › </button>
+              <!-- 좌우 버튼 -->
+              <button class="arrow left">‹</button>
+              <button class="arrow right">›</button>
 
-                <button class="wish">♡</button>
+              <button class="wish">♡</button>
             </div>
 
             <div class="card-info">
-                <div class="color">2 색상</div>
+              <div class="color">2 색상</div>
 
-                <div class="row">
-                <div class="name"> 남성 푸마 X 하이록스 클라우드스펀 후디 ··· </div>
-                <div class="price">129,000 원</div>
+              <div class="row">
+                <div class="name">
+                  남성 푸마 X 하이록스 클라우드스펀 후디 ···
                 </div>
+                <div class="price">129,000 원</div>
+              </div>
 
-                <div class="rating">☆☆☆☆☆ (0)</div>
-                <div class="quick">간략히 보기</div>
+              <div class="rating">☆☆☆☆☆ (0)</div>
+              <div class="quick">간략히 보기</div>
             </div>
-            </div>
-            </a>
+          </div>
+        </a>
 
-            <!-- 카드 4 -->
-             <a href ="./detail.html?id=3" class="card-link">
-            <div class="card" data-cat="clothes">
+        <!-- 카드 4 -->
+        <a href="./detail.html?id=3" class="card-link">
+          <div class="card" data-cat="clothes">
             <div class="img-box">
-                <img class="product-img" 
+              <img
+                class="product-img"
                 src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1000,h_1000/global/528568/01/mod01/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%EB%93%9C%EB%9D%BC%EC%9D%B4%EC%97%98%EB%A6%AC%ED%8A%B8-5%EC%9D%B8%EC%B9%98-%EC%87%BC%EC%B8%A0-brM-PUMA-X-HYROX-DRYELITE-5-SHORT"
                 data-img1="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528568/01/mod02/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%EB%93%9C%EB%9D%BC%EC%9D%B4%EC%97%98%EB%A6%AC%ED%8A%B8-5%EC%9D%B8%EC%B9%98-%EC%87%BC%EC%B8%A0-brM-PUMA-X-HYROX-DRYELITE-5-SHORT"
                 data-img2="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528568/01/mod03/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%EB%93%9C%EB%9D%BC%EC%9D%B4%EC%97%98%EB%A6%AC%ED%8A%B8-5%EC%9D%B8%EC%B9%98-%EC%87%BC%EC%B8%A0-brM-PUMA-X-HYROX-DRYELITE-5-SHORT"
@@ -400,243 +438,262 @@
                 data-img4="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528568/01/mod05/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%EB%93%9C%EB%9D%BC%EC%9D%B4%EC%97%98%EB%A6%AC%ED%8A%B8-5%EC%9D%B8%EC%B9%98-%EC%87%BC%EC%B8%A0-brM-PUMA-X-HYROX-DRYELITE-5-SHORT"
                 data-img5="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528568/01/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%EB%93%9C%EB%9D%BC%EC%9D%B4%EC%97%98%EB%A6%AC%ED%8A%B8-5%EC%9D%B8%EC%B9%98-%EC%87%BC%EC%B8%A0-brM-PUMA-X-HYROX-DRYELITE-5-SHORT"
                 data-img6="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/528568/01/bv/fnd/KOR/fmt/png/%EB%82%A8%EC%84%B1-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%EB%93%9C%EB%9D%BC%EC%9D%B4%EC%97%98%EB%A6%AC%ED%8A%B8-5%EC%9D%B8%EC%B9%98-%EC%87%BC%EC%B8%A0-brM-PUMA-X-HYROX-DRYELITE-5-SHORT"
-                alt="">
+                alt=""
+              />
 
-                <!-- 좌우 버튼 -->
-                    <button class="arrow left"> ‹ </button>
-                    <button class="arrow right"> › </button>
+              <!-- 좌우 버튼 -->
+              <button class="arrow left">‹</button>
+              <button class="arrow right">›</button>
 
-                <button class="wish">♡</button>
+              <button class="wish">♡</button>
             </div>
 
             <div class="card-info">
-                <div class="color">1 색상</div>
+              <div class="color">1 색상</div>
 
-                <div class="row">
-                <div class="name">남성 푸마 X 하이록스 드라이엘리트 5인치 쇼츠 ··· </div>
-                <div class="price">99,000 원</div>
+              <div class="row">
+                <div class="name">
+                  남성 푸마 X 하이록스 드라이엘리트 5인치 쇼츠 ···
                 </div>
+                <div class="price">99,000 원</div>
+              </div>
 
-                <div class="rating">☆☆☆☆☆ (0)</div>
-                <div class="quick">간략히 보기</div>
+              <div class="rating">☆☆☆☆☆ (0)</div>
+              <div class="quick">간략히 보기</div>
             </div>
-            </div>
-            </a>
-            <!-- 1~4 는 의류 -->
+          </div>
+        </a>
+        <!-- 1~4 는 의류 -->
 
-            <!-- 카드 5 -->
-             <a href ="./detail.html?id=5" class="card-link" >
-            <div class="card" data-cat="shoes">
+        <!-- 카드 5 -->
+        <a href="./detail.html?id=5" class="card-link">
+          <div class="card" data-cat="shoes">
             <div class="img-box">
-                <img class="product-img" 
-                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1000,h_1000/global/406374/01/sv01/fnd/KOR/fmt/png/%EB%A6%AC%EB%93%9C%EC%BA%A3-2.0-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-brLeadcat-2.0-HYROX" 
+              <img
+                class="product-img"
+                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1000,h_1000/global/406374/01/sv01/fnd/KOR/fmt/png/%EB%A6%AC%EB%93%9C%EC%BA%A3-2.0-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-brLeadcat-2.0-HYROX"
                 data-img1="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/406374/01/fnd/KOR/fmt/png/%EB%A6%AC%EB%93%9C%EC%BA%A3-2.0-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-brLeadcat-2.0-HYROX"
                 data-img2="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/406374/01/bv/fnd/KOR/fmt/png/%EB%A6%AC%EB%93%9C%EC%BA%A3-2.0-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-brLeadcat-2.0-HYROX"
                 data-img3="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/406374/01/sv02/fnd/KOR/fmt/png/%EB%A6%AC%EB%93%9C%EC%BA%A3-2.0-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-brLeadcat-2.0-HYROX"
                 data-img4="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/406374/01/sv03/fnd/KOR/fmt/png/%EB%A6%AC%EB%93%9C%EC%BA%A3-2.0-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-brLeadcat-2.0-HYROX"
                 data-img5="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/406374/01/sv04/fnd/KOR/fmt/png/%EB%A6%AC%EB%93%9C%EC%BA%A3-2.0-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-brLeadcat-2.0-HYROX"
-                alt="">
+                alt=""
+              />
 
-                <!-- 좌우 버튼 -->
-                    <button class="arrow left"> ‹ </button>
-                    <button class="arrow right"> › </button>
+              <!-- 좌우 버튼 -->
+              <button class="arrow left">‹</button>
+              <button class="arrow right">›</button>
 
-                <button class="wish">♡</button>
+              <button class="wish">♡</button>
             </div>
 
             <div class="card-info">
-                <div class="color">1 색상</div>
+              <div class="color">1 색상</div>
 
-                <div class="row">
-                <div class="name">리드캣 2.0 하이록스 Leadcat 2.0 HYROX </div>
+              <div class="row">
+                <div class="name">리드캣 2.0 하이록스 Leadcat 2.0 HYROX</div>
                 <div class="price">39,000 원</div>
-                </div>
+              </div>
 
-                <div class="rating">☆☆☆☆☆ (0)</div>
-                <div class="quick">간략히 보기</div>
+              <div class="rating">☆☆☆☆☆ (0)</div>
+              <div class="quick">간략히 보기</div>
             </div>
-            </div>
-            </a>
+          </div>
+        </a>
 
-            <!-- 카드 6 -->
-             <a href ="./detail.html?id=6" class="card-link" >
-            <div class="card" data-cat="shoes">
+        <!-- 카드 6 -->
+        <a href="./detail.html?id=6" class="card-link">
+          <div class="card" data-cat="shoes">
             <div class="img-box">
-                <img class="product-img" 
-                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1000,h_1000/global/312960/01/sv01/fnd/KOR/fmt/png/%EB%94%94%EB%B9%84%EC%97%90%EC%9D%B4%ED%8A%B8-%EB%82%98%EC%9D%B4%ED%8A%B8%EB%A1%9C-%EC%97%98%EB%A6%AC%ED%8A%B8-4-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brDeviate-NITRO-Elite-4-PUMA-x-HYROX-Wns" 
+              <img
+                class="product-img"
+                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1000,h_1000/global/312960/01/sv01/fnd/KOR/fmt/png/%EB%94%94%EB%B9%84%EC%97%90%EC%9D%B4%ED%8A%B8-%EB%82%98%EC%9D%B4%ED%8A%B8%EB%A1%9C-%EC%97%98%EB%A6%AC%ED%8A%B8-4-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brDeviate-NITRO-Elite-4-PUMA-x-HYROX-Wns"
                 data-img1="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/312960/01/fnd/KOR/fmt/png/%EB%94%94%EB%B9%84%EC%97%90%EC%9D%B4%ED%8A%B8-%EB%82%98%EC%9D%B4%ED%8A%B8%EB%A1%9C-%EC%97%98%EB%A6%AC%ED%8A%B8-4-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brDeviate-NITRO-Elite-4-PUMA-x-HYROX-Wns"
                 data-img2="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/312960/01/bv/fnd/KOR/fmt/png/%EB%94%94%EB%B9%84%EC%97%90%EC%9D%B4%ED%8A%B8-%EB%82%98%EC%9D%B4%ED%8A%B8%EB%A1%9C-%EC%97%98%EB%A6%AC%ED%8A%B8-4-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brDeviate-NITRO-Elite-4-PUMA-x-HYROX-Wns"
                 data-img3="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/312960/01/sv02/fnd/KOR/fmt/png/%EB%94%94%EB%B9%84%EC%97%90%EC%9D%B4%ED%8A%B8-%EB%82%98%EC%9D%B4%ED%8A%B8%EB%A1%9C-%EC%97%98%EB%A6%AC%ED%8A%B8-4-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brDeviate-NITRO-Elite-4-PUMA-x-HYROX-Wns"
                 data-img4="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/312960/01/sv03/fnd/KOR/fmt/png/%EB%94%94%EB%B9%84%EC%97%90%EC%9D%B4%ED%8A%B8-%EB%82%98%EC%9D%B4%ED%8A%B8%EB%A1%9C-%EC%97%98%EB%A6%AC%ED%8A%B8-4-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brDeviate-NITRO-Elite-4-PUMA-x-HYROX-Wns"
                 data-img5="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/312960/01/sv04/fnd/KOR/fmt/png/%EB%94%94%EB%B9%84%EC%97%90%EC%9D%B4%ED%8A%B8-%EB%82%98%EC%9D%B4%ED%8A%B8%EB%A1%9C-%EC%97%98%EB%A6%AC%ED%8A%B8-4-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brDeviate-NITRO-Elite-4-PUMA-x-HYROX-Wns"
                 data-img6="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/312960/01/dt01/fnd/KOR/fmt/png/%EB%94%94%EB%B9%84%EC%97%90%EC%9D%B4%ED%8A%B8-%EB%82%98%EC%9D%B4%ED%8A%B8%EB%A1%9C-%EC%97%98%EB%A6%AC%ED%8A%B8-4-%ED%91%B8%EB%A7%88-X-%ED%95%98%EC%9D%B4%EB%A1%9D%EC%8A%A4-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brDeviate-NITRO-Elite-4-PUMA-x-HYROX-Wns"
-                alt="">
+                alt=""
+              />
 
-                <!-- 좌우 버튼 -->
-                    <button class="arrow left"> ‹ </button>
-                    <button class="arrow right"> › </button>
+              <!-- 좌우 버튼 -->
+              <button class="arrow left">‹</button>
+              <button class="arrow right">›</button>
 
-                <button class="wish">♡</button>
+              <button class="wish">♡</button>
             </div>
 
             <div class="card-info">
-                <div class="color">1 색상</div>
+              <div class="color">1 색상</div>
 
-                <div class="row">
-                <div class="name">디비에이트 나이트로 엘리트 4 푸마 X 하이록스 우먼스 ··· </div>
-                <div class="price">309,000 원</div>
+              <div class="row">
+                <div class="name">
+                  디비에이트 나이트로 엘리트 4 푸마 X 하이록스 우먼스 ···
                 </div>
+                <div class="price">309,000 원</div>
+              </div>
 
-                <div class="rating">☆☆☆☆☆ (0)</div>
-                <div class="quick">간략히 보기</div>
+              <div class="rating">☆☆☆☆☆ (0)</div>
+              <div class="quick">간략히 보기</div>
             </div>
-            </div>
-            </a>
-            <!-- 5~6 는 신발 -->
+          </div>
+        </a>
+        <!-- 5~6 는 신발 -->
 
-            <!-- 카드 7 -->
-             <a href ="./detail.html?id=7" class="card-link" >
-            <div class="card" data-cat="goods">
+        <!-- 카드 7 -->
+        <a href="./detail.html?id=7" class="card-link">
+          <div class="card" data-cat="goods">
             <div class="img-box">
-                <img class="product-img" 
-                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1000,h_1000/global/026996/01/fnd/KOR/fmt/png/%EB%A0%88%EC%9D%B4%EC%8A%A4-%EB%8D%B0%EC%9D%B4-5-%ED%8C%A8%EB%84%90-%EC%BA%A1-brRACE-DAY-5-Panel-Cap" 
+              <img
+                class="product-img"
+                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1000,h_1000/global/026996/01/fnd/KOR/fmt/png/%EB%A0%88%EC%9D%B4%EC%8A%A4-%EB%8D%B0%EC%9D%B4-5-%ED%8C%A8%EB%84%90-%EC%BA%A1-brRACE-DAY-5-Panel-Cap"
                 data-img1="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/026996/01/mod01/fnd/KOR/fmt/png/%EB%A0%88%EC%9D%B4%EC%8A%A4-%EB%8D%B0%EC%9D%B4-5-%ED%8C%A8%EB%84%90-%EC%BA%A1-brRACE-DAY-5-Panel-Cap"
                 data-img2="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/026996/01/mod02/fnd/KOR/fmt/png/%EB%A0%88%EC%9D%B4%EC%8A%A4-%EB%8D%B0%EC%9D%B4-5-%ED%8C%A8%EB%84%90-%EC%BA%A1-brRACE-DAY-5-Panel-Cap"
                 data-img3="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/026996/01/bv/fnd/KOR/fmt/png/%EB%A0%88%EC%9D%B4%EC%8A%A4-%EB%8D%B0%EC%9D%B4-5-%ED%8C%A8%EB%84%90-%EC%BA%A1-brRACE-DAY-5-Panel-Cap"
-                alt="">
+                alt=""
+              />
 
-                <!-- 좌우 버튼 -->
-                    <button class="arrow left"> ‹ </button>
-                    <button class="arrow right"> › </button>
+              <!-- 좌우 버튼 -->
+              <button class="arrow left">‹</button>
+              <button class="arrow right">›</button>
 
-                <button class="wish">♡</button>
+              <button class="wish">♡</button>
             </div>
 
             <div class="card-info">
-                <div class="color">2 색상</div>
+              <div class="color">2 색상</div>
 
-                <div class="row">
-                <div class="name">레이스 데이 5 패널 캡RACE DAY 5 Panel Cap </div>
-                <div class="price">49,000 원</div>
+              <div class="row">
+                <div class="name">
+                  레이스 데이 5 패널 캡RACE DAY 5 Panel Cap
                 </div>
+                <div class="price">49,000 원</div>
+              </div>
 
-                <div class="rating">☆☆☆☆☆ (0)</div>
-                <div class="quick">간략히 보기</div>
+              <div class="rating">☆☆☆☆☆ (0)</div>
+              <div class="quick">간략히 보기</div>
             </div>
-            </div>
-            </a>
+          </div>
+        </a>
 
-            <!-- 카드 8 -->
-             <a href ="./detail.html?id=8" class="card-link">
-            <div class="card" data-cat="goods">
+        <!-- 카드 8 -->
+        <a href="./detail.html?id=8" class="card-link">
+          <div class="card" data-cat="goods">
             <div class="img-box">
-                <img class="product-img" 
-                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/640553/01/fnd/KOR/fmt/png/TWO-STRIPED-CUSHION-SOCKS-3P" 
+              <img
+                class="product-img"
+                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/640553/01/fnd/KOR/fmt/png/TWO-STRIPED-CUSHION-SOCKS-3P"
                 data-img1="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/640553/01/bv/fnd/KOR/fmt/png/TWO-STRIPED-CUSHION-SOCKS-3P"
                 data-img2="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/640553/01/dt01/fnd/KOR/fmt/png/TWO-STRIPED-CUSHION-SOCKS-3P"
                 data-img3="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/640553/01/dt02/fnd/KOR/fmt/png/TWO-STRIPED-CUSHION-SOCKS-3P"
                 data-img4="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/640553/01/dt03/fnd/KOR/fmt/png/TWO-STRIPED-CUSHION-SOCKS-3P"
                 data-img5="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/640553/01/dt04/fnd/KOR/fmt/png/TWO-STRIPED-CUSHION-SOCKS-3P"
                 data-img6="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/640553/01/dt05/fnd/KOR/fmt/png/TWO-STRIPED-CUSHION-SOCKS-3P"
-                alt="">
+                alt=""
+              />
 
-                <!-- 좌우 버튼 -->
-                    <button class="arrow left"> ‹ </button>
-                    <button class="arrow right"> › </button>
-                <button class="wish">♡</button>
+              <!-- 좌우 버튼 -->
+              <button class="arrow left">‹</button>
+              <button class="arrow right">›</button>
+              <button class="wish">♡</button>
             </div>
 
             <div class="card-info">
-                <div class="color">1 색상</div>
+              <div class="color">1 색상</div>
 
-                <div class="row">
-                <div class="name">TWO STRIPED CUSHION SOCKS 3P </div>
+              <div class="row">
+                <div class="name">TWO STRIPED CUSHION SOCKS 3P</div>
                 <div class="price">20,900 원</div>
-                </div>
+              </div>
 
-                <div class="rating">☆☆☆☆☆ (0)</div>
-                <div class="quick">간략히 보기</div>
+              <div class="rating">☆☆☆☆☆ (0)</div>
+              <div class="quick">간략히 보기</div>
             </div>
-            </div>
-            </a>
-            <!-- 7~8 는 용품 -->
-            <!-- 카드 총 8개 만들기 끝 -->
+          </div>
+        </a>
+        <!-- 7~8 는 용품 -->
+        <!-- 카드 총 8개 만들기 끝 -->
 
-            <!-- 카드 추가로 몇줄만 4* 딘위로 해야함 / 여긴 a 태그로 링크 안되어있음 -->
-           
+        <!-- 카드 추가로 몇줄만 4* 딘위로 해야함 / 여긴 a 태그로 링크 안되어있음 -->
 
-            <!-- 카드 9 -->
-             <a href="javascript:void(0)" class="card-link disabled-link">
-            <div class="card" data-cat="shoes">
+        <!-- 카드 9 -->
+        <a href="javascript:void(0)" class="card-link disabled-link">
+          <div class="card" data-cat="shoes">
             <div class="img-box">
-                <img class="product-img" 
-                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/408780/01/sv01/fnd/KOR/fmt/png/%ED%91%B8%EB%A7%88-%ED%83%9C%ED%81%B4-%ED%97%A4%EB%A6%AC%ED%8B%B0%EC%A7%80-brPuma-Tackle-Heritage" 
+              <img
+                class="product-img"
+                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/408780/01/sv01/fnd/KOR/fmt/png/%ED%91%B8%EB%A7%88-%ED%83%9C%ED%81%B4-%ED%97%A4%EB%A6%AC%ED%8B%B0%EC%A7%80-brPuma-Tackle-Heritage"
                 data-img1="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/408780/01/fnd/KOR/fmt/png/%ED%91%B8%EB%A7%88-%ED%83%9C%ED%81%B4-%ED%97%A4%EB%A6%AC%ED%8B%B0%EC%A7%80-brPuma-Tackle-Heritage"
                 data-img2="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/408780/01/bv/fnd/KOR/fmt/png/%ED%91%B8%EB%A7%88-%ED%83%9C%ED%81%B4-%ED%97%A4%EB%A6%AC%ED%8B%B0%EC%A7%80-brPuma-Tackle-Heritage"
                 data-img3="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/408780/01/sv02/fnd/KOR/fmt/png/%ED%91%B8%EB%A7%88-%ED%83%9C%ED%81%B4-%ED%97%A4%EB%A6%AC%ED%8B%B0%EC%A7%80-brPuma-Tackle-Heritage"
                 data-img4="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/408780/01/sv03/fnd/KOR/fmt/png/%ED%91%B8%EB%A7%88-%ED%83%9C%ED%81%B4-%ED%97%A4%EB%A6%AC%ED%8B%B0%EC%A7%80-brPuma-Tackle-Heritage"
                 data-img5="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/408780/01/sv04/fnd/KOR/fmt/png/%ED%91%B8%EB%A7%88-%ED%83%9C%ED%81%B4-%ED%97%A4%EB%A6%AC%ED%8B%B0%EC%A7%80-brPuma-Tackle-Heritage"
-                alt="">
+                alt=""
+              />
 
-                <!-- 좌우 버튼 -->
-                    <button class="arrow left"> ‹ </button>
-                    <button class="arrow right"> › </button>
-                <button class="wish">♡</button>
+              <!-- 좌우 버튼 -->
+              <button class="arrow left">‹</button>
+              <button class="arrow right">›</button>
+              <button class="wish">♡</button>
             </div>
 
             <div class="card-info">
-                <div class="color">2 색상</div>
+              <div class="color">2 색상</div>
 
-                <div class="row">
-                <div class="name">푸마 태클 헤리티지 Puma Tackle Heritage </div>
+              <div class="row">
+                <div class="name">푸마 태클 헤리티지 Puma Tackle Heritage</div>
                 <div class="price">119,000 원</div>
-                </div>
+              </div>
 
-                <div class="rating">☆☆☆☆☆ (0)</div>
-                <div class="quick">간략히 보기</div>
+              <div class="rating">☆☆☆☆☆ (0)</div>
+              <div class="quick">간략히 보기</div>
             </div>
-            </div>
-            </a>
+          </div>
+        </a>
 
-            <!-- 카드 10 -->
-             <a href="javascript:void(0)" class="card-link disabled-link">
-            <div class="card" data-cat="shoes">
+        <!-- 카드 10 -->
+        <a href="javascript:void(0)" class="card-link disabled-link">
+          <div class="card" data-cat="shoes">
             <div class="img-box">
-                <img class="product-img" 
-                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/408780/02/sv01/fnd/KOR/fmt/png/%ED%91%B8%EB%A7%88-%ED%83%9C%ED%81%B4-%ED%97%A4%EB%A6%AC%ED%8B%B0%EC%A7%80-brPuma-Tackle-Heritage" 
+              <img
+                class="product-img"
+                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/408780/02/sv01/fnd/KOR/fmt/png/%ED%91%B8%EB%A7%88-%ED%83%9C%ED%81%B4-%ED%97%A4%EB%A6%AC%ED%8B%B0%EC%A7%80-brPuma-Tackle-Heritage"
                 data-img1="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/408780/02/fnd/KOR/fmt/png/%ED%91%B8%EB%A7%88-%ED%83%9C%ED%81%B4-%ED%97%A4%EB%A6%AC%ED%8B%B0%EC%A7%80-brPuma-Tackle-Heritage"
                 data-img2="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/408780/02/bv/fnd/KOR/fmt/png/%ED%91%B8%EB%A7%88-%ED%83%9C%ED%81%B4-%ED%97%A4%EB%A6%AC%ED%8B%B0%EC%A7%80-brPuma-Tackle-Heritage"
                 data-img3="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/408780/02/sv02/fnd/KOR/fmt/png/%ED%91%B8%EB%A7%88-%ED%83%9C%ED%81%B4-%ED%97%A4%EB%A6%AC%ED%8B%B0%EC%A7%80-brPuma-Tackle-Heritage"
                 data-img4="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/408780/02/sv03/fnd/KOR/fmt/png/%ED%91%B8%EB%A7%88-%ED%83%9C%ED%81%B4-%ED%97%A4%EB%A6%AC%ED%8B%B0%EC%A7%80-brPuma-Tackle-Heritage"
                 data-img5="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/408780/02/sv04/fnd/KOR/fmt/png/%ED%91%B8%EB%A7%88-%ED%83%9C%ED%81%B4-%ED%97%A4%EB%A6%AC%ED%8B%B0%EC%A7%80-brPuma-Tackle-Heritage"
-                alt="">
+                alt=""
+              />
 
-                <!-- 좌우 버튼 -->
-                    <button class="arrow left"> ‹ </button>
-                    <button class="arrow right"> › </button>
-                <button class="wish">♡</button>
+              <!-- 좌우 버튼 -->
+              <button class="arrow left">‹</button>
+              <button class="arrow right">›</button>
+              <button class="wish">♡</button>
             </div>
 
             <div class="card-info">
-                <div class="color">2 색상</div>
+              <div class="color">2 색상</div>
 
-                <div class="row">
-                <div class="name">푸마 태클 헤리티지 Puma Tackle Heritage </div>
+              <div class="row">
+                <div class="name">푸마 태클 헤리티지 Puma Tackle Heritage</div>
                 <div class="price">119,000 원</div>
-                </div>
+              </div>
 
-                <div class="rating">☆☆☆☆☆ (0)</div>
-                <div class="quick">간략히 보기</div>
+              <div class="rating">☆☆☆☆☆ (0)</div>
+              <div class="quick">간략히 보기</div>
             </div>
-            </div>
-            </a>
+          </div>
+        </a>
 
-            <!-- 카드 11 -->
-             <a href="javascript:void(0)" class="card-link disabled-link">
-            <div class="card" data-cat="shoes">
+        <!-- 카드 11 -->
+        <a href="javascript:void(0)" class="card-link disabled-link">
+          <div class="card" data-cat="shoes">
             <div class="img-box">
-                <img class="product-img" 
-                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/401581/01/sv01/fnd/KOR/fmt/png/%EC%8A%A4%ED%94%BC%EB%93%9C%EC%BA%A3-%EB%B0%9C%EB%A0%9B-%EB%A9%94%ED%83%88%EB%A6%AD-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brSpeedcat-Ballet-Metallic-Wns" 
+              <img
+                class="product-img"
+                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/401581/01/sv01/fnd/KOR/fmt/png/%EC%8A%A4%ED%94%BC%EB%93%9C%EC%BA%A3-%EB%B0%9C%EB%A0%9B-%EB%A9%94%ED%83%88%EB%A6%AD-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brSpeedcat-Ballet-Metallic-Wns"
                 data-img1="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/401581/01/mod01/fnd/KOR/fmt/png/%EC%8A%A4%ED%94%BC%EB%93%9C%EC%BA%A3-%EB%B0%9C%EB%A0%9B-%EB%A9%94%ED%83%88%EB%A6%AD-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brSpeedcat-Ballet-Metallic-Wns"
                 data-img2="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/401581/01/mod02/fnd/KOR/fmt/png/%EC%8A%A4%ED%94%BC%EB%93%9C%EC%BA%A3-%EB%B0%9C%EB%A0%9B-%EB%A9%94%ED%83%88%EB%A6%AD-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brSpeedcat-Ballet-Metallic-Wns"
                 data-img3="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/401581/01/fnd/KOR/fmt/png/%EC%8A%A4%ED%94%BC%EB%93%9C%EC%BA%A3-%EB%B0%9C%EB%A0%9B-%EB%A9%94%ED%83%88%EB%A6%AD-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brSpeedcat-Ballet-Metallic-Wns"
@@ -644,34 +701,38 @@
                 data-img5="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/401581/01/sv02/fnd/KOR/fmt/png/%EC%8A%A4%ED%94%BC%EB%93%9C%EC%BA%A3-%EB%B0%9C%EB%A0%9B-%EB%A9%94%ED%83%88%EB%A6%AD-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brSpeedcat-Ballet-Metallic-Wns"
                 data-img6="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/401581/01/sv03/fnd/KOR/fmt/png/%EC%8A%A4%ED%94%BC%EB%93%9C%EC%BA%A3-%EB%B0%9C%EB%A0%9B-%EB%A9%94%ED%83%88%EB%A6%AD-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brSpeedcat-Ballet-Metallic-Wns"
                 data-img7="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/401581/01/sv04/fnd/KOR/fmt/png/%EC%8A%A4%ED%94%BC%EB%93%9C%EC%BA%A3-%EB%B0%9C%EB%A0%9B-%EB%A9%94%ED%83%88%EB%A6%AD-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brSpeedcat-Ballet-Metallic-Wns"
-                alt="">
+                alt=""
+              />
 
-                <!-- 좌우 버튼 -->
-                    <button class="arrow left"> ‹ </button>
-                    <button class="arrow right"> › </button>
-                <button class="wish">♡</button>
+              <!-- 좌우 버튼 -->
+              <button class="arrow left">‹</button>
+              <button class="arrow right">›</button>
+              <button class="wish">♡</button>
             </div>
 
             <div class="card-info">
-                <div class="color">2 색상</div>
+              <div class="color">2 색상</div>
 
-                <div class="row">
-                <div class="name">스피드캣 발렛 메탈릭 우먼스 Speedcat Ballet Metalli ··· </div>
-                <div class="price">119,000 원</div>
+              <div class="row">
+                <div class="name">
+                  스피드캣 발렛 메탈릭 우먼스 Speedcat Ballet Metalli ···
                 </div>
+                <div class="price">119,000 원</div>
+              </div>
 
-                <div class="rating">☆☆☆☆☆ (0)</div>
-                <div class="quick">간략히 보기</div>
+              <div class="rating">☆☆☆☆☆ (0)</div>
+              <div class="quick">간략히 보기</div>
             </div>
-            </div>
-            </a>
-            
-            <!-- 카드 12 -->
-             <a href="javascript:void(0)" class="card-link disabled-link">
-              <div class="card" data-cat="shoes">
+          </div>
+        </a>
+
+        <!-- 카드 12 -->
+        <a href="javascript:void(0)" class="card-link disabled-link">
+          <div class="card" data-cat="shoes">
             <div class="img-box">
-                <img class="product-img" 
-                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/401581/03/sv01/fnd/KOR/fmt/png/%EC%8A%A4%ED%94%BC%EB%93%9C%EC%BA%A3-%EB%B0%9C%EB%A0%9B-%EB%A9%94%ED%83%88%EB%A6%AD-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brSpeedcat-Ballet-Metallic-Wns" 
+              <img
+                class="product-img"
+                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/401581/03/sv01/fnd/KOR/fmt/png/%EC%8A%A4%ED%94%BC%EB%93%9C%EC%BA%A3-%EB%B0%9C%EB%A0%9B-%EB%A9%94%ED%83%88%EB%A6%AD-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brSpeedcat-Ballet-Metallic-Wns"
                 data-img1="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/401581/03/mod01/fnd/KOR/fmt/png/%EC%8A%A4%ED%94%BC%EB%93%9C%EC%BA%A3-%EB%B0%9C%EB%A0%9B-%EB%A9%94%ED%83%88%EB%A6%AD-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brSpeedcat-Ballet-Metallic-Wns"
                 data-img2="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/401581/03/mod02/fnd/KOR/fmt/png/%EC%8A%A4%ED%94%BC%EB%93%9C%EC%BA%A3-%EB%B0%9C%EB%A0%9B-%EB%A9%94%ED%83%88%EB%A6%AD-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brSpeedcat-Ballet-Metallic-Wns"
                 data-img3="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/401581/03/fnd/KOR/fmt/png/%EC%8A%A4%ED%94%BC%EB%93%9C%EC%BA%A3-%EB%B0%9C%EB%A0%9B-%EB%A9%94%ED%83%88%EB%A6%AD-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brSpeedcat-Ballet-Metallic-Wns"
@@ -679,40 +740,140 @@
                 data-img5="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/401581/03/sv02/fnd/KOR/fmt/png/%EC%8A%A4%ED%94%BC%EB%93%9C%EC%BA%A3-%EB%B0%9C%EB%A0%9B-%EB%A9%94%ED%83%88%EB%A6%AD-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brSpeedcat-Ballet-Metallic-Wns"
                 data-img6="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/401581/03/sv03/fnd/KOR/fmt/png/%EC%8A%A4%ED%94%BC%EB%93%9C%EC%BA%A3-%EB%B0%9C%EB%A0%9B-%EB%A9%94%ED%83%88%EB%A6%AD-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brSpeedcat-Ballet-Metallic-Wns"
                 data-img7="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/401581/03/sv04/fnd/KOR/fmt/png/%EC%8A%A4%ED%94%BC%EB%93%9C%EC%BA%A3-%EB%B0%9C%EB%A0%9B-%EB%A9%94%ED%83%88%EB%A6%AD-%EC%9A%B0%EB%A8%BC%EC%8A%A4-brSpeedcat-Ballet-Metallic-Wns"
-                alt="">
+                alt=""
+              />
 
-                <!-- 좌우 버튼 -->
-                    <button class="arrow left"> ‹ </button>
-                    <button class="arrow right"> › </button>
-                <button class="wish">♡</button>
+              <!-- 좌우 버튼 -->
+              <button class="arrow left">‹</button>
+              <button class="arrow right">›</button>
+              <button class="wish">♡</button>
             </div>
 
             <div class="card-info">
-                <div class="color">2 색상</div>
+              <div class="color">2 색상</div>
 
-                <div class="row">
-                <div class="name">스피드캣 발렛 메탈릭 우먼스 Speedcat Ballet Metalli ··· </div>
-                <div class="price">119,000 원</div>
+              <div class="row">
+                <div class="name">
+                  스피드캣 발렛 메탈릭 우먼스 Speedcat Ballet Metalli ···
                 </div>
+                <div class="price">119,000 원</div>
+              </div>
 
-                <div class="rating">☆☆☆☆☆ (0)</div>
-                <div class="quick">간략히 보기</div>
+              <div class="rating">☆☆☆☆☆ (0)</div>
+              <div class="quick">간략히 보기</div>
             </div>
-            </div>
-            </a>
-            <!-- 9~12 는 신발 -->
+          </div>
+        </a>
+        <!-- 9~12 는 신발 -->
+      </div>
 
-
-        </div>
-
-        <!-- 더보기 및 모두보기 버튼 -->
-         <div class="more-btn">
-            <button class="more-pro-white"> 36개 더 보기 </button>
-            <button class="more-pro-gold"> 모두 표시(202) </button>
-         </div>
-
+      <!-- 더보기 및 모두보기 버튼 -->
+      <div class="more-btn">
+        <button class="more-pro-white">36개 더 보기</button>
+        <button class="more-pro-gold">모두 표시(202)</button>
+      </div>
     </section>
 
-    <script src="js/product/product.js"> </script>
-</body>
+    <script src="js/product/product.js"></script>
+    </main>
+  </body>
+  <footer>
+        <!-- footer 영역 -->
+        <div class="footer-top">
+            <!-- 로고 -->
+            <div class="footer-logo">
+                <img src="./images/index/pumalogo.jpg" alt="">
+            </div>
+            <!-- 뉴스레터 -->
+            <div class="footer-news">
+                <h4>뉴스레터 구독하기</h4>
+                <input type="email" placeholder="이메일">
+                <p>입력하신 이메일 주소로 할인코드를 발송해 드립니다.</p>
+            </div>
+        </div>
+
+        <!-- 메뉴영역 -->
+        <div class="footer-links">
+            <div class="footer-col1">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">자주 물어보는 질문</a></li>
+                    <li><a href="#">고객센터</a></li>
+                    <li><a href="#">매장위치</a></li>
+                    <li><a href="#">계정정보</a></li>
+                    <li><a href="#">배송관련정보</a></li>
+                    <li><a href="#">환불 정책</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">이용약관</a></li>
+                </ul>
+            </div>
+            <div class="footer-col2">
+                <h4>About PUMA (외부링크연결)</h4>
+                <ul>
+                    <li><a href="#">GO WILD</a></li>
+                    <li><a href="#">Company</a></li>
+                    <li><a href="#">Corporate News</a></li>
+                    <li><a href="#">Press Center</a></li>
+                    <li><a href="#">Investors</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col3">
+                <h4>More Inspiration</h4>
+                <div class="sns-icons">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <div class="footer-trac">
+                    <img src="https://kr.puma.com/on/demandware.static/-/Sites-KR-Library/default/dw916f7f30/web-components/pumatrac-logo.svg">
+                    <div class="footer-text">
+                        <p>TRAIN WITH THE FASTEST</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        
+         <!-- 하단영역 -->
+         <div class="footer-bottom">
+            <div class="footer-lang">
+                <img src="https://kr.puma.com/on/demandware.static/Sites-KR-Site/-/default/dw2ead6927/flags/kr.svg">
+                한국어
+                <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="footer-copy">© PUMA Korea Ltd, 2026. All Rights Reserved.</div>
+            <div class="footer-imprint">Imprint & Legal Data</div>
+            <div class="footer-pay">
+                <img class="p-meta-footer-images-item" src="https://kr.puma.com/on/demandware.static/-/Sites-KR-Library/default/dw31628c4d/web-components/meta-footer/visa-card.svg" alt="">
+                <img class="p-meta-footer-images-item" src="https://kr.puma.com/on/demandware.static/-/Sites-KR-Library/default/dw498287fd/web-components/meta-footer/mastercard-card.svg" alt="">
+            </div>
+         </div>
+    </footer>
+    <section class="footer-bottom-info">
+        <div class="info-inner">
+            <!-- 왼쪽 회사 정보 -->
+            <div class="company-info">
+                <p>• 푸마코리아 유한회사 | 서울특별시 중구 을지로 100, 6층 (을지로2가, 파인에비뉴)</p>
+                <p>대표자 : 이나영</p>
+                <p>사업자 등록 번호 : 108-81-77705</p>
+                <p>대표 번호 : 02-2136-1000 / 이메일 : webmaster.kr@puma.com</p>
+                <p>오프라인스토어 문의 : 080-082-0888 (평일 10시~17시,점심시간 12~14시 제외),주말 및 공휴일(임시공휴일 포함)제외</p>
+                <p>온라인스토어 문의 : 080-857-0777 (평일 10시~17시,점심시간 12~14시 제외),주말 및 공휴일(임시공휴일 포함)제외</p>
+                <p>통신판매업신고 : 2017-서울중구-0863</p>
+                <p>개인정보 보호 책임자 : 권순완</p>
+            </div>
+            <!-- 오른쪽 박스 -->
+            <div class="company-side">
+                <div class="policy-links">
+                    <a href="#">구매이용약관</a>
+                    <a href="#" class="right">공정거래위원회<br>사원자 신원정보 확인</a>
+                    <a href="#" class="red">개인정보 취급방침</a>
+                </div>
+                <div class="company-img">
+                    <img src="https://kr.puma.com/on/demandware.static/-/Sites-KR-Library/default/dw5d0ce80f/images/Landing/img_puma_esc_570px.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
 </html>
