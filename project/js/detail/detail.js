@@ -31,6 +31,9 @@ function renderProductDetail(product) {
 
   // 6. 색상 옵션 표시 로직
   updateColorOptions(product);
+
+  // 7. 카테고리에 따른 사이즈 박스 업데이트
+  updateSizeOptions(product);
 }
 
 initQuantityDropdown(); 
@@ -65,7 +68,39 @@ function initQuantityDropdown() {
     dropContainer.classList.remove('active');
   });
 }
+// --------------------------사이즈 박스 수정 로직
+function updateSizeOptions(product) {
+  const sizeBox = document.querySelector(".size-box");
+  if (!sizeBox) return;
 
+  // 카테고리가 '의류'가 아닌 경우 (용품, 신발 등)
+  if (product.category !== "의류") {
+    sizeBox.innerHTML = `
+      <input type="radio" name="product-size" id="size-free" value="Free" checked />
+      <label for="size-free">Free</label>
+    `;
+  } else {
+    // 의류인 경우 기존의 다양한 사이즈 목록을 유지
+    sizeBox.innerHTML = `
+      <input type="radio" name="product-size" id="size-xs" value="XS" />
+      <label for="size-xs">XS</label>
+      <input type="radio" name="product-size" id="size-s" value="S" />
+      <label for="size-s">S</label>
+      <input type="radio" name="product-size" id="size-m" value="M" />
+      <label for="size-m">M</label>
+      <input type="radio" name="product-size" id="size-l" value="L" checked />
+      <label for="size-l">L</label>
+      <input type="radio" name="product-size" id="size-xl" value="XL" />
+      <label for="size-xl">XL</label>
+      <input type="radio" name="product-size" id="size-xxl" value="XXL" />
+      <label for="size-xxl">XXL</label>
+      <input type="radio" name="product-size" id="size-3xl" value="3XL" />
+      <label for="size-3xl">3XL</label>
+      <input type="radio" name="product-size" id="size-4xl" value="4XL" />
+      <label for="size-4xl">4XL</label>
+    `;
+  }
+}
 //----------------------- 모달 로직
 const modal = document.querySelector(".modal-background");
 const stars = document.querySelectorAll(".stars div");
@@ -208,4 +243,52 @@ function handleProductNotFound() {
   console.error("상품을 찾을 수 없습니다.");
   alert("존재하지 않는 상품입니다. 메인 페이지로 이동합니다.");
   window.location.href = "./index.html";
+}
+// -------------------------------------장바구니로 값 쏴주기
+// 장바구니 추가 버튼 클릭 이벤트 연결
+const cartBtn = document.querySelector(".cart-btn");
+
+if (cartBtn) {
+  cartBtn.addEventListener("click", () => {
+    // 1. 현재 URL에서 상품 ID 가져오기
+    const params = new URLSearchParams(window.location.search);
+    const productId = parseInt(params.get("id"));
+
+    // 2. 선택된 사이즈 가져오기 (라디오 버튼)
+    const selectedSizeElement = document.querySelector('input[name="product-size"]:checked');
+    const selectedSize = selectedSizeElement ? selectedSizeElement.value : "L";
+
+    // 3. 선택된 수량 가져오기 (드롭다운 버튼의 텍스트 숫자)
+    const quantityText = document.querySelector('.drop-btn').innerText.trim();
+    const quantity = parseInt(quantityText) || 1;
+
+    // 4. 로컬스토리지 데이터 관리
+    // 기존 장바구니 데이터를 가져오거나 없으면 빈 배열 생성
+    let cartStorage = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // 동일한 상품 ID와 동일한 사이즈가 이미 있는지 확인
+    const existingItemIndex = cartStorage.findIndex(
+      (item) => item.id === productId && item.selectedSize === selectedSize
+    );
+
+    if (existingItemIndex > -1) {
+      // 이미 있다면 수량만 합산
+      cartStorage[existingItemIndex].quantity += quantity;
+    } else {
+      // 새로 추가 (cart.js의 스펙에 맞춰 필드명 구성)
+      cartStorage.push({
+        id: productId,
+        quantity: quantity,
+        selectedSize: selectedSize
+      });
+    }
+
+    // 5. 로컬스토리지에 다시 저장
+    localStorage.setItem("cart", JSON.stringify(cartStorage));
+
+    // 6. 확인창 띄우기 및 이동
+    if (confirm("상품이 장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?")) {
+      window.location.href = "cart.html";
+    }
+  });
 }
