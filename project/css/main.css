@@ -139,12 +139,13 @@ header{
     margin-right: 30px;
 }
 .search{
-    width: 190px;
-    height: 25px;
-    padding: 10px 5px 10px 15px;
+    width: 200px;
+    height: 45px;
     display: flex;
     align-items: center;
+    justify-content: center;
     border: 1px solid gray;
+    box-sizing: border-box;
 }
 .search i{
     color: white;
@@ -154,8 +155,7 @@ header{
     cursor: pointer;
 }
 .search input{
-    width: 150px;
-    height: 23px;
+    width: 140px;
     background-color: #181818;
     border: none;
     outline: none;
