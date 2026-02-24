@@ -28,6 +28,9 @@ function renderProductDetail(product) {
 
   // 5. 별점 고정 로직
   initModalStarRating();
+
+  // 6. 색상 옵션 표시 로직
+  updateColorOptions(product);
 }
 
 initQuantityDropdown(); 
@@ -92,6 +95,23 @@ window.addEventListener("click", (e) => {
 });
 
 // --- 세부 기능 함수들 ---
+
+function updateColorOptions(product){
+  const colorUl = document.querySelector(".color-choose ul");
+  if(!colorUl) return;
+
+  colorUl.innerHTML = "";
+
+  product.colorOptions.forEach((option) => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <a href="#">
+        <img src="${option.img}" alt="${option.name}" title="${option.name}">
+      </a>
+    `;
+    colorUl.appendChild(li);
+  })
+};
 
 function updateTextContent(product) {
   document.querySelector(".tree-item").innerHTML = `${product.name}<br>${product.engName}`;
