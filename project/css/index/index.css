@@ -1,3 +1,5 @@
+/* --------헤더 위-------- */
+
 /* -------- 헤더 --------- */
 header{
     position: fixed;
@@ -13,7 +15,6 @@ header{
     margin-right: 10px;
     margin-left: 30px;
 }
-
 
 .nav a{
     text-decoration: none;
@@ -81,6 +82,14 @@ main{
     width: 100%;
     display: block;
 }
+.wrap video{
+    width: 100%;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+
+}
 .wrap-text{
     bottom: 15%;
     left: 15%;
@@ -89,14 +98,14 @@ main{
 .wrap-text h1{
     font-size: 2.5rem;
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     font-weight: 600;
 }
 .wrap-text strong{
     display: block;
     font-size: 1.4rem;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     padding: 1rem 0 0.5rem 0;
 }
 .wrap-text p{
@@ -116,18 +125,25 @@ main{
 }
 
 /* ----products---- */
+.products{
+    padding: 0 150px;
+}
 .product-list{
     display: flex;
-    gap: 20px;         /* 상품 사이 간격 */
+    gap: 10px;         /* 상품 사이 간격 */
     justify-content: center;
     margin-bottom: 40px;
+}
+.products a{
+    width: 240px;
+    color: black;
 }
 .product{
     width: 288px;
 }
-.product :hover{
+/* .product :hover{
     cursor: pointer;
-}
+} */
 .product img{
     width: 100%;
     display: block;
@@ -149,6 +165,9 @@ main{
 
 
 /*-----category-----*/
+.category{
+    padding: 0 30px;
+}
 .category-list{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -185,6 +204,99 @@ main{
     font-weight: 500;
     margin-bottom: 50px;
 }
+
+/* -----coupon----- */
+.coupons{
+    padding: 0 100px;
+    margin-top: 60px;
+    margin-bottom: 100px;
+}
+.coupon{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.coupon img{
+    width: 690px;
+    height: 140px;
+}
+.coupon img:hover{
+    cursor: pointer;
+}
+
+/* -----puma-style----- */
+.puma-style{
+    padding-bottom: 80px;
+    text-align: center;
+}
+.puma-style h2{
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+/* 슬라이더 영역 */
+.slider-wrap{
+    position: relative;
+    width: calc((400px + 10px) * 4); /* ⭐ 3.5장 */
+    margin: auto;
+    overflow: hidden;
+}
+/* 슬라이드 */
+.slider{
+    display: flex;
+    gap: 10px;
+    transition: transform 0.5s ease;
+}
+/* 카드 */
+.img-card{
+    width: 400px;
+    flex-shrink: 0;
+}
+.img-card img{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+.card-title{
+    text-align: left;
+    margin-top: 15px;
+    font-weight: 600;
+    opacity: 0;    /* 기본 숨김 */
+    transition: opacity 0.4s ease;
+}
+.img-card.active .card-title{
+    opacity: 1;              /* 가운데 카드만 보임 */
+}
+/* 화살표 버튼 */
+.arrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    font-size: 28px;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.3s;
+    z-index: 10;              /* ⭐ 추가 */
+}
+
+.left{
+    left: 50px;              /* ⭐ 바깥쪽으로 */
+}
+
+.right{
+    right: 50px;             /* ⭐ 바깥쪽으로 */
+}
+
+.slider-wrap:hover .arrow{
+    opacity: 1;
+}
+
+
 
 /* -----------푸터----------- */
 footer{
@@ -345,6 +457,7 @@ footer{
     width: 30px;
     height: 30px;
     object-fit: cover;
+    margin-right: 7px;
 }
 .footer-lang i{
     margin-left: 130px;
