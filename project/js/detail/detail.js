@@ -71,23 +71,26 @@ const modal = document.querySelector(".modal-background");
 const stars = document.querySelectorAll(".stars div");
 const closeBtn = document.querySelector(".close-btn");
 const writeBtn = document.getElementById("write-review-btn")
+const topReviewBtn = document.querySelector(".top-review-btn")
 
-// 1. 별을 클릭하면 모달 열기
+// 별을 클릭하면 모달 열기
 stars.forEach(star => {
     star.addEventListener("click", () => {
         modal.classList.add("active");
     });
 });
-
+// 하단 리뷰 등록 버튼 클릭 시 모달 열기
 writeBtn.addEventListener("click", () => {
   modal.classList.add("active");
 })
-// 2. 닫기 버튼 클릭 시 모달 닫기
+topReviewBtn.addEventListener("click", () => {
+  modal.classList.add("active");
+})
+// 닫기 버튼 클릭 시 모달 닫기
 closeBtn.addEventListener("click", () => {
     modal.classList.remove("active");
 });
-
-// 3. 모달 바깥(배경) 클릭 시 닫기
+// 모달 바깥(배경) 클릭 시 닫기
 window.addEventListener("click", (e) => {
     if (e.target === modal) {
         modal.classList.remove("active");
