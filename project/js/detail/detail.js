@@ -74,10 +74,43 @@ function updateSizeOptions(product) {
   if (!sizeBox) return;
 
   // 카테고리가 '의류'가 아닌 경우 (용품, 신발 등)
-  if (product.category !== "의류") {
+  if (product.category == "용품") {
     sizeBox.innerHTML = `
       <input type="radio" name="product-size" id="size-free" value="Free" checked />
       <label for="size-free">Free</label>
+    `;
+  } else if(product.category == "신발"){
+    sizeBox.innerHTML =`
+    <input type="radio" name="product-size" id="size-230" value="230" />
+      <label for="size-230">230</label>
+      <input type="radio" name="product-size" id="size-235" value="235" />
+      <label for="size-235">235</label>
+      <input type="radio" name="product-size" id="size-240" value="240" />
+      <label for="size-240">240</label>
+      <input type="radio" name="product-size" id="size-245" value="245" checked />
+      <label for="size-245">245</label>
+      <input type="radio" name="product-size" id="size-250" value="250" />
+      <label for="size-250">250</label>
+      <input type="radio" name="product-size" id="size-255" value="255" />
+      <label for="size-255">255</label>
+      <input type="radio" name="product-size" id="size-260" value="260" />
+      <label for="size-260">260</label>
+      <input type="radio" name="product-size" id="size-265" value="265" />
+      <label for="size-265">265</label>
+      <input type="radio" name="product-size" id="size-270" value="270" />
+      <label for="size-270">270</label>
+      <input type="radio" name="product-size" id="size-275" value="275" />
+      <label for="size-275">275</label>
+      <input type="radio" name="product-size" id="size-280" value="280" />
+      <label for="size-280">280</label>
+      <input type="radio" name="product-size" id="size-285" value="285" />
+      <label for="size-285">285</label>
+      <input type="radio" name="product-size" id="size-290" value="290" />
+      <label for="size-290">290</label>
+      <input type="radio" name="product-size" id="size-295" value="295" />
+      <label for="size-295">295</label>
+      <input type="radio" name="product-size" id="size-300" value="300" />
+      <label for="size-300">300</label>
     `;
   } else {
     // 의류인 경우 기존의 다양한 사이즈 목록을 유지
@@ -99,7 +132,7 @@ function updateSizeOptions(product) {
       <input type="radio" name="product-size" id="size-4xl" value="4XL" />
       <label for="size-4xl">4XL</label>
     `;
-  }
+  };
 }
 //----------------------- 모달 로직
 const modal = document.querySelector(".modal-background");

@@ -101,6 +101,8 @@ section{
             
             background-color: #fafafa;
             padding: 30px;
+            
+            flex-direction: column;
         }
         .coupon-header{
             display: flex;
