@@ -1,4 +1,4 @@
-/* -------- 헤더 --------- */
+/* -------- 헤더 ---------
 header{
     position: fixed;
     display: flex;
@@ -8,16 +8,72 @@ header{
     height: clamp(60px, 6vw, 90px);
     z-index: 1000;
 }
+
 .logo img{
     height: clamp(50px, 2vw, 60px);
     margin-right: 10px;
     margin-left: 30px;
 }
 
-
+.nav{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.nav-item{
+    position: relative;
+    display: flex;
+}
+.nav-item > a,
+.nav > a{
+    color: white;
+}
+.nav-item a:hover{
+    color: burlywood;
+}
+.mega-menu{
+    position: fixed;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    padding: 30px 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+    z-index: 9999;
+}
+.nav-item:hover .mega-menu{
+    opacity: 1;
+    visibility: visible;
+}
+.mega-menu.active{
+    opacity: 1;
+    visibility: visible;
+}
+.mega-inner{
+    width: 100%;
+    padding-left: 150px;
+    display: flex;
+    padding: 30px;
+}
+.inner-box{
+    margin-right: 20px;
+    width: 250px;
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}
+.inner-box a{
+    font-weight: 600;
+    color: black;
+    text-decoration: none;
+}
+.inner-box a:hover{
+    color: burlywood;
+}
 .nav a{
     text-decoration: none;
-    color: white;
     padding: 0 10px;
     font-weight: 600;
     gap: clamp(20px, 1vw, 50px);
@@ -42,6 +98,9 @@ header{
     color: white;
     margin-right: 15px;
 }
+.search i:hover{
+    cursor: pointer;
+}
 .search input{
     width: 150px;
     height: 23px;
@@ -49,6 +108,7 @@ header{
     border: none;
     outline: none;
     caret-color: white;
+    color: white;
 }
 .search input::placeholder{
     color: #717171;
@@ -66,7 +126,7 @@ header{
 }
 .icons a:hover {
   color: #ccc;
-}
+} */
 
 /* ---------메인--------- */
 main{
@@ -81,6 +141,14 @@ main{
     width: 100%;
     display: block;
 }
+.wrap video{
+    width: 100%;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+
+}
 .wrap-text{
     bottom: 15%;
     left: 15%;
@@ -89,14 +157,14 @@ main{
 .wrap-text h1{
     font-size: 2.5rem;
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     font-weight: 600;
 }
 .wrap-text strong{
     display: block;
     font-size: 1.4rem;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     padding: 1rem 0 0.5rem 0;
 }
 .wrap-text p{
@@ -116,15 +184,25 @@ main{
 }
 
 /* ----products---- */
+.products{
+    padding: 0 150px;
+}
 .product-list{
     display: flex;
-    gap: 20px;         /* 상품 사이 간격 */
+    gap: 10px;         /* 상품 사이 간격 */
     justify-content: center;
     margin-bottom: 40px;
+}
+.products a{
+    width: 240px;
+    color: black;
 }
 .product{
     width: 288px;
 }
+/* .product :hover{
+    cursor: pointer;
+} */
 .product img{
     width: 100%;
     display: block;
@@ -143,9 +221,10 @@ main{
     font-weight: 600;
 }
 
-
-
 /*-----category-----*/
+.category{
+    padding: 0 30px;
+}
 .category-list{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -183,7 +262,101 @@ main{
     margin-bottom: 50px;
 }
 
+/* -----coupon----- */
+.coupons{
+    padding: 0 100px;
+    margin-top: 60px;
+    margin-bottom: 100px;
+}
+.coupon{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.coupon img{
+    width: 690px;
+    height: 140px;
+}
+.coupon img:hover{
+    cursor: pointer;
+}
+
+/* -----puma-style----- */
+.puma-style{
+    padding-bottom: 80px;
+    text-align: center;
+}
+.puma-style h2{
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+/* 슬라이더 영역 */
+.slider-wrap{
+    position: relative;
+    width: calc((400px + 10px) * 4); 
+    margin: auto;
+    overflow: hidden;
+}
+/* 슬라이드 */
+.slider{
+    display: flex;
+    gap: 10px;
+    transition: transform 0.5s ease;
+}
+/* 카드 */
+.img-card{
+    width: 400px;
+    flex-shrink: 0;
+}
+.img-card img{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+.card-title{
+    text-align: left;
+    margin-top: 15px;
+    font-weight: 600;
+    opacity: 0;    /* 기본 숨김 */
+    transition: opacity 0.4s ease;
+}
+.img-card.active .card-title{
+    opacity: 1;              /* 가운데 카드만 보임 */
+}
+/* 화살표 버튼 */
+.arrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    font-size: 28px;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.3s;
+    z-index: 10;             
+}
+
+.left{
+    left: 50px;              
+}
+
+.right{
+    right: 50px;            
+}
+
+.slider-wrap:hover .arrow{
+    opacity: 1;
+}
+
+
+
 /* -----------푸터----------- */
+/*
 footer{
     background-color: #181818;
     padding: 70px 40px;
@@ -225,6 +398,7 @@ footer{
   color: white;
   line-height: 20px;
   margin-bottom: 30px;
+  font-weight: 500;
 }
 
 .footer-links{
@@ -322,7 +496,7 @@ footer{
 
 .footer-bottom{
     border-top: 1px solid rgba(255,255,255,0.15);
-    padding: 25px 0;
+    padding-top: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -342,6 +516,7 @@ footer{
     width: 30px;
     height: 30px;
     object-fit: cover;
+    margin-right: 7px;
 }
 .footer-lang i{
     margin-left: 130px;
@@ -359,7 +534,7 @@ footer{
 }
 .footer-pay{
     display: flex;
-    gap: 100px;
+    gap: 30px;
     align-items: center;
     margin-top: 20px;
     margin-right: 50px;
@@ -367,3 +542,73 @@ footer{
 .footer-pay img{
     height: 22px;
 }
+
+/* --------푸터 아래-------- */
+/*
+.footer-bottom-info{
+    background: #e9e9e9;
+    padding: 40px 0;
+    font-size: 11px;
+}
+.info-inner{
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+}
+/*  왼쪽 회사 정보  
+.company-info{
+    flex: 2;
+    color: #333;
+    line-height: 1.8;
+}
+
+.company-info p{
+    margin-bottom: 4px;
+}
+
+/*오른쪽 박스  
+.company-side{
+    width: 360px;
+}
+
+/* 약관 버튼 영역 
+.policy-links{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+.policy-links a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    background: #f3f3f3;
+    border: 1px solid #ddd;
+    font-size: 12px;
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+    line-height: 1.2;
+    padding: 4px;
+}
+.policy-links a:hover{
+    text-decoration: underline;
+}
+.policy-links .red{
+    color: #d00000;
+    font-weight: 600;
+}
+.company-img{
+    padding: 8px;
+}
+
+.company-img img{
+    width: 350px;
+    height: 150px;
+    display: block;
+}
+*/
