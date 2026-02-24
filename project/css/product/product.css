@@ -1,6 +1,11 @@
 /* 기본 초기화 */
 * { box-sizing: border-box; }
-body { margin: 0; font-family: Arial, sans-serif; color: #111; }
+body {
+   margin: 0; font-family: Arial, sans-serif; color: #111; 
+  }
+main{
+  padding-top: 90px;
+}
 
 /* 전체 영역 폭 */
 .new-product{
