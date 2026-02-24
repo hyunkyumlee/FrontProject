@@ -46,6 +46,7 @@ main {
   gap: 15px;
   max-width: 1600px;
   margin: 0 auto;
+  padding-top: 90px;
 }
 .menu-tree {
   /* border: 1px solid green; */
@@ -434,11 +435,12 @@ main {
   background-color: #00000094;
   z-index: 990;
   display: none;
+  padding-top: 90px;
 }
 .modal-overlay{
   z-index: 999;
   width: 800px;
-  height: 95vh;
+  height: 82vh;
   margin: 0 auto;
   background: #fff;
   border-radius: 6px;
