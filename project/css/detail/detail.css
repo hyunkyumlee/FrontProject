@@ -348,7 +348,7 @@ main {
 }
 .swiper-button-next:after,
 .swiper-button-prev:after {
-  font-weight: 900; /* 기본값보다 두껍게 설정 (100~900) */
+  font-weight: 900;
 }
 /* --------------------------제품 설명 영역----------------------------------- */
 .text-area{
