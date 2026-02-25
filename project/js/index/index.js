@@ -89,21 +89,14 @@ document.addEventListener("DOMContentLoaded", function(){
 
     if(langBtn && modal && closeBtn){
 
-        // 🔽 열기
+        // 열기
         langBtn.addEventListener("click", function(){
             modal.classList.add("active");
         });
 
-        // ❌ 닫기 버튼
+        // 닫기 버튼
         closeBtn.addEventListener("click", function(){
             modal.classList.remove("active");
-        });
-
-        // 🔲 배경 클릭 시 닫기
-        modal.addEventListener("click", function(e){
-            if(e.target === modal){
-                modal.classList.remove("active");
-            }
         });
 
     }
