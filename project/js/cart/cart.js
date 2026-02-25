@@ -74,7 +74,7 @@
             const div = document.createElement("div");
             div.classList.add("cart-item-container");
 
-            
+
             div.innerHTML = `
                 <input type="checkbox" class="item-check">
                 <div class="div-imgbox">
@@ -125,7 +125,7 @@
         if(total_price==0) sale_price = 0;
         document.querySelector(".price1").textContent = `-${sale_price.toLocaleString()}원`;
         
-        //배송비(100000원이상, 상품이 없으면 0원. 아니면 배송비 3000원)
+        //배송비(100,000원이상, 상품이 없으면 0원. 아니면 배송비 3,000원)
         let deliver = (total_price >= 100000 || total_price == 0) ? 0 : 3000;
         document.querySelector(".price_deliver").textContent = `${deliver.toLocaleString()}원`;
 
@@ -133,24 +133,9 @@
         document.querySelector(".price2").textContent = `${total_calc.toLocaleString()}원`;
     }
 
-    //프로그램 작동 확인용
-    //     const testData = [
-    //         { id: 1, quantity: 1 },
-    //         { id: 2, quantity: 3 },
-    //         { id: 3, quantity: 2 }
-    //     ];
-
-    //     // 로컬스토리지에 저장
-    //     localStorage.setItem("cart", JSON.stringify(testData));
-
-    //     // 페이지 새로고침하여 반영 확인
-    //     location.reload();
-
-
     // 전체 삭제 버튼
     document.querySelector("#clear-cart").addEventListener("click", function(e){
         e.preventDefault();
-        
         cart = [];
 
         localStorage.removeItem("cart");

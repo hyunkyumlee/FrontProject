@@ -3,10 +3,8 @@ section{
 }
 
 .cart-container{
-            display: flex;
-        }
-
-
+    display: flex;
+}
 
         /* 왼쪽 영역(장바구니에 담긴 상품 정보)*/
         h1{
@@ -135,7 +133,7 @@ section{
             display: none;
         }       
 
-        /*화살표 누르면 위 -> 아래 방향으로 바뀜*/
+        /*화살표 누르면 JS를 통해서 위 -> 아래 방향으로 바뀜*/
         .coupon-header .fa-solid.rotate{
             transform: rotate(180deg);
         }
@@ -163,7 +161,14 @@ section{
             font-size: 18px;
             font-weight: bold;
         }
+        .text1, .text2{
+            margin-bottom: 5px;
+        }
 
+        .text1, .text2, .text3{
+            font-weight: bold;
+        }
+        
         .sale-price{
             margin: 20px;
             color: red;
@@ -197,51 +202,31 @@ section{
         /* 다른 고객이 함께 구매한 상품 */
 
         h3{
-
             font-weight: bold;
-
             font-size: 25px;
-
             margin-bottom: 50px;
-
         }
 
         .slider-container{
-
             display: flex;
-
             align-items: center;
-
             position: relative;
-
             padding: 0 60px;
-
         }
 
        
 
         .another-item{
-
             position: relative;
-
             margin: 20px;
-
-           
-
         }
 
-
-
         .list p{
-
-          margin: 40px;  
-
+          margin: 40px; 
         }
 
         .list-price{
-
             font-weight: bold;
-
         }
 
         .prev_btn, .next_btn{
@@ -276,91 +261,54 @@ section{
 
         .list{
             flex: 0 0 20%;
-
             box-sizing: border-box;
-
             text-align: center;
-
             padding: 10px;
-
         }
 
         .another-items{
-
             width: 100%;
-
             overflow: hidden;
-
-            /* margin: 0 10px; */
-
         }
 
         .another-item button{
-
             text-align: center;
-
             width: 100%;
-
             border-radius: 10px;
-
         }
 
         .another-item img{
-
             width: 100%;
-
             height: auto;
-
         }
 
         a{
-
             color: white;
-
         }
 
        
-
         /* PUMA PURCHASE */
 
         h4{
-
             font-weight: bold;
-
             padding: 30px;
-
-           
-
         }
 
         .puma-purchase{
-
             text-align: center;
-
             background-color: #eee;
-
             font-size: 20px;
-
             padding: 10px;
-
         }
 
         ul{
-
             list-style: none;
-
             display: flex;
-
             justify-content: space-around;
-
         }
 
         ul li{
-
             font-size: 30px;
-
             align-items: center;
-
             margin-bottom: 50px;
-
         }
