@@ -1,5 +1,5 @@
 section{
-    padding-top: 100px;
+    padding-top: 190px;
 }
 .cart-container{
             display: flex;
@@ -169,7 +169,10 @@ section{
             margin: 10px;
             
         }
-
+        .close-btn{
+            color: black;
+            text-align: end;
+        }
         /* 다른 고객이 함께 구매한 상품 */
         h3{
             font-weight: bold;

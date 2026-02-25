@@ -137,7 +137,7 @@ function updateSizeOptions(product) {
 //----------------------- 모달 로직
 const modal = document.querySelector(".modal-background");
 const stars = document.querySelectorAll(".stars div");
-const closeBtn = document.querySelector(".close-btn");
+const closeBtn = document.querySelector(".modal-close-btn");
 const writeBtn = document.getElementById("write-review-btn")
 const topReviewBtn = document.querySelector(".top-review-btn")
 
