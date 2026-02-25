@@ -123,9 +123,9 @@
         //할인금액
         let sale_price = 2000;
         if(total_price==0) sale_price = 0;
-        document.querySelector(".price1").textContent = `${sale_price.toLocaleString()}원`;
+        document.querySelector(".price1").textContent = `-${sale_price.toLocaleString()}원`;
         
-        //배송비(50000원이상, 상품이 없으면 0원. 아니면 배송비 3000원)
+        //배송비(100000원이상, 상품이 없으면 0원. 아니면 배송비 3000원)
         let deliver = (total_price >= 100000 || total_price == 0) ? 0 : 3000;
         document.querySelector(".price_deliver").textContent = `${deliver.toLocaleString()}원`;
 
