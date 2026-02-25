@@ -26,6 +26,10 @@
     panel.classList.remove("active");
     overlay.classList.remove("active");
     document.body.classList.remove("no-scroll");
+      // 필터창 닫을 때 열려있던 카테고리 전부 접기
+      panel.querySelectorAll(".filter-group.active").forEach(group => {
+      group.classList.remove("active");
+    });
   }
 
   openBtn.addEventListener("click", openFilter);
@@ -49,11 +53,18 @@
  document.addEventListener("DOMContentLoaded", function () {
   const tabs = document.querySelectorAll(".tab");
   const cards = document.querySelectorAll(".product-list .card"); //  카드 기준
+  const pageTitle = document.querySelector(".page-title");
   const showAllBtn = document.querySelector(".more-pro-gold");    // 모두 표시(202)
-
+  
+  // 클릭한 카테고리 버튼 내용으로 제목도 바뀌기
+  function setTitle(text){
+    if(pageTitle) pageTitle.textContent = text;
+  }
+  
   function setVisible(filter) {
     cards.forEach(card => {
       const cat = card.dataset.cat;
+      const wrapper = card.closest(".card-link") || card; // a로 감싸졌으면 a를 숨김
 
       if (!filter || cat === filter) {
         card.classList.remove("is-hidden");
@@ -70,15 +81,17 @@
 
       tabs.forEach(t => t.classList.remove("active"));
       this.classList.add("active");
-
+      
+      setTitle(this.textContent.trim()); //  제목 변경
       setVisible(filter);
     });
-  });
+  });  
 
   // 모두 표시(202) -> 전체 보기
   if (showAllBtn) {
     showAllBtn.addEventListener("click", function () {
       tabs.forEach(t => t.classList.remove("active"));
+      setTitle("신상품");     //  제목도 다시 -> 신상품
       setVisible(null); // 전체
     });
   }
@@ -131,6 +144,69 @@
             rightBtn.style.display = "none";
             return; // 이벤트도 안 붙이게
             }
+        
+        /* ====== 2색상 hover 썸네일 (간략히보기 위에서는 X) ====== */
+          const colorEl = card.querySelector(".color");
+          const quickEl = card.querySelector(".quick");
+
+          // "2 색상" 카드만 적용 (1색상은 패스)
+          // 공백/개행 대비해서 includes로 체크
+          const isTwoColor = colorEl && colorEl.textContent.includes("2");
+
+          if (isTwoColor) {
+            // 1) color 영역에 has-thumbs 붙이기(높이 확보용)
+            colorEl.classList.add("has-thumbs");
+
+            // 2) 기존 텍스트를 span.color-text로 감싸기 (이미 있으면 패스)
+            if (!colorEl.querySelector(".color-text")) {
+              const text = colorEl.textContent.trim(); // 예: "2 색상"
+              colorEl.textContent = "";
+
+              const textSpan = document.createElement("span");
+              textSpan.className = "color-text";
+              textSpan.textContent = text;
+              colorEl.appendChild(textSpan);
+            }
+
+            // 3) 썸네일 컨테이너 만들기 (이미 있으면 패스)
+            if (!colorEl.querySelector(".color-thumbs")) {
+              const thumbs = document.createElement("div");
+              thumbs.className = "color-thumbs";
+
+              // 썸네일 2장: 대표 이미지 + data-img1 (없으면 대표로 대체)
+              const t1 = document.createElement("img");
+              t1.src = img.src;
+              t1.alt = "";
+
+              const t2 = document.createElement("img");
+              t2.src = img.dataset.img1 ? img.dataset.img1 : img.src;
+              t2.alt = "";
+
+              thumbs.appendChild(t1);
+              thumbs.appendChild(t2);
+              colorEl.appendChild(thumbs);
+            }
+
+            // 4) 카드 hover 시 show-thumbs ON
+            //    단, "간략히 보기(.quick)" 위에서는 OFF
+            card.addEventListener("mousemove", function (e) {
+              const onQuick = e.target.closest(".quick");
+              if (onQuick) card.classList.remove("show-thumbs");
+              else card.classList.add("show-thumbs");
+            });
+
+            card.addEventListener("mouseleave", function () {
+              card.classList.remove("show-thumbs");
+            });
+
+            // (선택) quick에 마우스 들어오면 확실히 꺼주기
+            if (quickEl) {
+              quickEl.addEventListener("mouseenter", () => {
+                card.classList.remove("show-thumbs");
+              });
+            }
+          }
+          /* ====== /2색상 hover 썸네일 ====== */
             
         let currentIndex = 0;
 
@@ -234,6 +310,9 @@
 
     });
 });
+
+/* 2색상인 제품들은 마우스 올리면 2색상 텍스트 자리에 이미지 2개 뜨기 */
+
 
 /* 마음에 들어요 하트 표시 */
    const hearts = document.querySelectorAll(".wish");
